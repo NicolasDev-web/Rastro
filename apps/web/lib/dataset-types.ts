@@ -12,7 +12,7 @@ export const isStage = (v: string | null): v is Stage => v === 'empenhado' || v 
 export type YearValues = ({ lines: number } & Record<Metric, number | null>) | null;
 
 /** Frente A: pago por município de APLICAÇÃO (documentos de pagamento), por ano da emenda. Nunca somar ao critério por emenda. */
-export type AplicValues = { pago: number; emendas: number; documentos: number } | null;
+export type AplicValues = { pago: number | null; emendas: number; documentos: number } | null;
 export type Criterio = 'emenda' | 'aplicacao';
 export const CRITERIO_LABEL: Record<Criterio, string> = { emenda: 'Localidade da emenda', aplicacao: 'Onde o pagamento foi aplicado' };
 
@@ -50,9 +50,9 @@ export const brl = (cents: number) =>
 export const brlOrMissing = (cents: number | null) => (cents === null ? 'Sem registro' : brl(cents));
 
 /** Pago total = pago no ano da emenda + restos a pagar pagos nos anos seguintes (mesma etapa, anos diferentes).
- *  Confirmado pelos documentos de pagamento em 95,7% das emendas do recorte (SPEC 01 → H1). */
-export const pagoTotal = (pago: number | null, rapPagos: number | null) => (pago === null && rapPagos === null ? null : (pago ?? 0) + (rapPagos ?? 0));
-export const PAGO_TOTAL_NOTE = 'Pago total = pago no ano da emenda + restos a pagar pagos depois. Confirmado pelos documentos de pagamento da CGU em 95,7% das emendas do Ceará (2020–2026).';
+ *  Conciliação e cobertura devem ser verificadas por snapshot e emenda. */
+export const pagoTotal = (pago: number | null, rapPagos: number | null) => (pago === null || rapPagos === null ? null : pago + rapPagos);
+export const PAGO_TOTAL_NOTE = 'Pago total = pago no ano da emenda + restos a pagar pagos depois. A conciliação com documentos está indicada na ficha e depende da cobertura e do snapshot.';
 
 // Formatação manual: Intl 'compact' difere entre o ICU do Node e o do navegador e quebra a hidratação.
 export const compactBrl = (cents: number) => {

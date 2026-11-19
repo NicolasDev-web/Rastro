@@ -19,7 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 def main(argv: list[str]) -> int:
     cmd = argv[1] if len(argv) > 1 else 'help'
-    steps = ['snapshot', 'profile', 'load', 'report', 'autores', 'documentos', 'export', 'fichas'] if cmd == 'all' else [cmd]
+    steps = ['snapshot', 'profile', 'load', 'report', 'autores', 'documentos', 'export', 'fichas', 'bundle'] if cmd == 'all' else [cmd]
     for step in steps:
         if step == 'snapshot':
             from rastro.snapshot import acquire_all
@@ -40,6 +40,9 @@ def main(argv: list[str]) -> int:
         elif step == 'export':
             from rastro.export import run as export
             export()
+        elif step == 'bundle':
+            from rastro.bundle import run as bundle
+            bundle()
         elif step == 'fichas':
             from rastro.fichas import run as fichas
             fichas()

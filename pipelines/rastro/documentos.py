@@ -17,6 +17,7 @@ from . import CONTRACTS_DIR, RAW_DIR, REPORTS_DIR, STAGING_DB
 from . import cgu
 from .fmt import brl, num, table
 from .snapshot import latest, verify
+from .money import total, sql_total
 
 YEARS = range(2020, 2027)
 CONTRACT_PATH = CONTRACTS_DIR / 'cgu_documentos.json'
@@ -44,6 +45,12 @@ CREATE TABLE IF NOT EXISTS cgu_documentos (
   PRIMARY KEY (raw_sha256, source_row_id)
 );
 CREATE INDEX IF NOT EXISTS idx_docs_emenda ON cgu_documentos (emenda_code, fase);
+CREATE TABLE IF NOT EXISTS cgu_documentos_selecao (
+  source_id TEXT PRIMARY KEY,
+  raw_sha256 TEXT NOT NULL UNIQUE
+);
+CREATE VIEW IF NOT EXISTS cgu_documentos_ativos AS
+ SELECT d.* FROM cgu_documentos d JOIN cgu_documentos_selecao s ON s.raw_sha256 = d.raw_sha256;
 """
 
 
@@ -100,43 +107,54 @@ def relevant_codes(con: sqlite3.Connection, sid: int) -> set[str]:
     return ce
 
 
+def selected_sources(con):
+    if not con.execute("SELECT 1 FROM sqlite_master WHERE name='cgu_documentos_selecao'").fetchone():
+        return {}
+    return dict(con.execute('SELECT source_id, raw_sha256 FROM cgu_documentos_selecao ORDER BY source_id'))
+
+
 def load(con: sqlite3.Connection, entries: list[dict], codes: set[str], contract: dict) -> dict:
     import csv
     import io
     con.executescript(SCHEMA)
     stats: dict = defaultdict(int)
-    for e in entries:
-        con.execute('DELETE FROM cgu_documentos WHERE raw_sha256 = ?', (e['raw_sha256'],))
-        rows = []
-        with zipfile.ZipFile(verify(e)) as zf:
-            member = member_name(zf)
-            with zf.open(member) as fh:
-                reader = csv.reader(io.TextIOWrapper(fh, encoding='cp1252', errors='strict', newline=''), delimiter=';')
-                head = next(reader)
-                if head != contract['columns']:
-                    raise ContractError(f'{e["source_id"]}: cabeçalho diverge do contrato')
-                ix = {c: i for i, c in enumerate(head)}
-                for row in reader:
-                    stats['docs_lidos'] += 1
-                    code = cgu.clean(row[ix['Código da Emenda']])
-                    uf = cgu.clean(row[ix['UF de aplicação do recurso']])
-                    if code not in codes and uf != 'CE':
-                        continue
-                    tipo = cgu.clean(row[ix['Tipo Favorecido']])
-                    fcod, fnome = cgu.clean(row[ix['Código favorecido']]), cgu.clean(row[ix['Favorecido']])
-                    fcod, fnome, masked = cgu.mask_favorecido(tipo, None, fcod, fnome)
-                    if not masked and fnome and _MEI.match(fnome):
-                        fcod, fnome, masked = None, cgu.MASKED_EI, True
-                    stats['favorecidos_mascarados'] += masked
-                    ano = cgu.clean(row[ix['Ano da Emenda']])
-                    rows.append((e['raw_sha256'], f'{member}:{reader.line_num}', code, int(ano) if ano and ano.isdigit() else None,
-                                 row[ix['Fase da despesa']].strip(), cgu.clean(row[ix['Data Documento']]), row[ix['Código Documento']].strip(),
-                                 cgu.cents(row[ix['Valor Empenhado']]), cgu.cents(row[ix['Valor Pago']]),
-                                 uf, cgu.clean(row[ix['Município de aplicação do recurso']]), cgu.clean(row[ix['Código IBGE do município de aplicação do recurso']]),
-                                 cgu.clean(row[ix['Localidade de aplicação do recurso']]), fcod, fnome, tipo,
-                                 cgu.clean(row[ix['Modalidade Aplicação Despesa']])))
-        con.executemany(f'INSERT INTO cgu_documentos VALUES ({",".join("?" * 17)})', rows)
-        stats[f'docs_guardados_{e["source_id"][-4:]}'] = len(rows)
+    if not entries or len({e['source_id'] for e in entries}) != len(entries):
+        raise ContractError('Seleção de documentos vazia ou com fontes repetidas')
+    with con:
+        for e in entries:
+            con.execute('DELETE FROM cgu_documentos WHERE raw_sha256 = ?', (e['raw_sha256'],))
+            rows = []
+            with zipfile.ZipFile(verify(e)) as zf:
+                member = member_name(zf)
+                with zf.open(member) as fh:
+                    reader = csv.reader(io.TextIOWrapper(fh, encoding='cp1252', errors='strict', newline=''), delimiter=';')
+                    head = next(reader)
+                    if head != contract['columns']:
+                        raise ContractError(f'{e["source_id"]}: cabeçalho diverge do contrato')
+                    ix = {c: i for i, c in enumerate(head)}
+                    for row in reader:
+                        stats['docs_lidos'] += 1
+                        code = cgu.clean(row[ix['Código da Emenda']])
+                        uf = cgu.clean(row[ix['UF de aplicação do recurso']])
+                        if code not in codes and uf != 'CE':
+                            continue
+                        tipo = cgu.clean(row[ix['Tipo Favorecido']])
+                        fcod, fnome = cgu.clean(row[ix['Código favorecido']]), cgu.clean(row[ix['Favorecido']])
+                        fcod, fnome, masked = cgu.mask_favorecido(tipo, None, fcod, fnome)
+                        if not masked and fnome and _MEI.match(fnome):
+                            fcod, fnome, masked = None, cgu.MASKED_EI, True
+                        stats['favorecidos_mascarados'] += masked
+                        ano = cgu.clean(row[ix['Ano da Emenda']])
+                        rows.append((e['raw_sha256'], f'{member}:{reader.line_num}', code, int(ano) if ano and ano.isdigit() else None,
+                                     row[ix['Fase da despesa']].strip(), cgu.clean(row[ix['Data Documento']]), row[ix['Código Documento']].strip(),
+                                     cgu.cents(row[ix['Valor Empenhado']]), cgu.cents(row[ix['Valor Pago']]),
+                                     uf, cgu.clean(row[ix['Município de aplicação do recurso']]), cgu.clean(row[ix['Código IBGE do município de aplicação do recurso']]),
+                                     cgu.clean(row[ix['Localidade de aplicação do recurso']]), fcod, fnome, tipo,
+                                     cgu.clean(row[ix['Modalidade Aplicação Despesa']])))
+            con.executemany(f'INSERT INTO cgu_documentos VALUES ({",".join("?" * 17)})', rows)
+            stats[f'docs_guardados_{e["source_id"][-4:]}'] = len(rows)
+        con.execute('DELETE FROM cgu_documentos_selecao')
+        con.executemany('INSERT INTO cgu_documentos_selecao VALUES (?,?)', [(e['source_id'], e['raw_sha256']) for e in entries])
     return dict(stats)
 
 
@@ -144,23 +162,23 @@ def reconcile(con: sqlite3.Connection, sid: int) -> dict:
     """Por emenda (código oficial, recorte CE, 2020–2026): documentos × arquivo por emenda."""
     main = {}
     for code, ano, emp, liq, pago, rap in con.execute(
-            "SELECT emenda_code, MIN(ano), SUM(empenhado_cents), SUM(liquidado_cents), SUM(pago_cents), SUM(rap_pagos_cents) "
+            f"SELECT emenda_code, MIN(ano), {sql_total('empenhado_cents')}, {sql_total('liquidado_cents')}, {sql_total('pago_cents')}, {sql_total('rap_pagos_cents')} "
             "FROM cgu_emenda_lines WHERE snapshot_id = ? AND emenda_code IS NOT NULL AND ano BETWEEN 2020 AND 2026 "
             "AND territorial_scope IN ('municipio','estado','multiplo') GROUP BY emenda_code", (sid,)):
-        main[code] = {'ano': ano, 'empenhado': emp or 0, 'pago': pago or 0, 'rap_pagos': rap or 0}
+        main[code] = {'ano': ano, 'empenhado': emp, 'pago': pago, 'rap_pagos': rap}
     docs = defaultdict(lambda: {'pago': 0, 'empenhado': 0, 'n_pag': 0, 'n_emp': 0})
     for code, fase, n, emp, pago in con.execute(
-            'SELECT emenda_code, fase, COUNT(*), SUM(valor_empenhado_cents), SUM(valor_pago_cents) FROM cgu_documentos '
+            f"SELECT emenda_code, fase, COUNT(*), {sql_total('valor_empenhado_cents')}, {sql_total('valor_pago_cents')} FROM cgu_documentos_ativos "
             'WHERE emenda_code IS NOT NULL GROUP BY emenda_code, fase'):
         d = docs[code]
         if fase.lower().startswith('pagamento'):
-            d['pago'] += pago or 0
+            d['pago'] = total([d['pago'], pago])
             d['n_pag'] += n
         elif fase.lower().startswith('empenho'):
-            d['empenhado'] += emp or 0
+            d['empenhado'] = total([d['empenhado'], emp])
             d['n_emp'] += n
     out = {'emendas': len(main), 'sem_documentos': 0, 'h1_igual': 0, 'so_pago_igual': 0, 'nenhum': 0,
-           'empenho_igual': 0, 'diff_examples': [], 'por_ano': defaultdict(lambda: defaultdict(int)), 'docs_por_emenda_max': 0}
+           'empenho_igual': 0, 'indisponivel': 0, 'diff_examples': [], 'por_ano': defaultdict(lambda: defaultdict(int)), 'docs_por_emenda_max': 0}
     for code, m in main.items():
         d = docs.get(code)
         pa = out['por_ano'][m['ano']]
@@ -170,8 +188,12 @@ def reconcile(con: sqlite3.Connection, sid: int) -> dict:
             pa['sem_documentos'] += 1
             continue
         out['docs_por_emenda_max'] = max(out['docs_por_emenda_max'], d['n_pag'] + d['n_emp'])
-        h1 = d['pago'] == m['pago'] + m['rap_pagos']
-        so = d['pago'] == m['pago']
+        if d['n_pag'] and (d['pago'] is None or total([m['pago'], m['rap_pagos']]) is None):
+            out['indisponivel'] += 1
+            pa['indisponivel'] += 1
+            continue
+        h1 = d['n_pag'] > 0 and d['pago'] is not None and total([m['pago'], m['rap_pagos']]) is not None and d['pago'] == total([m['pago'], m['rap_pagos']])
+        so = d['n_pag'] > 0 and m['pago'] is not None and d['pago'] == m['pago']
         if h1:
             out['h1_igual'] += 1
             pa['h1_igual'] += 1
@@ -183,11 +205,11 @@ def reconcile(con: sqlite3.Connection, sid: int) -> dict:
             pa['nenhum'] += 1
             if len(out['diff_examples']) < 12:
                 out['diff_examples'].append((code, m['ano'], m['pago'], m['rap_pagos'], d['pago']))
-        if d['empenhado'] == m['empenhado']:
+        if d['n_emp'] and m['empenhado'] is not None and d['empenhado'] == m['empenhado']:
             out['empenho_igual'] += 1
     # rastreabilidade: emendas sem município no arquivo por emenda, mas com documento de pagamento aplicado em município do CE
     out['ganho'] = con.execute(
-        "SELECT l.territorial_scope, COUNT(DISTINCT d.emenda_code), SUM(d.valor_pago_cents) FROM cgu_documentos d "
+        "SELECT l.territorial_scope, COUNT(DISTINCT d.emenda_code), SUM(d.valor_pago_cents) FROM cgu_documentos_ativos d "
         "JOIN (SELECT DISTINCT emenda_code, territorial_scope FROM cgu_emenda_lines WHERE snapshot_id = ? AND ano BETWEEN 2020 AND 2026 "
         "AND territorial_scope IN ('estado','multiplo','nacional')) l ON l.emenda_code = d.emenda_code "
         "WHERE d.fase LIKE 'Pagamento%' AND d.uf_aplicacao = 'CE' AND d.ibge_aplicacao IS NOT NULL GROUP BY 1", (sid,)).fetchall()
@@ -204,10 +226,10 @@ def aplicacao_por_municipio(con: sqlite3.Connection) -> dict[str, dict[str, dict
         return {}
     out: dict[str, dict[str, dict]] = defaultdict(dict)
     for ibge, ano, pago, n_em, n_doc in con.execute(
-            "SELECT ibge_aplicacao, ano_emenda, SUM(valor_pago_cents), COUNT(DISTINCT emenda_code), COUNT(*) FROM cgu_documentos "
+            f"SELECT ibge_aplicacao, ano_emenda, {sql_total('valor_pago_cents')}, COUNT(DISTINCT emenda_code), COUNT(*) FROM cgu_documentos_ativos "
             "WHERE fase LIKE 'Pagamento%' AND uf_aplicacao = 'CE' AND ibge_aplicacao IS NOT NULL AND ano_emenda BETWEEN 2020 AND 2026 "
             "GROUP BY 1, 2"):
-        out[ibge][str(ano)] = {'pago': pago or 0, 'emendas': n_em, 'documentos': n_doc}
+        out[ibge][str(ano)] = {'pago': pago, 'emendas': n_em, 'documentos': n_doc}
     return out
 
 
@@ -227,6 +249,7 @@ def write_report(entry: dict, entries: list[dict], stats: dict, rec: dict, out_d
              ['Documentos = Pago + RAP pagos (H1)', num(rec['h1_igual']), pct(rec['h1_igual'], com_docs)],
              ['Documentos = só Pago', num(rec['so_pago_igual']), pct(rec['so_pago_igual'], com_docs)],
              ['Nenhum dos dois', num(rec['nenhum']), pct(rec['nenhum'], com_docs)],
+             ['Conciliação indisponível (valores incompletos)', num(rec['indisponivel']), '—'],
              ['Sem documento de empenho ou pagamento', num(rec['sem_documentos']), '—'],
          ], 'lrr'), '',
          'Quando "RAP pagos" é zero, as duas linhas coincidem; a emenda conta em H1.', '']

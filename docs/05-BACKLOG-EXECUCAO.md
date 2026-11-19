@@ -23,6 +23,23 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 
 ## Gates obrigatórios
 
+### Prioridades após fechamento do protótipo
+
+- [x] P0.1 Isolar snapshots de documentos ativos sem somar versões históricas.
+- [x] P0.2 Preservar valores ausentes nas fichas, conciliações e agregados territoriais.
+- [x] P0.3 Validar e servir exports como pacote imutável consistente (ADR-011).
+- [ ] P0.4 Revisar divergências e interpretação financeira com cobertura/denominadores explícitos.
+- [ ] P1.5 Definir publicação com snapshot aprovado e atualização controlada.
+- [ ] P1.6 Completar fontes, acesso aos documentos e paginação das fichas.
+- [ ] P1.7 Automatizar navegação/mobile no CI (testes de pacote já no CI).
+- [ ] P1.8 Preparar atendimento, privacidade, monitoramento e recuperação.
+- [ ] P2.9 Malha IBGE, exploração documental e integração Transferegov.
+- [ ] P2.10 Publicação editorial e fluxo baseados em evidência real.
+- [ ] P3.11 Ferramentas privadas de apuração.
+- [ ] P3.12 Finalizar vídeo e divulgação após validação.
+
+Evidências e migração do primeiro incremento: `operations/INTEGRIDADE-P0.md`.
+
 - **Gate A**: parser pode ser repetido e auditado sem alterar resultado.
 - **Gate B**: cada total publicado é reconciliado e tem fonte/denominador.
 - **Gate C**: usuário leigo entende o indicador testado e visualiza a cobertura.

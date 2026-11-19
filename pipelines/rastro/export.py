@@ -11,8 +11,9 @@ from pathlib import Path
 
 from . import STAGING_DB, VALIDATION_DIR
 from . import cgu
+from .money import sql_total
 from .snapshot import latest
-from .documentos import aplicacao_por_municipio
+from .documentos import aplicacao_por_municipio, selected_sources
 
 YEARS = list(range(2020, 2027))
 WARNING = ('DADOS OFICIAIS EM VALIDAÇÃO — extraídos do Portal da Transparência (CGU), com cobertura e divergências '
@@ -32,7 +33,7 @@ def _year_values(rows) -> dict[str, dict | None]:
 
 def build(con: sqlite3.Connection, entry: dict) -> dict:
     sid = con.execute('SELECT id FROM snapshots WHERE raw_sha256 = ?', (entry['raw_sha256'],)).fetchone()[0]
-    sums = ', '.join(f'SUM({m}_cents)' for m in cgu.METRICS)
+    sums = ', '.join(sql_total(f'{m}_cents') for m in cgu.METRICS)
     q = f'SELECT ano, COUNT(*), {sums} FROM cgu_emenda_lines WHERE snapshot_id = ? AND ano BETWEEN 2020 AND 2026 AND {{cond}} GROUP BY ano ORDER BY ano'
     municipalities = []
     aplic = aplicacao_por_municipio(con)
@@ -47,6 +48,7 @@ def build(con: sqlite3.Connection, entry: dict) -> dict:
         non_municipal.append({'id': scope, 'label': label, 'note': note, 'years': _year_values(rows)})
     return {
         'kind': 'VALIDACAO',
+        'document_sources': selected_sources(con),
         'warning': WARNING,
         'coverage': 'unverified',
         'source': 'CGU — Portal da Transparência, Emendas Parlamentares (arquivo único)',
@@ -56,7 +58,7 @@ def build(con: sqlite3.Connection, entry: dict) -> dict:
         'metrics': list(cgu.METRICS),
         'unit': 'centavos de real (BRL)',
         'rules': [
-            'Empenhado, liquidado e pago não se somam. "pago" (no ano da emenda) + "rap_pagos" (anos seguintes) = pago total — confirmado pelos documentos de pagamento (SPEC 01, H1).',
+            'Empenhado, liquidado e pago não se somam. "pago" (no ano da emenda) + "rap_pagos" (anos seguintes) = pago total — conciliação por emenda e snapshot (SPEC 01, H1).',
             'Escopo territorial pelo código IBGE da UF e do município, nunca por texto.',
             'Ano sem linhas = null (sem registro), não zero.',
         ],

@@ -1,5 +1,5 @@
 // Carregamento do dataset no SERVIDOR (ADR-008). Não importar em componentes de cliente.
-import fs from 'node:fs';
+import { loadBundle } from './validation-bundle.mjs';
 import path from 'node:path';
 import { demoDataset } from './demo';
 import type { AplicValues, DataMode, Dataset, DatasetResult, Place, YearValues } from './dataset-types';
@@ -10,6 +10,8 @@ import type { Author, AuthorsData, AuthorsResult, Collective, StateDeputy } from
 
 export const DATA_MODE: DataMode = process.env.DATA_MODE === 'validacao' ? 'validacao' : 'demo';
 const VALIDATION_DIR = path.resolve(process.cwd(), '../../data/validacao');
+let validationCache: ReturnType<typeof loadBundle> | null = null;
+function readValidation() { return validationCache ??= loadBundle(VALIDATION_DIR); }
 
 type ExportFile = {
   kind: string; warning: string; coverage: string; source: string; source_url: string;
@@ -23,15 +25,15 @@ let cache: { file: string; result: DatasetResult } | null = null;
 function loadValidation(): DatasetResult {
   let files: string[] = [];
   try {
-    files = fs.readdirSync(VALIDATION_DIR).filter(f => /^ce-municipios-.*\.json$/.test(f)).sort();
+    readValidation(); files = ['ce-municipios-bundle.json'];
   } catch {
     /* pasta ausente: tratado abaixo */
   }
   const file = files.at(-1);
-  if (!file) return { ok: false, error: 'Nenhum export em data/validacao/. Rode: python pipelines/run.py all' };
+  if (!file) return { ok: false, error: 'Pacote de validação ausente ou inválido. Gere os exports e rode: python pipelines/run.py bundle' };
   if (cache?.file === file) return cache.result;
   try {
-    const raw = JSON.parse(fs.readFileSync(path.join(VALIDATION_DIR, file), 'utf-8')) as ExportFile;
+    const raw = readValidation()['ce-municipios'] as ExportFile;
     if (raw.kind !== 'VALIDACAO') return { ok: false, error: `Arquivo ${file} não é um export de validação.` };
     const municipalities: Place[] = raw.municipalities.map(m => ({ id: m.ibge_code, ibge: m.ibge_code, name: m.name, kind: 'municipio', years: m.years, aplicacao: m.aplicacao }));
     const nonMunicipal: Place[] = raw.non_municipal.map(n => ({ id: n.id, name: n.label, kind: n.id, note: n.note, years: n.years }));
@@ -62,15 +64,15 @@ export function getAuthors(): AuthorsResult {
   if (DATA_MODE === 'demo') return { ok: true, data: demoAuthors };
   let files: string[] = [];
   try {
-    files = fs.readdirSync(VALIDATION_DIR).filter(f => /^autores-.*\.json$/.test(f)).sort();
+    readValidation(); files = ['autores-bundle.json'];
   } catch {
     /* tratado abaixo */
   }
   const file = files.at(-1);
-  if (!file) return { ok: false, error: 'Nenhum export de autores em data/validacao/. Rode: python pipelines/run.py autores' };
+  if (!file) return { ok: false, error: 'Pacote de validação ausente ou inválido. Regenere os exports e execute bundle' };
   if (authorsCache?.file === file) return authorsCache.result;
   try {
-    const raw = JSON.parse(fs.readFileSync(path.join(VALIDATION_DIR, file), 'utf-8'));
+    const raw = readValidation()['autores'];
     if (raw.kind !== 'VALIDACAO') return { ok: false, error: `Arquivo ${file} não é um export de validação.` };
     const data: AuthorsData = {
       mode: 'validacao', coverage: 'unverified', warning: raw.warning, source: raw.source,
@@ -93,16 +95,16 @@ const fichasCache: Record<string, { file: string; result: FichasResult<unknown> 
 function loadFichas<T>(prefix: 'emendas' | 'municipios', key: 'emendas' | 'municipios'): FichasResult<T> {
   let files: string[] = [];
   try {
-    files = fs.readdirSync(VALIDATION_DIR).filter(f => f.startsWith(`${prefix}-`) && f.endsWith('.json')).sort();
+    readValidation(); files = [`${prefix}-bundle.json`];
   } catch {
     /* tratado abaixo */
   }
   const file = files.at(-1);
-  if (!file) return { ok: false, error: `Nenhum export de ${prefix} em data/validacao/. Rode: python pipelines/run.py fichas` };
+  if (!file) return { ok: false, error: `Pacote de validação ausente ou inválido (${prefix}). Regenere os exports e execute bundle` };
   const cached = fichasCache[prefix];
   if (cached?.file === file) return cached.result as FichasResult<T>;
   try {
-    const raw = JSON.parse(fs.readFileSync(path.join(VALIDATION_DIR, file), 'utf-8'));
+    const raw = readValidation()[prefix];
     const result: FichasResult<T> = { ok: true, data: raw[key] };
     fichasCache[prefix] = { file, result };
     return result;

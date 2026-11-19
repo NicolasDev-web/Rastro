@@ -31,7 +31,15 @@
 
 **Decisão:** usar `next/font/local` com os mesmos WOFF2 latinos já presentes no build: Archivo variável (peso/largura), Source Serif 4 normal/itálico e IBM Plex Mono 400/500/700. Licenças OFL acompanhando os arquivos em `apps/web/fonts`. **Motivo:** o ambiente de validação bloqueia Google Fonts e usava fontes substitutas, alterando o design. Autohospedagem preserva a identidade e remove a dependência de rede no build. `outputFileTracingRoot` aponta à raiz do monorepo, evitando inferência por lockfile externo.
 
-## Pendências de arquitetura
+## ADR-011 — Pacotes de validação e seleção de documentos
+
+Documentos históricos permanecem no staging; `cgu_documentos_selecao` identifica uma versão por fonte e `cgu_documentos_ativos` filtra todas as consultas financeiras. A carga troca a seleção em transação somente ao concluir todos os arquivos. Reprocessar documentos é obrigatório em staging legado.
+
+Exports financeiros declaram os hashes ativos. `python pipelines/run.py bundle` reúne os quatro exports do mesmo snapshot principal, verifica as versões dos documentos e gera diretório imutável identificado pelo hash do conteúdo. O ponteiro `active-bundle.json` muda por substituição atômica. Next valida hashes, modo, estrutura, valores e referências antes de servir qualquer parte do pacote; mantém uma versão por processo (reiniciar/rebuild para trocar). Falha não usa arquivos avulsos nem dados demo silenciosamente.
+
+Qualquer parcela financeira ausente torna a soma indisponível. Fichas e conciliação usam esse contrato; zero continua sendo um valor explícito. Isso pode reduzir o número de conciliações classificadas como iguais e exige revisão do novo resultado antes de publicação.
+
+## Pendências remanescentes
 
 - Escolha final de provedor SQL/objeto e custo.
 - Estratégia de CMS editorial.

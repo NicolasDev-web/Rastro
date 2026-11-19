@@ -63,7 +63,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
       <h2 id="loc" className="block-title">Emendas com o município registrado ({m.emendas_localidade.length})</h2>
       {m.emendas_localidade.length ? <div className="table-wrap"><table className="data-table">
         <thead><tr><th scope="col">Emenda</th><th scope="col">Ano</th><th scope="col">Tipo</th><th scope="col">Autor (SIAFI)</th><th scope="col" className="num">Pago total</th></tr></thead>
-        <tbody>{m.emendas_localidade.map(e => <tr key={e.code}><th scope="row">{codeCell(e.code, e.ficha)}</th><td>{e.ano}</td><td>{e.tipo.replace('Emenda Individual - ', '')}</td><td>{e.autor ?? '—'}</td><td className="num">{brl(e.pago_total)}</td></tr>)}</tbody>
+        <tbody>{m.emendas_localidade.map(e => <tr key={e.code}><th scope="row">{codeCell(e.code, e.ficha)}</th><td>{e.ano}</td><td>{e.tipo.replace('Emenda Individual - ', '')}</td><td>{e.autor ?? '—'}</td><td className="num">{brlOrMissing(e.pago_total)}</td></tr>)}</tbody>
       </table></div> : <DataState kind="empty" title="Nenhuma emenda com este município registrado">Veja abaixo os pagamentos aplicados no município por emendas registradas de outra forma.</DataState>}
     </section>
 
@@ -72,7 +72,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
       {m.emendas_aplicacao.length ? <div className="table-wrap"><table className="data-table">
         <caption>Segundo os documentos de pagamento. Inclui emendas registradas como “vários municípios”, bancada e outros autores.</caption>
         <thead><tr><th scope="col">Emenda</th><th scope="col">Ano</th><th scope="col">Tipo</th><th scope="col">Autor (SIAFI)</th><th scope="col" className="num">Documentos</th><th scope="col" className="num">Pago aplicado aqui</th></tr></thead>
-        <tbody>{m.emendas_aplicacao.map(e => <tr key={`${e.code}-${e.ano}`}><th scope="row">{codeCell(e.code, e.ficha)}</th><td>{e.ano}</td><td>{(e.tipo ?? '—').replace('Emenda Individual - ', '')}</td><td>{e.autor ?? '—'}</td><td className="num">{e.documentos}</td><td className="num">{brl(e.pago)}</td></tr>)}</tbody>
+        <tbody>{m.emendas_aplicacao.map(e => <tr key={`${e.code}-${e.ano}`}><th scope="row">{codeCell(e.code, e.ficha)}</th><td>{e.ano}</td><td>{(e.tipo ?? '—').replace('Emenda Individual - ', '')}</td><td>{e.autor ?? '—'}</td><td className="num">{e.documentos}</td><td className="num">{brlOrMissing(e.pago)}</td></tr>)}</tbody>
       </table></div> : <DataState kind="empty" title="Sem pagamento aplicado no município">Nenhum documento de pagamento de emendas de 2020–2026 com este município de aplicação.</DataState>}
     </section>
 
@@ -81,7 +81,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
       {m.favorecidos.length ? <div className="table-wrap"><table className="data-table">
         <caption>Favorecidos com sede no município (arquivo “por favorecido” da CGU, lançamentos desde 2020). Pessoas físicas e empresários individuais aparecem como “omitido”. Ordenado por valor recebido.</caption>
         <thead><tr><th scope="col">Favorecido</th><th scope="col">Natureza jurídica</th><th scope="col" className="num">Lançamentos</th><th scope="col" className="num">Valor recebido</th></tr></thead>
-        <tbody>{m.favorecidos.map((f, i) => <tr key={i}><th scope="row">{f.favorecido ?? 'Sem informação'}</th><td>{f.natureza ?? '—'}</td><td className="num">{f.lancamentos}</td><td className="num">{brl(f.valor)}</td></tr>)}</tbody>
+        <tbody>{m.favorecidos.map((f, i) => <tr key={i}><th scope="row">{f.favorecido ?? 'Sem informação'}</th><td>{f.natureza ?? '—'}</td><td className="num">{f.lancamentos}</td><td className="num">{brlOrMissing(f.valor)}</td></tr>)}</tbody>
       </table></div> : <p className="small muted">Nenhum favorecido registrado.</p>}
     </section>
 

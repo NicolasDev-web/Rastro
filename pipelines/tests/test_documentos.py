@@ -13,6 +13,7 @@ def db():
     con = sqlite3.connect(':memory:')
     con.executescript(load.SCHEMA.read_text(encoding='utf-8'))
     con.executescript(documentos.SCHEMA)
+    con.execute("INSERT INTO cgu_documentos_selecao VALUES ('DEMO_DOCS', 's')")
     con.execute("INSERT INTO snapshots (id, source_id, raw_sha256, raw_path, downloaded_at) VALUES (1, 'cgu_emendas', 'x', 'x', '2026-11-19')")
     cols = [r[1] for r in con.execute('PRAGMA table_info(cgu_emenda_lines)')]
 
@@ -38,7 +39,9 @@ def db():
 
 class ReconcileTests(unittest.TestCase):
     def setUp(self):
-        self.rec = documentos.reconcile(db(), 1)
+        con = db()
+        self.addCleanup(con.close)
+        self.rec = documentos.reconcile(con, 1)
 
     def test_h1_counts(self):
         self.assertEqual(self.rec['emendas'], 4)

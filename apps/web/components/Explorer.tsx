@@ -102,7 +102,7 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
           <small>{demo ? 'Valor inventado para testar a apresentação'
             : aplic ? (aplicInfo ? `${aplicInfo.documentos} documentos de pagamento de ${aplicInfo.emendas} emendas. Inclui restos a pagar pagos.` : 'Nenhum pagamento com aplicação neste município para emendas deste ano.')
             : main === null ? 'Nenhuma emenda com este município registrado no ano. Veja o critério “Onde o pagamento foi aplicado”.' : 'Valor oficial em validação: conferido por amostra, ainda sem revisão editorial.'}</small></div>
-        {!aplic && stage === 'pago' && rapPagos !== null && rapPagos > 0 && <p className="rap-note">Restos a pagar pagos nos anos seguintes: <b>{brl(rapPagos)}</b> · <b>pago total: {brl(pagoTotal(main, rapPagos)!)}</b>. {demo ? '' : 'Soma confirmada pelos documentos de pagamento.'}</p>}
+        {!aplic && stage === 'pago' && rapPagos !== null && rapPagos > 0 && <p className="rap-note">Restos a pagar pagos nos anos seguintes: <b>{brl(rapPagos)}</b> · <b>pago total: {brlOrMissing(pagoTotal(main, rapPagos))}</b>. {demo ? '' : 'Consulte a conciliação e a cobertura nas fichas das emendas.'}</p>}
         <div className="metric-flags"><CoverageFlag value={data.coverage} /></div>
         {syncUrl && <div className="explorer-actions">
           <button type="button" className="chip-button" onClick={copyLink}>{copied ? <Check size={15} aria-hidden="true" /> : <Link2 size={15} aria-hidden="true" />}{copied ? 'Link copiado' : 'Copiar link desta consulta'}</button>

@@ -5,6 +5,8 @@ Como cidadão, quero consultar município, período e etapa financeira; como pes
 
 ## Frentes A/B — contrato de fechamento
 
+P0: `conciliacao.status` inclui `indisponivel` para valores incompletos. Os campos monetários das fichas aceitam null, inclusive o total dos documentos; a interface usa “Sem registro”. A existência de um documento sem valor não autoriza selo de conferência. A carga de validação exige pacote integral validado (ADR-011).
+
 - Critério `emenda`: localidade da própria emenda, preservando os escopos não municipais.
 - Critério `aplicacao`: documentos de pagamento agrupados por município de aplicação e ano da emenda; inclui RAP pagos. Os critérios são separados na tela, URL e CSV e nunca se somam. CSV por aplicação exclui agregados estaduais e não acrescenta RAP novamente.
 - `/emendas/[codigo]`: valores, autoria formal, conciliação (`confere`, `diverge`, `sem_documentos`), cronologia por fase, favorecidos e convênios. Liquidação sem valor permanece ausente. Sem inferência de entrega ou irregularidade.

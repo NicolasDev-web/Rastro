@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1 — integridade P0
+
+- Documentos financeiros consultados por seleção ativa de snapshots; histórico preservado sem duplicar somas. Troca transacional após carga completa.
+- Somas incompletas das fichas, documentos e export territorial preservam null. Novo estado de conciliação indisponível e apresentação compatível.
+- Pacote imutável com os quatro exports, hashes e ponteiro atômico; carregamento conjunto no Next, com validação e sem fallback para arquivos avulsos.
+- Testes de regressão de snapshots, falha de carga, ausência/zero, corrupção e incompatibilidade de pacote. Testes Node adicionados ao CI.
+
 ## 0.5.0 — fechamento A/B, institucional e roteiro
 
 - Critérios de localidade da emenda e aplicação dos pagamentos separados no explorador, mapa e fichas. Corrigido CSV para respeitar o critério ativo, sem duplicar RAP.

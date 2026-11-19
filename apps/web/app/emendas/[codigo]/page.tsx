@@ -55,9 +55,9 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
       <h2 id="valores" className="block-title">Valores</h2>
       <div className="value-strip">
         {[['Empenhado', e.empenhado], ['Liquidado', e.liquidado], ['Pago no ano', e.pago], ['Restos a pagar pagos', e.rap_pagos], ['Pago total', e.pago_total]].map(([l, v]) =>
-          <div key={l as string} className={l === 'Pago total' ? 'value-cell is-total' : 'value-cell'}><small>{l}</small><b>{brl(v as number)}</b></div>)}
+          <div key={l as string} className={l === 'Pago total' ? 'value-cell is-total' : 'value-cell'}><small>{l}</small><b>{brlOrMissing(v as number | null)}</b></div>)}
       </div>
-      <p className="small muted">Empenhado, liquidado e pago são etapas diferentes e não se somam. Pago total = pago no ano + restos a pagar pagos depois. Documentos de pagamento somam {brl(e.conciliacao.documentos_pago)}{e.conciliacao.status === 'diverge' ? ' — diferente do pago total; a divergência está registrada para investigação' : ''}.{demo ? ' Valores fictícios.' : ''}</p>
+      <p className="small muted">Empenhado, liquidado e pago são etapas diferentes e não se somam. Pago total = pago no ano + restos a pagar pagos depois. Documentos de pagamento somam {brlOrMissing(e.conciliacao.documentos_pago)}{e.conciliacao.status === 'diverge' ? ' — diferente do pago total; a divergência está registrada para investigação' : ''}.{demo ? ' Valores fictícios.' : ''}</p>
     </section>
 
     <section className="block-gap" aria-labelledby="linha-do-tempo">
@@ -67,7 +67,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
         <h3>{fase} <span className="tiny-code">{docs.length}</span></h3>
         {docs.length ? <ol className="doc-list">{docs.slice(0, 60).map(d => <li key={d.documento + d.fase}>
           <span className="tiny-code">{formatDate(d.data ?? undefined)} · {d.documento}</span>
-          {d.valor !== null && <b>{brl(d.valor)}</b>}
+          {d.valor !== null && <b>{brlOrMissing(d.valor)}</b>}
           <span className="small muted">{[d.favorecido, d.municipio_aplicacao && `${d.municipio_aplicacao}${d.uf_aplicacao ? `-${d.uf_aplicacao}` : ''}`].filter(Boolean).join(' · ')}</span>
         </li>)}</ol> : <p className="small muted">Nenhum documento.</p>}
         {docs.length > 60 && <p className="small muted">+ {docs.length - 60} documentos não exibidos.</p>}
@@ -79,7 +79,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
       {e.quem_recebeu.length ? <div className="table-wrap"><table className="data-table">
         <caption>Favorecidos dos documentos de pagamento. Pessoas físicas e empresários individuais aparecem como “omitido”.</caption>
         <thead><tr><th scope="col">Favorecido</th><th scope="col">Município de aplicação</th><th scope="col" className="num">Documentos</th><th scope="col" className="num">Valor pago</th></tr></thead>
-        <tbody>{e.quem_recebeu.map((r, i) => <tr key={i}><th scope="row">{r.favorecido}</th><td>{r.municipio ? `${r.municipio}${r.uf ? `-${r.uf}` : ''}` : '—'}</td><td className="num">{r.documentos}</td><td className="num">{brl(r.valor)}</td></tr>)}</tbody>
+        <tbody>{e.quem_recebeu.map((r, i) => <tr key={i}><th scope="row">{r.favorecido}</th><td>{r.municipio ? `${r.municipio}${r.uf ? `-${r.uf}` : ''}` : '—'}</td><td className="num">{r.documentos}</td><td className="num">{brlOrMissing(r.valor)}</td></tr>)}</tbody>
       </table></div> : <DataState kind="empty" title="Sem pagamento registrado">Não há documento de pagamento para esta emenda até a data da extração.</DataState>}
     </section>
 

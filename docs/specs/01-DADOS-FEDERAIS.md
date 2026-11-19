@@ -12,6 +12,14 @@ CGU (emendas e documentos), Transferegov (instrumentos e transferências especia
 `source_id`, `source_url`, `downloaded_at`, `raw_sha256`, `raw_filename`, `format`, `dictionary_version`, `license_or_terms`, `record_count`.
 
 ## Regras de transformação
+
+### Incremento P0 — snapshots e ausência
+
+PLAN: selecionar hashes ativos dos documentos em tabela própria e consultar uma view filtrada; preservar histórico. Trocar a seleção em transação após todos os arquivos serem validados. Somas incompletas retornam null e conciliação indisponível. Exports devem formar um pacote imutável com hashes e ponteiro atômico; Next lê um pacote por processo. Sem alteração de endpoints ou design.
+
+TASKS: P0.1 view/seleção e regressões de reingestão; P0.2 somas estritas e estado indisponível; P0.3 pacote validado no pipeline e carregamento conjunto no servidor.
+
+Aceites: snapshot antigo não dobra somas; erro na carga preserva seleção anterior; null não vira zero nem selo confere; arquivos ausentes/corrompidos/incompatíveis bloqueiam todo o pacote, sem fallback demo. Migração local exige reexecutar documentos e exports antes de ativar o pacote.
 - Preservar arquivo bruto e tipo original; nunca sobrescrever snapshots.
 - Mapear ID de emenda, exercício, modalidade, autor, favorecido, natureza/etapa de valor.
 - Guardar `source_row_id`; gerar ID técnico se não houver chave, nunca fingir que é oficial.
