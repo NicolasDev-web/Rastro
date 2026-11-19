@@ -1,0 +1,3 @@
+# Tipografia local
+
+Mesmos arquivos WOFF2 latinos de Archivo (variável, peso e largura), Source Serif 4 (normal/itálico) e IBM Plex Mono (400/500/700) usados no build anterior via Google Fonts. Copiados dos assets da prévia para preservar a identidade e permitir build sem acesso à rede. Metadados de autoria/licença permanecem embutidos em cada fonte. Fontes distribuídas sob SIL Open Font License; fontes e licenças de referência: https://github.com/google/fonts/tree/main/ofl/archivo, https://github.com/google/fonts/tree/main/ofl/sourceserif4 e https://github.com/google/fonts/tree/main/ofl/ibmplexmono.

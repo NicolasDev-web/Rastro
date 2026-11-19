@@ -17,13 +17,21 @@ const dist = join(web, '.next-preview');
 const out = resolve(web, '../../preview');
 const assets = join(out, 'assets');
 const routes = { '/': 'index', '/investigacao': 'investigacao', '/mapa': 'mapa', '/parlamentares': 'parlamentares', '/fluxos': 'fluxos', '/reportagens': 'reportagens', '/dados': 'dados', '/glossario': 'glossario', '/componentes': 'componentes',
+  '/sobre': 'sobre', '/correcoes': 'correcoes', '/contato': 'contato',
+  '/emendas/DEMO00000001': 'emenda-DEMO00000001',
+  '/municipios/2304103': 'municipio-2304103', '/municipios/2304202': 'municipio-2304202', '/municipios/2304400': 'municipio-2304400',
+  '/municipios/2312908': 'municipio-2312908', '/municipios/2307304': 'municipio-2307304',
   // fichas fictícias da aba de autores (modo demo)
   '/parlamentares/demo-a': 'parlamentares-demo-a', '/parlamentares/demo-b': 'parlamentares-demo-b', '/parlamentares/demo-c': 'parlamentares-demo-c' };
 
 if (!process.argv.includes('--skip-build')) {
-  execSync('npx next build', { cwd: web, stdio: 'inherit', env: { ...process.env, NEXT_DIST_DIR: '.next-preview' } });
+  execSync('npx next build', { cwd: web, stdio: 'inherit', env: { ...process.env, DATA_MODE: 'demo', NEXT_DIST_DIR: '.next-preview' } });
 }
 
+// Mesmo com --skip-build, recusar artefatos de validação na prévia distribuível.
+if (!readFileSync(join(dist, 'server', 'app', 'index.html'), 'utf8').includes('todos os valores exibidos são fictícios')) {
+  throw new Error('A prévia offline exige build em modo demo.');
+}
 rmSync(assets, { recursive: true, force: true });
 mkdirSync(join(assets, 'media'), { recursive: true });
 

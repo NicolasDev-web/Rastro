@@ -27,7 +27,11 @@
 ## ADR-009 — Vínculo autor CGU → parlamentar por nome exato com revisão humana
 **Decisão:** o arquivo da CGU identifica o autor por código SIAFI e nome; Câmara e Senado usam IDs próprios e não há chave comum. O pipeline casa por nome normalizado exato contra as listas da 56ª e 57ª legislaturas; candidato único → `em_revisao`, nenhum ou vários → `pendente`. Só o arquivo versionado `pipelines/contracts/autores_vinculo.json` promove um vínculo a `revisado` (ou o rejeita). Fotos oficiais entram por snapshot local. **Por quê:** Constituição, regra 10 — relação sem ID oficial não é publicada sem revisão. **Consequências:** o site mostra o selo "vínculo por nome — em revisão" até a confirmação; publicação exige 100% dos vínculos exibidos como `revisado`.
 
-## Pendentes
+## ADR-010 — Mesmas fontes, servidas localmente
+
+**Decisão:** usar `next/font/local` com os mesmos WOFF2 latinos já presentes no build: Archivo variável (peso/largura), Source Serif 4 normal/itálico e IBM Plex Mono 400/500/700. Licenças OFL acompanhando os arquivos em `apps/web/fonts`. **Motivo:** o ambiente de validação bloqueia Google Fonts e usava fontes substitutas, alterando o design. Autohospedagem preserva a identidade e remove a dependência de rede no build. `outputFileTracingRoot` aponta à raiz do monorepo, evitando inferência por lockfile externo.
+
+## Pendências de arquitetura
 
 - Escolha final de provedor SQL/objeto e custo.
 - Estratégia de CMS editorial.

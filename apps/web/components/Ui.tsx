@@ -3,8 +3,9 @@ import { ArrowRight, ExternalLink, FileCheck2, Info } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 export function DemoLabel(){return <span className="demo-label">Exemplo fictício</span>}
-export function SectionHeader({eyebrow,title,description}: {eyebrow:string;title:string;description?:string}){
-  return <div className="section-heading"><span className="eyebrow">{eyebrow}</span><h2>{title}</h2>{description&&<p className="lead">{description}</p>}</div>;
+export function SectionHeader({eyebrow,title,description,level=2}: {eyebrow:string;title:string;description?:string;level?:1|2}){
+  const Heading = level === 1 ? 'h1' : 'h2';
+  return <div className="section-heading"><span className="eyebrow">{eyebrow}</span><Heading>{title}</Heading>{description&&<p className="lead">{description}</p>}</div>;
 }
 /** Abertura de página interna: texto à esquerda, ilustração à direita. */
 export function PageHero({eyebrow,title,description,art,caption,children}:{eyebrow:string;title:string;description?:string;art:ReactNode;caption:string;children?:ReactNode}){

@@ -15,8 +15,8 @@ from .snapshot import latest
 from .documentos import aplicacao_por_municipio
 
 YEARS = list(range(2020, 2027))
-WARNING = ('DADOS OFICIAIS EM VALIDAÇÃO — extraídos do Portal da Transparência (CGU), ainda sem conferência amostral '
-           'nem revisão editorial. Não publicar nem citar como resultado apurado.')
+WARNING = ('DADOS OFICIAIS EM VALIDAÇÃO — extraídos do Portal da Transparência (CGU), com cobertura e divergências '
+           'em revisão e sem aprovação editorial para publicação. Não publicar nem citar como resultado apurado.')
 NON_MUNICIPAL = {
     'estado': ('Ceará — aplicação estadual', 'Localidade "CEARÁ (UF)": aplicação em âmbito estadual. Não identifica quem recebeu nem atribui a nenhum município.'),
     'multiplo': ('Ceará — vários municípios', 'Localidade "MÚLTIPLO": a despesa cobre mais de um município e o arquivo não permite repartir.'),

@@ -118,7 +118,7 @@ mark { background: var(--sol); color: var(--ink); padding: 0 .08em; -webkit-box-
 .intro-grid p { max-width: 720px; font: 400 20px/1.65 var(--serif); color: var(--muted); }
 .section-space { padding-block: 96px; }
 .section-heading { margin-bottom: 40px; max-width: 880px; }
-.section-heading h2 { margin: 12px 0 16px; }
+.section-heading h2, .section-heading h1 { margin: 12px 0 16px; font-size: clamp(2.3rem, 4.6vw, 4.4rem); line-height: .98; }
 .section-heading p { max-width: 740px; }
 
 .pillars-section { background: var(--paper-2); padding-block: 90px; border-block: var(--border); }
@@ -308,7 +308,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .site-footer .wordmark { font-size: 38px; margin-bottom: 22px; }
 .site-footer p { color: #BDB5A6; font-size: 15px; max-width: 380px; }
 .site-footer .eyebrow { color: var(--sol); margin-bottom: 4px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
 .footer-grid > div:not(:first-child) { display: flex; flex-direction: column; gap: 12px; }
 .footer-grid a { display: inline-flex; gap: 6px; align-items: center; font-size: 15px; }
 .footer-grid a:hover { color: var(--sol); }

@@ -3,6 +3,12 @@
 ## Pré-requisitos
 Snapshot oficial validado e revisão jurídica/editorial, testes de ponta a ponta, política de correção, backup e monitoramento. Não publicar demo sem banner e sem roteamento de indexação adequada.
 
+## Frente C/D — contrato de fechamento
+
+`/dados` deve distinguir explicitamente demo e validação, explicar critérios territoriais, etapas, proveniência e limitações. `/sobre`, `/correcoes` e `/contato` reutilizam o design existente e aparecem no rodapé. Sem canal editorial confirmado, Contato informa a indisponibilidade de recebimento; não inventar e-mail, responsáveis ou formulário funcional. Correções apresenta política prevista, sem alegar histórico inexistente. AC06 permanece parcial até canal real e política de privacidade definidos.
+
+Git e primeiro commit já concluídos (`6ea3bc8`, `NicolasDev-web/Rastro`). Checklist operacional em `../operations/CHECKLIST-PUBLICACAO.md`. Prévia e build públicos permanecem em demo. PDF do vídeo é material interno de validação e não é autorização de lançamento.
+
 ## Critérios de aceite
 - **AC01** Produção não inicia em modo misto `DEMO_DATA=true` com números não identificados como demo.
 - **AC02** Teste de reconciliação de totais críticos passa.

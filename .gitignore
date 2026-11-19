@@ -1,6 +1,9 @@
 node_modules/
 .next/
 .next-preview/
+.next-validacao/
+tmp/
+output/
 dist/
 *.log
 *.tsbuildinfo

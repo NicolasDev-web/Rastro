@@ -25,6 +25,8 @@ Regras: cor não carrega julgamento. Barro não significa suspeita, cobalto não
 
 ## Tipografia (Google Fonts via `next/font`)
 
+Atualização de fechamento: os mesmos WOFF2 latinos agora são autohospedados com `next/font/local` (ADR-010). Famílias, pesos, eixo de largura e variáveis CSS preservados; licenças em `apps/web/fonts`.
+
 - **Manchete e UI:** Archivo (variável, eixo `wdth`). Manchetes em peso 800–900 com `font-variation-settings: 'wdth' 70` (condensada). Rótulos, botões e navegação em caixa-alta, `wdth` 85, espaçamento .05em.
 - **Leitura:** Source Serif 4 — corpo de reportagem (19px/1.8), linhas finas e leads.
 - **Dados e metadados:** IBM Plex Mono — eyebrows, datas, códigos IBGE, legendas, valores das barras. Números com `tabular-nums`.

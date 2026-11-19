@@ -68,22 +68,24 @@ export const normalize = (v: string) => v.toLocaleLowerCase('pt-BR').normalize('
 export const formatDate = (iso?: string) => (iso ? iso.slice(0, 10).split('-').reverse().join('/') : '—');
 
 /** CSV com metadados da consulta (SPEC 04, AC07). Separador `;` para o Excel pt-BR. Vazio = sem registro. */
-export function datasetCsv(data: Dataset, year: number, stage: Stage, generatedAt: string) {
+export function datasetCsv(data: Dataset, year: number, stage: Stage, generatedAt: string, criterio: Criterio = 'emenda') {
+  const aplic = criterio === 'aplicacao';
   const esc = (v: string) => (/[;"\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
   const head = [
     `# RASTRO — ${data.mode === 'demo' ? 'EXPORTAÇÃO DE DEMONSTRAÇÃO: todos os valores são fictícios' : 'DADOS OFICIAIS EM VALIDAÇÃO: não publicar nem citar como resultado apurado'}`,
     `# fonte: ${data.source}${data.sourceUrl ? ` (${data.sourceUrl})` : ''}`,
     `# extraido_em: ${data.asOf ?? '—'}${data.snapshot ? ` · snapshot ${data.snapshot}` : ''}`,
     `# exercicio_da_emenda: ${year}`,
-    `# etapa: ${STAGE_LABEL[stage]}`,
-    '# regras: empenho, liquidação e pagamento não se somam; pago + rap_pagos = pago total (restos a pagar pagos nos anos seguintes); aplicação estadual e vários municípios não entram em municípios; vazio = sem registro (não é zero)',
+    `# etapa: ${aplic ? 'Pago por aplicação (inclui RAP pagos)' : STAGE_LABEL[stage]}`,
+    `# criterio: ${CRITERIO_LABEL[criterio]} — critérios não se somam`,
+    '# regras: empenho, liquidação e pagamento não se somam; pago + rap_pagos = pago total; critérios territoriais não se somam; pela localidade da emenda, escopos estadual e múltiplo ficam fora da conta municipal; por aplicação, documentos podem localizar pagamentos desses escopos; aplicação já inclui RAP; vazio = sem registro (não é zero)',
     `# cobertura: ${data.coverage}`,
     `# gerado_em: ${generatedAt}`,
     'codigo_ibge;nome;tipo_destinacao;exercicio;etapa;valor_centavos;rap_pagos_centavos',
   ];
-  const rows = [...data.municipalities, ...data.nonMunicipal].map(p => {
-    const v = value(p, year, stage), rap = value(p, year, 'rap_pagos');
-    return [p.ibge ?? '', p.name, p.kind, String(year), stage, v === null ? '' : String(v), rap === null ? '' : String(rap)].map(esc).join(';');
+  const rows = (aplic ? data.municipalities : [...data.municipalities, ...data.nonMunicipal]).map(p => {
+    const v = aplic ? aplicValue(p, year) : value(p, year, stage), rap = aplic ? null : value(p, year, 'rap_pagos');
+    return [p.ibge ?? '', p.name, p.kind, String(year), aplic ? 'pago_aplicacao' : stage, v === null ? '' : String(v), rap === null ? '' : String(rap)].map(esc).join(';');
   });
   return [...head, ...rows].join('\n');
 }

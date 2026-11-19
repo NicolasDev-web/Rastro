@@ -61,10 +61,10 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
     try { await navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 2500); } catch { setCopied(false); }
   };
   const downloadCsv = () => {
-    const blob = new Blob(['﻿' + datasetCsv(data, year, stage, new Date().toISOString())], { type: 'text/csv;charset=utf-8' });
+    const blob = new Blob(['﻿' + datasetCsv(data, year, stage, new Date().toISOString(), criterio)], { type: 'text/csv;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `rastro-${data.mode}-${stage}-${year}.csv`;
+    a.download = `rastro-${data.mode}-${criterio}-${aplic ? 'pago' : stage}-${year}.csv`;
     a.click();
     URL.revokeObjectURL(a.href);
   };

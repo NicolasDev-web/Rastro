@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 — fechamento A/B, institucional e roteiro
+
+- Critérios de localidade da emenda e aplicação dos pagamentos separados no explorador, mapa e fichas. Corrigido CSV para respeitar o critério ativo, sem duplicar RAP.
+- Fichas de emendas e municípios, cronologia, conciliação, favorecidos e convênios; links entre as fichas e cinco termos de glossário adicionados na implementação A/B.
+- Sete testes novos do contrato das fichas e export territorial; verificação de navegador reproduzível com desktop, 360px, teclado, CSV e rota inexistente.
+- `/dados` reescrita por modo; Sobre, Correções e Contato no rodapé, seguindo Papel e tinta. Canal editorial ainda não configurado, explicitado na interface.
+- Prévia offline ampliada às fichas demo e páginas institucionais; geração força modo demo.
+- Tipografia original autohospedada com as licenças OFL; removida dependência do Google Fonts no build, preservando famílias, pesos e eixo de largura. Raiz do monorepo explícita no Next.js.
+- Git já iniciado e publicado em `NicolasDev-web/Rastro`; checklist de lançamento e roteiro interno de vídeo com capturas reais. Resultados de execução no relatório de fechamento.
+
 ## 0.4.0 — 19/11/2026 (pendências de dados — em validação)
 
 - **Conferência amostral (T01.09):** 60/60 valores conferem com o Portal (revisor: revisor do projeto). O gerador agora nunca sobrescreve a planilha preenchida (`report.write_once`, com teste) — a planilha assinada chegou a ser sobrescrita por uma execução e foi restaurada integralmente.

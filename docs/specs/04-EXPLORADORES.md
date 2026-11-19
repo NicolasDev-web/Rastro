@@ -3,6 +3,20 @@
 ## Histórias
 Como cidadão, quero consultar município, período e etapa financeira; como pesquisador, quero filtros reprodutíveis, tabela exportável e documentação das relações.
 
+## Frentes A/B — contrato de fechamento
+
+- Critério `emenda`: localidade da própria emenda, preservando os escopos não municipais.
+- Critério `aplicacao`: documentos de pagamento agrupados por município de aplicação e ano da emenda; inclui RAP pagos. Os critérios são separados na tela, URL e CSV e nunca se somam. CSV por aplicação exclui agregados estaduais e não acrescenta RAP novamente.
+- `/emendas/[codigo]`: valores, autoria formal, conciliação (`confere`, `diverge`, `sem_documentos`), cronologia por fase, favorecidos e convênios. Liquidação sem valor permanece ausente. Sem inferência de entrega ou irregularidade.
+- `/municipios/[ibge]`: dois critérios por ano, listas de emendas, autores com ficha e favorecidos. Emenda fora da cobertura de fichas aponta ao Portal.
+- Favorecidos chegam mascarados da ingestão; as fichas não exportam identificadores pessoais.
+- AC12: valores do CSV reproduzem o critério ativo e o ano.
+- AC13: documentos de empenho não entram no total pago; divergências e ausência de documentos permanecem explícitas.
+- AC14: fichas e páginas institucionais navegáveis em desktop e 360px, sem overflow da página; tabelas podem rolar no próprio contêiner.
+- AC15: prévia offline em demo inclui fichas municipais, emenda fictícia e páginas institucionais, sem links locais quebrados.
+
+Testes: `pipelines/tests/test_fichas.py` e `scripts/verify_web.py`. Evidências no relatório de fechamento. O conjunto de fichas é maior que o recorte exclusivo CE porque inclui emendas dos autores eleitos pelo CE; percentuais de conciliação desses universos não são intercambiáveis.
+
 ## Filtros
 Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida se disponível), função, beneficiário, tipo de autoria, município/Estado/indeterminado, cobertura.
 
