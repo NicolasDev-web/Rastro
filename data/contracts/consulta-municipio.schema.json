@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RastroMunicipalitySummary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ibge_code", "municipality", "year", "source", "data_as_of", "coverage", "stages"],
+  "properties": {
+    "ibge_code": {"type":"string","pattern":"^[0-9]{7}$"},
+    "municipality": {"type":"string","minLength":1},
+    "year": {"type":"integer","minimum":2020},
+    "source": {"type":"string","minLength":1},
+    "data_as_of": {"type":"string","format":"date-time"},
+    "coverage": {"type":"string","enum":["complete_in_scope","partial","unverified","demo"]},
+    "stages": {
+      "type":"object",
+      "required":["authorized","committed","paid"],
+      "properties": {
+        "authorized":{"type":["number","null"],"minimum":0},
+        "committed":{"type":["number","null"],"minimum":0},
+        "paid":{"type":["number","null"],"minimum":0}
+      }
+    }
+  }
+}

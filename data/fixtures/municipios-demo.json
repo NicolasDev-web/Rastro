@@ -1,0 +1,13 @@
+{
+  "kind":"DEMO_ONLY",
+  "warning":"VALORES TOTALMENTE FICTÍCIOS. NÃO PUBLICAR COMO DADOS REAIS.",
+  "year":2025,
+  "records":[
+    {"ibge_code":"2304400","municipality":"Fortaleza","authorized":12000000,"committed":9500000,"paid":7100000,"scope":"municipio"},
+    {"ibge_code":"2312908","municipality":"Sobral","authorized":4300000,"committed":3400000,"paid":2900000,"scope":"municipio"},
+    {"ibge_code":"2307304","municipality":"Juazeiro do Norte","authorized":6800000,"committed":4900000,"paid":3800000,"scope":"municipio"},
+    {"ibge_code":"2304103","municipality":"Crateús","authorized":1500000,"committed":1400000,"paid":700000,"scope":"municipio"},
+    {"ibge_code":"2304202","municipality":"Crato","authorized":2700000,"committed":2000000,"paid":1350000,"scope":"municipio"}
+  ],
+  "note":"Exemplos não representam gastos, emendas ou políticos existentes. A sequência de três estágios é somente para demonstrar a interface."
+}

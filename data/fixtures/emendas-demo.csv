@@ -1,0 +1,6 @@
+DEMO_ID,exercise,modality,author_name,beneficiary,municipality_ibge,authorized_brl,committed_brl,paid_brl
+DEMO_EM_001,2025,RP6,Autor fictício A,Beneficiário fictício A,2304400,12000000.00,9500000.00,7100000.00
+DEMO_EM_002,2025,RP7,Bancada fictícia B,Beneficiário fictício B,2312908,4300000.00,3400000.00,2900000.00
+DEMO_EM_003,2025,RP8,Comissão fictícia C,Beneficiário fictício C,2307304,6800000.00,4900000.00,3800000.00
+DEMO_EM_004,2025,RP6,Autor fictício D,Beneficiário fictício D,2304103,1500000.00,1400000.00,700000.00
+DEMO_EM_005,2025,RP6,Autor fictício E,Beneficiário fictício E,2304202,2700000.00,2000000.00,1350000.00

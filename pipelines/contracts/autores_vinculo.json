@@ -1,0 +1,349 @@
+{
+  "_instrucoes": "ADR-009. Vínculos confirmados ou rejeitados por revisor humano. Chave = código SIAFI do autor na CGU. Exemplo: {\"4138\": {\"casa\": \"senado\", \"id\": \"5976\", \"status\": \"revisado\", \"revisor\": \"Nome\", \"data\": \"2026-11-20\", \"nota\": \"\"}}",
+  "vinculos": {
+    "2025": {
+      "casa": "senado",
+      "id": "3396",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2070": {
+      "casa": "camara",
+      "id": "129618",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2083": {
+      "casa": "camara",
+      "id": "133439",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2441": {
+      "casa": "camara",
+      "id": "141464",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2442": {
+      "casa": "camara",
+      "id": "141470",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2676": {
+      "casa": "camara",
+      "id": "160591",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2700": {
+      "casa": "camara",
+      "id": "62881",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2701": {
+      "casa": "camara",
+      "id": "143632",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "2702": {
+      "casa": "camara",
+      "id": "160669",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3270": {
+      "casa": "camara",
+      "id": "74299",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3340": {
+      "casa": "camara",
+      "id": "74305",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3520": {
+      "casa": "camara",
+      "id": "74454",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3694": {
+      "casa": "camara",
+      "id": "178857",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3710": {
+      "casa": "camara",
+      "id": "178866",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3733": {
+      "casa": "camara",
+      "id": "178997",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3754": {
+      "casa": "camara",
+      "id": "122466",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3767": {
+      "casa": "camara",
+      "id": "178922",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3859": {
+      "casa": "camara",
+      "id": "195866",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3902": {
+      "casa": "camara",
+      "id": "204549",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3927": {
+      "casa": "camara",
+      "id": "204487",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3936": {
+      "casa": "camara",
+      "id": "204488",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3959": {
+      "casa": "camara",
+      "id": "204542",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3961": {
+      "casa": "camara",
+      "id": "204481",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "3970": {
+      "casa": "camara",
+      "id": "204541",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4028": {
+      "casa": "camara",
+      "id": "204550",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4046": {
+      "casa": "camara",
+      "id": "204486",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4055": {
+      "casa": "camara",
+      "id": "90201",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4081": {
+      "casa": "senado",
+      "id": "5973",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4138": {
+      "casa": "senado",
+      "id": "5976",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4147": {
+      "casa": "camara",
+      "id": "204533",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4250": {
+      "casa": "senado",
+      "id": "5972",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4281": {
+      "casa": "senado",
+      "id": "6350",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4303": {
+      "casa": "camara",
+      "id": "220657",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4373": {
+      "casa": "camara",
+      "id": "220656",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4413": {
+      "casa": "camara",
+      "id": "220658",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4425": {
+      "casa": "camara",
+      "id": "220661",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4491": {
+      "casa": "camara",
+      "id": "220660",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4543": {
+      "casa": "camara",
+      "id": "230088",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4544": {
+      "casa": "camara",
+      "id": "230177",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "9065": {
+      "casa": "camara",
+      "id": "204548",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "9162": {
+      "casa": "camara",
+      "id": "204489",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19",
+      "nota": "Nome exato e único nas listas oficiais (56ª/57ª legislatura); confirmado pelo revisor."
+    },
+    "4340": {
+      "casa": "camara",
+      "id": "220659",
+      "nota": "Dayany Bittencourt (União-CE). API da Câmara: mesmo id com nome parlamentar anterior \"Dayany do Capitão\"; confirmado pelo revisor.",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19"
+    },
+    "1313": {
+      "casa": "camara",
+      "id": "74052",
+      "nota": "Bosco Costa (PL-SE). Nome civil na Câmara \"João Bosco da Costa\" = segundo nome usado pela CGU para o mesmo código SIAFI; confirmado pelo revisor.",
+      "status": "revisado",
+      "revisor": "revisor do projeto",
+      "data": "2026-11-19"
+    }
+  }
+}

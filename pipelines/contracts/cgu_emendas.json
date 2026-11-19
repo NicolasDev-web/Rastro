@@ -1,0 +1,160 @@
+{
+  "source_id": "cgu_emendas",
+  "contract_version": "2026-11-19",
+  "derived_from": "raw_data/cgu/emendas/2026-11-19_ed93842c_EmendasParlamentares.zip (sha256 ed93842cb8663ad074b23162e6355f5358c450971b8d85b4bec106a778056917)",
+  "encoding": "cp1252",
+  "delimiter": ";",
+  "decimal": ",",
+  "thousands": null,
+  "null_sentinels": [
+    "",
+    "Sem informação",
+    "S/I",
+    "-99"
+  ],
+  "dictionary_divergences": [
+    "EmendasParlamentares.csv: coluna \"Possui Apoiador/Solicitante? \" (com espaço final) não consta do dicionário.",
+    "EmendasParlamentares.csv: \"Localidade do Gasto\" do dicionário aparece como \"Localidade de aplicação do recurso\".",
+    "EmendasParlamentares_Parcerias.csv, _PlanodeTrabalhoParcerias.csv e _PlanodeTrabalhoTransferenciasEspeciais.csv não constam do dicionário: apenas inventariados."
+  ],
+  "members": {
+    "EmendasParlamentares.csv": {
+      "role": "load",
+      "in_official_dictionary": true,
+      "columns": [
+        "Código da Emenda",
+        "Ano da Emenda",
+        "Tipo de Emenda",
+        "Código do Autor da Emenda",
+        "Nome do Autor da Emenda",
+        "Número da emenda",
+        "Possui Apoiador/Solicitante? ",
+        "Localidade de aplicação do recurso",
+        "Código Município IBGE",
+        "Município",
+        "Código UF IBGE",
+        "UF",
+        "Região",
+        "Código Função",
+        "Nome Função",
+        "Código Subfunção",
+        "Nome Subfunção",
+        "Código Programa",
+        "Nome Programa",
+        "Código Ação",
+        "Nome Ação",
+        "Código Plano Orçamentário",
+        "Nome Plano Orçamentário",
+        "Valor Empenhado",
+        "Valor Liquidado",
+        "Valor Pago",
+        "Valor Restos A Pagar Inscritos",
+        "Valor Restos A Pagar Cancelados",
+        "Valor Restos A Pagar Pagos"
+      ]
+    },
+    "EmendasParlamentares_Convenios.csv": {
+      "role": "load",
+      "in_official_dictionary": true,
+      "columns": [
+        "Código da Emenda",
+        "Código Função",
+        "Nome Função",
+        "Código Subfunção",
+        "Nome Subfunção",
+        "Localidade do gasto",
+        "Tipo de Emenda",
+        "Data Publicação Convênio",
+        "Convenente",
+        "Objeto Convênio",
+        "Número Convênio",
+        "Valor Convênio"
+      ]
+    },
+    "EmendasParlamentares_Parcerias.csv": {
+      "role": "profile_only",
+      "in_official_dictionary": false,
+      "columns": [
+        "Emenda Parlamentar",
+        "Autor da Emenda",
+        "Código da Parceria",
+        "Situação da Parceria",
+        "Ente Repassador",
+        "CNPJ Ente Repassador",
+        "Beneficiário (Ente Recebedor)",
+        "CNPJ Beneficiário (Ente Recebedor)",
+        "UF",
+        "Município",
+        "Objeto",
+        "Início Período Execução",
+        "Fim Período Execução",
+        "Valor (R$)"
+      ]
+    },
+    "EmendasParlamentares_PlanodeTrabalhoParcerias.csv": {
+      "role": "profile_only",
+      "in_official_dictionary": false,
+      "columns": [
+        "Código da Parceria",
+        "Situação da Parceria",
+        "Ente Repassador",
+        "CNPJ Ente Repassador",
+        "Beneficiário (Ente Recebedor)",
+        "CNPJ Beneficiário (Ente Recebedor)",
+        "UF",
+        "Município",
+        "Objeto",
+        "Meta",
+        "Etapa",
+        "Item",
+        "Início Período Execução da Etapa",
+        "Fim Período Execução da Etapa",
+        "Valor do Item (R$)"
+      ]
+    },
+    "EmendasParlamentares_PlanodeTrabalhoTransferenciasEspeciais.csv": {
+      "role": "profile_only",
+      "in_official_dictionary": false,
+      "columns": [
+        "Emenda Parlamentar",
+        "Autor da Emenda",
+        "Programa do Plano de Trabalho",
+        "Situação do Plano de Trabalho",
+        "CNPJ do Beneficiário",
+        "Beneficiário",
+        "UF do Beneficiário",
+        "Plano de Ação",
+        "Situação do Plano de Ação",
+        "Detalhamento do Objeto",
+        "Valor"
+      ]
+    },
+    "EmendasParlamentares_PorFavorecido.csv": {
+      "role": "load",
+      "in_official_dictionary": true,
+      "columns": [
+        "Código da Emenda",
+        "Código do Autor da Emenda",
+        "Nome do Autor da Emenda",
+        "Número da emenda",
+        "Tipo de Emenda",
+        "Ano/Mês",
+        "Código do Favorecido",
+        "Favorecido",
+        "Natureza Jurídica",
+        "Tipo Favorecido",
+        "UF Favorecido",
+        "Município Favorecido",
+        "Valor Recebido"
+      ]
+    }
+  },
+  "municipality_name_aliases": {
+    "ITAPAGE": {
+      "ibge_code": "2306306",
+      "ibge_name": "Itapajé",
+      "reason": "Grafia antiga do município usada no campo \"Município Favorecido\"; IBGE adota \"Itapajé\". Apelido explícito e revisável — não é casamento aproximado.",
+      "added": "2026-11-19"
+    }
+  }
+}
