@@ -73,6 +73,14 @@ Definir o modo de publicação com aprovação explícita de snapshots/recortes 
 
 O fechamento técnico preserva o snapshot e o design. Não houve nova aquisição de dados, merge ou deploy; as diferenças e lacunas continuam sem causa confirmada ou aprovação editorial.
 
+### Fila de prioridades da investigação
+
+`python pipelines/run.py prioridades` gerou 84 casos únicos: 11 de cobertura ausente, 4 diferenças de pelo menos R$ 1 milhão, 25 de R$ 100 mil a menos de R$ 1 milhão e 44 menores. Destes, 76 são do recorte CE. A soma de R$ 5.765.287,31 informada pela fonte nos casos sem pagamento documental permanece separada dos R$ 15.794.204,97 de diferenças absolutas calculáveis.
+
+Os 59 testes do pipeline passaram, incluindo seis regressões novas da triagem. A comparação independente com a matriz original confirmou seleção completa, grupos, posições, sinais, somas e preservação de null. Os 16 arquivos protegidos da reconferência anterior continuam com os mesmos hashes. Evidências locais em `output/qa/prioridades/resultados.json`.
+
+Aplicação iniciada localmente em `http://localhost:3012`, com `DATA_MODE=validacao` e `NEXT_DIST_DIR=.next-validacao`. Home e as 84 fichas da fila responderam HTTP 200 com o aviso de validação; resultado dos links em `output/qa/prioridades/links.json`. Um erro transitório de compilação inicial da ficha foi reconferido com sucesso antes da verificação integral dos links. O servidor permanece ativo para consulta local; logs em `tmp/local-server/`.
+
 ### Documento-base complementar do vídeo
 
 `python scripts/generate_base_doc.py` gerou o documento-base de 8 páginas com as capturas da verificação atual. O texto identifica o snapshot `ed93842c`, os grupos de testes e a convenção de Pago + RAP, mantendo pendentes as causas das diferenças e a revisão editorial. A evolução de infraestrutura é apresentada como futura; o checklist de gravação preserva o snapshot revisado.

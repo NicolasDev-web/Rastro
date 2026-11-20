@@ -29,6 +29,14 @@ TASKS: comparação pura e regressões; auditoria determinística JSON/CSV sem f
 
 Aceites: emenda só com empenho não é divergência de pagamento; nenhuma parcela ausente vira zero; igualdade apenas com Pago continua divergente de Pago + RAP; os status da auditoria e das fichas coincidem; categorias particionam cada universo; relatório não conclui causa ou irregularidade a partir de diferença. Artefatos identificam snapshot principal, fontes documentais e linhas de origem, sem nomes de favorecidos. Relatórios anteriores são históricos; a revisão atual substitui conclusões numéricas de conciliação, sem alterar a conferência manual assinada.
 
+### Fila de prioridade da investigação
+
+PLAN: derivar uma fila local da auditoria do staging ativo, em leitura somente, sem novos endpoints, tabelas ou componentes públicos. Priorizar lacunas com total positivo sem pagamento documental; depois diferenças absolutas de pelo menos R$ 1 milhão, de R$ 100 mil até menos de R$ 1 milhão e menores que R$ 100 mil. Dentro de cada grupo, valor decrescente e código como desempate. As faixas são uma convenção operacional de triagem, sem tolerância financeira, indicação de irregularidade ou aprovação editorial. Os grupos posteriores continuam bloqueando publicação dos casos que incluam.
+
+TASKS: ordenar casos com chave determinística; gerar relatório e matriz local JSON/CSV com posição, motivo, valores em centavos, ação de investigação, fontes e link de ficha; vincular a fila ao backlog e testar seleção, limites, empates, valores ausentes e reprodução.
+
+Aceites: uma entrada por código; comparar apenas diferenças calculáveis e incluir a ausência de pagamento apenas quando o total da fonte for positivo; null permanece null e diferença de uma ausência nunca é calculada como zero. Valores ausentes/incompletos novos ficam em grupo próprio inicial de diagnóstico, sem estimativa monetária. Não somar valores de cobertura com diferenças entre fontes; distinguir recorte CE de todas as fichas. Exigir seleção documental compatível com o pacote ativo, sem alterar snapshots, planilha assinada ou os quatro exports. A fila não inclui nomes ou identificadores de favorecidos e não é servida pela aplicação pública.
+
 - Preservar arquivo bruto e tipo original; nunca sobrescrever snapshots.
 - Mapear ID de emenda, exercício, modalidade, autor, favorecido, natureza/etapa de valor.
 - Guardar `source_row_id`; gerar ID técnico se não houver chave, nunca fingir que é oficial.

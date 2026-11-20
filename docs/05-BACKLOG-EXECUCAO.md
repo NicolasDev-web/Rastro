@@ -41,6 +41,19 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 
 Evidências e migração do primeiro incremento: `operations/INTEGRIDADE-P0.md`.
 
+### Ordem de investigação das lacunas — snapshot ed93842c
+
+Fila operacional criada; investigação e revisão humana continuam pendentes. A ausência integral de pagamento documental vem primeiro; as diferenças calculáveis seguem por magnitude, sem tolerância ou dispensa de revisão dos casos menores.
+
+| Ordem | Frente | Casos | Próxima ação |
+|---|---|---:|---|
+| 1 | Total positivo sem documento de pagamento | 11 | Localizar os pagamentos e conferir cobertura por ano documental |
+| 2 | Diferença absoluta de R$ 1 milhão ou mais | 4 | Reabrir documentos, ajustes e datas das maiores diferenças |
+| 3 | Diferença de R$ 100 mil a menos de R$ 1 milhão | 25 | Repetir a revisão documental, em valor decrescente |
+| 4 | Diferença menor que R$ 100 mil | 44 | Revisar todos os casos remanescentes, inclusive diferenças de centavos |
+
+Lista das 84 emendas, com valores e links locais: [prioridades de conciliação](../reports/prioridades-conciliacao-2026-11-19-ed93842c.md). Inclui 76 casos do recorte CE e 8 adicionais do universo das fichas. Gerar novamente: `python pipelines/run.py prioridades`. Totais da fonte sem documento e diferenças calculáveis são medidas separadas; não somar.
+
 - **Gate A**: parser pode ser repetido e auditado sem alterar resultado.
 - **Gate B**: cada total publicado é reconciliado e tem fonte/denominador.
 - **Gate C**: usuário leigo entende o indicador testado e visualiza a cobertura.

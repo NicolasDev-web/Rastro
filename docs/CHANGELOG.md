@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.3 — fila local de investigação
+
+- Novo comando `python pipelines/run.py prioridades`, com staging em leitura somente e verificação de compatibilidade com o pacote ativo. Relatório versionado com as 84 emendas em ordem de trabalho, links às fichas e ações por grupo; matrizes JSON/CSV locais preservam valores ausentes e referências de origem.
+- Prioridade para os 11 totais positivos sem pagamento documental; depois 4 diferenças de pelo menos R$ 1 milhão, 25 de pelo menos R$ 100 mil e 44 menores. As faixas organizam trabalho e não dispensam investigação ou aprovam publicação. Valores de cobertura ausente não são somados às diferenças calculáveis.
+- Seis testes novos de seleção, limites em centavos, ordem determinística, ausência versus zero, reprodução e compatibilidade dos pacotes. Os 59 testes do pipeline passaram.
+
 ## 0.5.2 — revisão da conciliação P0.4
 
 - Documento-base interno do vídeo: gerador versionado, PDF complementar de 8 páginas e capturas reais atualizadas. Definição de Pago/RAP alinhada à ADR-012; testes de pipeline/API/pacote identificados separadamente, infraestrutura futura como evolução e gravação vinculada ao snapshot revisado.

@@ -45,6 +45,12 @@ A seleção CE escolhe códigos com linha no recorte; não restringe as parcelas
 
 Igualdade apenas com Pago permanece divergência de Pago + RAP. Padrões abaixo/acima/igual só a Pago são descrições numéricas, sem causa automática. O comando de auditoria gera referências às linhas dos snapshots sem identidades de favorecidos. Pago total permanece uma convenção operacional dos campos da fonte; a evidência numérica não confirma universalmente sua divisão temporal. Os 73 casos divergentes e as 11 lacunas com total positivo sem pagamento documental do snapshot atual exigem revisão antes de uma publicação que os inclua.
 
+## ADR-013 — Prioridade operacional de lacunas
+
+A fila de investigação é derivada da mesma auditoria de conciliação, com o staging em leitura somente e identidade de snapshot/fontes conferida contra o pacote ativo. Primeiro vêm incompletudes que impedem mensurar o caso, se existirem; depois totais positivos sem pagamento documental; em seguida diferenças calculáveis por faixas absolutas de R$ 1 milhão, R$ 100 mil e abaixo. A ordem é decrescente por valor, com código como desempate. As faixas são escolhas operacionais, não limites de materialidade oficial ou tolerância contábil.
+
+Total positivo sem documento é um valor informado pela fonte, não uma diferença calculada. Os dois tipos não recebem soma conjunta. Todos os casos selecionados permanecem pendentes de revisão humana; priorizar não aprova os demais casos para publicação. Relatório versionado e matriz JSON/CSV local não contêm identidades de favorecidos; nenhum novo endpoint ou ranking de pessoas é criado.
+
 ## Pendências remanescentes
 
 - Escolha final de provedor SQL/objeto e custo.
