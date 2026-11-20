@@ -1,0 +1,171 @@
+{
+  "_instrucoes": "ADR-014. Registro caso a caso da investigação da fila de conciliação (snapshot ed93842c). status: explicado | sem_causa | excluido. Só \"explicado\" com revisor humano entra no recorte aprovado. \"achado\" é o que os dados provam; \"causa\" só com fonte que a explique. Sem nomes de favorecidos.",
+  "snapshot": "ed93842cb8663ad074b23162e6355f5358c450971b8d85b4bec106a778056917",
+  "casos": {
+    "202127000002": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.534.241,66 (pago R$ 0,00; RAP pagos R$ 1.534.241,66). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 8 empenho(s) e 16 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 58534 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202127000002"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202039610008": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 960.019,00 (pago R$ 0,00; RAP pagos R$ 960.019,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 6 liquidação(ões)/nota(s) de sistema em 2020, 2021, 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 50601 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202039610008"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202137330004": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 0,00; RAP pagos R$ 500.000,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 2 liquidação(ões)/nota(s) de sistema em 2021, 2022, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Aquicultura e Pesca. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 61459 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202137330004"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202339270022": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 500.000,00; RAP pagos R$ 0,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 3 liquidação(ões)/nota(s) de sistema em 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Desenvolvimento Rural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 70628 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202339270022"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202124420012": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 481.104,00 (pago R$ 0,00; RAP pagos R$ 481.104,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 60265 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202124420012"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120830008": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 477.712,00 (pago R$ 0,00; RAP pagos R$ 477.712,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 4 empenho(s) e 8 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 57261 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202120830008"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202240280007": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 407.989,09 (pago R$ 0,00; RAP pagos R$ 407.989,09). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Desenvolvimento Rural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 66845 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202240280007"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202140280003": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 326.562,20 (pago R$ 0,00; RAP pagos R$ 326.562,20). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Desenvolvimento Rural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 60471 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202140280003"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202227000011": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 274.500,00 (pago R$ 0,00; RAP pagos R$ 274.500,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Cidadania e Diversidade Cultural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 65114 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202227000011"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202241380005": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 200.000,00 (pago R$ 0,00; RAP pagos R$ 200.000,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Agricultura Familiar e Cooperativismo. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 65389 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202241380005"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120700019": {
+      "grupo": 1,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 103.159,36 (pago R$ 0,00; RAP pagos R$ 103.159,36). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 2 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Cidadania e Diversidade Cultural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 59647 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202120700019"
+      ],
+      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "analista": "Claude (análise automatizada dos arquivos brutos)",
+      "revisor": null,
+      "data": "2026-11-20"
+    }
+  }
+}

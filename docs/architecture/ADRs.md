@@ -51,6 +51,12 @@ A fila de investigação é derivada da mesma auditoria de conciliação, com o 
 
 Total positivo sem documento é um valor informado pela fonte, não uma diferença calculada. Os dois tipos não recebem soma conjunta. Todos os casos selecionados permanecem pendentes de revisão humana; priorizar não aprova os demais casos para publicação. Relatório versionado e matriz JSON/CSV local não contêm identidades de favorecidos; nenhum novo endpoint ou ranking de pessoas é criado.
 
+## ADR-014 — Registro de investigação define o recorte aprovado
+
+A investigação dos casos da fila (ADR-013) é registrada caso a caso em `pipelines/contracts/investigacao_casos.json`. O recorte publicado inclui as emendas sem pendência e, entre as pendentes, só as `explicado` com revisor humano. As demais ficam como `lacuna_declarada`, visíveis com nota e fora de somas. Decisão de 20/11/2026: investigar os grupos 1 e 2 e o grupo 3 até onde houver tempo; o que não tiver causa documentada sai do recorte em vez de atrasar a publicação.
+
+Achados técnicos, como a ausência de documento de pagamento nos arquivos anuais, são registrados como `achado`, não como `causa`. A causa exige fonte que a explique (Portal, Transferegov, resposta do órgão).
+
 ## Pendências remanescentes
 
 - Escolha final de provedor SQL/objeto e custo.

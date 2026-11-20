@@ -37,6 +37,14 @@ TASKS: ordenar casos com chave determinística; gerar relatório e matriz local 
 
 Aceites: uma entrada por código; comparar apenas diferenças calculáveis e incluir a ausência de pagamento apenas quando o total da fonte for positivo; null permanece null e diferença de uma ausência nunca é calculada como zero. Valores ausentes/incompletos novos ficam em grupo próprio inicial de diagnóstico, sem estimativa monetária. Não somar valores de cobertura com diferenças entre fontes; distinguir recorte CE de todas as fichas. Exigir seleção documental compatível com o pacote ativo, sem alterar snapshots, planilha assinada ou os quatro exports. A fila não inclui nomes ou identificadores de favorecidos e não é servida pela aplicação pública.
 
+### Registro de investigação e recorte aprovado
+
+PLAN: cada caso da fila recebe um registro versionado em `pipelines/contracts/investigacao_casos.json`, no mesmo padrão de `autores_vinculo.json`. Campos por código de emenda: `status` (`explicado` | `sem_causa` | `excluido`), `achado` (o que os dados provam), `causa` (somente quando documentada), `fontes` (arquivo e linha, ou URL oficial), `analista`, `revisor` e `data`. O passo `python pipelines/run.py recorte` lê o registro e classifica cada ficha como `aprovado` ou `lacuna_declarada`. Sem novas tabelas no staging nem endpoint.
+
+TASKS: contrato e validação do registro; passo `recorte` em leitura somente; marcação no pacote e nota de lacuna na ficha; testes de casos sem registro, sem revisor e com valores ausentes.
+
+Aceites: só entra no recorte aprovado um caso da fila com status `explicado` **e** revisor humano identificado. Casos sem registro, `sem_causa` ou `excluido` viram `lacuna_declarada` e não entram em somas publicadas. A nota pública descreve a lacuna sem sugerir causa ou irregularidade. `analista` pode ser automatizado, `revisor` não. O registro não contém nomes ou identificadores de favorecidos.
+
 - Preservar arquivo bruto e tipo original; nunca sobrescrever snapshots.
 - Mapear ID de emenda, exercício, modalidade, autor, favorecido, natureza/etapa de valor.
 - Guardar `source_row_id`; gerar ID técnico se não houver chave, nunca fingir que é oficial.
