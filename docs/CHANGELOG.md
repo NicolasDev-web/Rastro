@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.7.0 — investigação das 84 emendas da fila
+
+- Todos os 84 casos têm registro com achado, fontes e data em `pipelines/contracts/investigacao_casos.json`, e a ficha de cada emenda mostra o bloco "O que a investigação encontrou". Resultado: **49 explicados e 35 sem causa documentada.** Nenhum caso foi explicado por atualização do Portal depois do snapshot de 19/11.
+- Causas encontradas, com evidência da API de dados do Portal:
+  - **Saldo de empenho transferido para outra unidade gestora** na reestruturação dos ministérios de 2023 e em mudanças posteriores (migração para o Ministério das Cidades, sub-rogação, fusão/cisão, Portaria MAPA 609/2023, tarifas da Caixa): o pagamento não fica ligado ao código da emenda. **36 casos.**
+  - **Ordem bancária de 2026 sem vínculo com o empenho**, identificada pelo valor exato e pela observação; explicação muito provável, não comprovada documento a documento. **5 casos.**
+  - **Documento de retenção (DF/DR) com valor em dobro ou triplo** no arquivo por documento da CGU, conferido contra a API. **6 casos.**
+  - **Devolução de pagamento registrada como nota de sistema** e não descontada. **1 caso.**
+  - **Transferência de saldo no Exército** (Portaria SEF/C Ex 269/2024). **1 caso.**
+- Os 35 casos sem causa ficam visíveis com o que foi verificado e o próximo passo. A investigação foi feita com dois agentes de análise em paralelo, e as conclusões novas foram conferidas por amostragem direta na API antes da publicação.
+
 ## 0.6.1 — auditoria de segurança e privacidade (SENTINEL)
 
 - Sem segredo vazado e sem achado crítico ou alto. A chave da API do Portal fica só no `.env` local e nunca foi commitada.

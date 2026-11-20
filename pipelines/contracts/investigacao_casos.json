@@ -197,6 +197,1415 @@
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
+    },
+    "202337540002": {
+      "grupo": 2,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.629.209,00 (pago R$ 1.629.209,00; RAP pagos R$ 0,00); a API do Portal da Transparência em 20/11/2026 traz os mesmos totais (empenhado, liquidado e pago R$ 1.629.209,00) e a mesma lista de 11 documentos dos arquivos da CGU, então não houve atualização de dados. Os documentos somam R$ 512.854,00 em pagamentos (uma ordem bancária, 420013000012023OB800933, de 07/08/2023, que quita integralmente o empenho 420013000012023NE000321). Os outros dois empenhos da emenda, 420013000012023NE000322 (R$ 516.685,00) e 420013000012023NE000324 (R$ 599.670,00), ambos da Secretaria de Desenvolvimento Rural (UG 420013), não têm ordem bancária vinculada; seus documentos relacionados são apenas notas de sistema de 12/09, 14/09 e 20/09/2023 com a observação 'PORTARIA MAPA Nº 609, DE 23 DE AGOSTO DE 2023, DELEGA COMPETÊNCIA AO SUBSECRETÁRIO DE ORÇAMENTO, PLANEJAMENTO E ADMINISTRAÇÃO ... TRANSFERÊNCIA DE SALDO(S)'. Essas notas se relacionam a empenhos novos da série NE800 na Subsecretaria de Orçamento, Planejamento e Administração (UG 130141). A soma dos dois empenhos transferidos (R$ 1.116.355,00) é exatamente a diferença.",
+      "causa": "Entre 12/09/2023 e 20/09/2023, notas de sistema oficiais registram transferência de saldo dos empenhos 2023NE000322 e 2023NE000324 com base na Portaria MAPA nº 609/2023, que passa a execução para a Subsecretaria de Orçamento, Planejamento e Administração (UG 130141), na reestruturação dos ministérios de 2023. Os pagamentos feitos pelos empenhos novos (série NE800) não aparecem vinculados ao código desta emenda nos documentos da CGU. Os dois empenhos somam R$ 1.116.355,00, igual à diferença. Os pagamentos nos empenhos novos não foram conferidos documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 74902 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202337540002 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202337540002",
+        "Nota de sistema 420013000012023NS007280 (12/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007304 (12/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007427 (14/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007797 (14/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008132 (20/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008133 (20/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos-relacionados (empenhos 420013000012023NE000321, NE000322, NE000324)"
+      ],
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800, UG 130141) no Transferegov ou junto ao órgão.",
+      "valor_explicado_centavos": 111635500,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202327000001": {
+      "grupo": 2,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 4.034.847,97 (pago R$ 2.019.786,00; RAP pagos R$ 2.015.061,97); a API do Portal em 20/11/2026 traz os mesmos valores pago e RAP pago e a mesma lista de 26 documentos, então não houve atualização. Os documentos de pagamento somam R$ 2.591.784,97: seis ordens bancárias de 2023 do Fundo Nacional de Saúde (UG 257001) somam R$ 2.019.786,00, igual ao pago do exercício; as de 2024 (2024OB005214, R$ 287.779,00) e 2025 (2025OB013632, R$ 284.219,97 atribuídos à emenda) somam R$ 571.998,97 de RAP. Faltam R$ 1.443.063,00 de RAP pago, exatamente o valor do empenho 250107000012023NE000259 (R$ 1.443.063,00, UG 250107 CEF-Programas do Ministério da Saúde, contrato de repasse). O único documento vinculado a esse empenho é a nota de sistema 250107000012026NS000470 (18/03/2026, 'PAGTO PARC. DO CONTRATO CR.NR.0072363-PC2023 CONFORME OF SAUDE 3390 DE 18/03/2026'), na fase Liquidação. Na listagem de documentos da UG 250107 pela API existe a ordem bancária 250107000012026OB000162, de 19/03/2026, de R$ 1.443.063,00, com a mesma observação. Essa ordem bancária não tem empenho relacionado na API (documentos-relacionados vazio; autor 'Sem Informação') e não aparece em nenhuma linha dos arquivos por documento da CGU.",
+      "causa": "O pagamento existe: a ordem bancária 250107000012026OB000162 (19/03/2026, R$ 1.443.063,00) paga a parcela do contrato de repasse 0072363 do empenho 2023NE000259, mas foi emitida sem vínculo com o empenho e com o código da emenda (no Portal ela aparece sem empenho relacionado e sem autor). Por isso não entra nos arquivos de documentos por emenda da CGU, embora a fonte conte o valor como RAP pago. A OB tem exatamente o valor da diferença. O vínculo desta ordem bancária com a emenda foi identificado pelo valor exato e pela observação do documento, não por um campo oficial que ligue os dois; por isso é uma explicação muito provável, não comprovada documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 71221 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2023, 2024, 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202327000001 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202327000001",
+        "Empenho 250107000012023NE000259 (29/12/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 250107000012026NS000470 (18/03/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 250107000012026OB000162 (19/03/2026), Portal da Transparência — API de dados /despesas/documentos (listagem por UG 250107 e data)"
+      ],
+      "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs de contrato de repasse da Caixa emitidas sem vínculo com o empenho.",
+      "valor_explicado_centavos": 144306300,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202071070014": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago de R$ 181.066.340,00 (RAP pagos R$ 0,00); a API do Portal em 20/11/2026 traz os mesmos totais (empenhado, liquidado e pago R$ 181.066.340,00). Os documentos da CGU somam R$ 181.166.340,00 em pagamentos, R$ 100.000,00 a mais. Conferindo empenho a empenho por município (IBGE), só um empenho diverge: 257001000012020NE820103 (Fundo Nacional de Saúde, R$ 100.000,00, aplicação no município IBGE 2303931) tem duas ordens bancárias de R$ 100.000,00 cada: 257001000012020OB812893 (25/06/2020) e 257001000012020OB814140 (01/07/2020). Entre elas, a nota de sistema 257001000012020NS043425 (30/06/2020) tem valor de -R$ 100.000,00 na fase Pagamento segundo a API, com a observação 'DEVOLUCAO PARCIAL DO PAGAMENTO DE 65798-CORONAVIRUS (COVID-19) ... (PARA ACERTO DE NATUREZA DE DESPESA)'. No arquivo de documentos da CGU essa nota aparece na fase Liquidação com valor pago zero, então a devolução não é descontada da soma.",
+      "causa": "Devolução de pagamento registrada por nota de sistema: o primeiro pagamento de R$ 100.000,00 (OB812893) foi devolvido pela NS043425 em 30/06/2020 para acerto de natureza de despesa e refeito pela OB814140 em 01/07/2020. A fonte conta o pago líquido; a soma dos documentos conta as duas ordens bancárias e não desconta a nota de devolução, que no arquivo por documento aparece como liquidação sem valor pago. Explica exatamente os R$ 100.000,00.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 49192 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202071070014 (consulta em 20/11/2026)",
+        "Ordem bancária 257001000012020OB812893 (25/06/2020), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 257001000012020OB814140 (01/07/2020), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 257001000012020NS043425 (30/06/2020), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos-relacionados (empenho 257001000012020NE820103)"
+      ],
+      "proxima_verificacao": "Nenhuma para o valor; tratar no pipeline notas de sistema de devolução (valor negativo na fase Pagamento) que o arquivo por documento classifica como liquidação.",
+      "valor_explicado_centavos": 10000000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202327000005": {
+      "grupo": 2,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.019.589,00 (pago R$ 0,00; RAP pagos R$ 2.019.589,00); a API do Portal em 20/11/2026 traz o mesmo RAP pago e a mesma lista de 15 documentos. Os documentos de pagamento somam R$ 682.589,00: a ordem bancária 180006000012026OB000017 (30/01/2026, R$ 580.964,00, empenho 2023NE000331, CEF/Ministério do Esporte) e a 180073000012025OB000009 (20/01/2025, R$ 101.625,00 atribuídos à emenda, tarifas da Caixa). Faltam R$ 1.337.000,00, exatamente o valor do empenho 180006000012023NE000034 (R$ 1.337.000,00, UG 180006 CEF/Ministério do Esporte). O único documento vinculado a ele é a nota de sistema 180006000012026NS000711 (13/03/2026, 'PAGTO PARC. DO CONTRATO CR.NR.0009246-PC2023 CONFORME OF MESPORTE 019 DE 29/01/2026'), na fase Liquidação. Na listagem de documentos da UG 180006 pela API existe a ordem bancária 180006000012026OB000120, de 16/03/2026, de R$ 1.337.000,00, com a mesma observação; ela não tem empenho relacionado na API e não aparece nos arquivos por documento da CGU.",
+      "causa": "O pagamento existe: a ordem bancária 180006000012026OB000120 (16/03/2026, R$ 1.337.000,00) paga a parcela do contrato de repasse 0009246 do empenho 2023NE000034, mas foi emitida sem vínculo com o empenho e com o código da emenda (sem empenho relacionado e sem autor no Portal). Por isso não entra nos arquivos de documentos por emenda da CGU, embora a fonte conte o valor como RAP pago. A OB tem exatamente o valor da diferença. O vínculo desta ordem bancária com a emenda foi identificado pelo valor exato e pela observação do documento, não por um campo oficial que ligue os dois; por isso é uma explicação muito provável, não comprovada documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 71225 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2023, 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202327000005 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202327000005",
+        "Empenho 180006000012023NE000034 (13/06/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 180006000012026NS000711 (13/03/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 180006000012026OB000120 (16/03/2026), Portal da Transparência — API de dados /despesas/documentos (listagem por UG 180006 e data)"
+      ],
+      "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs de contrato de repasse da Caixa emitidas sem vínculo com o empenho.",
+      "valor_explicado_centavos": 133700000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202227000005": {
+      "grupo": 2,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.639.681,72 (pago R$ 0,00; RAP pagos R$ 1.639.681,72); a API do Portal em 20/11/2026 traz os mesmos totais e a mesma lista de 21 documentos. Os documentos de pagamento somam R$ 269.681,72: ordem bancária 530023000012024OB000246 (04/07/2024, R$ 258.894,72, empenho 2022NE000055, convênio 930365) e 530023000012023OB800018 (18/04/2023, R$ 10.787,00 atribuídos à emenda, tarifas da Caixa). Os outros cinco empenhos não têm ordem bancária vinculada: quatro da Caixa Econômica Federal – Programas Sociais (UG 175004) — 2022NE000845 (R$ 238.856,00), NE000846 (R$ 287.306,00), NE000847 (R$ 306.686,00) e NE000848 (R$ 481.104,00) — têm notas de sistema de 18/04/2023 (2023NS007589, NS007591, NS007593, NS007596) com a observação 'MIGRACAO POR SOLICITACAO DO MINISTERIO DAS CIDADES - CONVENIO: 932233/932234/932235/932236'; e o empenho 530001000012022NE000617 (MIDR/Administração Geral, R$ 56.048,00) tem a nota 530001000012023NS006789 (25/10/2023) com 'TRANSFERENCIA DE EMPENHOS REFERENTES AOS CONTRATOS DE PRESTACAO DE SERVICO CELEBRADOS COM CAIXA ECONOMICA FEDERAL, DA UG 530001 - MIDR PARA A UG 560010 DO MCIDADES'. Os cinco empenhos somam R$ 1.370.000,00, exatamente a diferença.",
+      "causa": "Entre 18/04/2023 e 25/10/2023, notas de sistema oficiais registram a migração dos saldos para o Ministério das Cidades e a transferência dos empenhos de serviço da Caixa para a UG 560010, na reestruturação dos ministérios de 2023. O saldo desses empenhos passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. Os cinco empenhos migrados somam R$ 1.370.000,00, igual à diferença. Os pagamentos nos empenhos novos não foram conferidos documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 65108 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2022, 2023 e 2024",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202227000005 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202227000005",
+        "Nota de sistema 175004000012023NS007589 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS007591 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS007593 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS007596 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006789 (25/10/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
+      "valor_explicado_centavos": 137000000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202039610011": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.000.000,00 (pago R$ 0,00; RAP pagos R$ 2.000.000,00); a API do Portal em 20/11/2026 traz o mesmo RAP pago e a mesma lista de 11 documentos. Os documentos de pagamento somam R$ 1.235.057,60: duas ordens bancárias da Caixa Econômica Federal – Programas Sociais (UG 175004) para o empenho 2020NE801447 (R$ 1.912.356,00, contrato de repasse 0000701) — 2022OB800981 (22/03/2022, R$ 382.471,20) e 2022OB805218 (30/09/2022, R$ 764.942,40) — e a ordem 530001000012021OB802569 (R$ 87.644,00 atribuídos à emenda, tarifas da Caixa). O saldo não pago do empenho 2020NE801447 é R$ 764.942,40 (R$ 1.912.356,00 − R$ 1.147.413,60), exatamente a diferença. Esse empenho tem a nota de sistema 175004000012023NS007944 (18/04/2023) com a observação 'MIGRACAO POR SOLICITACAO DO MINISTERIO DAS CIDADES - CONVENIO: 902175'.",
+      "causa": "Em 18/04/2023, nota de sistema oficial registra a migração do saldo do empenho 2020NE801447 para o Ministério das Cidades, na reestruturação dos ministérios de 2023. O saldo de R$ 764.942,40 passou para empenho novo em outra unidade gestora, e o pagamento feito por esse empenho não aparece vinculado ao código desta emenda nos documentos da CGU. O saldo migrado é igual à diferença. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 50604 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202039610011 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202039610011",
+        "Portal da Transparência — API de dados /despesas/documentos-relacionados (empenho 175004000012020NE801447)",
+        "Nota de sistema 175004000012023NS007944 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar a ordem bancária do empenho novo (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
+      "valor_explicado_centavos": 76494240,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202040550003": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.999.013,00 (pago R$ 0,00; RAP pagos R$ 2.999.013,00); a API do Portal em 20/11/2026 traz o mesmo RAP pago e a mesma lista de 22 documentos. Os documentos de pagamento somam R$ 2.517.909,00. Três dos quatro empenhos de contrato de repasse da Caixa (UG 175004) estão quitados por ordens bancárias vinculadas: 2020NE800900 (R$ 481.104,00 = OB804052 + OB806424 + OB806444), 2020NE800903 (R$ 960.019,00, OB805555) e 2020NE800905 (R$ 960.019,00, OB803092); mais R$ 116.767,00 de tarifas (530001000012021OB801069). O empenho 175004000012020NE800901 (R$ 481.104,00, contrato 0003107) não tem ordem bancária vinculada; seus documentos são a inscrição em restos a pagar (31/12/2020), a nota 2022NS012937 (07/06/2022) e a nota 175004000012023NS007881 (18/04/2023) com a observação 'MIGRACAO POR SOLICITACAO DO MINISTERIO DAS CIDADES - CONVENIO: 900433'. O valor desse empenho é exatamente a diferença. Na listagem de ordens bancárias da UG 175004 de 07/06 a 20/06/2022 não há OB citando o contrato 0003107.",
+      "causa": "Em 18/04/2023, nota de sistema oficial registra a migração do saldo do empenho 2020NE800901 (R$ 481.104,00) para o Ministério das Cidades, na reestruturação dos ministérios de 2023. O saldo passou para empenho novo em outra unidade gestora, e o pagamento feito por esse empenho não aparece vinculado ao código desta emenda nos documentos da CGU. O saldo migrado é igual à diferença. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 54555 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202040550003 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202040550003",
+        "Portal da Transparência — API de dados /despesas/documentos-relacionados (empenhos 175004000012020NE800900, NE800901, NE800903, NE800905)",
+        "Nota de sistema 175004000012023NS007881 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos (ordens bancárias da UG 175004, 07/06 a 20/06/2022)"
+      ],
+      "proxima_verificacao": "Localizar a ordem bancária do empenho novo (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
+      "valor_explicado_centavos": 48110400,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202171070008": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.572.499,20 (pago R$ 0,00; RAP pagos R$ 1.572.499,20); a API do Portal em 20/11/2026 traz o mesmo RAP pago, RAP cancelado de R$ 520.126,89 e a mesma lista de 11 documentos. Os documentos de pagamento somam R$ 1.084.626,09: ordens bancárias da Funasa (UG 255000) 2024OB006651 (31/12/2024, R$ 542.313,05) e 2025OB006151 (17/11/2025, R$ 542.313,04), para os empenhos 2021NE001100 e NE001101 (convênio 00003/2021). O empenho 255000362112021NE001096 (R$ 500.000,00) não tem ordem bancária vinculada; tem a nota de sistema 255000362112023NS006112 (10/05/2023) com a observação 'TRANSFERENCIA DE SALDO DE CONVENIO DA FUNASA PARA MCID, CONFORME PORTARIA CONJUNTA MGI/MS/MCID NR.921 DE 23/03/2023'. A diferença (R$ 487.873,11) é menor que esse saldo transferido. Conta de conferência: o empenhado no Portal (R$ 2.128.041,00) excede em R$ 508.000,00 os empenhos listados com valor; se esse valor corresponde ao empenho anulado 2021NE001099 ('ANULACAO MOTIVO DA NAO CELEBRACAO'), o RAP cancelado de R$ 520.126,89 = R$ 508.000,00 + R$ 12.126,89, e R$ 500.000,00 − R$ 12.126,89 = R$ 487.873,11, exatamente a diferença.",
+      "causa": "Em 10/05/2023, nota de sistema oficial registra a transferência do saldo do convênio da Funasa para o Ministério das Cidades (Portaria Conjunta MGI/MS/MCID nº 921/2023), na reestruturação dos ministérios de 2023. O saldo do empenho 2021NE001096 (R$ 500.000,00) passou para empenho novo em outra unidade gestora, e os pagamentos feitos por esse empenho não aparecem vinculados ao código desta emenda nos documentos da CGU. A diferença (R$ 487.873,11) cabe nesse saldo, e os totais de RAP pago e cancelado da fonte são consistentes com R$ 487.873,11 pagos e R$ 12.126,89 cancelados desse saldo. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 57647 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021–2025",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202171070008 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202171070008",
+        "Portal da Transparência — API de dados /despesas/documentos-relacionados (empenhos 255000362112021NE001096, NE001099, NE001100, NE001101)",
+        "Nota de sistema 255000362112023NS006112 (10/05/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar a ordem bancária do empenho novo no Ministério das Cidades (Transferegov ou junto ao órgão) e confirmar o valor original do empenho anulado 2021NE001099.",
+      "valor_explicado_centavos": 48787311,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202127000010": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.007.947,89 (pago R$ 0,00; RAP pagos R$ 1.007.947,89); a API do Portal em 20/11/2026 traz o mesmo RAP pago e a mesma lista de 10 documentos. O único pagamento nos documentos é a ordem bancária 130141000012023OB800866 (27/12/2023, R$ 67.500,00 atribuídos à emenda, empenho 2021NE002030 de tarifas da Caixa). Os dois empenhos de convênio, 130141000012021NE000813 (R$ 1.098.250,00) e 130141000012021NE000994 (R$ 334.250,00), ambos da Subsecretaria de Orçamento, Planejamento e Administração do MAPA (UG 130141), não têm ordem bancária vinculada; seus documentos são a inscrição em restos a pagar (31/12/2021) e as notas de sistema 130141000012022NS004594 (05/08/2022) e 130141000012022NS005277 (04/11/2022), com a observação 'TRANSFERENCIAS DE SALDOS DE CONVENIOS REFERENTE AO LOTE Nº 17/19 CONTIDO NO PROCESSO SEI 21000.021195/2022-15'. Essas notas se relacionam a empenhos novos da série NE801 na Secretaria de Desenvolvimento Rural (UG 420013), cujo detalhe a API não retorna. A diferença (R$ 940.447,89) é menor que o saldo transferido (R$ 1.432.500,00).",
+      "causa": "Em 05/08/2022 e 04/11/2022, notas de sistema oficiais registram a transferência dos saldos dos dois convênios para empenhos novos em outra unidade gestora do MAPA (UG 420013). Os pagamentos feitos pelos empenhos novos não aparecem vinculados ao código desta emenda nos documentos da CGU. A diferença (R$ 940.447,89) cabe no saldo transferido (R$ 1.432.500,00). O valor pago informado pela fonte não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 58542 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021–2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202127000010 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202127000010",
+        "Nota de sistema 130141000012022NS004594 (05/08/2022), Portal da Transparência — API de dados /despesas/documentos e /despesas/documentos-relacionados",
+        "Nota de sistema 130141000012022NS005277 (04/11/2022), Portal da Transparência — API de dados /despesas/documentos e /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE801, UG 420013) no Transferegov ou junto ao órgão; a API não retornou o detalhe desses empenhos.",
+      "valor_explicado_centavos": 94044789,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202541380002": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 16.710.640,00 (pago R$ 16.018.345,00; RAP pagos R$ 692.295,00); a API do Portal em 20/11/2026 traz os mesmos valores e a mesma lista de 45 documentos. Os documentos de pagamento somam R$ 16.310.640,00: as ordens bancárias de 2025 do Fundo Nacional de Saúde (UG 257001) somam o pago do exercício, e as de 2026 (2026OB008105, R$ 98.640,00, e 2026OB008106, R$ 193.655,00) somam R$ 292.295,00 de RAP. Faltam R$ 400.000,00 de RAP pago, exatamente o valor do empenho 257001000012025NE522066 (R$ 400.000,00, Portaria 9740 de 29/12/2025, proposta 36000722752202500). O único documento vinculado a ele é a nota de sistema 257001000012026NS039241 (18/03/2026, 'PAGAMENTO DA PROPOSTA 36000722752202500 - UF CE - EMENDA: (41380002)'). Na listagem de ordens bancárias da UG 257001 pela API existe a 257001000012026OB011856, de 19/03/2026, de R$ 400.000,00, com a observação 'PAGAMENTO DA PROPOSTA 36000722752202500 - UF CE - EMENDA: (41380002)'; ela não tem empenho relacionado na API (autor 'Sem Informação') e não aparece nos arquivos por documento da CGU.",
+      "causa": "O pagamento existe: a ordem bancária 257001000012026OB011856 (19/03/2026, R$ 400.000,00) paga a proposta 36000722752202500 do empenho 2025NE522066 e cita a emenda na observação, mas foi emitida sem vínculo com o empenho no Portal. Por isso não entra nos arquivos de documentos por emenda da CGU, embora a fonte conte o valor como RAP pago. A OB tem exatamente o valor da diferença. O vínculo desta ordem bancária com a emenda foi identificado pelo valor exato e pela observação do documento, não por um campo oficial que ligue os dois; por isso é uma explicação muito provável, não comprovada documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 84752 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202541380002 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202541380002",
+        "Nota de sistema 257001000012026NS039241 (18/03/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 257001000012026OB011856 (19/03/2026), Portal da Transparência — API de dados /despesas/documentos (listagem por UG 257001 e data)"
+      ],
+      "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs emitidas sem vínculo com o empenho.",
+      "valor_explicado_centavos": 40000000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202541380020": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 700.000,00 (pago R$ 0,00; RAP pagos R$ 700.000,00); a API do Portal em 20/11/2026 traz os mesmos totais e a mesma lista de 14 documentos. Os documentos de pagamento somam R$ 300.000,00 (ordens bancárias do Ministério das Mulheres, UG 810012: 2026OB000022, 2026OB000064 e 2026OB000086, R$ 100.000,00 cada). Faltam R$ 400.000,00, exatamente o valor do empenho 810012000012025NE000066 (termo de fomento 975824/2025). O único documento vinculado a ele é a nota de sistema 810012000012026NS000274 (02/03/2026, 'PAGAMENTO DA PARCELA UNICA DO TERMO DE FOMENTO Nº 975824/2025 (RP6)'). Na listagem de ordens bancárias da UG 810012 pela API existe a 810012000012026OB000095, de 03/03/2026, de R$ 400.000,00, com a mesma observação; ela não tem empenho relacionado na API (autor 'Sem Informação') e não aparece nos arquivos por documento da CGU.",
+      "causa": "O pagamento existe: a ordem bancária 810012000012026OB000095 (03/03/2026, R$ 400.000,00) paga a parcela única do termo de fomento 975824/2025 do empenho 2025NE000066, mas foi emitida sem vínculo com o empenho e com o código da emenda no Portal. Por isso não entra nos arquivos de documentos por emenda da CGU, embora a fonte conte o valor como RAP pago. A OB tem exatamente o valor da diferença. O vínculo desta ordem bancária com a emenda foi identificado pelo valor exato e pela observação do documento, não por um campo oficial que ligue os dois; por isso é uma explicação muito provável, não comprovada documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 84770 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202541380020 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202541380020",
+        "Nota de sistema 810012000012026NS000274 (02/03/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 810012000012026OB000095 (03/03/2026), Portal da Transparência — API de dados /despesas/documentos (listagem por UG 810012 e data)"
+      ],
+      "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs emitidas sem vínculo com o empenho.",
+      "valor_explicado_centavos": 40000000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202520830011": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.528.000,00 (pago R$ 0,00; RAP pagos R$ 1.528.000,00); a API do Portal em 20/11/2026 traz o mesmo RAP pago e a mesma lista de 15 documentos. Os documentos de pagamento somam R$ 1.146.000,00 (ordens bancárias da UG 180006 CEF/Ministério do Esporte 2026OB000318, R$ 477.500,00, e 2026OB000193, R$ 668.500,00). Faltam R$ 382.000,00, exatamente o valor do empenho 180006000012025NE000053 (contrato de repasse 0024704). O único documento vinculado a ele é a nota de sistema 180006000012026NS000707 (13/03/2026, 'PAGTO PARC. DO CONTRATO CR.NR.0024704-PC2025 CONFORME OF MESPORTE 070 DE 12/03/2026'). Na listagem de ordens bancárias da UG 180006 pela API existe a 180006000012026OB000118, de 16/03/2026, de R$ 382.000,00, com a mesma observação; ela não tem empenho relacionado na API (autor 'Sem Informação') e não aparece nos arquivos por documento da CGU.",
+      "causa": "O pagamento existe: a ordem bancária 180006000012026OB000118 (16/03/2026, R$ 382.000,00) paga a parcela do contrato de repasse 0024704 do empenho 2025NE000053, mas foi emitida sem vínculo com o empenho e com o código da emenda no Portal. Por isso não entra nos arquivos de documentos por emenda da CGU, embora a fonte conte o valor como RAP pago. A OB tem exatamente o valor da diferença. O vínculo desta ordem bancária com a emenda foi identificado pelo valor exato e pela observação do documento, não por um campo oficial que ligue os dois; por isso é uma explicação muito provável, não comprovada documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 83142 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202520830011 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202520830011",
+        "Nota de sistema 180006000012026NS000707 (13/03/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 180006000012026OB000118 (16/03/2026), Portal da Transparência — API de dados /despesas/documentos (listagem por UG 180006 e data)"
+      ],
+      "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs de contrato de repasse da Caixa emitidas sem vínculo com o empenho.",
+      "valor_explicado_centavos": 38200000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202341380012": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.148.831,30 (pago R$ 2.130.021,30; RAP pagos R$ 18.810,00); a API do Portal em 20/11/2026 traz os mesmos valores pago e RAP pago. A lista de documentos da API tem 46 itens, 3 a mais que os arquivos da CGU: os empenhos 135098000012023NE000005 e NE000090 (Caixa Econômica Federal/MA) e um item sem código ('-2'); esses empenhos têm notas de sistema de 09/10/2026 de transferência de saldo da UG 135098 para a 130141 e nenhum pagamento, então não alteram a soma paga. Os documentos de pagamento somam R$ 1.848.831,30. Três empenhos da Secretaria de Desenvolvimento Rural (UG 420013) — 2023NE000075, NE000088 e NE000089, R$ 100.000,00 cada — não têm ordem bancária vinculada; seus documentos relacionados são notas de sistema de 12/09 a 20/09/2023 com a observação 'PORTARIA MAPA Nº 609, DE 23 DE AGOSTO DE 2023, DELEGA COMPETÊNCIA AO SUBSECRETÁRIO DE ORÇAMENTO, PLANEJAMENTO E ADMINISTRAÇÃO ... TRANSFERÊNCIA DE SALDO(S)' (2023NS007305, NS007307, NS007308, NS007658, NS007672, NS007788, NS008113, NS008125, NS008126). Os três somam R$ 300.000,00, exatamente a diferença.",
+      "causa": "Entre 12/09/2023 e 20/09/2023, notas de sistema oficiais registram a transferência de saldo de três empenhos com base na Portaria MAPA nº 609/2023, que passa a execução para a Subsecretaria de Orçamento, Planejamento e Administração (UG 130141), na reestruturação dos ministérios de 2023. Os pagamentos feitos pelos empenhos novos (série NE800) não aparecem vinculados ao código desta emenda nos documentos da CGU. Os três empenhos somam R$ 300.000,00, igual à diferença. Os pagamentos nos empenhos novos não foram conferidos documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 71570 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2023, 2024 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202341380012 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202341380012",
+        "Nota de sistema 420013000012023NS007305 (12/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007307 (12/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007308 (12/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008125 (20/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008126 (20/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 135098000012026NS001910 (09/10/2026), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800, UG 130141) no Transferegov ou junto ao órgão.",
+      "valor_explicado_centavos": 30000000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141470011": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 574.612,00 (pago R$ 0,00; RAP pagos R$ 574.612,00); a API do Portal em 20/11/2026 traz o mesmo RAP pago e a mesma lista de 13 documentos. O único pagamento nos documentos é a ordem bancária 175004000012022OB806528 (29/12/2022, R$ 287.306,00), que quita o empenho 2021NE001822 (Caixa Econômica Federal – Programas Sociais, UG 175004). O outro empenho de contrato de repasse, 175004000012021NE002156 (R$ 287.306,00), não tem ordem bancária vinculada; tem a nota de sistema 175004000012023NS008316 (18/04/2023) com a observação 'MIGRACAO POR SOLICITACAO DO MINISTERIO DAS CIDADES - CONVENIO: 915178'. O valor desse empenho é exatamente a diferença. (Os dois empenhos de tarifa da Caixa, R$ 12.694,00 cada, foram transferidos para a UG 560010 em 24/10/2023 e não entram na conta: o RAP pago da fonte é exatamente 2 × R$ 287.306,00.)",
+      "causa": "Em 18/04/2023, nota de sistema oficial registra a migração do saldo do empenho 2021NE002156 para o Ministério das Cidades, na reestruturação dos ministérios de 2023. O saldo passou para empenho novo em outra unidade gestora, e o pagamento feito por esse empenho não aparece vinculado ao código desta emenda nos documentos da CGU. O saldo migrado (R$ 287.306,00) é igual à diferença. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 59928 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021–2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141470011 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141470011",
+        "Nota de sistema 175004000012023NS008316 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006756 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar a ordem bancária do empenho novo (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
+      "valor_explicado_centavos": 28730600,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202024410020": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 336.461,86 (pago R$ 0,00; RAP pagos R$ 336.461,86); a API do Portal em 20/11/2026 traz o mesmo RAP pago, RAP cancelado de R$ 13.992,14 e a mesma lista de 5 documentos. O único empenho é 255000362112020NE800750 (Funasa, R$ 350.454,00, convênio 0085/20). O único pagamento vinculado é a ordem bancária 255000362112022OB803646 (05/12/2022, R$ 67.292,37, 1ª parcela). Depois dela, a nota de sistema 255000362112023NS006076 (09/05/2023) registra 'TRANSFERENCIA DE SALDO DE CONVENIO DA FUNASA PARA MCID, CONFORME PORTARIA CONJUNTA MGI/MS/MCID NR.921 DE 23/03/2023'. O saldo transferido é R$ 283.161,63 (R$ 350.454,00 − R$ 67.292,37); descontado o RAP cancelado de R$ 13.992,14, restam R$ 269.169,49, exatamente a diferença.",
+      "causa": "Em 09/05/2023, nota de sistema oficial registra a transferência do saldo do convênio da Funasa para o Ministério das Cidades (Portaria Conjunta MGI/MS/MCID nº 921/2023), na reestruturação dos ministérios de 2023. O saldo passou para empenho novo em outra unidade gestora, e os pagamentos feitos por esse empenho não aparecem vinculados ao código desta emenda nos documentos da CGU. Saldo transferido menos RAP cancelado = R$ 269.169,49, igual à diferença. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 52527 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020, 2022 e 2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202024410020 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202024410020",
+        "Nota de sistema 255000362112023NS006076 (09/05/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar as ordens bancárias do empenho novo no Ministério das Cidades (Transferegov ou junto ao órgão).",
+      "valor_explicado_centavos": 26916949,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202041380007": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 969.960,00 (pago R$ 0,00; RAP pagos R$ 969.960,00); a API do Portal em 20/11/2026 traz o mesmo RAP pago e RAP cancelado de R$ 238.856,00. A lista de documentos da API tem um item a mais que os arquivos da CGU: a nota de sistema 530023000012026NS005359 (18/11/2026, liquidação do empenho 2020NE800048), sem pagamento, que não altera a soma. Os documentos de pagamento somam R$ 731.104,00 (ordens bancárias 175004000012022OB801006, R$ 481.104,00, e 530023000012021OB800334, R$ 250.000,00). O empenhado da emenda (R$ 1.450.000,00) se decompõe assim: R$ 731.104,00 pagos com OB vinculada; R$ 200.000,00 (2020NE800048) só liquidados em 18/11/2026; R$ 41.184,00 de tarifas da Caixa transferidos em 09/11/2023 ('TRANSF SALDO CONF - DESPACHO DIORF 4526793'); e dois empenhos de contrato de repasse da Caixa (UG 175004) de R$ 238.856,00 cada, sem OB vinculada: 2020NE800425, com a nota 175004000012023NS007867 (18/04/2023, 'MIGRACAO POR SOLICITACAO DO MINISTERIO DAS CIDADES - CONVENIO: 899804'), e 2020NE800440, que só tem a inscrição em restos a pagar. A fonte registra RAP pago R$ 238.856,00 acima dos documentos e RAP cancelado de R$ 238.856,00, o que corresponde a um desses empenhos pago e o outro cancelado.",
+      "causa": "Em 18/04/2023, nota de sistema oficial registra a migração do saldo do empenho 2020NE800425 (R$ 238.856,00) para o Ministério das Cidades, na reestruturação dos ministérios de 2023. O pagamento feito pelo empenho novo não aparece vinculado ao código desta emenda nos documentos da CGU. O saldo migrado é igual à diferença; o outro empenho de mesmo valor (2020NE800440), sem migração, é compatível com o RAP cancelado da fonte. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 50842 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202041380007 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202041380007",
+        "Nota de sistema 175004000012023NS007867 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS009464 (09/11/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530023000012026NS005359 (18/11/2026), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar a ordem bancária do empenho novo no Ministério das Cidades (Transferegov) e confirmar que o cancelamento de RAP se refere ao empenho 2020NE800440.",
+      "valor_explicado_centavos": 23885600,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202227000010": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 389.453,25 (pago R$ 0,00; RAP pagos R$ 389.453,25); a API do Portal em 20/11/2026 traz o mesmo RAP pago, RAP cancelado de R$ 18.546,75 e a mesma lista de 8 documentos. Os dois empenhos são do Ministério do Meio Ambiente (UG 440001), R$ 250.000,00 cada. O único pagamento nos documentos é a ordem bancária 440001000012023OB800861 (29/05/2023, R$ 158.000,00), do empenho 2022NE000565 (convênio 938198). O empenho 440001000012022NE000279 (transferência voluntária 930148) não tem ordem bancária vinculada; tem a nota de sistema 440001000012023NS003679 (11/09/2023) com a observação 'TRANSFERENCIA DE SALDO EM FUNCAO DA NOVA ESTRUTURA REGIMENTAL CONFORME DECRETO 11.349 DE 01/01/2023 E PORT.GM/MMA 535, 05/06/2023 ... TRANFERENCIA VOLUNTARIA 930148'. O saldo restante do 2022NE000565 (R$ 92.000,00) também foi transferido pela nota 440001000012023NS004061 (16/10/2023). A diferença (R$ 231.453,25) somada ao RAP cancelado (R$ 18.546,75) dá R$ 250.000,00, exatamente o valor do empenho 2022NE000279.",
+      "causa": "Em 11/09/2023, nota de sistema oficial registra a transferência do saldo do empenho 2022NE000279 por causa da nova estrutura regimental do Ministério do Meio Ambiente (Decreto 11.349/2023 e Portaria GM/MMA 535/2023), na reestruturação dos ministérios de 2023. O saldo passou para empenho novo em outra unidade gestora, e o pagamento feito por esse empenho não aparece vinculado ao código desta emenda nos documentos da CGU. Os totais da fonte são consistentes com R$ 231.453,25 pagos e R$ 18.546,75 cancelados desse saldo de R$ 250.000,00. O pagamento no empenho novo não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 65113 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2022 e 2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202227000010 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202227000010",
+        "Nota de sistema 440001000012023NS003679 (11/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 440001000012023NS004061 (16/10/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar a ordem bancária do empenho novo (transferência voluntária 930148) no Transferegov ou junto ao Ministério do Meio Ambiente.",
+      "valor_explicado_centavos": 23145325,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120830016": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.139.301,00 (pago R$ 389.813,00; RAP pagos R$ 749.488,00); a API do Portal em 20/11/2026 traz os mesmos valores, empenhado de R$ 1.139.301,00 e a mesma lista de 18 documentos. Os sete empenhos listados (Fundo Nacional de Saúde, UG 257001) somam R$ 889.717,00 e estão todos quitados por ordens bancárias vinculadas: R$ 389.813,00 em 2021 (2021OB828657) e R$ 499.904,00 de RAP (2022OB803910, 2022OB830146 e 2023OB806400). O empenhado informado pela fonte excede a soma dos empenhos listados em R$ 249.584,00, exatamente a diferença de pagamentos. Ou seja, a fonte conta um empenho de R$ 249.584,00 e o seu pagamento (como RAP pago) que não aparecem nem nos arquivos por documento da CGU nem na lista de documentos da API. A consulta aos empenhos vizinhos de numeração (2021NE435840–NE435853, NE436645–NE436654, NE455478–NE455490) não encontrou empenho desta emenda com esse valor (o 2021NE435840, de R$ 249.584,00, é de outra emenda).",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 57268 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021–2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202120830016 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202120830016",
+        "Portal da Transparência — API de dados /despesas/documentos e /despesas/documentos-relacionados (empenhos 257001000012021NE435843, NE435844, NE435854, NE436644, NE436650, NE436655, NE455484)"
+      ],
+      "proxima_verificacao": "Identificar o empenho de R$ 249.584,00 que a fonte atribui à emenda por pedido ao Fundo Nacional de Saúde ou via Lei de Acesso à Informação.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202241380006": {
+      "grupo": 3,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 300.000,00 (pago R$ 0,00; RAP pagos R$ 300.000,00); a API do Portal em 20/11/2026 traz os mesmos totais e a mesma lista de 12 documentos. Os empenhos são do Ministério do Meio Ambiente (UG 440001). O único pagamento nos documentos é a ordem bancária 440001000012023OB800628 (28/04/2023, R$ 100.000,00), do empenho 2022NE000496 (termo de fomento 936355/2022). Os outros quatro empenhos — 2022NE000364 (R$ 68.300,00) e NE000365 (R$ 31.700,00), e 2022NE000532 (R$ 40.000,00) e NE000533 (R$ 60.000,00) — não têm ordem bancária vinculada; têm as notas de sistema 440001000012023NS002381 e 440001000012023NS002374 (21/06/2023) com a observação 'TRANSFERENCIA DE SALDO EM FUNCAO DA NOVA ESTRUTURA REGIMENTAL, CONFORME DECRETO 11.349 DE 01/01/2023 E PORT.GM/MMA 535, 05/06/2023'. Os quatro somam R$ 200.000,00, exatamente a diferença.",
+      "causa": "Em 21/06/2023, notas de sistema oficiais registram a transferência do saldo de quatro empenhos por causa da nova estrutura regimental do Ministério do Meio Ambiente (Decreto 11.349/2023 e Portaria GM/MMA 535/2023), na reestruturação dos ministérios de 2023. O saldo passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. Os quatro empenhos somam R$ 200.000,00, igual à diferença. Os pagamentos nos empenhos novos não foram conferidos documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 65390 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2022 e 2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202241380006 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202241380006",
+        "Nota de sistema 440001000012023NS002374 (21/06/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 440001000012023NS002381 (21/06/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos no Transferegov ou junto ao Ministério do Meio Ambiente.",
+      "valor_explicado_centavos": 20000000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141380019": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 300.000,00 (pago R$ 0,00; RAP pagos R$ 300.000,00); a API do Portal em 20/11/2026 traz os mesmos totais e a mesma lista de 13 documentos. Os empenhos são do Ministério do Meio Ambiente (UG 440001). O único pagamento nos documentos é a ordem bancária 440001000012022OB800276 (24/02/2022, R$ 100.000,00), do empenho 2021NE000366 (termo de fomento 915342/2021). Os outros quatro empenhos — 2021NE000440 (R$ 30.000,00), NE000441 (R$ 70.000,00), NE000442 (R$ 50.000,00) e NE000443 (R$ 50.000,00), dos termos de fomento 917822/2021 e 915267/2021 — somam R$ 200.000,00, exatamente a diferença. Cada um tem nota de sistema de 17/02/2022 (2022NS000552, NS000553, NS000554, NS000558) com a observação 'REPASSE DE RECURSOS FINANCEIROS DO/AO TERMO DE FOMENTO Nº 915267/2021 (ou 917822/2021)', o mesmo tipo de nota que, no termo 915342, foi seguido de ordem bancária. Mas nenhuma ordem bancária foi encontrada: a listagem de pagamentos da UG 440001 pela API de 17/02/2022 a 02/05/2022 não tem OB citando os termos 915267 ou 917822, e a consulta de pagamentos por favorecido não retorna ordens bancárias em 2022 para os favorecidos desses empenhos. Não há nota de transferência de saldo nem de cancelamento.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 58909 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021 e 2022",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141380019 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141380019",
+        "Notas de sistema 440001000012022NS000552, NS000553, NS000554 e NS000558 (17/02/2022), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos (ordens bancárias da UG 440001, 17/02 a 02/05/2022) e /despesas/documentos-por-favorecido (2022)"
+      ],
+      "proxima_verificacao": "Consultar no Transferegov os termos de fomento 915267/2021 e 917822/2021 (data e valor dos repasses) ou pedir ao Ministério do Meio Ambiente as ordens bancárias correspondentes.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141380007": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.200.000,00 (pago R$ 500.000,00; RAP pagos R$ 700.000,00); a API do Portal em 20/11/2026 traz os mesmos valores e a mesma lista de 37 documentos. Os empenhos são do Fundo Nacional de Assistência Social (UG 330013), R$ 100.000,00 cada. Os documentos somam R$ 600.000,00: cinco ordens bancárias de 29 e 30/11/2021 (pago do exercício, R$ 500.000,00) e a 330013000012022OB812890 (23/09/2022, R$ 100.000,00, empenho 2021NE405750). Seis empenhos inscritos em restos a pagar — 2021NE402747, NE403218, NE403332, NE404370, NE404392 e NE405769 — somam R$ 600.000,00, exatamente a diferença. Cada um tem nota de sistema de 17/02/2022 (2022NS001701 a NS001706) com a observação 'PAGAMENTO DA PROGRAMACAO SIGTV Nº ..., DESTINADO A ESTRUTURACAO DA REDE DE SERVICOS DO SUAS', o mesmo tipo de nota que, no empenho 2021NE405750, foi seguido de ordem bancária vinculada. Para esses seis não há ordem bancária vinculada, nem nota de transferência de saldo ou cancelamento. A listagem de pagamentos da UG 330013 pela API de 17/02 a 28/02/2022 e de 19/09 a 30/09/2022 não tem OB citando as seis programações SIGTV (230765020210001, 230440020210003, 230830220210001, 230410320210001, 230523320210001, 230440020210004).",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 58898 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021 e 2022",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141380007 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141380007",
+        "Notas de sistema 330013000012022NS001701 a NS001706 (17/02/2022), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos (ordens bancárias da UG 330013, 17–28/02/2022 e 19–30/09/2022)"
+      ],
+      "proxima_verificacao": "Varrer as ordens bancárias da UG 330013 no restante de 2022 procurando as seis programações SIGTV, ou pedir ao Fundo Nacional de Assistência Social as ordens bancárias correspondentes.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202543400005": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.675.984,70 (pago R$ 1.013.519,00; RAP pagos R$ 662.465,70); a API do Portal em 20/11/2026 traz os mesmos valores pago e RAP pago e a mesma lista de 11 documentos. Os documentos de pagamento somam R$ 695.984,70: R$ 33.519,00 em 2025 (158149264302025OB002392, Instituto Federal do Sertão Pernambucano) e R$ 662.465,70 de RAP em 2026 (180073000012026OB000106 e OB000109), igual ao RAP pago. Faltam R$ 980.000,00 do pago do exercício 2025, exatamente o valor do empenho 180073000012025NE000168 (Secretaria Nacional de Esporte Amador, termo de fomento 976410). O único documento vinculado a ele é a nota de sistema 180073000012025NS004457 (16/12/2025, 'PGTO TERMO DE FOMENTO Nº 976410 ...'), na fase Liquidação, sem ordem bancária. Nos outros termos de fomento da mesma unidade, esse tipo de nota é seguido de OB. A listagem de pagamentos da UG 180073 pela API de 10/12/2025 a 21/01/2026 não tem OB de R$ 980.000,00 nem citando o termo 976410, e a consulta de pagamentos por favorecido não retorna esse pagamento em 2025 ou 2026.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 84312 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202543400005 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202543400005",
+        "Nota de sistema 180073000012025NS004457 (16/12/2025), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos (ordens bancárias da UG 180073, 10/12/2025 a 21/01/2026) e /despesas/documentos-por-favorecido"
+      ],
+      "proxima_verificacao": "Consultar o termo de fomento 976410 no Transferegov (data e valor do repasse) ou pedir à Secretaria Nacional de Esporte Amador a ordem bancária correspondente.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202139360006": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 7.689.992,00 (pago R$ 6.839.495,60; RAP pagos R$ 850.496,40); a API do Portal em 20/11/2026 traz os mesmos valores e a mesma lista de 66 documentos. Transferência especial (EC 105), UG 170860. Os documentos somam R$ 6.839.495,60, igual ao pago de 2021; não há nenhum pagamento de restos a pagar. O RAP pago (R$ 850.496,40) é exatamente o saldo não pago em 2021 de quatro empenhos: 2021NE004832 (R$ 167.000,00), NE004833 (R$ 350.000,00), NE004838 (R$ 321.996,00) e o restante de NE004835 (R$ 160.000,00 − R$ 148.499,60 pagos em 24/12/2021 = R$ 11.500,40). Esses quatro empenhos têm notas de sistema de 17/02/2022 (2022NS001292 a NS001295, 'EC105 – TRANSFERENCIAS ESPECIAIS'), o mesmo tipo de nota que precede as ordens bancárias de 2021, mas nenhuma ordem bancária vinculada. A listagem de pagamentos da UG 170860 pela API de 17/02/2022 a 04/07/2022 (incluindo os cerca de 3.900 documentos com data de 01/07/2022) não tem OB com esses valores nem citando a emenda. Nos arquivos por documento da CGU não há nenhuma OB de 2022 da UG 170860 vinculada a emendas de 2021.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 58213 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021 e 2022",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202139360006 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202139360006",
+        "Notas de sistema 170860000012022NS001292 a NS001295 (17/02/2022), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos (pagamentos da UG 170860, 17/02 a 04/07/2022)"
+      ],
+      "proxima_verificacao": "Verificar no Transferegov (módulo Transferências Especiais) as datas e ordens bancárias dos repasses de 2022 aos quatro municípios, ou pedir à Secretaria do Tesouro Nacional; checar se outras emendas de transferência especial de 2021 têm o mesmo padrão de RAP pago sem OB em 2022.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202171070011": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 94.243.547,00 (pago R$ 93.841.723,00; RAP pagos R$ 401.824,00); a API do Portal em 20/11/2026 traz os mesmos valores, empenhado de R$ 94.243.547,00 e RAP inscrito de R$ 803.648,00. A lista de documentos da API é igual à dos arquivos da CGU (140 empenhos, 140 liquidações, 140 pagamentos, todos de 2021 no Fundo Nacional de Saúde, UG 257001). Os 140 empenhos somam R$ 93.841.723,00 e estão todos pagos em 2021 pelas ordens bancárias vinculadas, igual ao pago do exercício. O empenhado informado pela fonte excede a soma dos empenhos listados em R$ 401.824,00, exatamente o RAP pago e a diferença. Ou seja, a fonte conta um empenho de R$ 401.824,00, inscrito em restos a pagar e pago, que não aparece nem nos arquivos por documento da CGU nem na lista de documentos da API.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 57650 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202171070011 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202171070011 (420 documentos)"
+      ],
+      "proxima_verificacao": "Identificar o empenho de R$ 401.824,00 que a fonte atribui à emenda e o seu pagamento de RAP, por pedido ao Fundo Nacional de Saúde ou via Lei de Acesso à Informação.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202227010001": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 269.896,00 (pago R$ 0,00; RAP pagos R$ 269.896,00); a API do Portal em 20/11/2026 traz os mesmos valores, empenhado e liquidado de R$ 269.896,00, e a mesma lista de 5 documentos. O único empenho listado é 160046000012022NE000282 (Colégio Militar de Fortaleza, R$ 133.400,00, equipamentos de TIC), quitado por 160046000012023OB800060 (R$ 125.596,10) e 160046000012023DF800036 (R$ 7.803,90, retenção de tributos), somando R$ 133.400,00. O empenhado da fonte excede o empenho listado em R$ 136.496,00, exatamente a diferença: a fonte conta um empenho de R$ 136.496,00 e o seu pagamento que não aparecem nos arquivos por documento da CGU nem na lista da API. A consulta aos empenhos vizinhos de numeração no Colégio Militar (2022NE000270 a NE000295) não encontrou outro empenho desta emenda; quatro deles (NE000278 a NE000281) não foram retornados pela API.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 65226 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2022 e 2023",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202227010001 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202227010001",
+        "Portal da Transparência — API de dados /despesas/documentos (empenhos 160046000012022NE000270 a NE000295)"
+      ],
+      "proxima_verificacao": "Identificar o empenho de R$ 136.496,00 (possivelmente em outra unidade do Exército que recebeu crédito da emenda) por pedido ao Comando do Exército ou via Lei de Acesso à Informação.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202127010004": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 279.696,90 (pago R$ 0,00; RAP pagos R$ 279.696,90); a API do Portal em 20/11/2026 traz o mesmo RAP pago, liquidado de R$ 191.000,00 e a mesma lista de 81 documentos. Os empenhos do Colégio Militar de Fortaleza (UG 160046) estão pagos por OBs e DFs vinculadas que somam R$ 88.696,90. A diferença (R$ 191.000,00) é exatamente o empenho 160069000012021NE000438 (Centro de Obtenções do Exército, aquisição de viatura tipo ambulância), liquidado pela nota 160069000012021NS008756 (14/12/2021, 'NF 283475, R$ 191.000,00 ... CTO 065/2021') e inscrito em restos a pagar processados (2021NS009327, 31/12/2021), sem ordem bancária vinculada. A listagem de pagamentos da UG 160069 pela API de 03/01 a 02/04/2022 não tem OB de R$ 191.000,00, e a consulta de pagamentos ao fornecedor (2021–2023) mostra pagamentos de outras notas fiscais do mesmo contrato, mas não da NF 283475.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 58683 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021 e 2022",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202127010004 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202127010004",
+        "Nota de sistema 160069000012021NS008756 (14/12/2021), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos (pagamentos da UG 160069, jan–mar/2022) e /despesas/documentos-por-favorecido"
+      ],
+      "proxima_verificacao": "Pedir ao Centro de Obtenções do Exército a ordem bancária de pagamento da NF 283475 (contrato 065/2021).",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202140280006": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.782.874,26 (pago R$ 858.669,00; RAP pagos R$ 924.205,26); a API do Portal em 20/11/2026 traz os mesmos valores, empenhado de R$ 1.827.990,00, RAP cancelado de R$ 45.115,74 e a mesma lista de 23 documentos. Os documentos somam R$ 1.633.374,26: R$ 858.669,00 em 2021 (OB821863) e R$ 774.705,26 de RAP (convênios 918029, 923960 e 925314 e a proposta do empenho 2021NE442857). Faltam R$ 149.500,00 de RAP pago. O empenho 257001000012021NE002226 (convênio 912286/2021) aparece com valor zero após 'CANCELAMENTO DE SALDO' em 23/08/2023 e não tem ordem bancária; a conta de restos a pagar (empenhado R$ 1.827.990,00 − pagos − cancelados) é compatível com R$ 149.500,00 pagos nesse convênio, mas a consulta de pagamentos ao favorecido desse empenho (2021–2025) não mostra pagamento do convênio 912286.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 60474 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021–2025",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202140280006 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202140280006",
+        "Empenho 257001000012021NE002226 (cancelamento de saldo em 23/08/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Portal da Transparência — API de dados /despesas/documentos-por-favorecido"
+      ],
+      "proxima_verificacao": "Consultar o convênio 912286/2021 no Transferegov (parcelas liberadas) ou pedir ao Fundo Nacional de Saúde as ordens bancárias.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202541380021": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 351.559,46 (pago R$ 350.000,00; RAP pagos R$ 1.559,46); a API do Portal em 20/11/2026 traz os mesmos valores e a mesma lista de 18 documentos. Os documentos somam R$ 200.000,00 (OBs de 2025 do Ministério da Cultura: 420029000012025OB000588 e OB000591, R$ 50.000,00 cada, e 420048000012025OB000304, R$ 100.000,00). Faltam R$ 150.000,00 do pago de 2025 e R$ 1.559,46 de RAP. Os R$ 150.000,00 são exatamente o empenho 420006000012025NE000124 (Secretaria do Audiovisual, termo de fomento 975687), cujo único documento é a nota de sistema 420006000012025NS000807 (16/12/2025, 'PAGAMENTO DO TERMO DE FOMENTO Nº 975687/2025 ... EMENDA Nº 41380021'), sem ordem bancária; a listagem de pagamentos da UG 420006 pela API de 16/12/2025 a 05/01/2026 não tem OB de R$ 150.000,00 nem citando o termo. Os R$ 1.559,46 de RAP correspondem, pela data, ao empenho de tarifas da Caixa 420044000012025NE000013 (liquidado pela nota 2026NS000012 de 11/03/2026); a ordem bancária de tarifas de dezembro/2025 desse contrato (420044000012026OB000007, 19/03/2026, R$ 55.423,74) existe na API sem empenho relacionado e não aparece nos arquivos da CGU, mas o valor atribuível à emenda não é publicado.",
+      "causa": "Parcialmente: os R$ 1.559,46 de RAP são compatíveis com a ordem bancária de tarifas 420044000012026OB000007, emitida sem vínculo com o empenho (valor atribuível à emenda não confirmado). Os R$ 150.000,00 restantes ficam sem causa.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 84771 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202541380021 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202541380021",
+        "Nota de sistema 420006000012025NS000807 (16/12/2025), Portal da Transparência — API de dados /despesas/documentos",
+        "Ordem bancária 420044000012026OB000007 (19/03/2026), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Consultar o termo de fomento 975687/2025 no Transferegov ou pedir à Secretaria do Audiovisual a ordem bancária correspondente. Resto não explicado: R$ 150.000,00.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202171070001": {
+      "grupo": 3,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 7.894.363,88 (pago R$ 439.908,00; RAP pagos R$ 7.454.455,88); a API do Portal em 20/11/2026 traz os mesmos valores, empenhado de R$ 9.262.275,00, RAP cancelado de R$ 1.067.980,12 e a mesma lista de documentos (47 empenhos do Fundo Nacional de Saúde, UG 257001). Os documentos de pagamento somam R$ 7.694.388,88: R$ 439.908,00 em 2021 (igual ao pago) e R$ 7.254.480,88 de RAP; faltam R$ 199.975,00 de RAP pago. Conferindo por município (IBGE), todos os empenhos municipais estão pagos exatamente pelas OBs vinculadas; a divergência fica nos empenhos de alcance estadual (convênios com entidades e fundo a fundo estadual). Nesse grupo há duas ordens bancárias canceladas por 'DOMICILIO BANCARIO INEXISTENTE' (2023OB814195 e 2023OB814866, valores negativos) e reemitidas, que a soma dos documentos já desconta; um empenho sem pagamento (2021NE003584, R$ 299.931,00, que fecha a conta empenhado − pago − cancelado da fonte); e empenhos com saldo cancelado. Nenhum documento oficial consultado explica os R$ 199.975,00.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv, linha 57642 (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2021, 2022, 2023, 2025 e 2026",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202171070001 (consulta em 20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202171070001",
+        "Ordens bancárias 257001000012023OB814195 e OB814866 (estornos), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Conferir convênio a convênio (Transferegov) os valores liberados nos empenhos estaduais de 2021 (NE002876, NE003422, NE003444, NE003534, NE003662, NE003681, NE003727) contra o RAP pago da fonte.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202220250006": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.039.365,00 (pago R$ 0,00; RAP pagos R$ 2.039.365,00); documentos de pagamento somam R$ 1.950.062,00; diferença -R$ 89.303,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012022NE000243 (02/05/2022, R$ 89.303,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006284 (29/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006284 listam 6 empenhos de origem da UG 530001 e 6 empenhos sucessores na UG 560010 (560010000012022NE800162 a 560010000012022NE800167), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 89.303,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006284. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202220250006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202220250006 (20/11/2026)",
+        "Nota de empenho 530001000012022NE000243 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006284 (29/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 8930300,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202191620009": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 997.985,44 (pago R$ 0,00; RAP pagos R$ 997.985,44); documentos de pagamento somam R$ 958.004,44; diferença -R$ 39.981,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012021NE000392 (02/08/2021, R$ 39.981,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006114 (26/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). O empenho de transferência foi reduzido em R$ 2.014,56 (RAP cancelado no Portal), e os documentos de pagamento (OB 175004000012023OB803378 e 175004000012024OB002070) somam exatamente o valor final do empenho, R$ 958.004,44. Os documentos relacionados (fase 2) da nota 530001000012023NS006114 listam 12 empenhos de origem da UG 530001 e 12 empenhos sucessores na UG 560010 (560010000012021NE800396 a 560010000012021NE800407), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 39.981,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006114. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202191620009 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202191620009 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000392 (02/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006114 (26/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 3998100,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202191620010": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.000.000,00 (pago R$ 0,00; RAP pagos R$ 1.000.000,00); documentos de pagamento somam R$ 960.019,00; diferença -R$ 39.981,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012021NE000390 (02/08/2021, R$ 39.981,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006114 (26/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006114 listam 12 empenhos de origem da UG 530001 e 12 empenhos sucessores na UG 560010 (560010000012021NE800396 a 560010000012021NE800407), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 39.981,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006114. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202191620010 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202191620010 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000390 (02/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006114 (26/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 3998100,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202220250004": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.000.000,00 (pago R$ 0,00; RAP pagos R$ 1.000.000,00); documentos de pagamento somam R$ 960.019,00; diferença -R$ 39.981,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012022NE000301 (02/05/2022, R$ 39.981,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006354 (03/10/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006354 listam 6 empenhos de origem da UG 530001 e 6 empenhos sucessores na UG 560010 (560010000012022NE800238 a 560010000012022NE800243), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 39.981,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006354. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202220250004 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202220250004 (20/11/2026)",
+        "Nota de empenho 530001000012022NE000301 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006354 (03/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 3998100,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120830007": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.500.000,00 (pago R$ 0,00; RAP pagos R$ 2.500.000,00); documentos de pagamento somam R$ 2.461.278,00; diferença -R$ 38.722,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012021NE000585 (18/08/2021, R$ 38.722,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006263 (29/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). A outra nota de empenho de tarifa (530001000012021NE000447, R$ 62.541,00) foi paga pela OB 530001000012022OB803468 (23/12/2022), que está no arquivo de documentos; a de R$ 38.722,00 não tem OB vinculada. Os documentos relacionados (fase 2) da nota 530001000012023NS006263 listam 12 empenhos de origem da UG 530001 e 12 empenhos sucessores na UG 560010 (560010000012021NE800813 a 560010000012021NE800824), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 38.722,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006263. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202120830007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202120830007 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000585 (18/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006263 (29/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 3872200,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120250002": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 600.000,00 (pago R$ 0,00; RAP pagos R$ 600.000,00); documentos de pagamento somam R$ 578.003,00; diferença -R$ 21.997,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012021NE000468 (03/08/2021, R$ 21.997,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006212 (28/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006212 listam 12 empenhos de origem da UG 530001 e 12 empenhos sucessores na UG 560010 (560010000012021NE800649 a 560010000012021NE800660), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 21.997,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006212. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202120250002 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202120250002 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000468 (03/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006212 (28/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 2199700,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202124420011": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 0,00; RAP pagos R$ 500.000,00); documentos de pagamento somam R$ 481.104,00; diferença -R$ 18.896,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012021NE000454 (02/08/2021, R$ 18.896,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006136 (26/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006136 listam 12 empenhos de origem da UG 530001 e 12 empenhos sucessores na UG 560010 (560010000012021NE800462 a 560010000012021NE800473), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 18.896,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006136. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202124420011 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202124420011 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000454 (02/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006136 (26/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 1889600,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202220250003": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 0,00; RAP pagos R$ 500.000,00); documentos de pagamento somam R$ 481.104,00; diferença -R$ 18.896,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012022NE000351 (02/05/2022, R$ 18.896,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006366 (03/10/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006366 listam 6 empenhos de origem da UG 530001 e 6 empenhos sucessores na UG 560010 (560010000012022NE800292 a 560010000012022NE800297), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 18.896,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006366. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202220250003 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202220250003 (20/11/2026)",
+        "Nota de empenho 530001000012022NE000351 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006366 (03/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 1889600,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141470009": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 400.000,00 (pago R$ 0,00; RAP pagos R$ 400.000,00); documentos de pagamento somam R$ 384.205,00; diferença -R$ 15.795,00. Os totais e a lista de documentos no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os pagamentos nos documentos quitam integralmente o empenho de transferência ao município (UG 175004, Caixa – contrato de repasse). A diferença é exatamente o valor do empenho de tarifa de serviço da Caixa (elemento 39, modalidade 90 – Aplicações Diretas) emitido na UG 530001 (MIDR/Administração Geral): 530001000012021NE000416 (02/08/2021, R$ 15.795,00), com descrição \"atender despesas no âmbito do contrato de prestação de serviços nº 25/2021\". Esse empenho não tem ordem bancária vinculada nos documentos relacionados da API; seus únicos documentos posteriores são a inscrição em restos a pagar e a nota de sistema 530001000012023NS006121 (26/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). Os documentos relacionados (fase 2) da nota 530001000012023NS006121 listam 12 empenhos de origem da UG 530001 e 12 empenhos sucessores na UG 560010 (560010000012021NE800432 a 560010000012021NE800443), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa (R$ 15.795,00) foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006121. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu em empenho da UG de destino, que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor da diferença coincide ao centavo com o valor do empenho transferido; a ordem bancária na UG 560010 não foi localizada.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141470009 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141470009 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000416 (02/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006121 (26/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
+      "valor_explicado_centavos": 1579500,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202227000006": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.795.711,82 (pago R$ 0,00; RAP pagos R$ 2.795.711,82); documentos de pagamento somam R$ 2.713.101,00; diferença -R$ 82.610,82. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os quatro empenhos de transferência ao município (UG 175004, Caixa – contrato de repasse) estão integralmente pagos pelas OBs do arquivo (soma R$ 2.713.101,00). Os outros quatro empenhos da emenda são de tarifa de serviço da Caixa (elemento 39, Aplicações Diretas) na UG 530001: 530001000012022NE000244 (R$ 22.607,00), 530001000012022NE000254 (R$ 39.981,00), 530001000012022NE000314 (R$ 21.997,00) e 530001000012022NE000340 (R$ 21.997,00), total R$ 106.582,00. Nenhum deles tem ordem bancária vinculada nos documentos relacionados da API; os documentos posteriores são a inscrição em RAP e as notas de sistema 530001000012023NS006284 (29/09/2023), 530001000012023NS006345, NS006360 e NS006364 (03/10/2023), que registram a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). A diferença (R$ 82.610,82) é menor que o saldo transferido (R$ 106.582,00); como todos os demais empenhos estão quitados nos documentos, o RAP pago excedente só pode corresponder a esses empenhos de tarifa, pagos na UG de destino. O restante (R$ 23.971,18) não aparece como pago na fonte. Os documentos relacionados (fase 2) da nota 530001000012023NS006284 listam 6 empenhos de origem da UG 530001 e 6 empenhos sucessores na UG 560010 (560010000012022NE800162 a 560010000012022NE800167), estes sem data e com valor zerado na API; Os documentos relacionados (fase 2) da nota 530001000012023NS006345 listam 6 empenhos de origem da UG 530001 e 6 empenhos sucessores na UG 560010 (560010000012022NE800196 a 560010000012022NE800201), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: os empenhos de tarifa da Caixa foram transferidos da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) por notas de sistema de 29/09/2023 e 03/10/2023. A fonte conta como RAP pago da emenda R$ 82.610,82 desses saldos, pagos por empenhos da UG de destino que não aparecem vinculados ao código da emenda nos arquivos de documentos. O valor pago na UG de destino não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202227000006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202227000006 (20/11/2026)",
+        "Nota de empenho 530001000012022NE000244 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de empenho 530001000012022NE000254 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de empenho 530001000012022NE000314 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de empenho 530001000012022NE000340 (02/05/2022), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006284 (29/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006345 (03/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006360 (03/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006364 (03/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG de destino o empenho sucessor e as ordens bancárias da tarifa da Caixa, para conferir o valor pago documento a documento.",
+      "valor_explicado_centavos": 8261082,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202191620014": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 691.354,63 (pago R$ 0,00; RAP pagos R$ 691.354,63); documentos de pagamento somam R$ 674.903,00; diferença -R$ 16.451,63. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O empenho de transferência ao município (175004000012021NE000958, R$ 674.903,00) está integralmente pago pela OB 175004000012022OB804451 (01/07/2022). O outro empenho da emenda é de tarifa de serviço da Caixa na UG 530001: 530001000012021NE000403 (02/08/2021, R$ 25.097,00, elemento 39, Aplicações Diretas), sem ordem bancária vinculada nos documentos relacionados da API; seus documentos posteriores são a inscrição em RAP e a nota de sistema 530001000012023NS006117 (26/09/2023), que registra a transferência de empenhos dos contratos de prestação de serviço celebrados com a Caixa Econômica Federal da UG 530001 (MIDR/Administração Geral) para a UG 560010 do Ministério das Cidades (despacho CGEOF-MCID 4612966, processo 80000.010266/2023-02). A diferença (R$ 16.451,63) é menor que o saldo transferido (R$ 25.097,00); como o empenho de transferência está quitado nos documentos, o RAP pago excedente só pode corresponder ao empenho de tarifa, pago na UG de destino. O restante (R$ 8.645,37) não aparece como pago na fonte. Os documentos relacionados (fase 2) da nota 530001000012023NS006117 listam 6 empenhos de origem da UG 530001 e 6 empenhos sucessores na UG 560010 (560010000012021NE800420 a 560010000012021NE800425), estes sem data e com valor zerado na API. Em teste com o sucessor 560010000012021NE800396, a API não retornou detalhe nem documentos relacionados, de modo que a OB na UG de destino não pôde ser identificada.",
+      "causa": "Reestruturação ministerial de 2023: o empenho de tarifa da Caixa foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS006117. A fonte conta R$ 16.451,63 desse saldo como RAP pago da emenda, pago por empenho da UG de destino que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor pago na UG de destino não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202191620014 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202191620014 (20/11/2026)",
+        "Nota de empenho 530001000012021NE000403 (02/08/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS006117 (26/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados (fase 2) das notas de sistema de transferência, Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar na UG de destino o empenho sucessor e as ordens bancárias da tarifa da Caixa, para conferir o valor pago documento a documento.",
+      "valor_explicado_centavos": 1645163,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202040460010": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 545.115,16 (pago R$ 0,00; RAP pagos R$ 545.115,16); documentos de pagamento somam R$ 529.554,00; diferença -R$ 15.561,16. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O empenho de transferência ao município (175004000012020NE800897, R$ 529.554,00) está integralmente pago pelas OBs 175004000012022OB806162 (R$ 526.043,21) e 175004000012023OB801739 (R$ 3.510,79). O outro empenho da emenda é de tarifa de serviço da Caixa na UG 530001: 530001000012020NE800445 (12/06/2020, R$ 20.446,00, \"pagamento de tarifas no âmbito do contrato de prestação de serviços nº 07/2018\"), sem ordem bancária vinculada nos documentos relacionados da API; seus documentos posteriores são inscrições em RAP e a nota de sistema 530001000012023NS008705 (08/11/2023): \"TRANSF SALDO CONF - DESPACHO DIORF 4526793 PROC 80000.004090/2023-41\". A diferença (R$ 15.561,16) é menor que o saldo transferido (R$ 20.446,00); como o empenho de transferência está quitado nos documentos, o RAP pago excedente só pode corresponder ao empenho de tarifa. O restante (R$ 4.884,84) não aparece como pago na fonte. Os documentos relacionados (fase 2) da nota 530001000012023NS008705 mostram um único empenho sucessor, 560010000012020NE800015, e o favorecido da nota é a UG 560010 (MCidades).",
+      "causa": "Reestruturação ministerial de 2023: o saldo do empenho de tarifa da Caixa foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades), empenho sucessor 560010000012020NE800015, pela nota de sistema 530001000012023NS008705 (transferência de saldo, processo 80000.004090/2023-41). A fonte conta R$ 15.561,16 desse saldo como RAP pago da emenda, pago por empenho que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor pago na unidade de destino não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202040460010 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202040460010 (20/11/2026)",
+        "Nota de empenho 530001000012020NE800445 (12/06/2020), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS008705 (08/11/2023), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Consultar as OBs do empenho sucessor 560010000012020NE800015 (UG 560010) para conferência documento a documento.",
+      "valor_explicado_centavos": 1556116,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120830010": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 8.298,33 (pago R$ 1.400,00; RAP pagos R$ 6.898,33); documentos de pagamento somam R$ 6.198,33; diferença -R$ 2.100,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A emenda tem um empenho de transferência (540045000012021NE000005) cancelado em 14/02/2024 (\"cancelamento de nota de empenho conforme CE GEOTR 421/2024\"; RAP cancelado de R$ 238.857,00 no Portal) e um empenho de tarifa da Caixa pela gestão operacional de contratos de repasse na UG 540023 (SEEC – Contratos, Ministério da Cultura): 540023000012021NE000014 (29/10/2021, R$ 11.143,00). Os pagamentos vinculados a esse empenho no arquivo somam R$ 6.198,33 (R$ 1.400,00 em 2021, que fecham com o pago do exercício; R$ 4.798,33 em 2024, parcelas de OBs/DF compartilhadas com outras emendas). A fonte informa RAP pagos de R$ 6.898,33, ou seja, R$ 2.100,00 a mais que os documentos. Nos documentos relacionados do empenho consta a nota de sistema 540023000012024NS000181 (10/10/2024): \"TRANSFERENCIA DE SALDOS POR FUSAO/CISAO E EXTINCAO DE ORGAOS, ENTIDADES OU UG'S\", com favorecido a Secretaria de Difusão e Infraestrutura Cultural. O saldo não pago do empenho antes da transferência era de R$ 4.944,67, maior que a diferença. Os documentos relacionados (fase 2) da nota 540023000012024NS000181 listam 12 empenhos de origem e 12 empenhos sucessores na UG 420044 (420044000012021NE800004 a NE800015), sem data e com valor zerado na API.",
+      "causa": "Transferência de saldo por fusão/cisão (nota de sistema 540023000012024NS000181, 10/10/2024): o saldo do empenho de tarifa da Caixa passou da UG 540023 para outra unidade do Ministério da Cultura. A fonte conta R$ 2.100,00 desse saldo como RAP pago da emenda, pago por empenho da unidade de destino que não aparece vinculado ao código da emenda nos arquivos de documentos. O valor pago na unidade de destino não foi conferido documento a documento.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202120830010 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202120830010 (20/11/2026)",
+        "Nota de empenho 540023000012021NE000014 (29/10/2021), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de empenho 540045000012021NE000005 (14/02/2024), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 540023000012024NS000181 (10/10/2024), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 540023000012024NS000007 (24/01/2024), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Identificar, entre os empenhos sucessores 420044000012021NE800004 a NE800015, o correspondente ao empenho 540023000012021NE000014 e a OB de R$ 2.100,00.",
+      "valor_explicado_centavos": 210000,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202543730006": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 579.592,44 (pago R$ 0,00; RAP pagos R$ 579.592,44); documentos de pagamento somam R$ 580.365,81; diferença R$ 773,37. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Conferência documento a documento com os documentos relacionados de cada empenho (API): todas as OBs batem, exceto o DF 200392000012026DF800212 (14/04/2026). No arquivo por documento ele aparece com R$ 1.546,74; na API o documento vale R$ 773,37 e está relacionado a um único empenho, 200392000012025NE000201 (R$ 13.220,00), que é quitado exatamente pela OB 200392000012026OB000521 (R$ 12.446,63) + DF (R$ 773,37). O excesso no arquivo (R$ 773,37) é igual à diferença.",
+      "causa": "Valor de documento de retenção tributária (DF) registrado em dobro no arquivo CGU EmendasParlamentaresPorDocumento: a linha do documento traz o dobro do valor que o próprio documento tem no Portal (API /despesas/documentos). Descontado o excesso, a soma dos documentos fecha ao centavo com Pago + RAP pagos da fonte. Trata-se de inconsistência do arquivo por documento, não de pagamento adicional.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202543730006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202543730006 (20/11/2026)",
+        "DF 200392000012026DF800212 (14/04/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados ao DF 200392000012026DF800212 (fase 3) e ao empenho 200392000012025NE000201 (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
+      "valor_explicado_centavos": 77337,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202543730005": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 983.088,16 (pago R$ 21.471,24; RAP pagos R$ 961.616,92); documentos de pagamento somam R$ 1.019.234,09; diferença R$ 36.145,93. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença está toda no RAP pago em 2026. Conferência documento a documento com os documentos relacionados de cada empenho (API): o DF 193002112032026DF801170 (14/04/2026) vale R$ 32.198,90 na API e R$ 64.397,80 no arquivo por documento; o DF 193002112032026DF801171 (14/04/2026) vale R$ 3.947,03 na API e R$ 7.894,06 no arquivo. Ambos são retenções de impostos federais de notas fiscais do contrato nº 17/2025 (perfuração de poços), relacionados ao empenho 193002112032025NE000269. O excesso somado (R$ 32.198,90 + R$ 3.947,03 = R$ 36.145,93) é igual à diferença. A OB 193002112032026OB000468 é compartilhada com a emenda 202543730004, e a soma das duas parcelas no arquivo é igual ao valor total da OB na API (R$ 566.286,26).",
+      "causa": "Valor de documento de retenção tributária (DF) registrado em dobro no arquivo CGU EmendasParlamentaresPorDocumento: a linha do documento traz o dobro do valor que o próprio documento tem no Portal (API /despesas/documentos). Descontado o excesso, a soma dos documentos fecha ao centavo com Pago + RAP pagos da fonte. Trata-se de inconsistência do arquivo por documento, não de pagamento adicional.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202543730005 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202543730005 (20/11/2026)",
+        "DF 193002112032026DF801170 (14/04/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "DF 193002112032026DF801171 (14/04/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados ao DF 193002112032026DF801170 (fase 3) e aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
+      "valor_explicado_centavos": 3614593,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202543730004": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.497.294,26 (pago R$ 10.877,96; RAP pagos R$ 1.486.416,30); documentos de pagamento somam R$ 1.497.356,83; diferença R$ 62,57. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença está toda no RAP pago em 2026. Conferência documento a documento com os documentos relacionados de cada empenho (API): o DF 193002112032026DF801185 (14/04/2026, retenção de INSS de serviço contratado) vale R$ 62,57 na API e R$ 125,14 no arquivo por documento. O excesso (R$ 62,57) é igual à diferença. Os demais documentos batem; a OB 193002112032026OB000468 é compartilhada com a emenda 202543730005 e as duas parcelas somam o valor total da OB.",
+      "causa": "Valor de documento de retenção tributária (DF) registrado em dobro no arquivo CGU EmendasParlamentaresPorDocumento: a linha do documento traz o dobro do valor que o próprio documento tem no Portal (API /despesas/documentos). Descontado o excesso, a soma dos documentos fecha ao centavo com Pago + RAP pagos da fonte. Trata-se de inconsistência do arquivo por documento, não de pagamento adicional.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202543730004 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202543730004 (20/11/2026)",
+        "DF 193002112032026DF801185 (14/04/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
+      "valor_explicado_centavos": 6257,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202424420007": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 901.993,10 (pago R$ 354.287,97; RAP pagos R$ 547.705,13); documentos de pagamento somam R$ 905.683,23; diferença R$ 3.690,13. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença está toda no pago de 2024. Conferência documento a documento com os documentos relacionados de cada empenho (API): o DR 373045372012024DR800126 (27/12/2024, retenção de ISS sobre nota fiscal de serviços terceirizados de recepção), relacionado ao empenho 373045372012024NE000193, vale R$ 3.690,13 na API e R$ 7.380,26 no arquivo por documento. O excesso (R$ 3.690,13) é igual à diferença.",
+      "causa": "Valor de documento de retenção tributária (DR) registrado em dobro no arquivo CGU EmendasParlamentaresPorDocumento: a linha do documento traz o dobro do valor que o próprio documento tem no Portal (API /despesas/documentos). Descontado o excesso, a soma dos documentos fecha ao centavo com Pago + RAP pagos da fonte. Trata-se de inconsistência do arquivo por documento, não de pagamento adicional.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202424420007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202424420007 (20/11/2026)",
+        "DR 373045372012024DR800126 (27/12/2024), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados ao DR 373045372012024DR800126 (fase 3) e aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
+      "valor_explicado_centavos": 369013,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202591620018": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.300.000,00 (pago R$ 1.287.000,00; RAP pagos R$ 13.000,00); documentos de pagamento somam R$ 1.306.844,37; diferença R$ 6.844,37. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A transferência especial ao município (R$ 1.287.000,00) foi paga em 2025 pela OB 170860000012025OB004451 e fecha com o pago do exercício. O RAP pago de R$ 13.000,00 corresponde à parcela da UG 170007 (empenho 170007000012025NE000253, R$ 12.981,81, serviços de tecnologia do contrato nº 03/2022). No arquivo por documento esse empenho tem dois pagamentos em 2026: a OB 170007000012026OB000171 (parcela de R$ 6.155,63 de uma OB de R$ 216.425,79 que paga 12 empenhos) e o DF 170007000012026DF800111 com R$ 13.688,74. Na API, o DF inteiro vale R$ 11.363,62 e está relacionado a dois empenhos (NE000253 e NE000256), ou seja, o arquivo atribui à emenda mais do que o valor total do documento. Metade do valor do arquivo, R$ 6.844,37, é exatamente a diferença; com ela, os documentos somam R$ 1.300.000,00, igual a Pago + RAP pagos da fonte.",
+      "causa": "Valor do DF 170007000012026DF800111 registrado em dobro no arquivo CGU EmendasParlamentaresPorDocumento (R$ 13.688,74 = 2 × R$ 6.844,37), acima do próprio valor do documento no Portal (R$ 11.363,62). Descontado o excesso, os documentos fecham ao centavo com a fonte. Inconsistência do arquivo por documento, mesmo padrão de duplicação de DF/DR observado em outras emendas; não indica pagamento adicional.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202591620018 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202591620018 (20/11/2026)",
+        "DF 170007000012026DF800111 (14/04/2026), Portal da Transparência — API de dados /despesas/documentos",
+        "Documentos relacionados ao DF 170007000012026DF800111 e à OB 170007000012026OB000171 (fase 3), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Confirmar com a CGU a parcela do DF 170007000012026DF800111 atribuída à emenda (esperado R$ 6.844,37).",
+      "valor_explicado_centavos": 684437,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202040460007": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.232.227,00 (pago R$ 0,00; RAP pagos R$ 1.232.227,00); documentos de pagamento somam R$ 1.182.584,00; diferença -R$ 49.643,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Os dois empenhos de transferência ao município (UG 175004, Caixa – contrato de repasse: 175004000012020NE800894, R$ 800.000,00, e 175004000012020NE800896, R$ 382.584,00) estão integralmente pagos pelas OBs do arquivo. O outro empenho da emenda é de tarifa de serviço da Caixa na UG 530001: 530001000012020NE800444 (12/06/2020, R$ 49.643,00, \"pagamento de tarifas no âmbito do contrato de prestação de serviços nº 07/2018\"), sem ordem bancária vinculada nos documentos relacionados da API. Seus documentos posteriores são inscrições em RAP e a nota de sistema 530001000012023NS008702 (08/11/2023): \"TRANSF SALDO CONF - DESPACHO DIORF 4526793 PROC 80000.004090/2023-41\", com favorecido a UG 560010 (Coordenação-Geral de Suporte Logístico – MCidades). Os documentos relacionados dessa nota mostram um único empenho sucessor, 560010000012020NE800014. A diferença é exatamente o valor do empenho transferido.",
+      "causa": "Reestruturação ministerial de 2023: o saldo do empenho de tarifa da Caixa foi transferido da UG 530001 (MIDR) para a UG 560010 (Ministério das Cidades) pela nota de sistema 530001000012023NS008702, gerando o empenho 560010000012020NE800014. O pagamento desse saldo, contado pela fonte como RAP pago da emenda, ocorreu na UG de destino e não aparece vinculado ao código da emenda nos arquivos de documentos. A diferença coincide ao centavo com o valor do empenho transferido.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202040460007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202040460007 (20/11/2026)",
+        "Nota de empenho 530001000012020NE800444 (12/06/2020), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 1",
+        "Nota de sistema 530001000012023NS008702 (08/11/2023), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 2"
+      ],
+      "proxima_verificacao": "Consultar as OBs do empenho sucessor 560010000012020NE800014 (UG 560010) para conferência documento a documento.",
+      "valor_explicado_centavos": 4964300,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141380014": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.236.380,40 (pago R$ 3.500,00; RAP pagos R$ 1.232.880,40); documentos de pagamento somam R$ 1.199.269,00; diferença -R$ 37.111,40. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Nos documentos (arquivo CGU e lista da emenda na API) há só dois empenhos de transferência (540007000012021NE000082, R$ 960.413,00, e 540007000012021NE000116, R$ 238.856,00), ambos integralmente pagos pelas OBs 540007000012024OB000402 e 540007000012024OB000403 (20/12/2024); o pago do arquivo é exatamente o valor desses empenhos. Os totais da emenda no Portal mostram empenhado de R$ 1.250.000,00, contra R$ 1.199.269,00 empenhados nos documentos: R$ 50.731,00 de empenho contado na emenda sem nota de empenho vinculada. A diferença de pagamento (R$ 3.500,00 pagos no exercício de 2021 e R$ 33.611,40 em RAP) está dentro desse valor. Não há nota de sistema de transferência ou anulação nos documentos relacionados. A listagem de empenhos da UG 540007 emitidos em 18/08/2021 (API /despesas/documentos) mostra só empenhos de transferência (elemento 41), nenhum de tarifa. A proporção da diferença (cerca de 3% a 4% do valor da emenda) é compatível com tarifa de contrato de repasse, mas isso não foi comprovado.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141380014 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141380014 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Listagem de empenhos da UG 540007 em 18/08/2021, Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar, em outra UG do Ministério do Turismo, o empenho de R$ 50.731,00 contado na emenda (provável tarifa de serviço da Caixa) e as OBs correspondentes.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202140550003": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 679.985,29 (pago R$ 3.500,00; RAP pagos R$ 676.485,29); documentos de pagamento somam R$ 655.509,00; diferença -R$ 24.476,29. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Nos documentos (arquivo CGU e lista da emenda na API) há só um empenho de transferência (540007000012021NE000044, R$ 655.509,00), integralmente pago pela OB 540007000012024OB000071 (26/03/2024); o pago do arquivo é exatamente o valor desses empenhos. Os totais da emenda no Portal mostram empenhado de R$ 679.986,00, contra R$ 655.509,00 empenhados nos documentos: R$ 24.477,00 de empenho contado na emenda sem nota de empenho vinculada. A diferença de pagamento (R$ 3.500,00 pagos no exercício de 2021 e R$ 20.976,29 em RAP) está dentro desse valor. Não há nota de sistema de transferência ou anulação nos documentos relacionados. A listagem de empenhos da UG 540007 emitidos em 18/08/2021 (API /despesas/documentos) mostra só empenhos de transferência (elemento 41), nenhum de tarifa. A proporção da diferença (cerca de 3% a 4% do valor da emenda) é compatível com tarifa de contrato de repasse, mas isso não foi comprovado.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202140550003 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202140550003 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Listagem de empenhos da UG 540007 em 18/08/2021, Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar, em outra UG do Ministério do Turismo, o empenho de R$ 24.477,00 contado na emenda (provável tarifa de serviço da Caixa) e as OBs correspondentes.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141470003": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 250.000,00 (pago R$ 0,00; RAP pagos R$ 250.000,00); documentos de pagamento somam R$ 240.161,00; diferença -R$ 9.839,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Nos documentos (arquivo CGU e lista da emenda na API) há só um empenho de transferência (540007000012021NE000109, R$ 240.161,00), integralmente pago pela OB 540007000012025OB000051 (20/05/2025); o pago do arquivo é exatamente o valor desses empenhos. Os totais da emenda no Portal mostram empenhado de R$ 250.000,00, contra R$ 240.161,00 empenhados nos documentos: R$ 9.839,00 de empenho contado na emenda sem nota de empenho vinculada. A diferença de pagamento (R$ 9.839,00 em RAP) está dentro desse valor. Não há nota de sistema de transferência ou anulação nos documentos relacionados. A listagem de empenhos da UG 540007 emitidos em 18/08/2021 (API /despesas/documentos) mostra só empenhos de transferência (elemento 41), nenhum de tarifa. A proporção da diferença (cerca de 3% a 4% do valor da emenda) é compatível com tarifa de contrato de repasse, mas isso não foi comprovado.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141470003 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141470003 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Listagem de empenhos da UG 540007 em 18/08/2021, Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar, em outra UG do Ministério do Turismo, o empenho de R$ 9.839,00 contado na emenda (provável tarifa de serviço da Caixa) e as OBs correspondentes.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202120830003": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 100.000,00 (pago R$ 14.000,00; RAP pagos R$ 86.000,00); documentos de pagamento somam R$ 96.261,00; diferença -R$ 3.739,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Todos os 5 empenhos dos documentos estão integralmente pagos pelos documentos do arquivo (R$ 86.000,00 da UG 771300 em 2022; R$ 10.261,00 da UG 783601 em 2021), e o arquivo coincide com os documentos relacionados da API. Os totais da emenda no Portal mostram empenhado de R$ 100.000,00, contra R$ 96.261,00 nos documentos, e pago no exercício de 2021 de R$ 14.000,00, contra R$ 10.261,00 nos documentos: R$ 3.739,00 empenhados e pagos em 2021 que a fonte atribui à emenda sem documento vinculado. A diferença é exatamente esse valor.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202120830003 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202120830003 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Localizar o empenho de R$ 3.739,00 (2021) contado na emenda, provavelmente na UG 783601, e verificar por que não está ligado ao código no arquivo por documento.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202041470012": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 233.466,14 (pago R$ 233.466,14; RAP pagos R$ 0,00); documentos de pagamento somam R$ 236.724,03; diferença R$ 3.257,89. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O arquivo coincide documento a documento com os documentos relacionados da API. Empenho 158719264492020NE000227 (auxílio alimentação, R$ 170.280,00, anulado em R$ 136.884,00 pela 2020NE000273): valor líquido de R$ 33.396,00, igual à soma das OBs. Empenho 158719264492020NE000212 (bolsas de auxílio inclusão digital, R$ 229.720,00, anulado em R$ 29.649,86 pela 2020NE000316 em 30/12/2020): valor líquido de R$ 200.070,14, mas as 13 OBs vinculadas somam R$ 203.328,03, ou seja, R$ 3.257,89 acima do empenho. Esse excesso é exatamente a diferença; a fonte informa como pago o valor líquido dos empenhos (R$ 233.466,14). Há pagamentos repetidos de mesmo valor (por exemplo, OB 158719264492020OB801392 e OB 158719264492020OB801581, de R$ 1.300,00, a segunda descrita como \"pagamento suplementar\"). Uma devolução bancária de OB registrada fora da fase de pagamento explicaria a diferença, mas isso não foi comprovado.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202041470012 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202041470012 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "OBs 158719264492020OB801392 e 158719264492020OB801581, Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Verificar devoluções/cancelamentos das OBs do empenho 2020NE000212 (registros de arrecadação ou notas de sistema) que somem R$ 3.257,89.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202220830004": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 98.667,28 (pago R$ 90.309,54; RAP pagos R$ 8.357,74); documentos de pagamento somam R$ 101.896,12; diferença R$ 3.228,84. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença está toda no exercício de 2022. O arquivo coincide documento a documento com os documentos relacionados da API, incluindo estornos de OB e DF. Os três empenhos (diárias, pessoa física e passagens/locomoção da UG 158719) têm na API valores finais após anulações e reforços, e o empenhado total no Portal é R$ 98.667,96. Os pagamentos vinculados somam R$ 101.896,12, acima do empenhado: o excesso dos documentos sobre o empenhado (R$ 3.228,16) é praticamente a diferença (R$ 3.228,84; o centavo restante corresponde aos R$ 0,68 empenhados e não pagos na fonte). Ou seja, a fonte informa como pago o valor líquido, e os documentos têm OBs a mais. Devolução bancária de OBs não registrada como estorno é hipótese, não comprovada.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202220830004 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202220830004 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Verificar devoluções de OBs de diárias/auxílios da UG 158719 em 2022 (registros de arrecadação ou notas de sistema).",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202424410006": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 227.900,92 (pago R$ 224.447,88; RAP pagos R$ 3.453,04); documentos de pagamento somam R$ 232.260,91; diferença R$ 4.359,99. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença está toda no exercício de 2024. Parte é explicada por duplicação no arquivo por documento: os DRs 373045372012024DR800125 (R$ 3,01), DR800127 (R$ 223,00) e DR800128 (R$ 400,98) aparecem no arquivo com o dobro do valor que têm nos documentos relacionados da API, excesso de R$ 626,99. O restante (R$ 3.733,00) é exatamente o valor da OB 373045372012024OB000937 (17/12/2024, diárias pagas pelo SCDP), relacionada ao empenho 373045372012024NE000086. Após a anulação de 31/12/2024, esse empenho vale R$ 38.321,77, enquanto as OBs vinculadas a ele somam R$ 42.054,77, exatamente R$ 3.733,00 a mais. A fonte informa o valor líquido; os documentos mantêm a OB. Devolução bancária da OB é hipótese, não comprovada.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202424410006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202424410006 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "OB 373045372012024OB000937 (17/12/2024), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 3"
+      ],
+      "proxima_verificacao": "Confirmar se a OB 373045372012024OB000937 foi devolvida ou cancelada (registro de arrecadação ou nota de sistema na UG 373045).",
+      "valor_explicado_centavos": 62699,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202671070006": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 36.598,25 (pago R$ 36.598,25; RAP pagos R$ 0,00); documentos de pagamento somam R$ 36.698,19; diferença R$ 99,94. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Emenda de 2026 em execução; os totais do Portal em 20/11/2026 são iguais ao snapshot. Os documentos do arquivo são todos encontrados nos documentos relacionados da API. Os pagamentos vinculados não excedem nenhum empenho, mas a soma (R$ 36.698,19) é R$ 99,94 maior que o pago informado (R$ 36.598,25). A OB 195006112012026OB005389, de diárias, vale R$ 381,51 na API e aparece no arquivo com R$ 131,54 (parcela da emenda); não foi possível identificar qual documento ou parcela gera os R$ 99,94.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202671070006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202671070006 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Recalcular a diferença em nova extração (execução de 2026 em curso) e conferir as parcelas atribuídas às OBs compartilhadas de diárias da UG 195006.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202424410010": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 755.376,54 (pago R$ 27.381,31; RAP pagos R$ 727.995,23); documentos de pagamento somam R$ 755.151,08; diferença -R$ 225,46. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Diferença pequena (R$ 225,46): +R$ 19,82 no pago de 2024 e -R$ 245,28 no RAP pago. A emenda (Codevasf, UG 195006) tem várias OBs compartilhadas com outros empenhos/emendas, e o arquivo atribui à emenda parcelas menores que o valor da OB (por exemplo, OB 195006112012025OB002283: R$ 349.196,14 de R$ 683.027,65). Os empenhos de diárias e passagens (2024NE640018, NE640019, NE640084) têm parcelas de OB diferentes do valor relacionado. Não há documento duplicado nem nota de transferência. A causa não foi isolada.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202424410010 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202424410010 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Conferir, para os empenhos de diárias/passagens 2024NE640018, NE640019 e NE640084, a parcela de cada OB compartilhada atribuída à emenda.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202471070014": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.423.398,20 (pago R$ 0,00; RAP pagos R$ 2.423.398,20); documentos de pagamento somam R$ 2.415.538,56; diferença -R$ 7.859,64. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Sem pagamento no exercício de 2024; a diferença está toda no RAP pago (2025–2026). O arquivo coincide com os documentos relacionados da API, considerando as parcelas de OBs compartilhadas (há também quatro notas de sistema na fase de pagamento da UG 195006 que se anulam, +R$ 45.000,00 e -R$ 45.000,00 no total). Dois empenhos da Codevasf têm saldo não pago nos documentos: 195006112012024NE471504 (serviços continuados, R$ 450.000,00; pagos R$ 444.156,99) e 195006112012024NE471749 (R$ 104.506,96; pagos R$ 102.490,33). Esses saldos somam R$ 7.859,64, exatamente a diferença. Isso indica que a fonte conta esses dois empenhos como totalmente pagos, sem documento correspondente. Não foi encontrado o documento de pagamento.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202471070014 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202471070014 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Verificar nos documentos relacionados dos empenhos 2024NE471504 e 2024NE471749 (UG 195006) se há retenções (DF/DR) ou OBs não ligadas ao código da emenda que somem R$ 7.859,64.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202471070009": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 3.687.457,32 (pago R$ 1.380.809,18; RAP pagos R$ 2.306.648,14); documentos de pagamento somam R$ 3.627.574,74; diferença -R$ 59.882,58. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Parte da diferença vem de duplicação no arquivo por documento: o DR 158133264052024DR800413 (2024) e o DF 158133264052026DF803805 (2026) aparecem com o dobro do valor que têm nos documentos relacionados da API, excesso de R$ 7.261,07. O excesso de 2024 (R$ 253,81) é exatamente a diferença do exercício de 2024 (documentos R$ 1.381.062,99 contra pago R$ 1.380.809,18). Corrigida a duplicação, a diferença no RAP pago aumenta para R$ 67.143,65 (fonte maior que os documentos). Vários empenhos (UGs 158133, 158316, 158324) têm saldo sem pagamento nos documentos (por exemplo, 2024NE000443, NE000519, NE000544 e NE000562), e há RAP cancelado de R$ 10.437,36 no Portal. Não foi possível identificar quais saldos a fonte conta como pagos.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202471070009 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202471070009 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Obter da CGU o pago por empenho da emenda para comparar com os saldos de 2024NE000544, NE000562 e outros sem OB vinculada.",
+      "valor_explicado_centavos": 726107,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202471070016": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 4.091.230,10 (pago R$ 377.679,75; RAP pagos R$ 3.713.550,35); documentos de pagamento somam R$ 4.083.526,70; diferença -R$ 7.703,40. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O pago de 2024 fecha com os documentos (R$ 377.679,75); a diferença está no RAP pago (2025–2026). O arquivo coincide com os documentos relacionados da API, considerando as parcelas de OBs compartilhadas por vários empenhos e emendas da Codevasf (UG 195006). Não há DF/DR em dobro nem nota de transferência de saldo. Vários empenhos têm saldo não pago nos documentos (por exemplo, 2024NE470696, R$ 976.200,00 sem OB; 2024NE470273; 2024NE471662; 2024NE640029), e não foi possível identificar qual saldo a fonte conta como pago a mais (R$ 7.703,40).",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202471070016 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202471070016 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Obter da CGU o pago por empenho da emenda; conferir as parcelas atribuídas às OBs compartilhadas (por exemplo, 2025OB002283, 2025OB001390, 2025OB002706).",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202020830007": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.913.879,54 (pago R$ 1.257.428,00; RAP pagos R$ 656.451,54); documentos de pagamento somam R$ 1.824.701,56; diferença -R$ 89.177,98. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O pago de 2020 fecha com os documentos (R$ 1.257.428,00, OBs fundo a fundo compartilhadas pelos empenhos da emenda). Os empenhos 2020NE820384 e 2020NE821396 (R$ 249.929,00) foram pagos em 2021, e o 250107000012020NE800477 (R$ 250.000,00) em 2023, todos com documentos. A diferença está nos dois empenhos para entidade privada de \"aquisição de equipamento e material permanente\" (FNS, UG 257001): 2020NE814011 (R$ 100.000,00) e 2020NE820540 (R$ 100.000,00). Pelo Portal, o RAP inscrito da emenda é R$ 699.929,00, o cancelado R$ 43.477,46 e o pago R$ 656.451,54, o que implica R$ 156.522,54 pagos nesses dois empenhos. Nos documentos só há a OB 257001000012021OB815806 (R$ 131.740,00) e a OB 257001000012022OB804049 (R$ 2.859,56), cada uma relacionada a NE814011 e a NE814012 (este de outra emenda), com parcela atribuída a esta emenda de R$ 67.344,56. O NE820540 tem apenas a inscrição em RAP como documento relacionado. Faltam R$ 89.177,98 de pagamento sem documento.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202020830007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202020830007 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Documentos relacionados às OBs 257001000012021OB815806 e 257001000012022OB804049 (fase 3), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Verificar no FNS a execução do empenho 2020NE820540 (sem OB vinculada) e a repartição das OBs 2021OB815806/2022OB804049 entre NE814011 e NE814012.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202371070006": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.477.144,07 (pago R$ 1.798.908,09; RAP pagos R$ 678.235,98); documentos de pagamento somam R$ 2.488.430,87; diferença R$ 11.286,80. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença se divide em duas partes. (1) RAP pago (2024–2026): documentos R$ 679.217,88 contra fonte R$ 678.235,98, excesso de R$ 981,90. Esse excesso é exatamente o de quatro documentos de retenção da UG 158133 em 2026 (DF 158133264052026DF803481 e DF803482, DR 158133264052026DR800138 e DR800139), que aparecem no arquivo por documento com o dobro do valor que têm nos documentos relacionados da API. (2) Pago de 2023: documentos R$ 1.809.212,99 contra fonte R$ 1.798.908,09, excesso de R$ 10.304,90. Esse excesso é exatamente o quanto os pagamentos vinculados ao empenho 158960264052023NE000055 (obras, R$ 201.627,61) passam do valor do empenho: R$ 211.932,51, sendo R$ 206.761,40 em OB/DF/DR da própria UG 158960 e R$ 5.171,11 em dois DFs emitidos pela UG 158133 (158133264052023DF802755 e DF803296) relacionados ao mesmo empenho. A parte (2) não foi explicada.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202371070006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202371070006 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Verificar se os DFs 158133264052023DF802755 e DF803296 (UG 158133) pagam de fato o empenho 158960264052023NE000055 ou outro empenho, e se houve devolução de valores nesse empenho.",
+      "valor_explicado_centavos": 98190,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202071070007": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.834.213,34 (pago R$ 0,00; RAP pagos R$ 1.834.213,34); documentos de pagamento somam R$ 1.828.506,19; diferença -R$ 5.707,15. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Sem pagamento no exercício de 2020; a diferença está toda no RAP pago (2021–2023). O arquivo coincide documento a documento com os documentos relacionados da API (43 empenhos de 11 UGs de universidades e institutos federais). Os empenhos somam R$ 1.884.878,10, e os pagamentos nos documentos R$ 1.828.506,19, ou seja, R$ 56.371,91 sem pagamento. Pelo Portal, RAP cancelado de R$ 28.445,35 e RAP pago de R$ 1.834.213,34, o que deixa R$ 22.219,41 não pagos: exatamente o saldo sem pagamento dos empenhos da UG 158973 (2020NE800053 e NE800054). Nas demais UGs, os saldos sem pagamento nos documentos somam R$ 34.152,50, contra R$ 28.445,35 cancelados: a fonte conta R$ 5.707,15 a mais como pagos. Esses saldos estão espalhados por vários empenhos (por exemplo, 158318264052020NE800284, 158321264052020NE800110 e NE800111, 158960264052020NE800350, 158133264052020NE800397), e não foi possível isolar quais seriam.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202071070007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202071070007 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Obter da CGU o RAP cancelado e o RAP pago por empenho para identificar os R$ 5.707,15.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202571070007": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 7.346.677,17 (pago R$ 1.826,12; RAP pagos R$ 7.344.851,05); documentos de pagamento somam R$ 7.327.181,31; diferença -R$ 19.495,86. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Pago de 2025 fecha com os documentos (R$ 1.826,12); a diferença está no RAP pago em 2026 (documentos R$ 7.325.355,19 contra fonte R$ 7.344.851,05). O arquivo coincide com os documentos relacionados da API, considerando as parcelas de OBs compartilhadas; não há DF/DR em dobro nem nota de transferência de saldo. A emenda (Codevasf, UG 195006, 55 empenhos, aquisição de máquinas e serviços) tem muitas OBs que pagam mais de um empenho da mesma emenda e de outras emendas, e vários empenhos ainda sem OB em 2026. Com isso, não foi possível isolar a diferença (R$ 19.495,86) em empenho ou documento específico.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202571070007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202571070007 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Obter da CGU o RAP pago por empenho; conferir as parcelas das OBs compartilhadas (por exemplo, 2026OB000308, 2026OB006194, 2026OB004425).",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202437100002": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 198.917,40 (pago R$ 134.149,40; RAP pagos R$ 64.768,00); documentos de pagamento somam R$ 193.049,40; diferença -R$ 5.868,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O pago de 2024 fecha com os documentos (R$ 134.149,40). RAP inscrito e pago na fonte: R$ 64.768,00, que é a soma de três empenhos da UG 160044 (23º Batalhão de Caçadores) de dezembro de 2024: 2024NE000914 (R$ 58.900,00, pago pela OB do arquivo), 2024NE000917 (R$ 5.358,00) e 2024NE000943 (R$ 510,00). Os dois últimos somam R$ 5.868,00, exatamente a diferença, e não têm OB nos documentos relacionados da API. Os documentos posteriores deles são: para o NE000917, a nota de sistema 160044000012025NS000203 (05/02/2025); para o NE000943, a liquidação 160044000012025NS000138 (31/01/2025, nota fiscal de material de almoxarifado) e a nota de sistema 160044000012025NS000198 (05/02/2025). As duas notas de sistema registram \"transferência de saldo da UG 160044 p/ 160045, em virtude da perda de autonomia administrativa do 23º BC\", que passa a ser vinculado administrativamente à \"B ADM GU F\" (UG 160045), conforme a Portaria SEF/C Ex 269, de 09/08/2024. Os documentos relacionados dessas notas listam empenhos sucessores na UG 160045 (série 2024NE8000xx), sem data e com valor zerado na API.",
+      "causa": "Transferência de saldo entre unidades gestoras: em 05/02/2025, os saldos dos empenhos 2024NE000917 e 2024NE000943 passaram da UG 160044 para a UG 160045 (notas de sistema 2025NS000203 e NS000198, Portaria SEF/C Ex 269/2024). A fonte conta R$ 5.868,00 como RAP pago da emenda; esse pagamento ocorreu por empenhos sucessores da UG 160045, que não aparecem vinculados ao código da emenda nos arquivos de documentos. A diferença coincide ao centavo com os dois empenhos transferidos.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202437100002 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202437100002 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Nota de sistema 160044000012025NS000203 (05/02/2025), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 2",
+        "Nota de sistema 160044000012025NS000198 (05/02/2025), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 2",
+        "Nota 160044000012025NS000138 (31/01/2025), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar na UG 160045 as OBs dos empenhos sucessores (série 2024NE8000xx) correspondentes a 2024NE000917 e 2024NE000943.",
+      "valor_explicado_centavos": 586800,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202140550002": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 98.440,74 (pago R$ 46.239,63; RAP pagos R$ 52.201,11); documentos de pagamento somam R$ 98.436,06; diferença -R$ 4,68. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Diferença de R$ 4,68, toda no RAP pago (2022). O arquivo coincide documento a documento com os documentos relacionados da API (19 empenhos da UG 160044). Só um empenho não está quitado nos documentos: 160044000012021NE000360 (serviço gráfico, R$ 135,00), pago pela OB 160044000012022OB800039 de R$ 130,32 (04/03/2022). A diferença entre o empenho e a OB (R$ 4,68) é exatamente a diferença: a fonte conta o empenho como integralmente pago. Os documentos relacionados ao empenho são apenas duas notas de liquidação (2021NS002444 e NS002575) e essa OB, e não há DF/DR de retenção vinculado. A liquidação 160044000012021NS002444 (08/12/2021) registra empresa optante pelo Simples Nacional, o que torna improvável retenção federal; a origem dos R$ 4,68 não foi identificada. O empenho foi inscrito em RAP processado (160044000012021NS002575).",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202140550002 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202140550002 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "OB 160044000012022OB800039 (04/03/2022), Portal da Transparência — API de dados /despesas/documentos",
+        "Notas 160044000012021NS002444 e NS002575, Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Verificar se houve retenção de ISS ou outro documento de R$ 4,68 no empenho 2021NE000360 (UG 160044) sem vínculo com a emenda.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202644130007": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 235.957,12 (pago R$ 235.957,12; RAP pagos R$ 0,00); documentos de pagamento somam R$ 229.510,14; diferença -R$ 6.446,98. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Emenda de 2026 em execução (IPHAN); os totais do Portal em 20/11/2026 são iguais ao snapshot. O arquivo coincide documento a documento com os documentos relacionados da API. Pagamentos nos documentos: destaque ao IPHAN 240081000012026NE000147 (R$ 198.979,30 de R$ 208.141,58), diárias 343026404012026NE000093 (R$ 28.520,84 de R$ 30.241,62) e NE000097 (R$ 2.010,00, integral). Os empenhos de passagens 343026404012026NE400104 (R$ 32.249,32) e 343026404012026NE500039 (R$ 20.499,06) têm notas de 23/10/2026 a 11/11/2026 e nenhuma OB relacionada; as notas 343026404012026NS005711 e NS005712 (23/10/2026) são de \"pagamento de instrumento de cobrança\" do contrato de agenciamento de viagens nº 19/2024, ou seja, pagamento por fatura cuja OB não está vinculada ao empenho nos documentos. A fonte informa pago de R$ 235.957,12, R$ 6.446,98 acima dos documentos. A diferença deve estar nas passagens liquidadas, com pagamento sem documento vinculado, mas o valor não foi conferido.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202644130007 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202644130007 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Notas 343026404012026NS005711 e NS005712 (23/10/2026), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 2"
+      ],
+      "proxima_verificacao": "Reconsultar após a próxima atualização: localizar as OBs das liquidações de passagens (343026404012026NS005711, NS005712, NS005713, NS006189, NS006223).",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202141380016": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 249.971,77 (pago R$ 58.915,35; RAP pagos R$ 191.056,42); documentos de pagamento somam R$ 246.430,18; diferença -R$ 3.541,59. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. O pago de 2021 fecha com os documentos (R$ 58.915,35: empenhos 2021NE000881 e NE000882 integralmente pagos por OB+DF+DR+GP). No RAP, o empenho 783601000012021NE000950 (R$ 4.000,00) está quitado, e o 783601000012021NE001370 (obra da capela, R$ 187.056,42) tem pagamentos vinculados de R$ 183.514,83 (2022–2023, OBs e retenções DF/DR/GP). Faltam R$ 3.541,59, exatamente a diferença: a fonte conta o empenho como integralmente pago (RAP pago = R$ 191.056,42 = NE000950 + NE001370). Os documentos relacionados da API para o NE001370 não mostram OB, retenção ou estorno além dos que estão no arquivo; a última liquidação listada é 783601000012022NS005715 (14/12/2022), e os pagamentos de 11/05/2023 aparecem sem nota de liquidação de 2023.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202141380016 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202141380016 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Verificar a liquidação/pagamento de 2023 do empenho 2021NE001370 (UG 783601) e eventual retenção de R$ 3.541,59 não vinculada.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202545430003": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 14.497.991,08 (pago R$ 14.353.012,08; RAP pagos R$ 144.979,00); documentos de pagamento somam R$ 14.457.112,08; diferença -R$ 40.879,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. As transferências especiais (UG 170860) foram pagas em 2025 e fecham com o pago do exercício (R$ 14.353.012,08). O RAP pago da fonte (R$ 144.979,00) é a parcela de custos operacionais na UG 170007 (empenhos de serviços de tecnologia do contrato nº 03/2022). Esse valor é igual a 1% do valor da emenda (R$ 14.497.991,08), truncado nos reais, e não à soma dos dois empenhos da UG 170007 (2025NE000179, R$ 104.087,41, e 2025NE000318, R$ 40.731,12; total R$ 144.818,53). No arquivo, o NE000179 tem a parcela de R$ 104.100,00 da OB 170007000012026OB000173 (11/05/2026, R$ 1.161.473,02, que paga 13 empenhos); o NE000318 tem só a liquidação 170007000012026NS000054 (28/01/2026), sem OB. A diferença (R$ 40.879,00) corresponde à parcela que a fonte conta como paga sem documento: R$ 40.731,12 do NE000318 mais R$ 147,88 de diferença entre o valor de 1% e os empenhos. A liquidação 170007000012026NS000054 (28/01/2026) é a NF de hospedagem de dezembro de 2025 do contrato, comum a 30 empenhos, e seus documentos relacionados não mostram OB.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202545430003 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202545430003 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Documentos relacionados à OB 170007000012026OB000173 (fase 3), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Nota 170007000012026NS000054 (28/01/2026), Portal da Transparência — API de dados /despesas/documentos"
+      ],
+      "proxima_verificacao": "Localizar a OB da liquidação 170007000012026NS000054 (empenho 2025NE000318) e confirmar com a CGU o critério de 1% usado para a parcela de custos operacionais.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202541470003": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 13.507.650,10 (pago R$ 13.497.650,10; RAP pagos R$ 10.000,00); documentos de pagamento somam R$ 13.497.650,10; diferença -R$ 10.000,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. As transferências especiais (UG 170860, 19 empenhos) foram pagas em 2025 e fecham com o pago do exercício. O RAP pago da fonte (R$ 10.000,00) é parcela de custos operacionais. O empenhado da emenda no Portal (R$ 13.633.989,10) inclui R$ 136.339,00 de custos operacionais, isto é, 1% do valor da emenda truncado nos reais: R$ 126.339,00 do empenho 170607000012025NE002058 (inscrito em RAP, sem documentos posteriores) e R$ 10.000,00 atribuídos à UG 170007. O empenho da UG 170007 nos documentos é 2025NE000354, de R$ 9.951,35, com só a liquidação 170007000012026NS000085 (05/02/2026, fatura de hospedagem de dezembro de 2025 do contrato nº 03/2022, comum a 30 empenhos), sem OB relacionada. A fonte conta R$ 10.000,00 como pagos; nenhum documento de pagamento está vinculado.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202541470003 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202541470003 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Nota 170007000012026NS000085 (05/02/2026), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 2"
+      ],
+      "proxima_verificacao": "Localizar a OB da liquidação 170007000012026NS000085 e confirmar com a CGU o critério de 1% da parcela de custos operacionais.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202544910011": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 1.986.000,00 (pago R$ 1.980.000,00; RAP pagos R$ 6.000,00); documentos de pagamento somam R$ 1.980.000,00; diferença -R$ 6.000,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. As transferências especiais (UG 170860: 2025NE005091 e NE006586, total R$ 1.980.000,00) foram pagas em 2025 e fecham com o pago do exercício. O empenhado da emenda no Portal (R$ 2.000.000,00) inclui R$ 20.000,00 de custos operacionais, isto é, 1% do valor da emenda: R$ 14.000,00 do empenho 170607000012025NE002203 (inscrito em RAP, sem documentos posteriores) e R$ 6.000,00 atribuídos à UG 170007. O empenho da UG 170007 nos documentos é 2025NE000369, de R$ 5.785,67, com só a liquidação 170007000012026NS000085 (05/02/2026, comum a 30 empenhos), sem OB relacionada. A fonte conta R$ 6.000,00 como RAP pago; nenhum documento de pagamento está vinculado.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202544910011 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202544910011 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados",
+        "Nota 170007000012026NS000085 (05/02/2026), Portal da Transparência — API de dados /despesas/documentos; documentos-relacionados fase 2"
+      ],
+      "proxima_verificacao": "Localizar a OB da liquidação 170007000012026NS000085 e confirmar com a CGU o critério de 1% da parcela de custos operacionais.",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202571070005": {
+      "grupo": 4,
+      "status": "explicado",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 4.689.972,95 (pago R$ 8.973,00; RAP pagos R$ 4.680.999,95); documentos de pagamento somam R$ 4.722.535,47; diferença R$ 32.562,52. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. A diferença está toda no RAP pago em 2026. Conferência documento a documento dos 123 empenhos com os documentos relacionados da API: todos os documentos do arquivo existem na API, e a soma dos valores da API é R$ 4.689.972,95, igual ao Pago + RAP pagos da fonte. A diferença vem de cinco DFs de 2026 da UG 153045 que aparecem no arquivo por documento com o triplo do valor que têm na API: 153045152242026DF801280 (R$ 1.121,27 na API; R$ 3.363,81 no arquivo), DF801284 (R$ 1.606,18; R$ 4.818,54), DF801287 (R$ 1.495,03; R$ 4.485,09), DF801290 (R$ 3.746,98; R$ 11.240,94) e DF801291 (R$ 8.311,80; R$ 24.935,40). O excesso, duas vezes R$ 16.281,26, é R$ 32.562,52, igual à diferença.",
+      "causa": "Valores de cinco documentos de retenção tributária (DF) registrados em triplo no arquivo CGU EmendasParlamentaresPorDocumento 2026: cada linha traz três vezes o valor que o documento tem no Portal. Descontado o excesso, os documentos fecham ao centavo com Pago + RAP pagos da fonte. Inconsistência do arquivo por documento, mesmo padrão de multiplicação de DF/DR visto em outras emendas; não indica pagamento adicional.",
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202571070005 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202571070005 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Reportar à CGU a multiplicação de valores de DF no arquivo por documento de 2026 (UG 153045).",
+      "valor_explicado_centavos": 3256252,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
+    },
+    "202571070006": {
+      "grupo": 4,
+      "status": "sem_causa",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 2.802.920,34 (pago R$ 0,00; RAP pagos R$ 2.802.920,34); documentos de pagamento somam R$ 2.798.909,34; diferença -R$ 4.011,00. Os totais e a lista de documentos da emenda no Portal (API, consulta em 20/11/2026) são idênticos ao snapshot. Sem pagamento no exercício de 2025; a diferença está toda no RAP pago em 2026 (R$ 4.011,00 a mais na fonte). O arquivo coincide documento a documento com os documentos relacionados da API (151 empenhos de 23 UGs de universidades e institutos federais), sem DF/DR em dobro. Há documentos de uma UG pagando empenhos de outra (por exemplo, a UG 158133 tem R$ 207.468,80 em documentos de pagamento para R$ 34.300,00 empenhados) e notas de sistema na fase de pagamento compartilhadas por dois empenhos (UGs 158313 e 158315). Isso impede isolar a diferença em empenho específico. No Portal, o empenhado da emenda (R$ 3.267.632,10) é menor que a soma dos empenhos nos documentos (R$ 3.285.838,09), o que indica anulações não refletidas no valor dos documentos de empenho.",
+      "causa": null,
+      "fontes": [
+        "CGU EmendasParlamentares.csv (snapshot ed93842c)",
+        "CGU EmendasParlamentaresPorDocumento 2020–2026 (staging cgu_documentos_ativos)",
+        "Portal da Transparência — API de dados /emendas?codigoEmenda=202571070006 (20/11/2026)",
+        "Portal da Transparência — API de dados /emendas/documentos/202571070006 (20/11/2026)",
+        "Documentos relacionados aos empenhos da emenda (fase 1), Portal da Transparência — API de dados /despesas/documentos-relacionados"
+      ],
+      "proxima_verificacao": "Obter da CGU o RAP pago por empenho; conferir os empenhos com saldo e os pagamentos cruzados entre UGs (por exemplo, 158133 e 158953).",
+      "valor_explicado_centavos": null,
+      "analista": "Claude (agentes de análise com a API de dados do Portal)",
+      "revisor": null,
+      "data": "2026-11-20"
     }
   }
 }

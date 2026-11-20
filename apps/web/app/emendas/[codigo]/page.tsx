@@ -64,7 +64,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
 
     {caso && <section className="block-gap" aria-labelledby="investigacao">
       <h2 id="investigacao" className="block-title">O que a investigação encontrou</h2>
-      <InfoNote><strong>{caso.status === 'explicado' ? 'Causa encontrada para a falta de documento de pagamento.' : 'Ainda sem explicação documentada.'}</strong> {caso.causa ?? caso.achado}</InfoNote>
+      <InfoNote><strong>{caso.status !== 'explicado' ? 'Ainda sem explicação documentada.' : e.conciliacao.status === 'sem_documentos' ? 'Causa encontrada para a falta de documento de pagamento.' : 'Causa encontrada para a diferença entre as fontes.'}</strong> {caso.causa ?? caso.achado}</InfoNote>
       {caso.causa && <p className="small muted">{caso.achado}</p>}
       <p className="small muted">Análise do RASTRO em {caso.data.split('-').reverse().join('/')}. Fontes: {caso.fontes.map((f, i) => <span key={f}>{i > 0 && '; '}{f.startsWith('http') ? <a href={f} target="_blank" rel="noopener noreferrer">{f.replace(/^https?:\/\//, '')}</a> : f}</span>)}.{caso.proxima_verificacao ? ` Próximo passo: ${caso.proxima_verificacao}` : ''}</p>
     </section>}

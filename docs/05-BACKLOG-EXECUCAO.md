@@ -43,7 +43,7 @@ Evidências e migração do primeiro incremento: `operations/INTEGRIDADE-P0.md`.
 
 ### Ordem de investigação das lacunas — snapshot ed93842c
 
-Fila operacional criada; investigação e revisão humana continuam pendentes. A ausência integral de pagamento documental vem primeiro; as diferenças calculáveis seguem por magnitude, sem tolerância ou dispensa de revisão dos casos menores.
+Investigação concluída em 20/11/2026: 49 casos explicados e 35 sem causa documentada, todos com registro público na ficha da emenda (ver CHANGELOG 0.7.0). A ausência integral de pagamento documental vem primeiro; as diferenças calculáveis seguem por magnitude, sem tolerância ou dispensa de revisão dos casos menores.
 
 | Ordem | Frente | Casos | Próxima ação |
 |---|---|---:|---|
