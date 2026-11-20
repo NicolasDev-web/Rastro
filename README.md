@@ -70,7 +70,7 @@ Investigação cidadã independente com os dados oficiais do snapshot aprovado (
 ```bash
 python pipelines/run.py publicar          # cópia congelada e conferida do pacote ativo
 cd apps/web && node scripts/build-publicado.mjs
-vercel deploy ../../dist/rastro --prod
+vercel deploy ../../dist/rastro --prod --archive=tgz   # um só envio: o plano gratuito limita 5.000 arquivos/dia
 ```
 
 ## Fila local de investigação
