@@ -28,6 +28,14 @@
 - [ ] Validar exclusão de CPF e identificação de PF/empresários individuais em todas as saídas.
 - [ ] Definir monitoramento, backups e plano de recuperação com responsáveis.
 
+## Deploy do site publicado (ADR-015)
+
+- [x] 20/11/2026 — https://rastro-ruby.vercel.app (projeto Vercel `rastro`, deploy estático de `dist/rastro`), código no commit `09388e6`, snapshot `ed93842c`, pacote `ea6ce34de045`. Responsável: revisor do projeto.
+- [x] Smoke test em produção: `scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado` — 28 telas (1440 e 360 px) sem overflow, busca, CSV, rodapé institucional e 404 aprovados; `/componentes` responde 404.
+- [x] Varredura do build: nenhum aviso de demo/validação nem padrão de CPF em 2.149 páginas.
+- [ ] Domínio próprio e verificação de marca (nome RASTRO provisório).
+- [ ] Investigação dos 84 casos da fila (registro em `pipelines/contracts/investigacao_casos.json`), com atualização das fichas e novo deploy.
+
 ## Rollback
 
 Guardar o commit e snapshot da versão anterior. Em falha de build ou interface, republicar o último artefato aprovado. Em falha de dados, retirar os números afetados, sinalizar indisponibilidade e restaurar somente snapshot validado; nunca usar demo silenciosamente em página oficial. Em correção relevante, registrar antes/depois, fonte e data na página afetada. Testar o procedimento antes do lançamento oficial.
