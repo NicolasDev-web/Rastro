@@ -72,3 +72,9 @@ Definir o modo de publicação com aprovação explícita de snapshots/recortes 
 - Corrigido o prefixo indevido no título do relatório resumido; documentação inicial passou a distinguir dados demo da integração local em validação, e evidências anteriores foram identificadas como históricas.
 
 O fechamento técnico preserva o snapshot e o design. Não houve nova aquisição de dados, merge ou deploy; as diferenças e lacunas continuam sem causa confirmada ou aprovação editorial.
+
+### Documento-base complementar do vídeo
+
+`python scripts/generate_base_doc.py` gerou o documento-base de 8 páginas com as capturas da verificação atual. O texto identifica o snapshot `ed93842c`, os grupos de testes e a convenção de Pago + RAP, mantendo pendentes as causas das diferenças e a revisão editorial. A evolução de infraestrutura é apresentada como futura; o checklist de gravação preserva o snapshot revisado.
+
+As 8 páginas foram inspecionadas visualmente; extração de texto, limites de página, termos financeiros e presença das capturas passaram. PDF em `output/pdf/rastro-documento-base.pdf`, renders em `tmp/pdfs/base/` e resultado/checksum em `output/qa/fechamento/pdf.json`. Esses artefatos continuam fora do Git; o gerador e as instruções de reprodução estão versionados. O roteiro complementar de 15 cenas foi preservado.

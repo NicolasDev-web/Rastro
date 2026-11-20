@@ -62,3 +62,11 @@ Documentação e código de exemplo: MIT (ver `LICENSE`). Ilustrações: vetores
 ## Segurança editorial
 
 Não publique acusações automatizadas, etiquetas de culpa, rankings de conduta política nem comparações sem denominadores claros. Toda afirmação verificável deve ter `source_id`, `source_url`, carimbo de extração, metodologia e acesso ao documento original. Evidência ausente não é evidência de irregularidade.
+
+## Materiais internos para vídeo
+
+- Roteiro de 15 cenas: [`docs/editorial/ROTEIRO-VIDEO.md`](docs/editorial/ROTEIRO-VIDEO.md), com PDF local em `output/pdf/rastro-roteiro-video.pdf`.
+- Documento-base complementar: `python scripts/generate_base_doc.py` gera `output/pdf/rastro-documento-base.pdf` e renders para revisão em `tmp/pdfs/base/`. Usa ReportLab, PyMuPDF e FontTools com Brotli, além das fontes locais e capturas em `output/qa/validacao/`.
+- Para atualizar as capturas, iniciar o site local em validação e executar `python scripts/verify_web.py --url http://127.0.0.1:3012 --mode validacao`. O documento usa os números do snapshot `ed93842c`; trocar os dados exige reconferir os textos e números antes de regerar.
+
+Os PDFs, capturas e renders são artefatos locais ignorados pelo Git. Os materiais mantêm o aviso de validação e não representam aprovação de publicação.

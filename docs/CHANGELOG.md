@@ -2,6 +2,7 @@
 
 ## 0.5.2 — revisão da conciliação P0.4
 
+- Documento-base interno do vídeo: gerador versionado, PDF complementar de 8 páginas e capturas reais atualizadas. Definição de Pago/RAP alinhada à ADR-012; testes de pipeline/API/pacote identificados separadamente, infraestrutura futura como evolução e gravação vinculada ao snapshot revisado.
 - Fichas e auditoria compartilham comparação exata de Pago + RAP pagos. Só empenho não é divergência de pagamento; ausência e zero continuam distintos.
 - Recorte CE seleciona códigos, enquanto a comparação documental considera todas as localidades de cada código. Denominadores de pagamento e empenho são independentes.
 - Novo comando `python pipelines/run.py conciliacao`: matriz local JSON/CSV, linhas de origem sem favorecidos e relatório completo das diferenças. O comando `documentos` também gera a auditoria.
