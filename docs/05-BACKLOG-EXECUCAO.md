@@ -28,7 +28,8 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 - [x] P0.1 Isolar snapshots de documentos ativos sem somar versões históricas.
 - [x] P0.2 Preservar valores ausentes nas fichas, conciliações e agregados territoriais.
 - [x] P0.3 Validar e servir exports como pacote imutável consistente (ADR-011).
-- [ ] P0.4 Revisar divergências e interpretação financeira com cobertura/denominadores explícitos.
+- [x] P0.4 Revisão técnica das divergências e interpretação financeira com cobertura/denominadores explícitos (ADR-012).
+- [ ] Gate de publicação: concluir a investigação documental das 73 diferenças e das 11 lacunas com total positivo sem pagamento documental (ou excluir explicitamente esses casos de um recorte aprovado), com registro de revisão humana. A auditoria técnica não aprova os casos.
 - [ ] P1.5 Definir publicação com snapshot aprovado e atualização controlada.
 - [ ] P1.6 Completar fontes, acesso aos documentos e paginação das fichas.
 - [ ] P1.7 Automatizar navegação/mobile no CI (testes de pacote já no CI).

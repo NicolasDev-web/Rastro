@@ -2,6 +2,7 @@
 import argparse
 import csv
 import io
+import hashlib
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -17,13 +18,30 @@ def main():
     out = ROOT / 'output' / 'qa' / args.mode
     out.mkdir(parents=True, exist_ok=True)
     emenda, autor = 'DEMO00000001', 'demo-a'
+    manifest, emendas, dataset = None, {}, None
     if args.mode == 'validacao':
-        emendas = json.loads(sorted((ROOT / 'data/validacao').glob('emendas-*.json'))[-1].read_text(encoding='utf-8'))['emendas']
+        validation = ROOT / 'data/validacao'
+        manifest = json.loads((validation/'active-bundle.json').read_text(encoding='utf-8'))
+        def read_bundle(name):
+            file = validation/manifest['files'][name]['path']
+            assert hashlib.sha256(file.read_bytes()).hexdigest() == manifest['files'][name]['sha256']
+            return json.loads(file.read_text(encoding='utf-8'))
+        emendas = read_bundle('emendas')['emendas']
+        dataset = read_bundle('ce-municipios')
         emenda = next(c for c, e in emendas.items() if e['autor_ficha'] and e['documentos'])
         autor = emendas[emenda]['autor_ficha']
     routes = {'home': '/', 'mapa': '/mapa', 'municipio': '/municipios/2304400', 'emenda': f'/emendas/{emenda}',
               'autor': f'/parlamentares/{autor}', 'autores': '/parlamentares', 'dados': '/dados',
               'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'glossario': '/glossario', 'fluxos': '/fluxos'}
+    state_routes = {}
+    for status, label in [('diverge', 'Pagamentos divergem dos documentos'),
+                          ('sem_documentos', 'Sem documento de pagamento'),
+                          ('indisponivel', 'Conciliação indisponível — valores incompletos')]:
+        code = next((c for c, e in emendas.items() if e['conciliacao']['status'] == status), None)
+        if code:
+            name = 'emenda-' + status
+            routes[name] = f'/emendas/{code}'
+            state_routes[name] = label
     results, errors = [], []
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -39,6 +57,9 @@ def main():
                 overflow = page.evaluate('document.documentElement.scrollWidth > window.innerWidth')
                 assert not overflow, f'Overflow {width}px {route}'
                 text = page.locator('body').inner_text()
+                if name in state_routes:
+                    assert state_routes[name].casefold() in text.casefold(), (name, text)
+                    assert 'pagamentos conferem com os documentos' not in text.casefold()
                 assert ('DADOS OFICIAIS EM VALIDAÇÃO' if args.mode == 'validacao' else 'todos os valores exibidos são fictícios') in text
                 for link in ('/sobre', '/correcoes', '/contato'):
                     assert page.locator(f'footer a[href="{link}"]').count() == 1
@@ -74,7 +95,6 @@ def main():
             rows = list(csv.DictReader(io.StringIO('\n'.join(l for l in content.splitlines() if not l.startswith('#'))), delimiter=';'))
             row = next(r for r in rows if r['codigo_ibge'] == '2304400')
             if args.mode == 'validacao':
-                dataset = json.loads(sorted((ROOT / 'data/validacao').glob('ce-municipios-*.json'))[-1].read_text(encoding='utf-8'))
                 city = next(m for m in dataset['municipalities'] if m['ibge_code'] == '2304400')
                 year = page.evaluate('new URL(location.href).searchParams.get("ano")')
                 expected = city['aplicacao'][year]['pago'] if criterio == 'aplicacao' else city['years'][year]['pago']
@@ -92,7 +112,9 @@ def main():
         assert response.status == 404
         assert not errors, errors
         browser.close()
-    (out / 'resultados.json').write_text(json.dumps({'mode': args.mode, 'pages': results, 'page_errors': errors, 'csv': 'pass', 'keyboard': 'pass', 'missing_route': 404}, indent=2), encoding='utf-8')
+    (out / 'resultados.json').write_text(json.dumps({'mode': args.mode, 'bundle_id': manifest['id'] if manifest else None,
+        'pages': results, 'payment_states_tested': list(state_routes), 'page_errors': errors,
+        'csv': 'pass', 'keyboard': 'pass', 'missing_route': 404}, indent=2), encoding='utf-8')
     print(f'{args.mode}: {len(results)} telas sem overflow; navegação, teclado, CSV e 404 OK')
 
 

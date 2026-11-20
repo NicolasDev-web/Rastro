@@ -21,6 +21,14 @@
 
 **Importante**: não usar fórmula universal `pago/autorizado` para modalidades que não possuem ambos os campos comparáveis no mesmo escopo sem validar.
 
+## Pago total e conciliação (P0.4)
+
+`pago_total = pago + rap_pagos` soma campos da CGU para a comparação operacional com documentos de Pagamento; ambas as parcelas são obrigatórias. Não se somam empenho ou liquidação. A igualdade aritmética não confirma por si a interpretação temporal dos campos.
+
+A diferença assinada é `documentos_pago - pago_total`. Sem documento de Pagamento: `sem_documentos`, valor documental null. Com parcela ausente: `indisponivel`. Comparação exata: `confere` ou `diverge`. Igualdade só com Pago continua divergente do total. Nenhuma tolerância, compensação entre emendas ou deduplicação por valor é aplicada.
+
+A seleção territorial escolhe códigos; a comparação por código considera todas as suas localidades. Os documentos não possuem o mesmo detalhamento das linhas por localidade/classificação. O recorte CE e o universo das fichas não se somam. Porcentagens de igualdade usam o denominador de códigos comparáveis da respectiva fase, com o número de códigos sem documentos e incompletos apresentado separadamente (ADR-012).
+
 ## Conservação de valores
 
 Para cada `source_id,ano,etapa`: agregado publicado deve reconciliar com total oficial (após filtros) ou registrar diferença explicada. Não somar arquivo detalhado com seu próprio total.

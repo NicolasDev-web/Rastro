@@ -25,6 +25,8 @@ Capturas e JSONs em `output/qa/{demo,validacao}/`. Revisão visual: novas págin
 
 ## Reconferência do snapshot ed93842c
 
+**Registro histórico, anterior à revisão P0.4.** As contagens de conciliação e a consulta abaixo não representam a seleção documental ativa atual. Os resultados vigentes são 1.744 fichas iguais, 73 divergentes e 93 sem pagamento documental; consultar `INTEGRIDADE-P0.md` e `reports/revisao-conciliacao-2026-11-19-ed93842c.md`. Consultas financeiras atuais usam `cgu_documentos_ativos`.
+
 - 1.910 emendas com ficha, 1.826 com pagamento igual aos documentos e 84 divergentes.
 - 184 fichas municipais.
 - Aplicação em municípios do CE: 808.529.080.867 centavos (R$ 8.085.290.808,67).

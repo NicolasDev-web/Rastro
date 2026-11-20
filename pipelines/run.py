@@ -8,6 +8,8 @@ Uso (a partir da pasta RASTRO/):
     python pipelines/run.py export     # JSON do modo validação do site
     python pipelines/run.py autores    # Câmara/Senado/Alece, vínculo de autores, fotos e JSON da aba de autores
     python pipelines/run.py documentos # documentos de despesa 2020–2026: conciliação com o arquivo por emenda
+    python pipelines/run.py conciliacao # revisa o staging ativo, sem reler os ZIPs
+    python pipelines/run.py bundle     # valida e ativa pacote consistente
     python pipelines/run.py fichas     # dados das fichas de emenda e de município (modo validação)
     python pipelines/run.py all
 """
@@ -46,6 +48,9 @@ def main(argv: list[str]) -> int:
         elif step == 'fichas':
             from rastro.fichas import run as fichas
             fichas()
+        elif step == 'conciliacao':
+            from rastro.audit_conciliacao import run as audit
+            audit()
         elif step == 'documentos':
             from rastro.documentos import run as documentos
             if documentos() != 0:

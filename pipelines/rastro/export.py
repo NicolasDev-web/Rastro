@@ -58,7 +58,7 @@ def build(con: sqlite3.Connection, entry: dict) -> dict:
         'metrics': list(cgu.METRICS),
         'unit': 'centavos de real (BRL)',
         'rules': [
-            'Empenhado, liquidado e pago não se somam. "pago" (no ano da emenda) + "rap_pagos" (anos seguintes) = pago total — conciliação por emenda e snapshot (SPEC 01, H1).',
+            'Empenhado, liquidado e pago não se somam. "pago" + "rap_pagos" da fonte = pago total (convenção operacional); comparação por emenda e snapshot, com divergências e lacunas explícitas (SPEC 01, P0.4).',
             'Escopo territorial pelo código IBGE da UF e do município, nunca por texto.',
             'Ano sem linhas = null (sem registro), não zero.',
         ],

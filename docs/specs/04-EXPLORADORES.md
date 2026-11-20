@@ -5,6 +5,8 @@ Como cidadão, quero consultar município, período e etapa financeira; como pes
 
 ## Frentes A/B — contrato de fechamento
 
+P0.4: fichas e auditoria usam a mesma comparação exata. Rótulos usam os campos Pago e RAP pagos, sem afirmar que a igualdade comprova a divisão temporal dos campos. Ausência de pagamento documental não é divergência.
+
 P0: `conciliacao.status` inclui `indisponivel` para valores incompletos. Os campos monetários das fichas aceitam null, inclusive o total dos documentos; a interface usa “Sem registro”. A existência de um documento sem valor não autoriza selo de conferência. A carga de validação exige pacote integral validado (ADR-011).
 
 - Critério `emenda`: localidade da própria emenda, preservando os escopos não municipais.
@@ -24,7 +26,7 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 
 ## Etapas e escopos (revisão de 19/11/2026, após inventário da fonte)
 
-- A fonte CGU não traz valor "autorizado". Etapas do explorador: **Empenhado, Liquidado, Pago**. "RAP pagos" aparece à parte e, somado ao "Pago", forma o **pago total** (H1 confirmada pelos documentos de despesa — SPEC 01, incremento 2). Empenhado, liquidado e pago continuam sem soma entre si.
+- A fonte CGU não traz valor "autorizado". Etapas do explorador: **Empenhado, Liquidado, Pago**. "RAP pagos" aparece à parte e, somado ao "Pago", forma o **pago total** (convenção operacional comparada por emenda com documentos — SPEC 01, P0.4). Empenhado, liquidado e pago continuam sem soma entre si.
 - Fora da contagem municipal: **"Ceará — aplicação estadual"** (localidade `CEARÁ (UF)`) e **"Ceará — vários municípios"** (localidade `MÚLTIPLO`). O rótulo "Governo do Estado" deixa de ser usado: a localidade estadual não identifica quem recebeu.
 - Modo `validacao` (ADR-008): dados reais em validação, só local, com aviso e `coverage: unverified`.
 

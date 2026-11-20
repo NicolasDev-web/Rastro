@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 import test_fichas
 from test_documentos import db
-from rastro import documentos, fichas, bundle
+from rastro import documentos, fichas, bundle, audit_conciliacao
 
 
 class IntegrityTests(unittest.TestCase):
@@ -15,6 +15,13 @@ class IntegrityTests(unittest.TestCase):
         mocked = patch.object(fichas, '_authors_with_page', return_value={'DEMO_A':'DEMO_AUTOR'})
         mocked.start()
         self.addCleanup(mocked.stop)
+
+    def test_audit_and_fichas_share_payment_result(self):
+        t = test_fichas.FichasTests(); t.setUp(); self.addCleanup(t.doCleanups)
+        em, _ = fichas.build(t.con, {'raw_sha256':'x','downloaded_at':'2026-11-19'})
+        for record in audit_conciliacao.build(t.con, 1):
+            self.assertEqual(em['emendas'][record['code']]['conciliacao'],
+                             {k: record[k] for k in ('status','documentos_pago')})
 
     def test_historical_documents_are_excluded_everywhere(self):
         t = test_fichas.FichasTests(); t.setUp(); self.addCleanup(t.doCleanups)

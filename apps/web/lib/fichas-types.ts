@@ -24,6 +24,6 @@ export type Municipio = {
 export const CONCILIACAO_LABEL = {
   confere: 'Pagamentos conferem com os documentos',
   diverge: 'Pagamentos divergem dos documentos',
-  sem_documentos: 'Sem documentos de despesa',
+  sem_documentos: 'Sem documento de pagamento',
   indisponivel: 'Conciliação indisponível — valores incompletos',
 } as const;

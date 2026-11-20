@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.2 — revisão da conciliação P0.4
+
+- Fichas e auditoria compartilham comparação exata de Pago + RAP pagos. Só empenho não é divergência de pagamento; ausência e zero continuam distintos.
+- Recorte CE seleciona códigos, enquanto a comparação documental considera todas as localidades de cada código. Denominadores de pagamento e empenho são independentes.
+- Novo comando `python pipelines/run.py conciliacao`: matriz local JSON/CSV, linhas de origem sem favorecidos e relatório completo das diferenças. O comando `documentos` também gera a auditoria.
+- Resultado atual: 1.744 fichas iguais, 73 divergentes, 93 sem pagamento documental. Onze das 93 ausências têm total positivo e integram fila separada de cobertura. Causas das diferenças e lacunas seguem pendentes de revisão; não há aprovação de publicação.
+- Texto financeiro usa os campos da fonte e deixa de apresentar a divisão temporal como comprovada universalmente. Layout preservado. A revisão substitui os percentuais/conclusões de conciliação anteriores, inclusive os registrados historicamente em 0.4.0.
+
 ## 0.5.1 — integridade P0
 
 - Documentos financeiros consultados por seleção ativa de snapshots; histórico preservado sem duplicar somas. Troca transacional após carga completa.

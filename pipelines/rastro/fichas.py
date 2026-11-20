@@ -15,6 +15,7 @@ from . import STAGING_DB, VALIDATION_DIR
 from . import cgu
 from .documentos import relevant_codes, selected_sources
 from .money import total, sql_total
+from .conciliacao import payment
 from .snapshot import latest
 
 FASE_ORDEM = {'Empenho': 0, 'Liquidação': 1, 'Pagamento': 2}
@@ -60,10 +61,8 @@ def build(con: sqlite3.Connection, entry: dict) -> tuple[dict, dict]:
         sums = {m: total(l[f'{m}_cents'] for l in ls) for m in cgu.METRICS}
         pago_total = total([sums['pago'], sums['rap_pagos']])
         ds = docs.get(code, [])
-        doc_pago = total(d['valor_pago_cents'] for d in ds if d['fase'].startswith('Pagamento'))
-        status = ('sem_documentos' if not any(d['fase'].startswith('Pagamento') for d in ds) else
-                  'indisponivel' if doc_pago is None or pago_total is None else
-                  'confere' if doc_pago == pago_total else 'diverge')
+        comparison = payment(sums['pago'], sums['rap_pagos'],
+                             (d['valor_pago_cents'] for d in ds if d['fase'].startswith('Pagamento')))
         recebeu = defaultdict(lambda: {'parcelas': [], 'documentos': 0})
         for d in ds:
             if d['fase'].startswith('Pagamento'):
@@ -78,7 +77,7 @@ def build(con: sqlite3.Connection, entry: dict) -> tuple[dict, dict]:
             'localidades': sorted({(l['localidade'], l['territorial_scope'], l['municipio_ibge']) for l in ls}),
             'funcao': a['funcao'], 'acao': a['acao'],
             **sums, 'pago_total': pago_total,
-            'conciliacao': {'status': status, 'documentos_pago': doc_pago},
+            'conciliacao': {k: comparison[k] for k in ('status', 'documentos_pago')},
             'documentos': sorted(({'data': _iso(d['data_documento']), 'fase': d['fase'], 'documento': d['codigo_documento'],
                                    'valor': d['valor_pago_cents'] if d['fase'].startswith('Pagamento') else d['valor_empenhado_cents'] if d['fase'].startswith('Empenho') else None,
                                    'municipio_aplicacao': d['municipio_aplicacao'], 'uf_aplicacao': d['uf_aplicacao'], 'ibge_aplicacao': d['ibge_aplicacao'],

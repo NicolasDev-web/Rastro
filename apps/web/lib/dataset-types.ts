@@ -49,10 +49,10 @@ export const brl = (cents: number) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(cents / 100);
 export const brlOrMissing = (cents: number | null) => (cents === null ? 'Sem registro' : brl(cents));
 
-/** Pago total = pago no ano da emenda + restos a pagar pagos nos anos seguintes (mesma etapa, anos diferentes).
+/** Pago total = campos Pago + RAP pagos da fonte (convenção operacional).
  *  Conciliação e cobertura devem ser verificadas por snapshot e emenda. */
 export const pagoTotal = (pago: number | null, rapPagos: number | null) => (pago === null || rapPagos === null ? null : pago + rapPagos);
-export const PAGO_TOTAL_NOTE = 'Pago total = pago no ano da emenda + restos a pagar pagos depois. A conciliação com documentos está indicada na ficha e depende da cobertura e do snapshot.';
+export const PAGO_TOTAL_NOTE = 'Pago total = Pago + Restos a pagar pagos informados pela fonte. A conciliação com documentos está indicada na ficha e depende da cobertura e do snapshot.';
 
 // Formatação manual: Intl 'compact' difere entre o ICU do Node e o do navegador e quebra a hidratação.
 export const compactBrl = (cents: number) => {

@@ -20,6 +20,15 @@ PLAN: selecionar hashes ativos dos documentos em tabela própria e consultar uma
 TASKS: P0.1 view/seleção e regressões de reingestão; P0.2 somas estritas e estado indisponível; P0.3 pacote validado no pipeline e carregamento conjunto no servidor.
 
 Aceites: snapshot antigo não dobra somas; erro na carga preserva seleção anterior; null não vira zero nem selo confere; arquivos ausentes/corrompidos/incompatíveis bloqueiam todo o pacote, sem fallback demo. Migração local exige reexecutar documentos e exports antes de ativar o pacote.
+
+### Incremento P0.4 — revisão de conciliação
+
+PLAN: compartilhar a comparação exata de pagamento entre fichas e auditoria. Selecionar emendas pelo recorte CE, mas comparar todas as linhas do código oficial com todos os seus documentos ativos: um código pode atravessar localidades. Separar falta de pagamento, soma incompleta, igualdade e diferença. Conciliação de empenho tem denominador próprio e independe do resultado de pagamento. Sem novos endpoints ou mudança de layout; ajustar o texto financeiro para descrever os campos da fonte sem afirmar divisão temporal não comprovada.
+
+TASKS: comparação pura e regressões; auditoria determinística JSON/CSV sem favorecidos; relatório com os dois universos (recorte CE e todas as fichas), denominadores, diferenças assinadas e hipóteses pendentes; reprocessamento e documentação.
+
+Aceites: emenda só com empenho não é divergência de pagamento; nenhuma parcela ausente vira zero; igualdade apenas com Pago continua divergente de Pago + RAP; os status da auditoria e das fichas coincidem; categorias particionam cada universo; relatório não conclui causa ou irregularidade a partir de diferença. Artefatos identificam snapshot principal, fontes documentais e linhas de origem, sem nomes de favorecidos. Relatórios anteriores são históricos; a revisão atual substitui conclusões numéricas de conciliação, sem alterar a conferência manual assinada.
+
 - Preservar arquivo bruto e tipo original; nunca sobrescrever snapshots.
 - Mapear ID de emenda, exercício, modalidade, autor, favorecido, natureza/etapa de valor.
 - Guardar `source_row_id`; gerar ID técnico se não houver chave, nunca fingir que é oficial.
@@ -94,6 +103,8 @@ Logs de ingestão, checksums, reporte de cobertura, testes automáticos e regist
 
 ## Evidências do incremento 1 (19/11/2026)
 
+Registro histórico: percentuais de conciliação e a interpretação financeira desta execução foram substituídos pela revisão P0.4 e pela ADR-012. O resultado vigente está em `reports/revisao-conciliacao-2026-11-19-ed93842c.md`; a aprovação editorial de publicação continua pendente.
+
 Execução: `python pipelines/run.py all` sobre o snapshot `ed93842c` (CGU, 47,2 MB) e `a7863c87` (IBGE).
 
 | AC | Situação | Evidência |
@@ -122,9 +133,11 @@ Execução: `python pipelines/run.py all` sobre o snapshot `ed93842c` (CGU, 47,2
 
 ## Incremento 2 — documentos de despesa (19/11/2026)
 
+Os números e a conclusão abaixo registram a execução anterior. A seleção ativa de snapshots, a distinção entre ausência e zero e a comparação de todas as localidades foram corrigidas em P0.1–P0.4. Para o resultado atual, consultar `reports/revisao-conciliacao-2026-11-19-ed93842c.md`. A igualdade é evidência numérica por código, não confirmação universal da interpretação temporal dos campos.
+
 Fonte: `emendas-parlamentares-documentos/{ANO}` (2020–2026, 7 ZIPs, 3.610.312 documentos). **O ano do arquivo é o ano do documento**, não da emenda. Contrato congelado em `pipelines/contracts/cgu_documentos.json` (49 colunas, iguais nos 7 anos). Guardados 64.250 documentos ligados ao recorte (emendas com linha no CE ou de autores eleitos pelo CE) ou com aplicação no CE; 1.496 favorecidos mascarados (pessoa física ou nome de empresário individual).
 
-**H1 confirmada:** para cada emenda de 2020–2026 do recorte, a soma dos documentos na fase Pagamento é exatamente **Pago + RAP pagos** em 1.719 de 1.796 emendas (95,7%); entre as 706 com restos a pagar pagos, em 635 (89,9%), e os documentos cobrem 97,1% do valor de RAP pagos. Só 13 emendas batem com "só Pago". Conclusão: "RAP pagos" são pagamentos feitos nos anos seguintes ao da emenda; **pago total = Pago + RAP pagos** (mesma etapa, anos diferentes — não fere a regra 3 da Constituição). As 64 exceções (quase todas com documentos abaixo do RAP pago) ficam listadas no relatório para investigação.
+**Resultado histórico, substituído pela revisão P0.4:** para cada emenda de 2020–2026 do recorte, a soma dos documentos na fase Pagamento é exatamente **Pago + RAP pagos** em 1.719 de 1.796 emendas (95,7%); entre as 706 com restos a pagar pagos, em 635 (89,9%), e os documentos cobrem 97,1% do valor de RAP pagos. Só 13 emendas batem com "só Pago". Conclusão: "RAP pagos" são pagamentos feitos nos anos seguintes ao da emenda; **pago total = Pago + RAP pagos** (mesma etapa, anos diferentes — não fere a regra 3 da Constituição). As 64 exceções (quase todas com documentos abaixo do RAP pago) ficam listadas no relatório para investigação.
 
 **Empenho:** soma dos documentos de empenho = "Valor Empenhado" em 1.675 de 1.796 emendas (93,3%).
 

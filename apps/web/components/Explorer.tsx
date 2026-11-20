@@ -102,7 +102,7 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
           <small>{demo ? 'Valor inventado para testar a apresentação'
             : aplic ? (aplicInfo ? `${aplicInfo.documentos} documentos de pagamento de ${aplicInfo.emendas} emendas. Inclui restos a pagar pagos.` : 'Nenhum pagamento com aplicação neste município para emendas deste ano.')
             : main === null ? 'Nenhuma emenda com este município registrado no ano. Veja o critério “Onde o pagamento foi aplicado”.' : 'Valor oficial em validação: conferido por amostra, ainda sem revisão editorial.'}</small></div>
-        {!aplic && stage === 'pago' && rapPagos !== null && rapPagos > 0 && <p className="rap-note">Restos a pagar pagos nos anos seguintes: <b>{brl(rapPagos)}</b> · <b>pago total: {brlOrMissing(pagoTotal(main, rapPagos))}</b>. {demo ? '' : 'Consulte a conciliação e a cobertura nas fichas das emendas.'}</p>}
+        {!aplic && stage === 'pago' && rapPagos !== null && rapPagos > 0 && <p className="rap-note">Restos a pagar pagos: <b>{brl(rapPagos)}</b> · <b>pago total: {brlOrMissing(pagoTotal(main, rapPagos))}</b>. {demo ? '' : 'Consulte a conciliação e a cobertura nas fichas das emendas.'}</p>}
         <div className="metric-flags"><CoverageFlag value={data.coverage} /></div>
         {syncUrl && <div className="explorer-actions">
           <button type="button" className="chip-button" onClick={copyLink}>{copied ? <Check size={15} aria-hidden="true" /> : <Link2 size={15} aria-hidden="true" />}{copied ? 'Link copiado' : 'Copiar link desta consulta'}</button>
@@ -129,7 +129,7 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
         </div>; })}</div>
       </div>}
     </>}
-    <InfoNote><strong>Aviso metodológico:</strong> empenho, liquidação e pagamento são etapas distintas e não se somam. Os dois critérios de localização são medidas diferentes e também não se somam. {demo ? 'No RASTRO real, números só aparecerão após conciliação documental.' : 'Números conferidos por amostra e conciliados com os documentos de despesa; ainda sem revisão editorial.'} O local de aplicação registrado não prova a entrega da obra ou do serviço.</InfoNote>
+    <InfoNote><strong>Aviso metodológico:</strong> empenho, liquidação e pagamento são etapas distintas e não se somam. Os dois critérios de localização são medidas diferentes e também não se somam. {demo ? 'No RASTRO real, números só aparecerão após conciliação documental.' : 'Conferência amostral realizada; a comparação com documentos inclui divergências e lacunas indicadas nas fichas. Revisão editorial pendente.'} O local de aplicação registrado não prova a entrega da obra ou do serviço.</InfoNote>
     <a className="text-link" href="/dados"><FileSearch size={16} aria-hidden="true" /> Ver fontes e metodologia <ArrowRight size={14} aria-hidden="true" /></a>
   </div>;
 }

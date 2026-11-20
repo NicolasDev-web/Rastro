@@ -39,6 +39,12 @@ Exports financeiros declaram os hashes ativos. `python pipelines/run.py bundle` 
 
 Qualquer parcela financeira ausente torna a soma indisponível. Fichas e conciliação usam esse contrato; zero continua sendo um valor explícito. Isso pode reduzir o número de conciliações classificadas como iguais e exige revisão do novo resultado antes de publicação.
 
+## ADR-012 — Conciliação por código inteiro e cobertura por fase
+
+A seleção CE escolhe códigos com linha no recorte; não restringe as parcelas usadas na comparação com documentos, que estão na granularidade do código oficial inteiro. A auditoria distingue esse universo do conjunto maior de fichas dos autores eleitos pelo CE. `conciliacao.payment` define os mesmos status nas fichas e no relatório, com centavos exatos e soma estrita. Só empenho não comprova pagamento; a conciliação de empenho possui denominador próprio e não depende do resultado de pagamento.
+
+Igualdade apenas com Pago permanece divergência de Pago + RAP. Padrões abaixo/acima/igual só a Pago são descrições numéricas, sem causa automática. O comando de auditoria gera referências às linhas dos snapshots sem identidades de favorecidos. Pago total permanece uma convenção operacional dos campos da fonte; a evidência numérica não confirma universalmente sua divisão temporal. Os 73 casos divergentes e as 11 lacunas com total positivo sem pagamento documental do snapshot atual exigem revisão antes de uma publicação que os inclua.
+
 ## Pendências remanescentes
 
 - Escolha final de provedor SQL/objeto e custo.

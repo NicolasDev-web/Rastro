@@ -18,7 +18,7 @@
    npm run dev
    ```
    Acesse `http://localhost:3000`. O site usa apenas **dados fictícios declarados**.
-5. **Dados reais (em validação):** `python pipelines/run.py all` baixa a CGU, o IBGE e as listas da Câmara/Senado, gera relatórios em `reports/` (cobertura, conferência amostral, vínculo de autores, conciliação com documentos de despesa) e os exports em `data/validacao/`. A planilha de conferência amostral, uma vez gerada, nunca é sobrescrita. Depois, `cd apps/web` e rode `DATA_MODE=validacao npm run dev` (no PowerShell: `$env:DATA_MODE="validacao"; npm run dev`). Nunca publique esse modo.
+5. **Dados reais (em validação):** `python pipelines/run.py all` baixa a CGU, o IBGE e as listas da Câmara/Senado, gera relatórios em `reports/` (cobertura, conferência amostral, vínculo de autores, conciliação com documentos de despesa) e os exports em `data/validacao/`. A planilha de conferência amostral, uma vez gerada, nunca é sobrescrita. Depois, `cd apps/web` e rode `DATA_MODE=validacao npm run dev` (no PowerShell: `$env:DATA_MODE="validacao"; npm run dev`). Nunca publique esse modo. Para revisar o staging ativo sem reler os ZIPs: `python pipelines/run.py conciliacao`; gera relatório completo em `reports/revisao-conciliacao-*.md` e matriz local JSON/CSV com diferenças e lacunas de cobertura.
 6. Para explorar API demonstrativa: `cd services/api && pip install -r requirements.txt && uvicorn app.main:app --reload --port 8000`.
 7. Para validar contrato mínimo do pipeline: `python pipelines/validate/check_fixture.py` a partir da raiz do repositório.
 8. Siga a sequência de specs SDD: `01-dados` → `02-design` → `03-reportagem` → `04-exploradores` → `05-apuracao` → `06-publicacao`.
@@ -48,11 +48,11 @@
 
 ## Limitações honestas do pacote
 
-- O front-end demonstrativo está implementado, mas **não possui integração real com os dados federais**.
-- Os dados CSV/JSON são inteiramente fabricados, inclusive autores anônimos, entidades e valores.
+- O front-end possui integração local com os dados da CGU em **modo validação**, ainda sem publicação oficial ou revisão editorial independente.
+- Os dados do modo demonstração e da prévia offline são inteiramente fabricados; os dados oficiais em validação ficam separados e fora do Git.
 - O arquivo de mapa é uma **ilustração vetorial esquemática** e **não substitui a malha oficial IBGE**.
 - As ilustrações são metáforas esquemáticas desenhadas em código e não devem ser lidas como prova visual de locais ou fatos políticos.
-- Não foi possível executar `npm install` / build completo nesta sessão sem acesso às dependências; os arquivos precisam passar por build, lint e testes em um ambiente conectado antes da implantação.
+- Build demonstrativo, testes e navegação foram verificados; comandos, resultados e limites estão em [`docs/operations/INTEGRIDADE-P0.md`](docs/operations/INTEGRIDADE-P0.md).
 - Não inclua os dados simulados em um deploy que possa ser confundido com uma publicação jornalística oficial.
 
 ## Licenciamento e autoria
