@@ -12,7 +12,9 @@ export function getInvestigacao(): Record<string, CasoInvestigado> {
   try {
     const file = path.resolve(process.cwd(), '../../pipelines/contracts/investigacao_casos.json');
     cache = (JSON.parse(fs.readFileSync(file, 'utf8')).casos ?? {}) as Record<string, CasoInvestigado>;
-  } catch {
+  } catch (e) {
+    // No site publicado, achado ausente é erro de build, não silêncio (auditoria SENTINEL).
+    if (process.env.DATA_MODE === 'publicado') throw new Error(`Registro de investigação ilegível: ${(e as Error).message}`);
     cache = {};
   }
   return cache;

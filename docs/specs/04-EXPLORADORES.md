@@ -70,7 +70,7 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 - [ ] T04.01 Endpoint municipal com filtro e cursor/paginação.
 - [x] T04.02 Normalização de busca e parâmetros de URL (`?municipio=<IBGE>&etapa=<authorized|committed|paid>`).
 - [ ] T04.03 Mapa real IBGE / camadas e tabela alternativa — **tabela feita**; malha IBGE pendente.
-- [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); vínculos revisados por humano: 43 de 43 (`pipelines/contracts/autores_vinculo.json`, revisor revisor do projeto, 19/11/2026; relatório `reports/autores-vinculo-*.md` com a coluna de revisor preenchida). Falta o histórico de partido.
+- [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); vínculos revisados por humano: 43 de 43 (`pipelines/contracts/autores_vinculo.json`, pelo revisor do projeto em 19/11/2026; relatório `reports/autores-vinculo-*.md` com a coluna de revisor preenchida). Falta o histórico de partido.
 - [ ] T04.05 Grafo de evidências documentais — **parcial**: arestas com `status`, `evidence_id` e método (demo).
 - [ ] T04.06 Exportações com provenance — **parcial**: CSV demo com metadados e regras; proveniência real depende de RAS-012.
 - [ ] T04.07 E2E para busca, filtros e acessibilidade.

@@ -47,6 +47,7 @@ def main():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page(viewport={'width': 1440, 'height': 1000}, device_scale_factor=1, reduced_motion='reduce')
         page.on('pageerror', lambda e: errors.append(str(e)))
+        page.on('console', lambda m: errors.append(m.text) if 'Content Security Policy' in m.text or 'Refused to' in m.text else None)
         for width in (1440, 360):
             page.set_viewport_size({'width': width, 'height': 1000 if width == 1440 else 800})
             for name, route in routes.items():

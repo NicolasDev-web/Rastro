@@ -112,7 +112,7 @@ Decidido **pelo código IBGE da UF (`2300000`) e do município**, nunca por text
 - [x] T01.06 Implementar staging e validações de unicidade/valor/data (`pipelines/rastro/load.py`, `db/staging/001_staging.sql`).
 - [x] T01.07 Definir relacionamentos documentados e conciliação — documentos de despesa 2020–2026 × arquivo por emenda (`pipelines/rastro/documentos.py`, `reports/conciliacao-documentos-*.md`).
 - [x] T01.08 Produzir cobertura, exceções e export auditável (`reports/cobertura-cgu-*.md`, `data/validacao/*.json`).
-- [x] T01.09 Teste manual amostral contra interface original e revisão — 10 emendas × 6 medidas conferidas no Portal por revisor do projeto em 19/11/2026 (`reports/conferencia-amostral-2026-11-19-ed93842c.md`, assinado).
+- [x] T01.09 Teste manual amostral contra interface original e revisão — 10 emendas × 6 medidas conferidas no Portal pelo revisor do projeto em 19/11/2026 (`reports/conferencia-amostral-2026-11-19-ed93842c.md`, assinado).
 
 ## Evidências necessárias
 Logs de ingestão, checksums, reporte de cobertura, testes automáticos e registro de conferência amostral assinado pelo revisor.

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.1 — auditoria de segurança e privacidade (SENTINEL)
+
+- Sem segredo vazado e sem achado crítico ou alto. A chave da API do Portal fica só no `.env` local e nunca foi commitada.
+- Privacidade do mantenedor: o nome dele foi trocado por "revisor do projeto" em contratos, relatórios e docs, e o histórico do Git foi reescrito para usar o e-mail noreply do GitHub como autor. O site publicado só traz o e-mail de contato intencional.
+- Site: cabeçalhos de segurança no `vercel.json` gerado (CSP, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy). A trava de publicação passa a varrer HTML, RSC, JS, JSON e CSS atrás de CPF (completo ou parcial), nome de MEI, e-mails além do contato, caminhos locais, chaves de API e source maps, com 9 testes no CI.
+- `.gitignore` cobre variantes de `.env`, bancos SQLite e credenciais. CI com `permissions: contents: read` e `npm ci`. O build publicado falha se o registro de investigação não puder ser lido.
+- Fica para depois do lançamento: next 16 (postcss com alerta só no build), cruzamento de natureza jurídica no mascaramento de MEI e actions fixadas por SHA.
+
 ## 0.6.0 — modo publicado (investigação cidadã)
 
 - Constituição: o RASTRO passa a ser declarado investigação cidadã independente, sem exigência de revisão editorial externa (Gate D retirado). Aviso permanente de possíveis erros e canal público de correção (`nicolasxavier445@gmail.com`). ADR-015.
@@ -46,7 +54,7 @@
 
 ## 0.4.0 — 19/11/2026 (pendências de dados — em validação)
 
-- **Conferência amostral (T01.09):** 60/60 valores conferem com o Portal (revisor: revisor do projeto). O gerador agora nunca sobrescreve a planilha preenchida (`report.write_once`, com teste) — a planilha assinada chegou a ser sobrescrita por uma execução e foi restaurada integralmente.
+- **Conferência amostral (T01.09):** 60/60 valores conferem com o Portal (pelo revisor do projeto). O gerador agora nunca sobrescreve a planilha preenchida (`report.write_once`, com teste) — a planilha assinada chegou a ser sobrescrita por uma execução e foi restaurada integralmente.
 - **Vínculos de autores:** os 43 confirmados pelo revisor em `pipelines/contracts/autores_vinculo.json`; pendentes resolvidos com a API da Câmara (Dayany Bittencourt = 220659, nome anterior "Dayany do Capitão"; Bosco Costa = 74052, nome civil "João Bosco da Costa").
 - **Alece:** `pipelines/rastro/alece.py` ingere os 54 deputados estaduais em exercício (foto, partido, situação); a aba de autores mostra os estaduais sem valores e explica a falta de fonte estruturada (quadro da LOA só em PDF; relatório da Seplag exigido pela Lei 19.851 inacessível).
 - **Incremento 2 — documentos de despesa:** 3,6 milhões de documentos (2020–2026) conciliados com o arquivo por emenda. H1 confirmada: pago total = Pago + RAP pagos (95,7% das emendas; 97,1% do valor de RAP). O site passa a mostrar "pago total". Achado: R$ 4,65 bi de emendas "vários municípios" têm município de aplicação no CE nos documentos.

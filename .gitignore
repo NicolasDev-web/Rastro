@@ -10,6 +10,12 @@ dist/
 *.tsbuildinfo
 .env
 .env.local
+# Variantes de ambiente e credenciais nunca vão para o Git (auditoria SENTINEL S-05)
+.env*
+!.env.example
+*.sqlite*
+*.db
+credentials*.json
 *.pyc
 __pycache__/
 .venv/
