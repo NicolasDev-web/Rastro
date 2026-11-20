@@ -70,7 +70,7 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 - [ ] T04.01 Endpoint municipal com filtro e cursor/paginação.
 - [x] T04.02 Normalização de busca e parâmetros de URL (`?municipio=<IBGE>&etapa=<authorized|committed|paid>`).
 - [ ] T04.03 Mapa real IBGE / camadas e tabela alternativa — **tabela feita**; malha IBGE pendente.
-- [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); falta revisão humana dos vínculos (`reports/autores-vinculo-*.md`) e histórico de partido.
+- [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); vínculos revisados por humano: 43 de 43 (`pipelines/contracts/autores_vinculo.json`, revisor revisor do projeto, 19/11/2026; relatório `reports/autores-vinculo-*.md` com a coluna de revisor preenchida). Falta o histórico de partido.
 - [ ] T04.05 Grafo de evidências documentais — **parcial**: arestas com `status`, `evidence_id` e método (demo).
 - [ ] T04.06 Exportações com provenance — **parcial**: CSV demo com metadados e regras; proveniência real depende de RAS-012.
 - [ ] T04.07 E2E para busca, filtros e acessibilidade.
@@ -94,7 +94,7 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 |---|---|---|
 | AC09 | Atende | Bancada, comissões, relator-geral e "autor não identificado" só no bloco de autorias coletivas. Teste `test_collective_never_attributed_to_people`. |
 | AC10 | Atende | André Figueiredo (SIAFI 2083): 107 emendas, pago R$ 136.728.811,49 e RAP pagos R$ 39.384.024,72 na ficha = consulta direta ao staging. Teste `test_elected_in_ce_shows_everything`. |
-| AC11 | Atende | 41 vínculos `em_revisao` com selo tracejado; 2 `pendente` (Bosco Costa: código com dois nomes; Dayany Bittencourt: sem candidato) sem foto nem partido. Testes de vínculo e revisão. |
+| AC11 | Atende | 41 vínculos `em_revisao` com selo tracejado; 2 `pendente` (Bosco Costa: código com dois nomes; Dayany Bittencourt: sem candidato) sem foto nem partido. Testes de vínculo e revisão. Em 19/11/2026 os 43 vínculos passaram a `revisado` por revisão humana registrada no JSON, incluindo os 2 pendentes. |
 
 Resultado do snapshot: 43 autores (38 eleitos pelo CE, 5 de outros estados com emendas no CE), 41 retratos oficiais, 6 autorias coletivas. Listagem e fichas sem estouro a 360px.
 

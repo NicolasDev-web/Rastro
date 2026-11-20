@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.4 — revisão dos vínculos de autores
+
+- Os 43 vínculos autor CGU → parlamentar estão revisados por humano (`autores_vinculo.json`). O relatório `reports/autores-vinculo-*.md` passa a mostrar o revisor e a data registrados, em vez de uma caixa fixa `[ ] confere`. Linhas sem revisor identificado continuam abertas. T04.04 fica pendente só pelo histórico de partido.
+- Novo teste de regressão da coluna de revisor. O relatório foi regerado com o staging em leitura somente, sem nova aquisição.
+
 ## 0.5.3 — fila local de investigação
 
 - Novo comando `python pipelines/run.py prioridades`, com staging em leitura somente e verificação de compatibilidade com o pacote ativo. Relatório versionado com as 84 emendas em ordem de trabalho, links às fichas e ações por grupo; matrizes JSON/CSV locais preservam valores ausentes e referências de origem.

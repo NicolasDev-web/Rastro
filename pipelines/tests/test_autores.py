@@ -79,6 +79,15 @@ class AutoresTests(unittest.TestCase):
         self.assertIsNone(links['D001']['casa'])
         self.assertEqual((links['D003']['status'], links['D003']['casa'], links['D003']['id']), ('revisado', 'senado', '9'))
 
+    def test_report_marks_only_signed_reviews(self):
+        links = autores.link_authors(self.con, 1, {
+            'D001': {'status': 'revisado', 'casa': 'camara', 'id': '1', 'revisor': 'Revisor DEMO', 'data': '2026-11-19'},
+            'D003': {'status': 'revisado', 'casa': 'senado', 'id': '9'},  # sem revisor: continua aberta
+        })
+        self.assertEqual(autores.reviewer_cell(links['D001']), '[x] confere — Revisor DEMO (2026-11-19)')
+        self.assertEqual(autores.reviewer_cell(links['D003']), '[ ] confere')
+        self.assertEqual(autores.reviewer_cell(links['D002']), '[ ] confere')  # em_revisao nunca é marcado
+
     def test_elected_in_ce_shows_everything(self):
         a = self.author(self.payload(), 'D001')
         self.assertTrue(a['eleito_ce'])

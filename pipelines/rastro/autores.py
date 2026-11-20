@@ -64,9 +64,11 @@ def link_authors(con: sqlite3.Connection, sid: int, review: dict[str, dict]) -> 
         r = review.get(code)
         if r:  # revisão humana prevalece
             if r.get('status') == 'revisado':
-                link.update(casa=r['casa'], id=str(r['id']), metodo='revisao_humana', status='revisado', nota=r.get('nota'))
+                link.update(casa=r['casa'], id=str(r['id']), metodo='revisao_humana', status='revisado', nota=r.get('nota'),
+                            revisor=r.get('revisor'), data=r.get('data'))
             elif r.get('status') == 'rejeitado':
-                link.update(casa=None, id=None, metodo='revisao_humana', status='rejeitado', nota=r.get('nota'))
+                link.update(casa=None, id=None, metodo='revisao_humana', status='rejeitado', nota=r.get('nota'),
+                            revisor=r.get('revisor'), data=r.get('data'))
         out[code] = link
     return out
 
@@ -180,12 +182,20 @@ def relevant_codes(con: sqlite3.Connection, sid: int, links: dict[str, dict]) ->
     return {code for code, l in links.items() if code in ce or any(cand in eleitos for cand in l['candidatos'])}
 
 
+def reviewer_cell(link: dict) -> str:
+    """Decisão humana registrada no JSON de revisão; sem revisor identificado, a linha continua aberta."""
+    if link['status'] in ('revisado', 'rejeitado') and link.get('revisor'):
+        mark = 'confere' if link['status'] == 'revisado' else 'rejeitado'
+        return f"[x] {mark} — {link['revisor']}" + (f" ({link['data']})" if link.get('data') else '')
+    return '[ ] confere'
+
+
 def write_link_report(links: dict[str, dict], con: sqlite3.Connection, entry: dict, out_dir: Path = REPORTS_DIR) -> Path:
     parl = {(c, i): (n, p, u) for c, i, n, p, u in con.execute('SELECT casa, id, nome, partido_atual, uf FROM parlamentares')}
     rows = []
     for code, l in sorted(links.items(), key=lambda kv: kv[1]['nomes'][0]):
         cand = '; '.join(f'{c} {i} ({parl[(c, i)][0]}, {parl[(c, i)][1]}-{parl[(c, i)][2]})' for c, i in l['candidatos'] if (c, i) in parl) or '—'
-        rows.append([code, ' / '.join(l['nomes']), cand, l['status'], l.get('nota') or '', '[ ] confere'])
+        rows.append([code, ' / '.join(l['nomes']), cand, l['status'], l.get('nota') or '', reviewer_cell(l)])
     counts = defaultdict(int)
     for l in links.values():
         counts[l['status']] += 1
