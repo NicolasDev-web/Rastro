@@ -4,30 +4,40 @@
   "casos": {
     "202127000002": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 1.534.241,66 (pago R$ 0,00; RAP pagos R$ 1.534.241,66). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 8 empenho(s) e 16 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 18/04/2023 e 24/10/2023, notas de sistema oficiais registram migração do saldo para o Ministério das Cidades; transferência dos empenhos de serviço da Caixa para outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 58534 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202127000002"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202127000002",
+        "Nota de sistema 175004000012023NS007905 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS008048 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS008107 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS008282 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006745 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006750 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006752 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006757 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202039610008": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 960.019,00 (pago R$ 0,00; RAP pagos R$ 960.019,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 6 liquidação(ões)/nota(s) de sistema em 2020, 2021, 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 18/04/2023 e 08/11/2023, notas de sistema oficiais registram migração do saldo para o Ministério das Cidades; transferência de saldo para outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 50601 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202039610008"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202039610008",
+        "Nota de sistema 175004000012023NS007940 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS008969 (08/11/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
@@ -35,134 +45,155 @@
     "202137330004": {
       "grupo": 1,
       "status": "sem_causa",
-      "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 0,00; RAP pagos R$ 500.000,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 2 liquidação(ões)/nota(s) de sistema em 2021, 2022, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Aquicultura e Pesca. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
+      "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 0,00; RAP pagos R$ 500.000,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 2 liquidação(ões)/nota(s) de sistema em 2021, 2022, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Aquicultura e Pesca. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade. A API do Portal (20/11/2026) confirma: resto a pagar pago de R$ 500.000,00 sem documento de pagamento ligado à emenda ou ao empenho, e restos inscritos de R$ 1.000.000,00 para um empenho de R$ 500.000,00. Não há nota de transferência de saldo.",
       "causa": null,
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 61459 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202137330004"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202137330004",
+        "Portal da Transparência — API de dados /emendas e /despesas/documentos-relacionados (consulta de 20/11/2026)"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Pedir esclarecimento ao órgão (Secretaria de Aquicultura e Pesca) ou via Lei de Acesso à Informação.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202339270022": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 500.000,00 (pago R$ 500.000,00; RAP pagos R$ 0,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 3 liquidação(ões)/nota(s) de sistema em 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Desenvolvimento Rural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 12/09/2023 e 20/09/2023, notas de sistema oficiais registram movimentações com base na Portaria MAPA nº 609/2023, que geram empenhos novos em outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 70628 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202339270022"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202339270022",
+        "Nota de sistema 420013000012023NS007277 (12/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007421 (14/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008127 (20/09/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202124420012": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 481.104,00 (pago R$ 0,00; RAP pagos R$ 481.104,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 18/04/2023 e 24/10/2023, notas de sistema oficiais registram migração do saldo para o Ministério das Cidades; transferência dos empenhos de serviço da Caixa para outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 60265 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202124420012"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202124420012",
+        "Nota de sistema 175004000012023NS007915 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006745 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202120830008": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 477.712,00 (pago R$ 0,00; RAP pagos R$ 477.712,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 4 empenho(s) e 8 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Caixa Econômica Federal — Programas Sociais (contrato de repasse); MIDR/Administração Geral. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 18/04/2023 e 24/10/2023, notas de sistema oficiais registram migração do saldo para o Ministério das Cidades; transferência dos empenhos de serviço da Caixa para outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 57261 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202120830008"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202120830008",
+        "Nota de sistema 175004000012023NS007898 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 175004000012023NS008383 (18/04/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006750 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 530001000012023NS006759 (24/10/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202240280007": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 407.989,09 (pago R$ 0,00; RAP pagos R$ 407.989,09). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Desenvolvimento Rural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 05/09/2023 e 22/09/2023, notas de sistema oficiais registram movimentações com base na Portaria MAPA nº 609/2023, que geram empenhos novos em outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 66845 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202240280007"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202240280007",
+        "Nota de sistema 420013000012023NS005477 (05/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007688 (14/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008347 (22/09/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202140280003": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 326.562,20 (pago R$ 0,00; RAP pagos R$ 326.562,20). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Desenvolvimento Rural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 05/09/2023 e 22/09/2023, notas de sistema oficiais registram movimentações com base na Portaria MAPA nº 609/2023, que geram empenhos novos em outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 60471 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202140280003"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202140280003",
+        "Nota de sistema 420013000012023NS005450 (05/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS007462 (14/09/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 420013000012023NS008296 (22/09/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202227000011": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 274.500,00 (pago R$ 0,00; RAP pagos R$ 274.500,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Cidadania e Diversidade Cultural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Entre 08/05/2023 e 16/05/2023, notas de sistema oficiais registram sub-rogação do empenho para outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 65114 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202227000011"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202227000011",
+        "Nota de sistema 540026000012023NS000063 (08/05/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 540026000012023NS000085 (16/05/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202241380005": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 200.000,00 (pago R$ 0,00; RAP pagos R$ 200.000,00). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 2 empenho(s) e 4 liquidação(ões)/nota(s) de sistema em 2022, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Agricultura Familiar e Cooperativismo. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Em 27/02/2023, notas de sistema oficiais registram transferência de saldos por fusão/cisão de órgãos, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 65389 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202241380005"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202241380005",
+        "Nota de sistema 130148000012023NS000594 (27/02/2023), Portal da Transparência — API de dados /despesas/documentos",
+        "Nota de sistema 130148000012023NS000595 (27/02/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"
     },
     "202120700019": {
       "grupo": 1,
-      "status": "sem_causa",
+      "status": "explicado",
       "achado": "Fonte informa Pago + RAP pagos de R$ 103.159,36 (pago R$ 0,00; RAP pagos R$ 103.159,36). Os 7 arquivos anuais de documentos da CGU (2020–2026), lidos por inteiro nos ZIPs brutos, têm 1 empenho(s) e 2 liquidação(ões)/nota(s) de sistema em 2021, 2023, e nenhum documento da fase Pagamento para o código. Nenhum documento marcado como convênio. Unidade(s) gestora(s): Secretaria de Cidadania e Diversidade Cultural. As mesmas unidades têm ordens bancárias vinculadas a outras emendas, então a ausência não é sistemática da unidade.",
-      "causa": null,
+      "causa": "Em 16/05/2023, notas de sistema oficiais registram sub-rogação do empenho para outra unidade, na reestruturação dos ministérios de 2023. O saldo do empenho passou para empenhos novos em outra unidade gestora, e os pagamentos feitos por esses empenhos não aparecem vinculados ao código desta emenda nos documentos da CGU. O valor pago informado pela fonte não foi conferido documento a documento.",
       "fontes": [
         "CGU EmendasParlamentares.csv, linha 59647 (snapshot ed93842c)",
         "CGU EmendasParlamentaresPorDocumento 2020–2026 (hashes em document_sources do pacote ativo)",
-        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202120700019"
+        "https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202120700019",
+        "Nota de sistema 540026000012023NS000084 (16/05/2023), Portal da Transparência — API de dados /despesas/documentos"
       ],
-      "proxima_verificacao": "Abrir a aba de documentos da emenda no Portal (ou API de dados) e conferir se há ordem bancária; para contrato de repasse, conferir no Transferegov.",
+      "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
       "revisor": null,
       "data": "2026-11-20"

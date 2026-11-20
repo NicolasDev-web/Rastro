@@ -6,6 +6,7 @@ import { InfoNote } from '../../../components/Ui';
 import { CoverageFlag, DataState } from '../../../components/States';
 import { GlossaryTip } from '../../../components/Glossary';
 import { DATA_MODE, getEmendas } from '../../../lib/dataset';
+import { getInvestigacao } from '../../../lib/investigacao';
 import { CONCILIACAO_LABEL } from '../../../lib/fichas-types';
 import { brl, brlOrMissing, formatDate } from '../../../lib/dataset-types';
 import { portalUrl } from '../../../lib/authors-types';
@@ -31,6 +32,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
   const e = res.data[codigo];
   if (!e) notFound();
   const demo = DATA_MODE === 'demo';
+  const caso = demo ? undefined : getInvestigacao()[e.code];
   const byFase = FASES.map(f => ({ fase: f, docs: e.documentos.filter(d => d.fase.startsWith(f.slice(0, 5))) }));
 
   return <div className="container page-space emenda-page">
@@ -59,6 +61,13 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
       </div>
       <p className="small muted">Empenhado, liquidado e pago são etapas diferentes e não se somam. Pago total = Pago + Restos a pagar pagos da fonte. Documentos de pagamento: {brlOrMissing(e.conciliacao.documentos_pago)}{e.conciliacao.status === 'diverge' ? ' — diferente do pago total; a diferença entre as fontes está registrada para investigação e não indica, por si, irregularidade' : e.conciliacao.status === 'sem_documentos' && (e.pago_total ?? 0) > 0 ? ' — a fonte informa pagamento, mas os arquivos de documentos da CGU de 2020 a 2026 não trazem a ordem bancária desta emenda; a lacuna está registrada para investigação' : ''}.{demo ? ' Valores fictícios.' : ''}</p>
     </section>
+
+    {caso && <section className="block-gap" aria-labelledby="investigacao">
+      <h2 id="investigacao" className="block-title">O que a investigação encontrou</h2>
+      <InfoNote><strong>{caso.status === 'explicado' ? 'Causa encontrada para a falta de documento de pagamento.' : 'Ainda sem explicação documentada.'}</strong> {caso.causa ?? caso.achado}</InfoNote>
+      {caso.causa && <p className="small muted">{caso.achado}</p>}
+      <p className="small muted">Análise do RASTRO em {caso.data.split('-').reverse().join('/')}. Fontes: {caso.fontes.map((f, i) => <span key={f}>{i > 0 && '; '}{f.startsWith('http') ? <a href={f} target="_blank" rel="noopener noreferrer">{f.replace(/^https?:\/\//, '')}</a> : f}</span>)}.{caso.proxima_verificacao ? ` Próximo passo: ${caso.proxima_verificacao}` : ''}</p>
+    </section>}
 
     <section className="block-gap" aria-labelledby="linha-do-tempo">
       <h2 id="linha-do-tempo" className="block-title">Linha do tempo dos documentos</h2>

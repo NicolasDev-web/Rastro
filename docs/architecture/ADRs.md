@@ -57,6 +57,8 @@ A investigação dos casos da fila (ADR-013) é registrada caso a caso em `pipel
 
 Achados técnicos, como a ausência de documento de pagamento nos arquivos anuais, são registrados como `achado`, não como `causa`. A causa exige fonte que a explique (Portal, Transferegov, resposta do órgão).
 
+**Atualização (20/11/2026, ADR-015):** no site publicado, todos os casos continuam visíveis. A ficha da emenda mostra o bloco "O que a investigação encontrou" com o achado, a causa (se documentada), as fontes e a data. O campo `revisor` registra a confirmação humana, mas não condiciona a exibição. Grupo 1: 10 de 11 casos explicados por transferência de saldo a outra unidade na reestruturação dos ministérios de 2023 (notas de sistema consultadas pela API de dados do Portal); 1 segue sem causa.
+
 ## ADR-015 — Modo `publicado`: investigação cidadã em site estático
 
 **Decisão:** `DATA_MODE=publicado` lê o mesmo pacote ativo validado (ADR-011) do snapshot `ed93842c` e gera um site 100% estático (`output: 'export'`), publicado no Vercel. Só o HTML renderizado sobe; staging, ZIPs brutos e exports ficam locais. O aviso global deixa de dizer "validação/não publicar" e passa a dizer que é uma investigação cidadã independente, com dados oficiais da CGU, data de extração e possibilidade de erro, com link para Correções. O contato público é `nicolasxavier445@gmail.com`. Os modos `demo` (fictício, avisos mantidos) e `validacao` (local) continuam existindo.
