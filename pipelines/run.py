@@ -11,6 +11,7 @@ Uso (a partir da pasta RASTRO/):
     python pipelines/run.py conciliacao # revisa o staging ativo, sem reler os ZIPs
     python pipelines/run.py prioridades # ordena lacunas/diferenças da auditoria para investigação local
     python pipelines/run.py bundle     # valida e ativa pacote consistente
+    python pipelines/run.py publicar   # congela cópia verificada do pacote ativo para o site publicado
     python pipelines/run.py fichas     # dados das fichas de emenda e de município (modo validação)
     python pipelines/run.py all
 """
@@ -46,6 +47,9 @@ def main(argv: list[str]) -> int:
         elif step == 'bundle':
             from rastro.bundle import run as bundle
             bundle()
+        elif step == 'publicar':
+            from rastro.publicar import run as publicar
+            return publicar()
         elif step == 'fichas':
             from rastro.fichas import run as fichas
             fichas()

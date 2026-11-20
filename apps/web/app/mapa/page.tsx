@@ -5,7 +5,7 @@ import { DataState, CoverageFlag } from '../../components/States';
 import { GlossaryTip } from '../../components/Glossary';
 import { getDataset } from '../../lib/dataset';
 import Link from 'next/link';
-import { STAGES, STAGE_LABEL, aplicValue, brlOrMissing, formatDate, value, type Dataset } from '../../lib/dataset-types';
+import { STAGES, STAGE_LABEL, officialLabel, aplicValue, brlOrMissing, formatDate, value, type Dataset } from '../../lib/dataset-types';
 
 function DataTable({ data }: { data: Dataset }) {
   const y = data.defaultYear;
@@ -17,7 +17,7 @@ function DataTable({ data }: { data: Dataset }) {
     {!demo && <p className="small muted">{withRecord} de {data.municipalities.length} municípios com registro em {y}. Outros anos: use o explorador acima ou baixe o CSV.</p>}
     <div className="table-wrap">
       <table className="data-table">
-        <caption>Valores {demo ? 'fictícios' : `oficiais em validação (CGU, extraídos em ${formatDate(data.asOf)})`} por etapa, pela localidade da emenda. As colunas são etapas diferentes e <strong>não devem ser somadas</strong>.{hasAplic ? ' A última coluna usa outro critério — o município onde o pagamento foi aplicado, segundo os documentos de despesa — e também não se soma às demais.' : ''}</caption>
+        <caption>Valores {demo ? 'fictícios' : `${officialLabel(data.mode)} (CGU, extraídos em ${formatDate(data.asOf)})`} por etapa, pela localidade da emenda. As colunas são etapas diferentes e <strong>não devem ser somadas</strong>.{hasAplic ? ' A última coluna usa outro critério — o município onde o pagamento foi aplicado, segundo os documentos de despesa — e também não se soma às demais.' : ''}</caption>
         <thead><tr><th scope="col">Destinação</th><th scope="col">Código IBGE</th>{STAGES.map(s => <th key={s} scope="col" className="num">{STAGE_LABEL[s]}</th>)}{hasAplic && <th scope="col" className="num col-aplic">Pago por aplicação</th>}</tr></thead>
         <tbody>
           <tr className="group-row"><th scope="rowgroup" colSpan={3 + STAGES.length}>Municípios</th></tr>
@@ -42,7 +42,7 @@ export default function Mapa() {
 
     <section className="block-gap" aria-labelledby="mapa-geo">
       <h2 id="mapa-geo" className="block-title">Mapa municipal</h2>
-      <DataState kind="partial_coverage" title="Mapa geográfico ainda não carregado">A versão real usará a malha municipal oficial do IBGE, com versão e simplificação documentadas (SPEC 04, T04.03). Até lá, a tabela abaixo é a forma completa e acessível de consultar os valores.</DataState>
+      <DataState kind="partial_coverage" title="Mapa geográfico em preparação">O mapa com a malha municipal oficial do IBGE está em preparação. A tabela abaixo é a forma completa e acessível de consultar os valores.</DataState>
     </section>
 
     {res.ok && <DataTable data={res.data} />}

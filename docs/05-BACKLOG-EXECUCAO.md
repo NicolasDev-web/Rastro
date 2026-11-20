@@ -57,7 +57,7 @@ Lista das 84 emendas, com valores e links locais: [prioridades de conciliação]
 - **Gate A**: parser pode ser repetido e auditado sem alterar resultado.
 - **Gate B**: cada total publicado é reconciliado e tem fonte/denominador.
 - **Gate C**: usuário leigo entende o indicador testado e visualiza a cobertura.
-- **Gate D**: revisão editorial independente antes de qualquer apuração de indivíduos.
+- ~~**Gate D**: revisão editorial independente~~ — removido em 20/11/2026 (investigação cidadã; ver Constituição e ADR-015). Apurações sobre indivíduos continuam exigindo contraditório (regra 7).
 
 ## Entregas semanais sugeridas (sem cronograma fixo)
 

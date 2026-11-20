@@ -57,6 +57,14 @@ A investigação dos casos da fila (ADR-013) é registrada caso a caso em `pipel
 
 Achados técnicos, como a ausência de documento de pagamento nos arquivos anuais, são registrados como `achado`, não como `causa`. A causa exige fonte que a explique (Portal, Transferegov, resposta do órgão).
 
+## ADR-015 — Modo `publicado`: investigação cidadã em site estático
+
+**Decisão:** `DATA_MODE=publicado` lê o mesmo pacote ativo validado (ADR-011) do snapshot `ed93842c` e gera um site 100% estático (`output: 'export'`), publicado no Vercel. Só o HTML renderizado sobe; staging, ZIPs brutos e exports ficam locais. O aviso global deixa de dizer "validação/não publicar" e passa a dizer que é uma investigação cidadã independente, com dados oficiais da CGU, data de extração e possibilidade de erro, com link para Correções. O contato público é `nicolasxavier445@gmail.com`. Os modos `demo` (fictício, avisos mantidos) e `validacao` (local) continuam existindo.
+
+**Por quê:** a Constituição foi atualizada em 20/11/2026: o projeto não depende de revisão editorial externa (Gate D deixa de existir). Os casos da fila de conciliação continuam visíveis nas fichas com a divergência descrita, sem conclusão de causa ou irregularidade (ADR-012/014).
+
+**Consequências:** ADR-008 deixa de proibir deploy de dados reais; o deploy só usa `publicado` ou `demo`, nunca `validacao`. A página de Componentes sai do menu no modo publicado. Atualizar dados exige novo snapshot, `bundle` e novo deploy.
+
 ## Pendências remanescentes
 
 - Escolha final de provedor SQL/objeto e custo.

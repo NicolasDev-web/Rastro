@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { CRITERIO_LABEL, STAGES, STAGE_LABEL, aplicValue, brl, brlOrMissing, compactBrl, datasetCsv, formatDate, isStage, normalize, pagoTotal, value, type Criterio, type Dataset, type Place, type Stage } from '../lib/dataset-types';
+import { CRITERIO_LABEL, STAGES, officialLabel, STAGE_LABEL, aplicValue, brl, brlOrMissing, compactBrl, datasetCsv, formatDate, isStage, normalize, pagoTotal, value, type Criterio, type Dataset, type Place, type Stage } from '../lib/dataset-types';
 import { InfoNote } from './Ui';
 import { DataState, CoverageFlag } from './States';
 import { Search, MapPin, BarChart3, FileSearch, ArrowRight, ArrowUpRight, Download, Link2, Check } from 'lucide-react';
@@ -70,7 +70,7 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
   };
 
   return <div className="explorer" id="explorador">
-    <div className="explorer-top"><div><div className="eyebrow">Explorador territorial / {demo ? 'demonstração' : 'dados oficiais em validação'}</div><h3>{demo ? 'Veja como seria pesquisar sua cidade.' : 'Pesquise sua cidade.'}</h3></div><span className={demo ? 'demo-label' : 'demo-label is-validacao'}>{demo ? 'Exemplo fictício' : 'Em validação'}</span></div>
+    <div className="explorer-top"><div><div className="eyebrow">Explorador territorial / {demo ? 'demonstração' : `dados ${officialLabel(data.mode)}`}</div><h3>{demo ? 'Veja como seria pesquisar sua cidade.' : 'Pesquise sua cidade.'}</h3></div>{data.mode !== 'publicado' && <span className={demo ? 'demo-label' : 'demo-label is-validacao'}>{demo ? 'Exemplo fictício' : 'Em validação'}</span>}</div>
     {hasAplic && <div className="criterio-selector" role="group" aria-label="Critério de localização">
       <span className="criterio-label">Localizar o dinheiro por:</span>
       {(['emenda', 'aplicacao'] as Criterio[]).map(c => <button type="button" key={c} aria-pressed={criterio === c} onClick={() => setCriterio(c)}>{CRITERIO_LABEL[c]}</button>)}
@@ -101,12 +101,12 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
         <div className="main-number" aria-live="polite"><span>{measureLabel} · emendas de {year}</span><strong className={main === null ? 'missing' : undefined}>{brlOrMissing(main)}</strong>
           <small>{demo ? 'Valor inventado para testar a apresentação'
             : aplic ? (aplicInfo ? `${aplicInfo.documentos} documentos de pagamento de ${aplicInfo.emendas} emendas. Inclui restos a pagar pagos.` : 'Nenhum pagamento com aplicação neste município para emendas deste ano.')
-            : main === null ? 'Nenhuma emenda com este município registrado no ano. Veja o critério “Onde o pagamento foi aplicado”.' : 'Valor oficial em validação: conferido por amostra, ainda sem revisão editorial.'}</small></div>
+            : main === null ? 'Nenhuma emenda com este município registrado no ano. Veja o critério “Onde o pagamento foi aplicado”.' : data.mode === 'validacao' ? 'Valor oficial em validação: conferido por amostra, ainda sem revisão editorial.' : `Valor oficial da CGU, extraído em ${formatDate(data.asOf)}.`}</small></div>
         {!aplic && stage === 'pago' && rapPagos !== null && rapPagos > 0 && <p className="rap-note">Restos a pagar pagos: <b>{brl(rapPagos)}</b> · <b>pago total: {brlOrMissing(pagoTotal(main, rapPagos))}</b>. {demo ? '' : 'Consulte a conciliação e a cobertura nas fichas das emendas.'}</p>}
         <div className="metric-flags"><CoverageFlag value={data.coverage} /></div>
         {syncUrl && <div className="explorer-actions">
           <button type="button" className="chip-button" onClick={copyLink}>{copied ? <Check size={15} aria-hidden="true" /> : <Link2 size={15} aria-hidden="true" />}{copied ? 'Link copiado' : 'Copiar link desta consulta'}</button>
-          <button type="button" className="chip-button" onClick={downloadCsv}><Download size={15} aria-hidden="true" />Baixar CSV{demo ? ' (demo)' : ' (em validação)'}</button>
+          <button type="button" className="chip-button" onClick={downloadCsv}><Download size={15} aria-hidden="true" />Baixar CSV{demo ? ' (demo)' : data.mode === 'validacao' ? ' (em validação)' : ''}</button>
         </div>}
       </div>
     </div>
@@ -129,7 +129,7 @@ export function MunicipalityExplorer({ data, compact = false, syncUrl = !compact
         </div>; })}</div>
       </div>}
     </>}
-    <InfoNote><strong>Aviso metodológico:</strong> empenho, liquidação e pagamento são etapas distintas e não se somam. Os dois critérios de localização são medidas diferentes e também não se somam. {demo ? 'No RASTRO real, números só aparecerão após conciliação documental.' : 'Conferência amostral realizada; a comparação com documentos inclui divergências e lacunas indicadas nas fichas. Revisão editorial pendente.'} O local de aplicação registrado não prova a entrega da obra ou do serviço.</InfoNote>
+    <InfoNote><strong>Aviso metodológico:</strong> empenho, liquidação e pagamento são etapas distintas e não se somam. Os dois critérios de localização são medidas diferentes e também não se somam. {demo ? 'No RASTRO real, números só aparecerão após conciliação documental.' : `Conferência amostral realizada; a comparação com documentos inclui divergências e lacunas indicadas nas fichas.${data.mode === 'validacao' ? ' Revisão editorial pendente.' : ''}`} O local de aplicação registrado não prova a entrega da obra ou do serviço.</InfoNote>
     <a className="text-link" href="/dados"><FileSearch size={16} aria-hidden="true" /> Ver fontes e metodologia <ArrowRight size={14} aria-hidden="true" /></a>
   </div>;
 }

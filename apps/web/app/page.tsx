@@ -38,7 +38,7 @@ export default function Home() {
       </Link>)}</div>
     </div></section>
 
-    <section className="container section-space"><SectionHeader eyebrow="Experimente a interface" title="Sua cidade. Os caminhos dos recursos." description={DATA_MODE === 'demo' ? 'O exemplo abaixo usa apenas valores fictícios para demonstrar como será a experiência de consulta após a auditoria das fontes oficiais.' : 'Dados oficiais da CGU em validação: ainda sem conferência amostral nem revisão editorial. Não publicar.'} /><ExplorerSection /></section>
+    <section className="container section-space"><SectionHeader eyebrow={DATA_MODE === 'demo' ? 'Experimente a interface' : 'Consulte seu município'} title="Sua cidade. Os caminhos dos recursos." description={DATA_MODE === 'demo' ? 'O exemplo abaixo usa apenas valores fictícios para demonstrar como será a experiência de consulta após a auditoria das fontes oficiais.' : DATA_MODE === 'validacao' ? 'Dados oficiais da CGU em validação: ainda sem conferência amostral nem revisão editorial. Não publicar.' : 'Valores oficiais da CGU para os 184 municípios do Ceará, de 2020 a 2026, separados por etapa da despesa.'} /><ExplorerSection /></section>
 
     <section className="feature"><div className="container feature-grid">
       <Figure caption="O interior do estado. Cena ilustrativa, não retrata um município específico."><SertaoArt /></Figure>

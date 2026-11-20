@@ -57,7 +57,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
         {[['Empenhado', e.empenhado], ['Liquidado', e.liquidado], ['Pago', e.pago], ['Restos a pagar pagos', e.rap_pagos], ['Pago total', e.pago_total]].map(([l, v]) =>
           <div key={l as string} className={l === 'Pago total' ? 'value-cell is-total' : 'value-cell'}><small>{l}</small><b>{brlOrMissing(v as number | null)}</b></div>)}
       </div>
-      <p className="small muted">Empenhado, liquidado e pago são etapas diferentes e não se somam. Pago total = Pago + Restos a pagar pagos da fonte. Documentos de pagamento: {brlOrMissing(e.conciliacao.documentos_pago)}{e.conciliacao.status === 'diverge' ? ' — diferente do pago total; a divergência está registrada para investigação' : ''}.{demo ? ' Valores fictícios.' : ''}</p>
+      <p className="small muted">Empenhado, liquidado e pago são etapas diferentes e não se somam. Pago total = Pago + Restos a pagar pagos da fonte. Documentos de pagamento: {brlOrMissing(e.conciliacao.documentos_pago)}{e.conciliacao.status === 'diverge' ? ' — diferente do pago total; a diferença entre as fontes está registrada para investigação e não indica, por si, irregularidade' : e.conciliacao.status === 'sem_documentos' && (e.pago_total ?? 0) > 0 ? ' — a fonte informa pagamento, mas os arquivos de documentos da CGU de 2020 a 2026 não trazem a ordem bancária desta emenda; a lacuna está registrada para investigação' : ''}.{demo ? ' Valores fictícios.' : ''}</p>
     </section>
 
     <section className="block-gap" aria-labelledby="linha-do-tempo">

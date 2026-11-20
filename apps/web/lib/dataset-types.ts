@@ -1,7 +1,9 @@
 // Tipos e funções puras do dataset exibido no site — usados no servidor e no cliente.
-// Modos (ADR-008): 'demo' (fictício) e 'validacao' (oficial, em auditoria, só local).
+// Modos (ADR-008/015): 'demo' (fictício), 'validacao' (oficial, só local) e 'publicado' (oficial, site estático público).
 
-export type DataMode = 'demo' | 'validacao';
+export type DataMode = 'demo' | 'validacao' | 'publicado';
+/** Rótulo curto dos valores reais conforme o modo. */
+export const officialLabel = (mode: DataMode) => mode === 'validacao' ? 'oficiais em validação' : 'oficiais';
 export type Metric = 'empenhado' | 'liquidado' | 'pago' | 'rap_inscritos' | 'rap_cancelados' | 'rap_pagos';
 export type Stage = 'empenhado' | 'liquidado' | 'pago';
 export const STAGES: Stage[] = ['empenhado', 'liquidado', 'pago'];
@@ -72,7 +74,7 @@ export function datasetCsv(data: Dataset, year: number, stage: Stage, generatedA
   const aplic = criterio === 'aplicacao';
   const esc = (v: string) => (/[;"\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
   const head = [
-    `# RASTRO — ${data.mode === 'demo' ? 'EXPORTAÇÃO DE DEMONSTRAÇÃO: todos os valores são fictícios' : 'DADOS OFICIAIS EM VALIDAÇÃO: não publicar nem citar como resultado apurado'}`,
+    `# RASTRO — ${data.mode === 'demo' ? 'EXPORTAÇÃO DE DEMONSTRAÇÃO: todos os valores são fictícios' : data.mode === 'validacao' ? 'DADOS OFICIAIS EM VALIDAÇÃO: não publicar nem citar como resultado apurado' : 'investigação cidadã independente com dados oficiais da CGU; pode conter erros de extração ou interpretação'}`,
     `# fonte: ${data.source}${data.sourceUrl ? ` (${data.sourceUrl})` : ''}`,
     `# extraido_em: ${data.asOf ?? '—'}${data.snapshot ? ` · snapshot ${data.snapshot}` : ''}`,
     `# exercicio_da_emenda: ${year}`,

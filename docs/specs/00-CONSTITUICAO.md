@@ -1,5 +1,9 @@
 # Constituição do RASTRO — regras não negociáveis
 
+## Natureza do projeto (decisão de 20/11/2026)
+
+O RASTRO é uma **investigação cidadã independente**: organiza e mostra à população números públicos oficiais sobre emendas destinadas ao Ceará. Não é um veículo de imprensa e não depende de aprovação de redação, investigador ou veículo externo para publicar. A revisão é do próprio autor do projeto, registrada nos arquivos de revisão. Em troca, o site declara em todas as páginas que é uma iniciativa cidadã, que os números vêm de fontes oficiais e podem conter erros de extração ou interpretação, e oferece canal público de correção. As regras abaixo continuam valendo integralmente.
+
 ## Editorial
 
 1. A existência de uma emenda **não** comprova pagamento, aplicação final ou irregularidade.

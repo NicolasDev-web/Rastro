@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 — modo publicado (investigação cidadã)
+
+- Constituição: o RASTRO passa a ser declarado investigação cidadã independente, sem exigência de revisão editorial externa (Gate D retirado). Aviso permanente de possíveis erros e canal público de correção (`nicolasxavier445@gmail.com`). ADR-015.
+- `DATA_MODE=publicado`: site 100% estático lido da cópia congelada `data/publicado/` (`python pipelines/run.py publicar`, com SHA-256 conferido contra o pacote ativo). Faixa global, metadados, rodapé, explorador, CSV, fichas, Sobre, Contato e Correções reescritos para o site público; galeria de componentes fora do site publicado. Modo demo mantém todos os avisos de ficção.
+- `node scripts/build-publicado.mjs` gera `dist/rastro` e recusa a publicação se houver aviso de demo/validação ou padrão de CPF no HTML. `scripts/verify_web.py --mode publicado`: 28 telas (1440 e 360 px) sem overflow, CSV, busca e 404 aprovados.
+- Fichas sem documento de pagamento explicam a lacuna encontrada nos arquivos da CGU; fichas divergentes deixam explícito que diferença não indica irregularidade.
+
 ## 0.5.4 — revisão dos vínculos de autores
 
 - Os 43 vínculos autor CGU → parlamentar estão revisados por humano (`autores_vinculo.json`). O relatório `reports/autores-vinculo-*.md` passa a mostrar o revisor e a data registrados, em vez de uma caixa fixa `[ ] confere`. Linhas sem revisor identificado continuam abertas. T04.04 fica pendente só pelo histórico de partido.

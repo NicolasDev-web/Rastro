@@ -8,7 +8,7 @@ import { CoverageFlag, DataState } from '../../../components/States';
 import { GlossaryTip } from '../../../components/Glossary';
 import { getAuthors, getEmendas } from '../../../lib/dataset';
 import { CASA_LABEL, LINK_LABEL, ROLE_LABEL, portalUrl } from '../../../lib/authors-types';
-import { PAGO_TOTAL_NOTE, STAGES, STAGE_LABEL, brlOrMissing, formatDate, pagoTotal } from '../../../lib/dataset-types';
+import { PAGO_TOTAL_NOTE, STAGES, officialLabel, STAGE_LABEL, brlOrMissing, formatDate, pagoTotal } from '../../../lib/dataset-types';
 
 export const dynamicParams = false;
 
@@ -62,7 +62,7 @@ export default async function AutorPage({ params }: { params: Promise<{ id: stri
     <section className="block-gap" aria-labelledby="por-ano">
       <h2 id="por-ano" className="block-title">Por ano da emenda</h2>
       <div className="table-wrap"><table className="data-table">
-        <caption>Valores {demo ? 'fictícios' : `oficiais em validação (CGU, extraídos em ${formatDate(res.data.asOf)})`}. Empenhado, liquidado e pago não se somam. {PAGO_TOTAL_NOTE}</caption>
+        <caption>Valores {demo ? 'fictícios' : `${officialLabel(res.data.mode)} (CGU, extraídos em ${formatDate(res.data.asOf)})`}. Empenhado, liquidado e pago não se somam. {PAGO_TOTAL_NOTE}</caption>
         <thead><tr><th scope="col">Ano</th><th scope="col" className="num">Emendas</th>{cols.map(c => <th key={c} scope="col" className="num">{colLabel(c)}</th>)}<th scope="col" className="num">Pago total</th></tr></thead>
         <tbody>{res.data.years.map(y => { const v = a.years[String(y)]; return <tr key={y}><th scope="row">{y}</th><td className="num">{v ? v.emendas : '—'}</td>{cols.map(c => <td key={c} className={!v || v[c] === null ? 'num missing' : 'num'}>{v ? brlOrMissing(v[c]) : 'Sem registro'}</td>)}<td className={v ? 'num' : 'num missing'}>{v ? brlOrMissing(pagoTotal(v.pago, v.rap_pagos)) : 'Sem registro'}</td></tr>; })}</tbody>
         <tfoot><tr><th scope="row">2020–2026</th><td className="num">{a.total.emendas}</td>{cols.map(c => <td key={c} className="num">{brlOrMissing(a.total[c])}</td>)}<td className="num">{brlOrMissing(pagoTotal(a.total.pago, a.total.rap_pagos))}</td></tr></tfoot>

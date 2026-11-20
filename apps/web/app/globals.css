@@ -441,6 +441,9 @@ main:focus { outline: none; }
 /* Modo validação (ADR-008): aviso impossível de confundir com a demonstração */
 .global-demo.is-validacao { background: var(--barro); color: var(--paper); }
 .global-demo.is-validacao .demo-dot { background: var(--paper); border-color: var(--paper); }
+.global-demo.is-publicado { background: var(--paper-2); }
+.global-demo.is-publicado .demo-dot { background: var(--cobalt); }
+.global-demo.is-publicado a { color: var(--cobalt-ink); text-decoration: underline; }
 .demo-label.is-validacao { background: var(--barro); color: var(--paper); border-color: var(--barro); }
 .year-selector { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .year-selector button { border: 1.5px solid var(--ink); background: transparent; border-radius: 99px; padding: 4px 11px; font: 500 13px var(--mono); }

@@ -5,15 +5,15 @@ import { FileCheck, HelpCircle, CircleDashed, Link2 } from 'lucide-react';
 
 type EdgeStatus = 'documentado' | 'em_verificacao' | 'nao_identificado';
 const nodes = [
-  { id: 'origem', title: 'Indicação formal', sub: 'Autor fictício A', desc: 'O responsável pela apresentação/documento de indicação tem de ser verificado na fonte oficial.' },
-  { id: 'orgao', title: 'Órgão de execução', sub: 'Órgão fictício B', desc: 'A origem orçamentária e a unidade gestora dependem da fonte original.' },
-  { id: 'beneficiario', title: 'Beneficiário', sub: 'Município fictício C', desc: 'Beneficiário identificado não significa que toda a execução física ocorra no mesmo município.' },
-  { id: 'documento', title: 'Documento de despesa', sub: 'Documento fictício D', desc: 'É a evidência que pode ligar execução e beneficiário; não é automaticamente contrato ou obra entregue.' },
+  { id: 'origem', title: 'Indicação formal', sub: 'Autor A', desc: 'O responsável pela apresentação/documento de indicação tem de ser verificado na fonte oficial.' },
+  { id: 'orgao', title: 'Órgão de execução', sub: 'Órgão B', desc: 'A origem orçamentária e a unidade gestora dependem da fonte original.' },
+  { id: 'beneficiario', title: 'Beneficiário', sub: 'Município C', desc: 'Beneficiário identificado não significa que toda a execução física ocorra no mesmo município.' },
+  { id: 'documento', title: 'Documento de despesa', sub: 'Documento D', desc: 'É a evidência que pode ligar execução e beneficiário; não é automaticamente contrato ou obra entregue.' },
 ];
-/** Cada aresta tem evidence_id, method e status (SPEC 04 → Regras). Todos fictícios. */
+/** Cada aresta tem evidence_id, method e status (SPEC 04 → Regras). Exemplo explicativo, sem dados reais. */
 const edges: { status: EdgeStatus; evidence: string; method: string }[] = [
-  { status: 'documentado', evidence: 'DEMO-EV-001', method: 'Código da emenda presente nos dois registros' },
-  { status: 'em_verificacao', evidence: 'DEMO-EV-002', method: 'Correspondência candidata aguardando revisão humana' },
+  { status: 'documentado', evidence: 'EX-001', method: 'Código da emenda presente nos dois registros' },
+  { status: 'em_verificacao', evidence: 'EX-002', method: 'Correspondência candidata aguardando revisão humana' },
   { status: 'nao_identificado', evidence: '—', method: 'Nenhum documento liga os dois pontos; a lacuna fica visível' },
 ];
 const STATUS: Record<EdgeStatus, { label: string; Icon: typeof FileCheck }> = {
@@ -27,7 +27,7 @@ export function MoneyFlow() {
   const idx = nodes.findIndex(n => n.id === active);
   const node = nodes[idx];
   const inEdge = idx > 0 ? edges[idx - 1] : null;
-  return <div className="flow-demo"><span className="eyebrow">Fluxo de recursos · exemplo fictício</span>
+  return <div className="flow-demo"><span className="eyebrow">Fluxo de recursos · exemplo ilustrativo</span>
     <div className="flow-track">{nodes.map((n, i) => <div key={n.id} className="flow-step">
       <button type="button" className={n.id === active ? 'flow-node active' : 'flow-node'} onClick={() => setActive(n.id)} aria-pressed={n.id === active}><span className="flow-counter">{String(i + 1).padStart(2, '0')}</span><strong>{n.title}</strong><small>{n.sub}</small></button>
       {i < nodes.length - 1 && <EdgeChip status={edges[i].status} />}
@@ -40,9 +40,9 @@ export function MoneyFlow() {
         <div><dt>evidence_id</dt><dd>{inEdge.evidence}</dd></div>
         <div><dt>Método</dt><dd>{inEdge.method}</dd></div>
       </dl>}
-      <span className="small muted"><Link2 size={15} aria-hidden="true" /> Nenhum vínculo documental real carregado — não é um dado jornalístico.</span>
+      <span className="small muted"><Link2 size={15} aria-hidden="true" /> Diagrama explicativo, com nomes genéricos. Os registros reais de cada emenda estão nas fichas.</span>
     </div></div>
-    <InfoNote>Numa publicação real, cada conexão só aparece como documentada após conferência de identificador ou registro. Ausência de vínculo não prova irregularidade.</InfoNote>
+    <InfoNote>No RASTRO, uma conexão só aparece como documentada após conferência de identificador ou registro. Ausência de vínculo não prova irregularidade.</InfoNote>
   </div>;
 }
 

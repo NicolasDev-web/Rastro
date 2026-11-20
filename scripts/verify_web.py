@@ -13,14 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--url', default='http://localhost:3001')
-    parser.add_argument('--mode', choices=['demo', 'validacao'], default='validacao')
+    parser.add_argument('--mode', choices=['demo', 'validacao', 'publicado'], default='validacao')
     args = parser.parse_args()
     out = ROOT / 'output' / 'qa' / args.mode
     out.mkdir(parents=True, exist_ok=True)
     emenda, autor = 'DEMO00000001', 'demo-a'
     manifest, emendas, dataset = None, {}, None
-    if args.mode == 'validacao':
-        validation = ROOT / 'data/validacao'
+    if args.mode != 'demo':
+        validation = ROOT / ('data/publicado' if args.mode == 'publicado' else 'data/validacao')
         manifest = json.loads((validation/'active-bundle.json').read_text(encoding='utf-8'))
         def read_bundle(name):
             file = validation/manifest['files'][name]['path']
@@ -60,7 +60,9 @@ def main():
                 if name in state_routes:
                     assert state_routes[name].casefold() in text.casefold(), (name, text)
                     assert 'pagamentos conferem com os documentos' not in text.casefold()
-                assert ('DADOS OFICIAIS EM VALIDAÇÃO' if args.mode == 'validacao' else 'todos os valores exibidos são fictícios') in text
+                assert {'validacao': 'DADOS OFICIAIS EM VALIDAÇÃO', 'publicado': 'Investigação cidadã independente', 'demo': 'todos os valores exibidos são fictícios'}[args.mode] in text
+                if args.mode == 'publicado':
+                    assert not any(w in text for w in ('VALIDAÇÃO', 'NÃO PUBLICAR', 'fictíci', 'PROTÓTIPO')), route
                 for link in ('/sobre', '/correcoes', '/contato'):
                     assert page.locator(f'footer a[href="{link}"]').count() == 1
                 page.screenshot(path=str(out / f'{name}-{width}.png'))
@@ -94,7 +96,7 @@ def main():
             assert f'# criterio: {label}' in content
             rows = list(csv.DictReader(io.StringIO('\n'.join(l for l in content.splitlines() if not l.startswith('#'))), delimiter=';'))
             row = next(r for r in rows if r['codigo_ibge'] == '2304400')
-            if args.mode == 'validacao':
+            if args.mode != 'demo':
                 city = next(m for m in dataset['municipalities'] if m['ibge_code'] == '2304400')
                 year = page.evaluate('new URL(location.href).searchParams.get("ano")')
                 expected = city['aplicacao'][year]['pago'] if criterio == 'aplicacao' else city['years'][year]['pago']

@@ -30,7 +30,7 @@ export function DataState({ kind, title, children, action }: { kind: DataStateKi
 
 /** Selo de cobertura. Cobertura descreve o dado — nunca a conduta de alguém. */
 export type Coverage = 'complete' | 'partial' | 'unverified' | 'demo';
-const COVERAGE: Record<Coverage, string> = { complete: 'Completa no recorte', partial: 'Parcial', unverified: 'Não verificada', demo: 'Demonstração' };
+const COVERAGE: Record<Coverage, string> = { complete: 'Completa no recorte', partial: 'Parcial', unverified: 'sem auditoria externa', demo: 'Demonstração' };
 
 export function CoverageFlag({ value }: { value: Coverage }) {
   return <span className={`coverage-flag coverage-${value}`}><i aria-hidden="true" />Cobertura: {COVERAGE[value]}</span>;

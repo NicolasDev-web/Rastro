@@ -16,7 +16,7 @@ export default function Autores() {
     </PageHero>
 
     {!res.ok ? <DataState kind="error" title="Dados de autores indisponíveis">{res.error}</DataState> : <>
-      <InfoNote><strong>Como ler:</strong> autor formal segundo o SIAFI. Indicar não é pagar; pagar não é entregar. Sem juízo de conduta. {res.data.mode === 'validacao' ? `Partido e foto vêm da Câmara e do Senado (consulta de ${formatDate(res.data.partiesAsOf ?? undefined)}); o partido é o atual, não o da época da emenda. O vínculo entre o autor da CGU e o parlamentar foi feito por nome e ainda passa por revisão humana.` : 'Perfis fictícios para testar a interface.'}</InfoNote>
+      <InfoNote><strong>Como ler:</strong> autor formal segundo o SIAFI. Indicar não é pagar; pagar não é entregar. Sem juízo de conduta. {res.data.mode !== 'demo' ? `Partido e foto vêm da Câmara e do Senado (consulta de ${formatDate(res.data.partiesAsOf ?? undefined)}); o partido é o atual, não o da época da emenda. O vínculo entre o autor da CGU e o parlamentar foi feito por nome e conferido manualmente.` : 'Perfis fictícios para testar a interface.'}</InfoNote>
 
       <AuthorsBrowser demo={res.data.mode === 'demo'} authors={res.data.authors.map<AuthorCard>(({ id, display_name, casa, partido_atual, uf, eleito_ce, scope, link, photo, photo_credit, total }) => ({ id, display_name, casa, partido_atual, uf, eleito_ce, scope, link, photo, photo_credit, total }))} />
 

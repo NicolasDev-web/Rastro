@@ -63,6 +63,16 @@ Documentação e código de exemplo: MIT (ver `LICENSE`). Ilustrações: vetores
 
 Não publique acusações automatizadas, etiquetas de culpa, rankings de conduta política nem comparações sem denominadores claros. Toda afirmação verificável deve ter `source_id`, `source_url`, carimbo de extração, metodologia e acesso ao documento original. Evidência ausente não é evidência de irregularidade.
 
+## Site publicado
+
+Investigação cidadã independente com os dados oficiais do snapshot aprovado (ADR-015). Para gerar e publicar:
+
+```bash
+python pipelines/run.py publicar          # cópia congelada e conferida do pacote ativo
+cd apps/web && node scripts/build-publicado.mjs
+vercel deploy ../../dist/rastro --prod
+```
+
 ## Fila local de investigação
 
 Com o staging e o pacote ativo compatíveis, `python pipelines/run.py prioridades` gera o ranking de trabalho em `reports/prioridades-conciliacao-*.md`, com links às fichas locais, e matrizes JSON/CSV em `data/validacao/`. A fila prioriza cobertura ausente e diferenças por magnitude, sem alterar os dados ou aprovar publicação. Ver [ordem no backlog](docs/05-BACKLOG-EXECUCAO.md#ordem-de-investigação-das-lacunas--snapshot-ed93842c).

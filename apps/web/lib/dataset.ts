@@ -8,8 +8,13 @@ import { demoEmendas, demoMunicipios } from './demo-fichas';
 import type { Emenda, Municipio } from './fichas-types';
 import type { Author, AuthorsData, AuthorsResult, Collective, StateDeputy } from './authors-types';
 
-export const DATA_MODE: DataMode = process.env.DATA_MODE === 'validacao' ? 'validacao' : 'demo';
-const VALIDATION_DIR = path.resolve(process.cwd(), '../../data/validacao');
+const ENV_MODE = process.env.DATA_MODE;
+export const DATA_MODE: DataMode = ENV_MODE === 'validacao' || ENV_MODE === 'publicado' ? ENV_MODE : 'demo';
+// Publicado lê a cópia congelada e conferida por hash (python pipelines/run.py publicar, ADR-015).
+/** No site publicado, o aviso técnico do export é substituído pelo aviso de investigação cidadã (ADR-015). */
+const PUBLISHED_WARNING = 'Investigação cidadã independente com dados oficiais da CGU. Pode conter erros de extração ou interpretação.';
+const warningFor = (raw: string) => DATA_MODE === 'publicado' ? PUBLISHED_WARNING : raw;
+const VALIDATION_DIR = path.resolve(process.cwd(), process.env.RASTRO_DATA_DIR ?? '../../data/validacao'); // definido em next.config.mjs
 let validationCache: ReturnType<typeof loadBundle> | null = null;
 function readValidation() { return validationCache ??= loadBundle(VALIDATION_DIR); }
 
@@ -38,9 +43,9 @@ function loadValidation(): DatasetResult {
     const municipalities: Place[] = raw.municipalities.map(m => ({ id: m.ibge_code, ibge: m.ibge_code, name: m.name, kind: 'municipio', years: m.years, aplicacao: m.aplicacao }));
     const nonMunicipal: Place[] = raw.non_municipal.map(n => ({ id: n.id, name: n.label, kind: n.id, note: n.note, years: n.years }));
     const data: Dataset = {
-      mode: 'validacao',
+      mode: DATA_MODE,
       coverage: 'unverified',
-      warning: raw.warning,
+      warning: warningFor(raw.warning),
       source: raw.source,
       sourceUrl: raw.source_url,
       asOf: raw.snapshot.downloaded_at,
@@ -75,7 +80,7 @@ export function getAuthors(): AuthorsResult {
     const raw = readValidation()['autores'];
     if (raw.kind !== 'VALIDACAO') return { ok: false, error: `Arquivo ${file} não é um export de validação.` };
     const data: AuthorsData = {
-      mode: 'validacao', coverage: 'unverified', warning: raw.warning, source: raw.source,
+      mode: DATA_MODE, coverage: 'unverified', warning: warningFor(raw.warning), source: raw.source,
       asOf: raw.snapshot.downloaded_at, partiesAsOf: raw.parlamentares_as_of, years: raw.years,
       authors: raw.authors as Author[], collective: raw.collective as Collective[],
       stateDeputies: (raw.state_deputies ?? []) as StateDeputy[], stateAsOf: raw.state_deputies_as_of ?? null,
@@ -122,5 +127,5 @@ export function getMunicipios(): FichasResult<Municipio> {
 
 /** Nunca cai para dados demo em silêncio: em modo validação, erro é erro. */
 export function getDataset(): DatasetResult {
-  return DATA_MODE === 'validacao' ? loadValidation() : { ok: true, data: demoDataset };
+  return DATA_MODE === 'demo' ? { ok: true, data: demoDataset } : loadValidation();
 }

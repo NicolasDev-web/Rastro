@@ -2,6 +2,7 @@ node_modules/
 .next/
 .next-preview/
 .next-validacao/
+.next-publicado/
 tmp/
 output/
 dist/
@@ -22,5 +23,6 @@ private/
 # Pipeline de dados reais (ADR-007/008): staging e export em validação nunca vão para o Git
 data/staging/
 data/validacao/
+data/publicado/
 # Retratos oficiais baixados pelo pipeline (crédito Câmara/Senado; snapshot em raw_data/fotos)
 apps/web/public/fotos/

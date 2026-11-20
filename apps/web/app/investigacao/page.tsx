@@ -5,6 +5,7 @@ import { InfoNote, PrimaryLink } from '../../components/Ui';
 import { CongressoArt, DocumentosArt, MapaArt, Figure } from '../../components/Illustrations';
 import { GlossaryTip } from '../../components/Glossary';
 import { DataState } from '../../components/States';
+import { DATA_MODE } from '../../lib/dataset';
 
 const types = [
   { type: 'RP 6', title: 'Individuais', detail: 'Apresentadas por deputados federais ou senadores, sujeitas às regras orçamentárias.' },
@@ -61,7 +62,9 @@ export default function Investigacao() {
             <div className="destino destino-estado"><span className="tiny-code">ESTADUAL</span><strong>Aplicação no estado inteiro</strong><p>Não identifica quem recebeu. Fica separada e só é ligada a um município com documento que comprove o vínculo.</p></div>
             <div className="destino destino-indeterminado"><span className="tiny-code">VÁRIOS MUNICÍPIOS</span><strong>Mais de um município, sem repartição</strong><p>Permanece visível como lacuna, nunca distribuído por estimativa.</p></div>
           </div>
-          <DataState kind="partial_coverage" title="Distribuição real ainda não publicada">Os totais do Ceará por destino só aparecem depois da ingestão e conciliação das fontes oficiais (backlog RAS-014) e da revisão editorial.</DataState>
+          {DATA_MODE === 'demo'
+            ? <DataState kind="partial_coverage" title="Distribuição real ainda não publicada">Os totais do Ceará por destino só aparecem depois da ingestão e conciliação das fontes oficiais (backlog RAS-014) e da revisão editorial.</DataState>
+            : <InfoNote>Os valores reais de cada destino, municipal, estadual e de vários municípios, estão no <Link href="/mapa">explorador e na tabela do mapa</Link>, sempre separados.</InfoNote>}
         </section>
 
         <section id="limites"><span className="section-no">05 / O que podemos comprovar</span><h2>A documentação define a força de cada conclusão.</h2>
@@ -74,7 +77,7 @@ export default function Investigacao() {
           <MoneyFlow />
           <Figure caption="Mesa de apuração: documento, carimbo e lupa. Cena ilustrativa."><DocumentosArt id="cap-documentos" /></Figure>
           <h2 id="sua-cidade">Comece por onde você mora.</h2>
-          <p>Escolha um município da demonstração para ver como a ficha funcionaria antes da entrada dos dados reais auditados.</p>
+          <p>{DATA_MODE === 'demo' ? 'Escolha um município da demonstração para ver como a ficha funcionaria antes da entrada dos dados reais auditados.' : 'Escolha seu município para ver quanto foi empenhado e pago em emendas registradas para ele.'}</p>
           <ExplorerSection compact />
           <div className="block-gap"><PrimaryLink href="/mapa">Abrir o explorador completo</PrimaryLink></div>
           <p className="small muted block-gap">Fontes de partida: <a href="https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares" target="_blank" rel="noreferrer">CGU</a> e <a href="https://api-publica.transferegov.gestao.gov.br/" target="_blank" rel="noreferrer">Transferegov</a>. Termos no <Link href="/glossario">glossário</Link>. Consulte a metodologia antes de comparar valores.</p>

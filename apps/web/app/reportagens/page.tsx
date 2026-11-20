@@ -5,7 +5,7 @@ import { stories } from '../../lib/editorial';
 
 export default function Reportagens() {
   return <div className="container page-space">
-    <SectionHeader eyebrow="Reportagens e pautas" title="Histórias para investigar. Não conclusões antecipadas." description="A primeira peça é um explicador. As demais são pautas editoriais propostas — ainda não apuradas." />
+    <SectionHeader eyebrow="Reportagens e pautas" title="Histórias para investigar. Não conclusões antecipadas." description="A primeira peça é um explicador. As demais são próximas frentes da investigação, ainda em andamento." />
     <div className="story-grid">{stories.map(a => <article key={a.number} className="story-card">
       <Link href={a.link} className="story-card-art" aria-hidden="true" tabIndex={-1}>
         <Art name={a.art} id={`card-${a.art}`} />
@@ -15,7 +15,7 @@ export default function Reportagens() {
         <h3><Link href={a.link}>{a.title}</Link></h3>
         <span className="story-meta">{a.status}</span>
         <p>{a.text}</p>
-        <Link href={a.link} className="text-link">Explorar conceito →</Link>
+        <Link href={a.link} className="text-link">Explorar →</Link>
       </div>
     </article>)}</div>
   </div>;
