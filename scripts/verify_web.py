@@ -36,6 +36,8 @@ def main():
     if args.mode == 'publicado':
         # Ficha com plano de ação e execução declarada no Transferegov (ADR-018): texto livre longo da fonte.
         routes['emenda-transferegov'] = '/emendas/202537330007'
+        # Página de deputado estadual com emendas ligadas pelo nome exato (SPEC 07, incremento 2).
+        routes['deputado-estadual'] = '/estaduais/agenor-neto'
     state_routes = {}
     for status, label in [('diverge', 'Pagamentos divergem dos documentos'),
                           ('sem_documentos', 'Sem documento de pagamento'),

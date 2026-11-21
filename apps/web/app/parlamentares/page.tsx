@@ -6,11 +6,16 @@ import { AuthorPortrait } from '../../components/AuthorPortrait';
 import { DataState, CoverageFlag } from '../../components/States';
 import { GlossaryTip } from '../../components/Glossary';
 import { getAuthors } from '../../lib/dataset';
+import { deputadosLigados, getEstaduais } from '../../lib/estaduais';
+import { estadualHref } from '../../components/Estaduais';
 import type { AuthorCard } from '../../lib/authors-types';
 import { STAGES, STAGE_LABEL, brlOrMissing, formatDate } from '../../lib/dataset-types';
 
 export default function Autores() {
   const res = getAuthors();
+  // Emendas estaduais ligadas pelo pipeline (nome exato e único na Alece), por slug. Só contagem de linhas por ano, sem valor.
+  const est = getEstaduais();
+  const ligados = new Map(est.ok ? deputadosLigados(est.data).map(d => [d.slug, d]) : []);
   return <div className="container page-space">
     <PageHero eyebrow="Autores / perfis documentais" title="Quem apresenta as emendas?" description="O que cada deputado federal e senador fez com as emendas destinadas ao Ceará — sem ranquear pessoas nem atribuir intenções a partir de montantes." art={<AutoresArt />}>
       <div className="page-hero-flags"><CoverageFlag value={res.ok ? res.data.coverage : 'unverified'} /></div>
@@ -36,8 +41,20 @@ export default function Autores() {
         <DataState kind="partial_coverage" title="Emendas estaduais: só o orçamento, cobertura parcial">No Ceará, as emendas dos deputados estaduais não são impositivas: são indicações ao orçamento do Estado, executadas a critério do governo. O Ceará Transparente publica um arquivo por ano (2023 a 2026) com o lado do orçamento, sem empenho, pagamento ou beneficiário, e com poucas linhas por ano. A execução foi pedida à CGE pela Lei de Acesso à Informação. <Link href="/estaduais">Veja o que já está em Emendas estaduais</Link>.</DataState>
         {res.data.stateDeputies.length > 0 && <>
           <p className="small muted">{res.data.stateDeputies.length} deputados em exercício segundo a página oficial da Alece{res.data.stateAsOf ? ` (consulta de ${formatDate(res.data.stateAsOf)})` : ''}, em ordem alfabética. Partido atual.</p>
-          <ul className="author-grid state-grid">{[...res.data.stateDeputies].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR')).map(d => <li key={d.slug}>
-            <a href={d.url_perfil} target="_blank" rel="noopener noreferrer" className="author-card">
+          {ligados.size > 0 && <p className="small muted">{res.data.stateDeputies.filter(d => ligados.has(d.slug)).length} deles têm emendas no arquivo do orçamento estadual ligadas pelo nome exato; o card leva às emendas de cada um no RASTRO, por ano, sem soma. Os demais seguem só com o perfil oficial.</p>}
+          <ul className="author-grid state-grid">{[...res.data.stateDeputies].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR')).map(d => { const lig = ligados.get(d.slug); return <li key={d.slug}>
+            {lig ? <div className="author-card">
+              <AuthorPortrait name={d.nome} photo={d.photo} />
+              <div className="author-card-body">
+                <strong><Link href={estadualHref(d.slug)}>{d.nome}</Link></strong>
+                <span className="author-meta">{[d.partido_atual, 'Assembleia Legislativa do Ceará'].filter(Boolean).join(' · ')}</span>
+                {d.situacao === 'suplente_em_exercicio' && <span className="author-meta">Suplente em exercício</span>}
+                <span className="author-value"><small>Emendas estaduais</small> {lig.linhas_por_ano.map(x => `${x.ano}: ${x.linhas}`).join(' · ')}</span>
+                <span className="author-meta">linhas no orçamento, por ano</span>
+                <Link href={estadualHref(d.slug)} className="link-badge link-revisado">Emendas no RASTRO →</Link>
+                <a href={d.url_perfil} target="_blank" rel="noopener noreferrer" className="link-badge">Perfil oficial ↗</a>
+              </div>
+            </div> : <a href={d.url_perfil} target="_blank" rel="noopener noreferrer" className="author-card">
               <AuthorPortrait name={d.nome} photo={d.photo} />
               <div className="author-card-body">
                 <strong>{d.nome}</strong>
@@ -46,8 +63,8 @@ export default function Autores() {
                 <span className="author-value"><small>Emendas</small> sem dado estruturado</span>
                 <span className="link-badge link-revisado">Perfil oficial ↗</span>
               </div>
-            </a>
-          </li>)}</ul>
+            </a>}
+          </li>; })}</ul>
           <p className="small muted">Fotos: Assembleia Legislativa do Ceará.</p>
         </>}
       </section>

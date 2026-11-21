@@ -1,6 +1,6 @@
 # SPEC 07 — Emendas parlamentares estaduais do Ceará (lado do orçamento)
 
-**Status:** incremento 1 implementado (orçamento 2023–2026: ingestão, ligações exatas, export próprio e página `/estaduais`). Execução **não** implementada: aguarda a resposta da CGE-CE ao pedido de acesso à informação (prazo esperado até 25/11/2026). Nada publicado nem commitado.
+**Status:** incremento 1 implementado (orçamento 2023–2026: ingestão, ligações exatas, export próprio e página `/estaduais`). Incremento 2 implementado (ligação do card do deputado em Autores às emendas dele, página `/estaduais/[slug]` por deputado ligado e nome ligado como link nas tabelas). Execução **não** implementada: aguarda a resposta da CGE-CE ao pedido de acesso à informação (prazo esperado até 25/11/2026). Nada publicado nem commitado.
 
 Base: plano `docs/planos/2026-11-21-mapa-e-estaduais.md`, seção 1. Decisão de arquitetura: ADR-019.
 
@@ -142,3 +142,66 @@ Só começa se a CGE-CE não responder até 25/11/2026 ou responder sem arquivo 
 - `python -m unittest discover -s pipelines/tests -v`: 90 testes, OK (28 novos em `test_ce_estaduais.py`).
 - `npm run typecheck` em `apps/web`: sem erros.
 - Não rodado: `next build` (feito pelo responsável no fim). A página não foi vista no navegador.
+
+## Incremento 2 — Deputado estadual ligado às emendas dele no RASTRO
+
+### Problema / ator / resultado
+
+Como morador do Ceará, ao abrir o card de um deputado estadual em Autores, quero saber se há emendas estaduais dele no orçamento e chegar a elas no RASTRO; e, ao ler a tabela de `/estaduais`, quero ir do nome do deputado ao conjunto das emendas dele, sem ranking, sem soma e sem confundir orçamento com pagamento.
+
+### Decisão: uma página por deputado (`/estaduais/[slug]`), e não uma âncora
+
+- **Página por deputado**, gerada com `generateStaticParams` a partir do export estadual, só para os slugs com ao menos uma linha `deputado.situacao = ligada`. `dynamicParams = false`: slug sem ligação dá 404.
+- **Por que não âncora em `/estaduais`:** a página geral lista as emendas por ano, na ordem do código da fonte. Uma âncora por deputado exigiria reagrupar a lista por deputado (ou espalhar âncoras repetidas por quatro tabelas fechadas em `<details>`), o que quebra a ordem da fonte e não leva a um ponto único. A página própria junta as emendas do deputado nos quatro anos, repete o aviso e a fonte, e tem endereço estável para citar. Segue o padrão das fichas `/parlamentares/[id]`, `/municipios/[ibge]` e `/emendas/[codigo]`, todas estáticas.
+- **Slug:** o da Alece, que o pipeline já grava em `deputado.slug` (mesmo slug do card de Autores e do perfil oficial). O site só aceita `^[a-z0-9-]+$` e um único `nome_alece` por slug; fora disso o export é recusado.
+
+### Regras / invariantes do incremento
+
+1. **Ligação:** só a que o pipeline já produz (regra 8): linha `ligada` com `slug`. O site não liga nome nenhum por conta própria; não há ligação manual nova. Linhas `nao_encontrado` (8 nomes, 28 linhas) ficam como texto puro e não entram em página de deputado.
+2. **Sem ranking:** a lista de deputados ligados é em ordem alfabética do nome da Alece (`localeCompare` pt-BR). Nenhuma ordenação por valor ou por número de emendas.
+3. **Sem soma por deputado:** a página do deputado não mostra total de valor, nem por ano. Mostra a contagem de linhas por ano e cada linha com as três colunas separadas, como no arquivo. Nenhum número mistura anos ou colunas; nada se soma às federais.
+4. **Ausente não é zero:** ano sem linha ligada ao deputado aparece como "o arquivo de AAAA não traz emenda ligada a este nome", com o lembrete de que a cobertura é parcial e não prova ausência de indicação.
+5. **Aviso:** a página do deputado repete o aviso de `/estaduais` (não impositiva, só orçamento, não se soma às federais) e o aviso de cobertura parcial.
+6. **Fonte e data:** a página do deputado mostra a mesma linha de fonte de `/estaduais` (URL, atualização informada pelo servidor, extração e SHA-256 por ano) e a data da consulta à Alece usada na ligação.
+7. **Autores:** o card do deputado com emenda ligada mostra "Emendas estaduais" com os anos e a contagem de linhas por ano, um link para `/estaduais/[slug]` e o link para o perfil oficial na Alece. O card sem emenda ligada fica como está (um link só, para a Alece).
+8. **Tabelas de `/estaduais`:** nome ligado vira link interno para `/estaduais/[slug]`; o link para a Alece passa a ficar na página do deputado. Nome não ligado continua texto puro. O topo da página não muda.
+9. **Demo:** em `DATA_MODE=demo` não há parâmetro estático (lista vazia), nenhum card ganha link e nenhum valor aparece.
+
+### PLAN
+
+- **Contratos:** sem mudança no export nem no pipeline. `lib/estaduais.ts` ganha validação do `slug` e da unicidade `slug → nome_alece`, e a função `deputadosLigados(data)` (slug, nome da Alece, URL do perfil, nomes como aparecem na fonte, anos com contagem de linhas), em ordem alfabética.
+- **Componentes:** `components/Estaduais.tsx` (servidor) com o aviso, a linha de fonte, o aviso de cobertura e a tabela de emendas de um ano, usados por `/estaduais` e `/estaduais/[slug]`. Rota nova `app/estaduais/[slug]/page.tsx`. Card de Autores em `app/parlamentares/page.tsx` passa a ser um bloco com dois links quando há ligação (sem link dentro de link).
+- **CSS:** só classes existentes (`author-card`, `link-badge`, `link-revisado`, `author-value`, `author-hero`, `data-table`, `table-wrap`).
+- **Riscos:** slug da Alece mudar entre consultas (o export guarda o slug da consulta usada; o card de Autores usa outra consulta da mesma data, 19/11/2026; card sem slug igual no export fica sem link); confusão entre contagem de linhas e valor (o texto diz "linhas no orçamento", nunca "total").
+- **Testes:** `npm run typecheck`; conferência por script dos 41 slugs ligados contra os 54 cards de Autores; `python -m unittest discover -s pipelines/tests` (pipeline não muda). `next build` fica com o revisor.
+- **Rollback:** apagar `app/estaduais/[slug]/` e voltar o card e a célula de deputado ao link da Alece.
+
+### Tarefas
+
+- [x] T07.11 `lib/estaduais.ts`: validar slug e unicidade; `deputadosLigados` em ordem alfabética.
+- [x] T07.12 `components/Estaduais.tsx` com aviso, fonte, cobertura e tabela por ano, reaproveitados em `/estaduais`.
+- [x] T07.13 Rota `/estaduais/[slug]` com `generateStaticParams`, aviso, cobertura, fonte e data, emendas por ano, link para a Alece.
+- [x] T07.14 Tabelas de `/estaduais`: nome ligado leva a `/estaduais/[slug]`; não ligado fica texto.
+- [x] T07.15 Card de Autores: anos e linhas por ano, link para `/estaduais/[slug]` e link para a Alece; sem ligação, como antes.
+- [ ] T07.16 Smoke test no navegador e `next build` em modo publicado (revisor).
+
+### Gherkin
+
+**AC11** Dado o export estadual ativo, quando o site gera as páginas estáticas, então existe `/estaduais/[slug]` para cada slug com ao menos uma linha `ligada` e para nenhum outro; um slug sem ligação dá 404.
+
+**AC12** Dada a página de um deputado, então ela mostra o aviso de que a emenda estadual não é impositiva, de que o arquivo traz só o orçamento e de que não se soma às federais, o aviso de cobertura parcial, a fonte com data de extração e SHA-256 por ano, a data da consulta à Alece, o link para o perfil oficial e as emendas dele separadas por ano, com as três colunas de valor separadas.
+
+**AC13** Dada a página de um deputado, então não há total de valor (nem por ano, nem por coluna, nem somado a federal), e um ano sem linha ligada aparece como ausência declarada, não como zero.
+
+**AC14** Dado um card de deputado estadual em Autores cujo slug tem linha ligada, então o card mostra os anos e a contagem de linhas por ano, leva a `/estaduais/[slug]` e mantém o link para o perfil na Alece; dado um card sem ligação, então ele continua só com o link para a Alece e "sem dado estruturado".
+
+**AC15** Dada a tabela "Emenda por emenda" de `/estaduais`, então o nome com situação `ligada` é link para `/estaduais/[slug]` e o nome `nao_encontrado` é texto puro.
+
+**AC16** Dada qualquer lista de deputados deste incremento, então a ordem é alfabética pelo nome da Alece; nenhuma lista é ordenada por valor ou por número de emendas.
+
+### Evidência do incremento 2 (21/11/2026)
+
+- 41 deputados com linha ligada (167 de 195 linhas). Os 41 slugs existem entre os 54 cards de Autores (`data/publicado` e `data/validacao`, consulta da Alece de 19/11/2026): 41 cards ganharam link, 13 ficam como antes. Conferido rodando `deputadosLigados` do próprio `lib/estaduais.ts` (Node com remoção de tipos) sobre o export ativo: validação nova aceita o export, lista em ordem alfabética.
+- `npm run typecheck` em `apps/web`: sem erros.
+- `python -m unittest discover -s pipelines/tests`: 112 testes, OK (pipeline não mudou).
+- Não rodado: `next build` e smoke test no navegador (T07.16, revisor). As páginas não foram vistas no navegador.

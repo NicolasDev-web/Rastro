@@ -43,6 +43,34 @@ function validate(raw: Estaduais) {
   for (const e of raw.emendas) if (!VALOR_KEYS.every(k => ok(e[k]))) throw new Error(`Valor inválido na emenda ${e.id}`);
   for (const c of Object.values(raw.cobertura)) if (!VALOR_KEYS.every(k => ok(c.valores[k].total))) throw new Error('Total inválido');
   for (const y of raw.anos) if (!raw.snapshots[String(y)] || !raw.cobertura[String(y)]) throw new Error(`Ano ${y} sem snapshot ou cobertura`);
+  // Incremento 2: o slug vira segmento de URL (/estaduais/[slug]); um slug corresponde a um único nome da Alece.
+  const nomes = new Map<string, string | null>();
+  for (const e of raw.emendas) {
+    if (e.deputado.situacao !== 'ligada') continue;
+    if (!e.deputado.slug || !/^[a-z0-9-]+$/.test(e.deputado.slug) || !e.deputado.nome_alece) throw new Error(`Ligação de deputado inválida na emenda ${e.id}`);
+    if (nomes.has(e.deputado.slug) && nomes.get(e.deputado.slug) !== e.deputado.nome_alece) throw new Error(`Slug ${e.deputado.slug} com mais de um nome da Alece`);
+    nomes.set(e.deputado.slug, e.deputado.nome_alece);
+  }
+}
+
+export type DeputadoLigado = { slug: string; nome: string; url_perfil: string | null; nomes_fonte: string[]; linhas_por_ano: { ano: number; linhas: number }[] };
+
+/** Deputados com ao menos uma linha ligada pelo pipeline (nome exato e único na Alece), em ORDEM ALFABÉTICA.
+ *  Só contagem de linhas por ano: nenhuma soma de valor por deputado (SPEC 07, incremento 2). */
+export function deputadosLigados(data: Estaduais): DeputadoLigado[] {
+  const by = new Map<string, { nome: string; url: string | null; fonte: Set<string>; anos: Map<number, number> }>();
+  for (const e of data.emendas) {
+    const d = e.deputado;
+    if (d.situacao !== 'ligada' || !d.slug || !d.nome_alece) continue;
+    const cur = by.get(d.slug) ?? { nome: d.nome_alece, url: d.url_perfil, fonte: new Set<string>(), anos: new Map<number, number>() };
+    if (e.parlamentar) cur.fonte.add(e.parlamentar);
+    cur.anos.set(e.ano, (cur.anos.get(e.ano) ?? 0) + 1);
+    by.set(d.slug, cur);
+  }
+  return [...by.entries()].map(([slug, v]) => ({
+    slug, nome: v.nome, url_perfil: v.url, nomes_fonte: [...v.fonte].sort((a, b) => a.localeCompare(b, 'pt-BR')),
+    linhas_por_ano: data.anos.filter(y => v.anos.has(y)).map(ano => ({ ano, linhas: v.anos.get(ano)! })),
+  })).sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
 }
 
 /** Lê o ponteiro, confere o SHA-256 do export e a estrutura. No modo demo não lê dados reais (Constituição, regra 16). */

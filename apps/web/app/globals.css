@@ -694,3 +694,27 @@ main:focus { outline: none; }
 
 /* Texto livre copiado da fonte (Transferegov) pode trazer códigos longos sem espaço: quebra em qualquer ponto. */
 .texto-fonte p, .texto-fonte li { overflow-wrap: anywhere; }
+
+/* Ilustrações Estaduais/Mapa/Dados */
+/* /mapa: arte compacta ao lado do título, sem empurrar o mapa interativo para baixo. */
+.mapa-head { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 48px; align-items: center; margin-bottom: 40px; }
+.mapa-head .section-heading { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+.mapa-head-art { grid-column: 2; grid-row: 1; }
+.mapa-head-art .art-frame { aspect-ratio: 1 / 1; }
+.mapa-head-art .art-svg { height: 100%; }
+@media (max-width: 1040px) {
+  .mapa-head { grid-template-columns: minmax(0, 1fr) 170px; gap: 32px; }
+}
+@media (max-width: 750px) {
+  /* no celular a arte vira um selo flutuante no canto do título: não ocupa linha própria */
+  .mapa-head { display: block; margin-bottom: 32px; }
+  .mapa-head::after { content: ''; display: table; clear: both; }
+  .mapa-head-art { float: right; width: 84px; margin: 2px 0 8px 14px; }
+}
+@media (max-width: 420px) {
+  .mapa-head-art { width: 72px; margin-left: 10px; }
+}
+
+/* Card de deputado estadual com dois links (Autores) */
+.author-card-body strong a { color: inherit; }
+.author-card-body .link-badge + .link-badge { margin-top: 4px; }

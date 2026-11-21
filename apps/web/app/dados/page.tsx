@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { SectionHeader, InfoNote } from '../../components/Ui';
+import { PageHero, InfoNote } from '../../components/Ui';
+import { DadosArt } from '../../components/Illustrations';
 import { DataState } from '../../components/States';
 import { DATA_MODE, getDataset } from '../../lib/dataset';
 import { formatDate } from '../../lib/dataset-types';
@@ -17,7 +18,7 @@ export default function Dados() {
   const demo = DATA_MODE === 'demo';
   const result = getDataset();
   return <div className="container page-space">
-    <SectionHeader level={1} eyebrow="FONTES E METODOLOGIA" title="Cada número precisa de um caminho." description="Da cópia da fonte oficial à conferência dos documentos: entenda o recorte, os critérios e as lacunas do RASTRO." />
+    <PageHero eyebrow="FONTES E METODOLOGIA" title="Cada número precisa de um caminho." description="Da cópia da fonte oficial à conferência dos documentos: entenda o recorte, os critérios e as lacunas do RASTRO." art={<DadosArt />} />
     <InfoNote>{demo ? 'Você está na demonstração: os valores e personagens desta interface são fictícios. O pipeline de dados oficiais existe em um ambiente local de validação, separado desta versão.' : DATA_MODE === 'validacao' ? 'Você está no ambiente local de dados oficiais em validação. Esta versão serve à conferência da equipe e ainda não constitui uma publicação jornalística apurada.' : 'O RASTRO é uma investigação cidadã independente. Os números vêm de arquivos oficiais da CGU; a extração, o cruzamento e a interpretação são nossos e podem conter erros. Diferenças entre fontes aparecem nas fichas e não são prova de irregularidade.'}</InfoNote>
     {!demo && (result.ok ? <p className="article-meta">Fonte: {result.data.source} · extração: {formatDate(result.data.asOf)} · snapshot: {result.data.snapshot} · período: {result.data.years.join(', ')} · cobertura sem auditoria externa</p> : <DataState kind="error" title="Metadados indisponíveis">{result.error}</DataState>)}
     <div className="data-info-grid block-gap"><section className="data-method"><h2 className="block-title">Da fonte à ficha</h2><ol>

@@ -369,6 +369,35 @@ export function MapaArt({ id = 'mapa' }: { id?: string }) {
   );
 }
 
+/** Versão compacta (quadrada) da MapaArt, para ficar ao lado do título sem empurrar o mapa interativo. */
+export function MapaMiniArt({ id = 'mapa-mini' }: { id?: string }) {
+  return (
+    <Frame id={id} w={240} h={240} label="Ilustração em colagem: mapa de papel dobrado em três partes, sem fronteiras reais, com um marcador laranja, um marcador azul e um círculo tracejado com interrogação.">
+      <rect width={240} height={240} fill={C.mata} />
+      <rect width={240} height={240} fill={`url(#${id}-dots)`} opacity={0.12} />
+      <g filter={`url(#${id}-rough)`}>
+        <g fill={C.ink} transform="translate(6 7)">
+          <polygon points="30,60 90,74 90,194 30,180" />
+          <polygon points="90,74 150,60 150,180 90,194" />
+          <polygon points="150,60 210,74 210,194 150,180" />
+        </g>
+        <g stroke={C.ink} strokeWidth={2.5} strokeLinejoin="round">
+          <polygon points="30,60 90,74 90,194 30,180" fill={C.paper} />
+          <polygon points="90,74 150,60 150,180 90,194" fill={C.paper2} />
+          <polygon points="150,60 210,74 210,194 150,180" fill={C.paper} />
+        </g>
+        <polygon points="90,74 150,60 150,180 90,194" fill={`url(#${id}-dots)`} opacity={0.18} />
+        <path d="M34 104 C52 98 62 118 80 114 C100 110 106 92 126 96 C146 100 152 124 172 120 C188 116 196 104 208 108" stroke={C.cobalt} strokeWidth={3.5} fill="none" strokeLinecap="round" />
+        <path d="M36 164 C60 156 76 170 104 160 C128 152 146 166 170 158 C188 152 198 164 206 160" stroke={C.ink} strokeWidth={2.2} strokeDasharray="2 7" fill="none" strokeLinecap="round" />
+        <Pin x={66} y={146} color={C.barro} s={0.56} />
+        <Pin x={124} y={128} color={C.cobalt} s={0.48} />
+        <circle cx={182} cy={146} r={17} fill={C.paper} stroke={C.ink} strokeWidth={2.5} strokeDasharray="5 5" />
+      </g>
+      <text x={182} y={153} textAnchor="middle" fontSize={20} fill={C.ink}>?</text>
+    </Frame>
+  );
+}
+
 function Card({ x, y, w = 170, h = 116, rot = 0, bar = C.cobalt, dashed = false }: { x: number; y: number; w?: number; h?: number; rot?: number; bar?: string; dashed?: boolean }) {
   const l = -w / 2, t = -h / 2;
   return (
@@ -444,6 +473,169 @@ export function AutoresArt({ id = 'autores' }: { id?: string }) {
       <Tag x={at(1 + 3.5 / 12, 270, -30)[0]} y={at(1 + 3.5 / 12, 270, -30)[1]} text="INDIVIDUAL" bg={C.sol} fg={C.ink} />
       <Tag x={at(1.615, 372, 0)[0]} y={at(1.615, 372, 0)[1]} text="BANCADA" bg={C.cobalt} />
       <Tag x={at(1.855, 372, 0)[0] - 10} y={at(1.855, 372, 0)[1]} text="COMISSÃO" />
+    </Frame>
+  );
+}
+
+/**
+ * Contorno do Ceará como papel recortado (viewBox local 600 × 733), simplificado
+ * a partir da malha do IBGE em `lib/malha-ce.json`. Só a silhueta: sem municípios nem pontos.
+ */
+const CEARA_PTS = '209,10 311,63 398,130 425,134 491,212 600,296 544,310 475,449 416,494 395,568 404,579 382,598 394,638 415,653 398,690 353,733 280,693 282,679 246,659 128,657 151,582 98,560 73,472 70,346 24,302 46,202 42,181 25,179 25,134 7,113 13,87 0,82 23,44 13,20 132,0';
+function CearaRecorte({ x, y, s = 1, rot = 0, fill = C.sol, id }: { x: number; y: number; s?: number; rot?: number; fill?: string; id: string }) {
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
+      <polygon points={CEARA_PTS} fill={C.ink} transform="translate(13 15)" />
+      <polygon points={CEARA_PTS} fill={fill} stroke={C.ink} strokeWidth={3 / s} strokeLinejoin="round" />
+      <polygon points={CEARA_PTS} fill={`url(#${id}-dots-lg)`} opacity={0.14} />
+    </g>
+  );
+}
+
+/** Caneta esferográfica deitada; (x, y) = ponta, `rot` = direção do corpo. */
+function Caneta({ x, y, rot, color = C.cobalt }: { x: number; y: number; rot: number; color?: string }) {
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rot})`} stroke={C.ink} strokeWidth={2.5} strokeLinejoin="round">
+      <rect x={26} y={-5} width={172} height={20} fill={C.ink} stroke="none" />
+      <polygon points="0,0 26,-10 26,10" fill={C.paper} />
+      <polygon points="0,0 8,-3 8,3" fill={C.ink} />
+      <rect x={26} y={-10} width={150} height={20} fill={color} />
+      <rect x={176} y={-10} width={22} height={20} fill={C.ink} />
+      <rect x={150} y={-10} width={7} height={20} fill={C.ink} stroke="none" />
+      <path d="M156 -10 V-17 H196" fill="none" strokeWidth={3} strokeLinecap="round" />
+    </g>
+  );
+}
+
+/**
+ * Emendas estaduais: o contorno do Ceará em papel recortado, uma indicação que vira linha
+ * numa planilha do orçamento do Estado — algumas linhas preenchidas e marcadas a caneta,
+ * outras em branco (cobertura parcial) — e o carimbo "PCF".
+ */
+export function EstaduaisArt({ id = 'estaduais' }: { id?: string }) {
+  const w = 300, h = 380, l = -w / 2, t = -h / 2, head = 44, rowH = 36;
+  const c1 = l + 58, c2 = l + w - 92;
+  // linhas com dado (índice → comprimento do texto) e linhas em branco
+  const filled: Record<number, number> = { 0: 0.9, 2: 0.7, 3: 0.82, 6: 0.6 };
+  const rows = Array.from({ length: 9 }, (_, i) => i);
+  return (
+    <Frame id={id} label="Ilustração em colagem: o contorno do estado do Ceará recortado em papel amarelo, atrás de uma planilha do orçamento estadual. Um pequeno documento de indicação é ligado por uma linha pontilhada a uma das linhas da planilha. Algumas linhas estão preenchidas e marcadas a caneta azul; outras estão em branco. Um carimbo laranja diz 'PCF' e uma caneta azul está deitada sobre a cena.">
+      <rect width={800} height={600} fill={C.mata} />
+      <rect width={800} height={600} fill={`url(#${id}-dots)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        <CearaRecorte x={118} y={56} s={0.64} rot={-5} id={id} />
+
+        {/* planilha do orçamento estadual */}
+        <g transform="translate(522 318) rotate(4)">
+          <rect x={l + 7} y={t + 9} width={w} height={h} fill={C.ink} />
+          <rect x={l} y={t} width={w} height={h} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={l} y={t} width={w} height={head} fill={C.ink} />
+          <rect x={c1 + 4} y={t + head + rowH * 2 + 5} width={c2 - c1 - 8} height={rowH - 10} fill={C.sol} />
+          <g stroke={C.ink} strokeWidth={1.6}>
+            {rows.map(i => <line key={i} x1={l} x2={l + w} y1={t + head + rowH * (i + 1)} y2={t + head + rowH * (i + 1)} />)}
+            <line x1={c1} x2={c1} y1={t + head} y2={t + h} />
+            <line x1={c2} x2={c2} y1={t + head} y2={t + h} />
+          </g>
+          {rows.map(i => {
+            const cy = t + head + rowH * i + rowH / 2;
+            const len = filled[i];
+            if (len === undefined) {
+              return <line key={i} x1={c1 + 12} x2={c2 - 14} y1={cy + 4} y2={cy + 4} stroke={C.ink} strokeWidth={1.6} strokeDasharray="3 7" opacity={0.45} />;
+            }
+            return (
+              <g key={i}>
+                <rect x={l + 12} y={cy - 4} width={24} height={7} fill={C.ink} />
+                <line x1={c1 + 12} x2={c1 + 12 + (c2 - c1 - 26) * len} y1={cy} y2={cy} stroke={C.ink} strokeWidth={3} />
+                <rect x={c2 + 14} y={cy - 5} width={60} height={9} fill={C.ink} />
+                <path d={`M${c1 + 10} ${cy + 9} q${(c2 - c1) * 0.2} 4 ${(c2 - c1) * 0.42} 0 t${(c2 - c1) * 0.42} 1`} stroke={C.cobalt} strokeWidth={3} fill="none" strokeLinecap="round" />
+                <path d={`M${l + 40} ${cy - 2} l5 6 l9 -12`} stroke={C.cobalt} strokeWidth={3.2} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              </g>
+            );
+          })}
+        </g>
+
+        {/* a indicação que vira linha do orçamento */}
+        <path d="M252 214 C300 196 330 250 372 252" stroke={C.ink} strokeWidth={4} strokeDasharray="1 11" strokeLinecap="round" fill="none" />
+        <Doc x={222} y={232} w={56} h={72} rot={-9} />
+
+        <Caneta x={388} y={402} rot={150} />
+      </g>
+      <text x={391} y={164} fontSize={13} fill={C.paper} letterSpacing="0.06em" transform="rotate(4 522 318)">ORÇAMENTO · CE</text>
+      <g transform="rotate(-12 606 458)">
+        <rect x={550} y={430} width={112} height={56} fill="none" stroke={C.barro} strokeWidth={5} />
+        <rect x={558} y={438} width={96} height={40} fill="none" stroke={C.barro} strokeWidth={2} />
+        <text x={606} y={469} textAnchor="middle" fontSize={28} fill={C.barro} letterSpacing="0.12em">PCF</text>
+      </g>
+    </Frame>
+  );
+}
+
+/**
+ * Fontes e metodologia: gaveta de arquivo com pastas etiquetadas por fonte oficial, uma
+ * planilha puxada para fora, um cadeado com "SHA-256" e o carimbo "cópia datada".
+ */
+export function DadosArt({ id = 'dados' }: { id?: string }) {
+  const folders: { y: number; tx: number; fill: string; fg: string; label: string }[] = [
+    { y: 214, tx: 186, fill: C.paper, fg: C.ink, label: 'CGU' },
+    { y: 238, tx: 290, fill: C.cobalt, fg: C.paper, label: 'CÂMARA' },
+    { y: 262, tx: 372, fill: C.paper2, fg: C.ink, label: 'SENADO' },
+    { y: 286, tx: 204, fill: C.barro, fg: C.paper, label: 'IBGE' },
+    { y: 310, tx: 330, fill: C.paper, fg: C.ink, label: 'CEARÁ' },
+  ];
+  const Folder = ({ f }: { f: (typeof folders)[number] }) => (
+    <g stroke={C.ink} strokeWidth={2.5} strokeLinejoin="round">
+      <path d={`M${f.tx} ${f.y} V${f.y - 26} H${f.tx + 96} V${f.y}`} fill={f.fill} />
+      <rect x={176} y={f.y} width={448} height={120} fill={f.fill} />
+    </g>
+  );
+  return (
+    <Frame id={id} label="Ilustração em colagem: gaveta de arquivo aberta com pastas suspensas etiquetadas 'CGU', 'Câmara', 'Senado', 'IBGE' e 'Ceará'. De uma delas sai uma planilha quadriculada. Na frente, um cadeado fechado com a inscrição 'SHA-256' e um carimbo laranja que diz 'cópia datada'.">
+      <rect width={800} height={600} fill={C.sol} />
+      <rect width={800} height={600} fill={`url(#${id}-dots-lg)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        {/* laterais da gaveta */}
+        <polygon points="140,362 172,300 172,540 140,540" fill={C.paper2} stroke={C.ink} strokeWidth={2.5} strokeLinejoin="round" />
+        <polygon points="660,362 628,300 628,540 660,540" fill={C.paper2} stroke={C.ink} strokeWidth={2.5} strokeLinejoin="round" />
+        <rect x={172} y={300} width={456} height={240} fill={C.ink} />
+
+        {folders.slice(0, 3).map(f => <Folder key={f.label} f={f} />)}
+        {/* planilha puxada para fora */}
+        <g transform="rotate(7 540 200)">
+          <rect x={478} y={100} width={136} height={196} fill={C.ink} transform="translate(5 6)" />
+          <rect x={478} y={100} width={136} height={196} fill={C.paper} stroke={C.ink} strokeWidth={2.5} />
+          <rect x={478} y={100} width={136} height={24} fill={C.cobalt} stroke={C.ink} strokeWidth={2.5} />
+          <g stroke={C.ink} strokeWidth={1.4}>
+            {[148, 172, 196, 220, 244, 268].map(y => <line key={y} x1={478} x2={614} y1={y} y2={y} />)}
+            {[512, 546, 580].map(x => <line key={x} x1={x} x2={x} y1={124} y2={296} />)}
+          </g>
+          {[[512, 124], [546, 148], [512, 172], [580, 196], [546, 220], [512, 244]].map(([x, y]) => <rect key={`${x}-${y}`} x={x + 6} y={y + 8} width={22} height={8} fill={C.ink} />)}
+        </g>
+        {folders.slice(3).map(f => <Folder key={f.label} f={f} />)}
+
+        {/* frente da gaveta */}
+        <rect x={146} y={368} width={520} height={176} fill={C.ink} />
+        <rect x={140} y={362} width={520} height={176} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+        <rect x={140} y={362} width={520} height={176} fill={`url(#${id}-dots)`} opacity={0.08} />
+        <rect x={350} y={400} width={100} height={18} rx={9} fill={C.ink} />
+        <rect x={355} y={436} width={90} height={38} fill={C.paper2} stroke={C.ink} strokeWidth={2.5} />
+
+        {/* cadeado */}
+        <path d="M176 412 V384 A32 32 0 0 1 240 384 V412" fill="none" stroke={C.ink} strokeWidth={13} strokeLinecap="round" />
+        <rect x={155} y={405} width={106} height={80} fill={C.ink} transform="translate(5 6)" />
+        <rect x={155} y={405} width={106} height={80} fill={C.cobalt} stroke={C.ink} strokeWidth={3} />
+        <rect x={155} y={405} width={106} height={80} fill={`url(#${id}-dots-paper)`} opacity={0.2} />
+        <circle cx={208} cy={428} r={7} fill={C.ink} />
+        <rect x={205} y={430} width={6} height={13} fill={C.ink} />
+      </g>
+      <text x={400} y={461} textAnchor="middle" fontSize={12} fill={C.ink} letterSpacing="0.08em">FONTES</text>
+      <text x={208} y={469} textAnchor="middle" fontSize={13} fill={C.paper} letterSpacing="0.04em">SHA-256</text>
+      {folders.map(f => <text key={f.label} x={f.tx + 48} y={f.y - 9} textAnchor="middle" fontSize={11} fill={f.fg} letterSpacing="0.06em">{f.label}</text>)}
+      <g transform="rotate(-8 566 482)">
+        <rect x={488} y={452} width={156} height={60} fill="none" stroke={C.barro} strokeWidth={5} />
+        <rect x={496} y={460} width={140} height={44} fill="none" stroke={C.barro} strokeWidth={2} />
+        <text x={566} y={479} textAnchor="middle" fontSize={10} fill={C.barro} letterSpacing="0.12em">EXTRAÇÃO</text>
+        <text x={566} y={497} textAnchor="middle" fontSize={14} fill={C.barro} letterSpacing="0.06em">CÓPIA DATADA</text>
+      </g>
     </Frame>
   );
 }
@@ -524,7 +716,7 @@ export function SpotAcompanhar() {
 
 /* ---------- Registro e moldura ---------- */
 
-export const artworks = { caminho: CaminhoArt, sertao: SertaoArt, congresso: CongressoArt, documentos: DocumentosArt, mapa: MapaArt, fluxo: FluxoArt, autores: AutoresArt } as const;
+export const artworks = { caminho: CaminhoArt, sertao: SertaoArt, congresso: CongressoArt, documentos: DocumentosArt, mapa: MapaArt, fluxo: FluxoArt, autores: AutoresArt, estaduais: EstaduaisArt, dados: DadosArt } as const;
 export type ArtKey = keyof typeof artworks;
 
 export function Art({ name, id }: { name: ArtKey; id?: string }) {

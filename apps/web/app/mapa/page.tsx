@@ -1,4 +1,5 @@
 import { InfoNote, SectionHeader } from '../../components/Ui';
+import { MapaMiniArt } from '../../components/Illustrations';
 import { CsvButton, MapaCeara } from '../../components/MapaCeara';
 import malha from '../../lib/malha-ce.json';
 import { DataState, CoverageFlag } from '../../components/States';
@@ -34,7 +35,10 @@ function DataTable({ data }: { data: Dataset }) {
 export default function Mapa() {
   const res = getDataset();
   return <div className="container page-space">
-    <SectionHeader level={1} eyebrow="Mapa / Ceará" title="Quanto dinheiro de emendas chegou à sua cidade?" description="Escolha sua cidade no mapa ou pelo nome. Mostramos quanto foi pago, em quantos pagamentos e o que esse número quer dizer." />
+    <div className="mapa-head">
+      <figure className="art mapa-head-art"><div className="art-frame"><MapaMiniArt /></div></figure>
+      <SectionHeader level={1} eyebrow="Mapa / Ceará" title="Quanto dinheiro de emendas chegou à sua cidade?" description="Escolha sua cidade no mapa ou pelo nome. Mostramos quanto foi pago, em quantos pagamentos e o que esse número quer dizer." />
+    </div>
     <div className="page-hero-flags"><CoverageFlag value={res.ok ? res.data.coverage : 'unverified'} /></div>
 
     {res.ok ? <MapaCeara data={res.data} paths={malha.paths} viewBox={malha.viewBox} /> : <DataState kind="error" title="Dados indisponíveis">{res.error}</DataState>}
