@@ -48,6 +48,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <div><div className="eyebrow">Páginas</div><Link href="/investigacao">Investigação</Link><Link href="/mapa">Mapa</Link><Link href="/glossario">Glossário</Link><Link href="/dados">Fontes e metodologia</Link>{!PUBLICADO && <Link href="/componentes">Componentes</Link>}</div>
       <div><div className="eyebrow">Fontes de referência</div><a href="https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares" target="_blank" rel="noreferrer">Portal da Transparência <ExternalLink size={12} /></a><a href="https://api-publica.transferegov.gestao.gov.br/" target="_blank" rel="noreferrer">Transferegov <ExternalLink size={12} /></a><a href="https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html" target="_blank" rel="noreferrer">IBGE <ExternalLink size={12} /></a></div>
       <div><div className="eyebrow">O projeto</div><Link href="/sobre">Sobre</Link><Link href="/correcoes">Correções</Link><Link href="/contato">Contato</Link></div>
-    </div><div className="container footer-bottom">© 2026 RASTRO — {PUBLICADO ? 'investigação cidadã independente' : 'conceito demonstrativo'}. Ilustrações vetoriais originais e esquemáticas: não são registros documentais de lugares, pessoas ou fatos.</div></footer>
+    </div><div className="container footer-bottom">© 2026 RASTRO — {PUBLICADO ? 'investigação cidadã independente' : 'conceito demonstrativo'}.</div></footer>
   </body></html>;
 }

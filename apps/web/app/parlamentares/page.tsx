@@ -11,7 +11,7 @@ import { STAGES, STAGE_LABEL, brlOrMissing, formatDate } from '../../lib/dataset
 export default function Autores() {
   const res = getAuthors();
   return <div className="container page-space">
-    <PageHero eyebrow="Autores / perfis documentais" title="Quem apresenta as emendas?" description="O que cada deputado federal e senador fez com as emendas destinadas ao Ceará — sem ranquear pessoas nem atribuir intenções a partir de montantes." art={<AutoresArt />} caption="Plenário com cadeiras vazias: autoria individual, de bancada e de comissão.">
+    <PageHero eyebrow="Autores / perfis documentais" title="Quem apresenta as emendas?" description="O que cada deputado federal e senador fez com as emendas destinadas ao Ceará — sem ranquear pessoas nem atribuir intenções a partir de montantes." art={<AutoresArt />}>
       <div className="page-hero-flags"><CoverageFlag value={res.ok ? res.data.coverage : 'unverified'} /></div>
     </PageHero>
 

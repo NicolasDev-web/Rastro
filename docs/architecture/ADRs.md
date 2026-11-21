@@ -67,6 +67,14 @@ Achados técnicos, como a ausência de documento de pagamento nos arquivos anuai
 
 **Consequências:** ADR-008 deixa de proibir deploy de dados reais; o deploy só usa `publicado` ou `demo`, nunca `validacao`. A página de Componentes sai do menu no modo publicado. Atualizar dados exige novo snapshot, `bundle` e novo deploy.
 
+## ADR-016 — Ilustrações sem legenda explicativa
+
+**Decisão (21/11/2026):** as ilustrações deixam de exibir o selo `ILUSTRAÇÃO` e frases como "cena esquemática", "mapa imaginário", "não retrata um município específico" ou "sem pessoas reais". Sai também a frase do rodapé sobre ilustrações não serem registros documentais. `Figure` e `PageHero` mostram só a moldura com a arte.
+
+**Por quê:** pedido do revisor do projeto. As cenas são desenhos de colagem evidentes; as explicações repetidas pesavam a leitura sem informar nada. O mesmo vale para o vídeo de apresentação.
+
+**Consequências:** AC07 da SPEC 02 muda. Continuam valendo o `aria-label` descritivo, a proibição de retratar pessoas reais, logotipos, brasões ou símbolos partidários e de sugerir irregularidade sem base factual (AC08). Fotografia documental, se um dia entrar, segue exigindo crédito e legenda factual (AC09).
+
 ## Pendências remanescentes
 
 - Escolha final de provedor SQL/objeto e custo.

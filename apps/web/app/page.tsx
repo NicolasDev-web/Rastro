@@ -22,7 +22,7 @@ export default function Home() {
         <p>Quem decide para onde vão as emendas parlamentares, quem recebe os recursos e o que os documentos realmente permitem descobrir?</p>
         <div className="hero-actions"><PrimaryLink href="/investigacao">Começar a leitura</PrimaryLink><Link className="button button-ghost" href="/mapa">Explorar os dados <ArrowUpRight size={17} /></Link></div>
       </div>
-      <Figure className="hero-art" caption="O percurso de uma emenda, da indicação ao pagamento. Representação esquemática."><CaminhoArt /></Figure>
+      <Figure className="hero-art"><CaminhoArt /></Figure>
     </div></section>
 
     <section className="intro-section container"><div className="intro-grid">
@@ -41,7 +41,7 @@ export default function Home() {
     <section className="container section-space"><SectionHeader eyebrow={DATA_MODE === 'demo' ? 'Experimente a interface' : 'Consulte seu município'} title="Sua cidade. Os caminhos dos recursos." description={DATA_MODE === 'demo' ? 'O exemplo abaixo usa apenas valores fictícios para demonstrar como será a experiência de consulta após a auditoria das fontes oficiais.' : DATA_MODE === 'validacao' ? 'Dados oficiais da CGU em validação: ainda sem conferência amostral nem revisão editorial. Não publicar.' : 'Valores oficiais da CGU para os 184 municípios do Ceará, de 2020 a 2026, separados por etapa da despesa.'} /><ExplorerSection /></section>
 
     <section className="feature"><div className="container feature-grid">
-      <Figure caption="O interior do estado. Cena ilustrativa, não retrata um município específico."><SertaoArt /></Figure>
+      <Figure><SertaoArt /></Figure>
       <div className="feature-copy"><span className="eyebrow">Além dos grandes centros</span><h2>Todos os municípios merecem respostas claras.</h2><p>O portal pretende permitir que o leitor compreenda a distribuição de recursos, reconhecendo as diferenças entre recursos destinados ao governo estadual, beneficiários municipais e valores sem localidade comprovada.</p><PrimaryLink href="/mapa">Conhecer o explorador</PrimaryLink></div>
     </div></section>
 
@@ -62,7 +62,7 @@ export default function Home() {
     <section className="dark-feature"><div className="container">
       <div className="dark-grid">
         <div><span className="eyebrow">A grande reportagem</span><h2>Uma história que continua depois da última página.</h2><p>Entenda as modalidades, as decisões orçamentárias e os desafios da rastreabilidade. Depois, abra o mapa e conduza sua própria exploração.</p></div>
-        <Figure caption="Documentos que saem do Legislativo. Metáfora visual."><CongressoArt /></Figure>
+        <Figure><CongressoArt /></Figure>
       </div>
       <CtaBar href="/investigacao">Ler a investigação</CtaBar>
     </div></section>

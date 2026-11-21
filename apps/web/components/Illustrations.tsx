@@ -444,7 +444,6 @@ export function AutoresArt({ id = 'autores' }: { id?: string }) {
       <Tag x={at(1 + 3.5 / 12, 270, -30)[0]} y={at(1 + 3.5 / 12, 270, -30)[1]} text="INDIVIDUAL" bg={C.sol} fg={C.ink} />
       <Tag x={at(1.615, 372, 0)[0]} y={at(1.615, 372, 0)[1]} text="BANCADA" bg={C.cobalt} />
       <Tag x={at(1.855, 372, 0)[0] - 10} y={at(1.855, 372, 0)[1]} text="COMISSÃO" />
-      <text x={400} y={576} textAnchor="middle" fontSize={13} fill={C.paper} letterSpacing="0.1em">CADEIRAS VAZIAS · SEM PESSOAS REAIS</text>
     </Frame>
   );
 }
@@ -541,12 +540,11 @@ export function SpotArt({ name }: { name: SpotKey }) {
   return <Cmp />;
 }
 
-/** Figura editorial com legenda. Ilustração = metáfora visual, nunca registro documental. */
-export function Figure({ children, caption, className = '' }: { children: ReactNode; caption: string; className?: string }) {
+/** Moldura editorial da ilustração (sem legenda visível — ADR-016; a descrição fica no aria-label do SVG). */
+export function Figure({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <figure className={`art ${className}`}>
       <div className="art-frame">{children}</div>
-      <figcaption><b>Ilustração</b> {caption}</figcaption>
     </figure>
   );
 }

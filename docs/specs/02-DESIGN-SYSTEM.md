@@ -7,7 +7,7 @@ Como leitor com pouco conhecimento sobre orçamento público, quero compreender 
 v0.2 "Papel e tinta" (ADR-006): fundo papel `#F4EFE6`, tinta `#151515`, cobalto `#2E3BD6` como única cor de interação, sol `#F2B33D` como marca-texto e aviso demo, barro `#C2461E` como acento editorial. Manchetes em Archivo condensada (eixo `wdth`), leitura em Source Serif 4, dados e metadados em IBM Plex Mono com números tabulares. Imagens: **ilustração editorial vetorial** (colagem + risografia), não fotografia. Referências: Intercept Brasil e O Joio e O Trigo / Prato Cheio. Sem logo oficial de órgão público sugerindo endosso.
 
 ## Componentes mínimos
-`EditorialHero`, `DemoBanner`, `EvidenceCard`, `MoneyStage`, `MoneyFlow`, `DataLens`, `MunicipalitySearch`, `FilterTabs`, `DefinitionTooltip`, `Figure` (ilustração com legenda), `StoryRow`, `StoryCard`, `CtaBar`, `SourceTrail`, `MethodologyNote`, `MetricBar`, `ArticleCard`, `EmptyState`, `CoverageFlag`.
+`EditorialHero`, `DemoBanner`, `EvidenceCard`, `MoneyStage`, `MoneyFlow`, `DataLens`, `MunicipalitySearch`, `FilterTabs`, `DefinitionTooltip`, `Figure` (moldura de ilustração), `StoryRow`, `StoryCard`, `CtaBar`, `SourceTrail`, `MethodologyNote`, `MetricBar`, `ArticleCard`, `EmptyState`, `CoverageFlag`.
 
 ## Estados
 Todas as versões: loading, vazio, erro, demo, parcial, auditado. Esconder controles quando não há resultado explicável. Não usar verde/vermelho como classificação de comportamento político.
@@ -19,7 +19,7 @@ Todas as versões: loading, vazio, erro, demo, parcial, auditado. Esconder contr
 - **AC04** 360px não tem scroll horizontal indesejado.
 - **AC05** Modo demo exibe aviso persistente antes do primeiro valor.
 - **AC06** Gráficos têm rótulos ou alternativa de tabela.
-- **AC07** Toda ilustração tem `aria-label` descritivo e legenda com selo `ILUSTRAÇÃO` deixando claro que é cena esquemática; nenhuma imagem gerada por IA na interface; foto só quando documental, com autor, licença e legenda factual.
+- **AC07** Toda ilustração tem `aria-label` descritivo e nenhuma legenda visível explicando que é desenho (ADR-016); nenhuma imagem gerada por IA na interface; foto só quando documental, com autor, licença e legenda factual.
 - **AC08** Ilustrações não retratam pessoas reais, logotipos, brasões ou símbolos partidários, nem sugerem irregularidade sem base factual.
 - **AC09** Exceção de fotografia: retrato **oficial** de parlamentar só na aba de autores, com o mesmo tratamento para todos (preto e branco, mesmo recorte, mesmo tamanho) e crédito institucional visível; sem foto oficial → iniciais. Nenhuma foto em reportagem ou chamada sem relação documental.
 
@@ -27,7 +27,7 @@ Todas as versões: loading, vazio, erro, demo, parcial, auditado. Esconder contr
 - [x] T02.01 Tokens e reset acessível (`app/globals.css`, `:root`).
 - [x] T02.02 Cabeçalho e navegação mobile (menu quebra em linhas, `aria-current`, link "pular para o conteúdo").
 - [x] T02.03 Hero editorial, cards e chamadas (`PageHero`, `StoryRow`, `StoryCard`, `CtaBar`).
-- [x] T02.04 Fonte, crédito e definição de metodologia — `GlossaryTip` (details/summary, sem hover) e legenda obrigatória em `Figure`.
+- [x] T02.04 Fonte, crédito e definição de metodologia — `GlossaryTip` (details/summary, sem hover) (legenda de `Figure` removida pelo ADR-016).
 - [x] T02.05 Estados vazios, loading e erro — `DataState` com os 7 estados + `CoverageFlag` (`components/States.tsx`).
 - [x] T02.06 Galeria de componentes (`/componentes`).
 - [ ] T02.07 Testes visuais 360/768/1440 e acessibilidade — **parcial**, ver evidências.

@@ -40,6 +40,6 @@ Fotos de arquivo com licença identificada (Wikimedia Commons, CC BY 2.0), manti
 - [ ] Usa só a paleta e as peças da biblioteca (`Doc`, `Lupa`, `Coin`, `Tag`, `Congresso`).
 - [ ] Não desenha rosto/caricatura de pessoa real, logotipo, brasão ou símbolo partidário.
 - [ ] Não sugere irregularidade (dinheiro sumindo, algemas, sacos de dinheiro) sem base factual publicada.
-- [ ] `aria-label` descritivo e legenda com selo `ILUSTRAÇÃO`.
+- [ ] `aria-label` descritivo (sem legenda visível de "ilustração"; ADR-016).
 - [ ] Funciona recortada em 1:1, 4:3 e 16:10.
 - [ ] Ilustradores externos: registrar autoria, contrato/licença e crédito `Ilustração: Nome`.

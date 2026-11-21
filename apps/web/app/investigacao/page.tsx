@@ -27,7 +27,7 @@ const steps = [
 export default function Investigacao() {
   return <>
     <div className="editorial-hero container"><span className="eyebrow">A investigação / capítulo zero</span><h1>Quem decide para onde <em>vai o dinheiro?</em></h1><p>Um guia visual para entender como funcionam as emendas parlamentares e como acompanhar o que aconteceu depois da indicação.</p><div className="article-meta">Explicador introdutório · sem resultados quantitativos apurados · 19 nov 2026</div></div>
-    <div className="container"><Figure className="chapter-art" caption="Documentos que saem do Legislativo. Metáfora visual, não retrata um fato específico."><CongressoArt id="cap-congresso" /></Figure></div>
+    <div className="container"><Figure className="chapter-art"><CongressoArt id="cap-congresso" /></Figure></div>
 
     <div className="container narrative-layout">
       <aside className="narrative-toc"><span className="eyebrow">Nesta reportagem</span><a href="#origem">01 — O que é</a><a href="#tipos">02 — Modalidades</a><a href="#etapas">03 — Etapas</a><a href="#ceara">04 — Recorte Ceará</a><a href="#limites">05 — O que dá para saber</a></aside>
@@ -56,7 +56,7 @@ export default function Investigacao() {
 
         <section id="ceara"><span className="section-no">04 / O recorte Ceará</span><h2>Onde o município aparece?</h2>
           <p>Nem todo recurso “para o Ceará” tem um município de destino nos documentos. Parte é registrada como aplicação no estado inteiro; parte cobre vários municípios sem dizer quanto foi para cada um. Atribuir esses valores à capital — ou a qualquer cidade — por conveniência produziria um mapa falso.</p>
-          <Figure caption="Três destinos possíveis: município, aplicação estadual e vários municípios. Mapa imaginário."><MapaArt id="cap-mapa" /></Figure>
+          <Figure><MapaArt id="cap-mapa" /></Figure>
           <div className="destino-grid">
             <div className="destino destino-municipio"><span className="tiny-code">MUNICÍPIO</span><strong>Beneficiário municipal identificado</strong><p>Entra na ficha da cidade — lembrando que o beneficiário não é necessariamente o local da entrega.</p></div>
             <div className="destino destino-estado"><span className="tiny-code">ESTADUAL</span><strong>Aplicação no estado inteiro</strong><p>Não identifica quem recebeu. Fica separada e só é ligada a um município com documento que comprove o vínculo.</p></div>
@@ -75,7 +75,7 @@ export default function Investigacao() {
           </div>
           <p className="pull">Pagamento comprova que o dinheiro saiu. Não comprova que a obra chegou.</p>
           <MoneyFlow />
-          <Figure caption="Mesa de apuração: documento, carimbo e lupa. Cena ilustrativa."><DocumentosArt id="cap-documentos" /></Figure>
+          <Figure><DocumentosArt id="cap-documentos" /></Figure>
           <h2 id="sua-cidade">Comece por onde você mora.</h2>
           <p>{DATA_MODE === 'demo' ? 'Escolha um município da demonstração para ver como a ficha funcionaria antes da entrada dos dados reais auditados.' : 'Escolha seu município para ver quanto foi empenhado e pago em emendas registradas para ele.'}</p>
           <ExplorerSection compact />

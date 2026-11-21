@@ -43,7 +43,7 @@ Todas as imagens do protótipo são **vetores originais desenhados em código** 
 - **Técnica:** colagem de papel recortado + risografia: cores chapadas da paleta, retícula de meio-tom (`pattern` de pontos), grão de papel (`feTurbulence`) e borda levemente irregular (`feDisplacementMap`). Contornos em tinta 2.5px e "sombra" deslocada de papel.
 - **Vocabulário de metáforas:** documento, carimbo, lupa, moeda, rastro pontilhado, edifício legislativo esquemático, estrada, mandacaru, carnaúba, cidade pequena com igreja e caixa d'água.
 - **Proibido desenhar:** rostos ou caricaturas de pessoas reais; logotipos, brasões ou símbolos de órgãos e partidos; dinheiro "sumindo", algemas, sacos de dinheiro ou qualquer imagem que sugira irregularidade sem relação factual.
-- **Legenda obrigatória:** componente `Figure` sempre mostra o selo `ILUSTRAÇÃO` + frase que deixa claro que é cena esquemática. SVG com `role="img"` e `aria-label` descritivo.
+- **Sem legenda visível:** a ilustração fala por si — é evidentemente um desenho, então não leva selo `ILUSTRAÇÃO` nem frase explicando que é cena esquemática (ADR-016). Continua obrigatório: SVG com `role="img"` e `aria-label` descritivo; as proibições de desenho acima seguem valendo.
 - **Peças atuais:** `CaminhoArt` (percurso indicação → empenho → pagamento), `SertaoArt` (interior), `CongressoArt` (documentos saindo do Legislativo), `DocumentosArt` (mesa de apuração), `MapaArt` (município / Estado / indeterminado), `FluxoArt` (fios documentado / em verificação / não identificado), `AutoresArt` (plenário com cadeiras vazias: individual, bancada, comissão) e spots `entender`, `explorar`, `verificar`, `acompanhar`.
 - **Nova ilustração:** reutilizar `Doc`, `Lupa`, `Coin`, `Tag`, `Pin`, `Card`, `Congresso` e `Frame`; manter ≤ 5 cores da paleta por cena; testar em recorte 1:1, 4:3 e 16:10 (as molduras usam `preserveAspectRatio="xMidYMid slice"`).
 
@@ -56,14 +56,14 @@ Todas as imagens do protótipo são **vetores originais desenhados em código** 
 5. **MunicipalitySearch**: campo com borda 2px e chips em pílula; teclado; sem geolocalização presumida.
 6. **MetricBar**: trilho papel-2 com contorno, preenchimento cobalto, valor em mono.
 7. **MoneyFlow**: nós retos com borda; ativo em tinta com contador sol. Nó indeterminado visível.
-8. **Figure / Art / SpotArt**: moldura de ilustração com legenda obrigatória.
+8. **Figure / Art / SpotArt**: moldura de ilustração, sem legenda visível (ADR-016).
 9. **StoryRow** (home): arte 16:10 | editoria cobalto + manchete + meta mono | linha fina serif.
 10. **StoryCard** (reportagens): arte 1:1 com rótulo em caixa preta (manchete caixa-alta + editoria em mono sol).
 11. **CtaBar**: faixa cobalto de largura total com seta; hover sol.
 12. **MethodologyNote / InfoNote**: fundo sol-soft com filete de tinta à esquerda.
 13. **CoverageFlag**: `Completa no recorte`, `Parcial`, `Não verificada`, `Demonstração` — cobertura, não qualidade moral.
 14. **SourceTrail**: ordem evento/documento/origem, cada etapa clicável e verificada.
-15. **PageHero**: abertura de página interna — eyebrow, H1, linha fina e ilustração com legenda.
+15. **PageHero**: abertura de página interna — eyebrow, H1, linha fina e ilustração.
 16. **DataState**: `loading`, `empty`, `error`, `partial_coverage`, `unverified`, `verified`, `demo`. Ícone + título + texto; vazio e erro nunca viram zero ou estimativa.
 17. **GlossaryTip / GlossaryList**: `details/summary` com definição curta, norma de referência e link para `/glossario#termo`.
 18. **DataTable**: tabela com `caption`, grupos (municípios / fora da contagem municipal), números em mono alinhados à direita, "Sem registro" em itálico.

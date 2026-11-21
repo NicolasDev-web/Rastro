@@ -8,8 +8,8 @@ export function SectionHeader({eyebrow,title,description,level=2}: {eyebrow:stri
   return <div className="section-heading"><span className="eyebrow">{eyebrow}</span><Heading>{title}</Heading>{description&&<p className="lead">{description}</p>}</div>;
 }
 /** Abertura de página interna: texto à esquerda, ilustração à direita. */
-export function PageHero({eyebrow,title,description,art,caption,children}:{eyebrow:string;title:string;description?:string;art:ReactNode;caption:string;children?:ReactNode}){
-  return <div className="page-hero"><div className="page-hero-copy"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1>{description&&<p className="lead">{description}</p>}{children}</div><figure className="art page-hero-art"><div className="art-frame">{art}</div><figcaption><b>Ilustração</b> {caption}</figcaption></figure></div>;
+export function PageHero({eyebrow,title,description,art,children}:{eyebrow:string;title:string;description?:string;art:ReactNode;children?:ReactNode}){
+  return <div className="page-hero"><div className="page-hero-copy"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1>{description&&<p className="lead">{description}</p>}{children}</div><figure className="art page-hero-art"><div className="art-frame">{art}</div></figure></div>;
 }
 export function PrimaryLink({href,children}:{href:string;children:ReactNode}){
   return <Link className="button button-primary" href={href}>{children}<ArrowRight aria-hidden="true" size={17}/></Link>;

@@ -34,7 +34,7 @@ function DataTable({ data }: { data: Dataset }) {
 export default function Mapa() {
   const res = getDataset();
   return <div className="container page-space">
-    <PageHero eyebrow="Explorador / Ceará" title="O mapa do dinheiro." description="Município, aplicação estadual ou vários municípios: cada valor fica onde os documentos permitem colocá-lo — e em nenhum outro lugar." art={<MapaArt />} caption="Três destinos possíveis de um recurso: município, aplicação estadual e vários municípios. Mapa imaginário, sem fronteiras reais.">
+    <PageHero eyebrow="Explorador / Ceará" title="O mapa do dinheiro." description="Município, aplicação estadual ou vários municípios: cada valor fica onde os documentos permitem colocá-lo — e em nenhum outro lugar." art={<MapaArt />}>
       <div className="page-hero-flags"><CoverageFlag value={res.ok ? res.data.coverage : 'unverified'} /></div>
     </PageHero>
 
