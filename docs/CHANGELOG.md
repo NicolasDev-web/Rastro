@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0 — Transferegov no fluxo e emendas estaduais
+
+- **Transferegov no fluxo do dinheiro (SPEC 01 T01.04, SPEC 04 T04.05, ADR-018).** Novo adaptador `pipelines/rastro/transferegov.py` para a API pública do Transferegov.br, com cópia bruta datada e SHA-256 no manifesto, contrato de esquema verificado e valores em centavos. A ligação com a emenda é só por identificador oficial: o número da emenda no plano de ação da transferência especial, ou o número do convênio do arquivo da CGU, que leva à meta do cronograma e à proposta. Das 1.910 fichas, 603 ganharam plano de ação (259) ou convênio com proposta (344), e 107 passaram a ter a etapa "contrato ou obra" documentada pela execução que o ente declarou no relatório de gestão. As outras 1.803 continuam "não identificado", cada uma com o motivo. Para convênios, a API pública não publica contratos nem pagamentos. A ficha ganha a seção "No Transferegov" e `/fluxos` ganha o exemplo "Execução declarada". Pessoa física e MEI ficam mascarados. Os valores do Transferegov não se somam aos da CGU, e relatório de gestão é declaração do ente, não prova de entrega.
+- **Emendas estaduais (SPEC 07, ADR-019).** Nova página `/estaduais` com o orçamento das emendas dos deputados estaduais do Ceará de 2023 a 2026, a partir dos CSVs do Ceará Transparente (CGE-CE), com cópia bruta datada e SHA-256 e export próprio, separado do pacote federal. Nada se soma às emendas federais. A página avisa que a emenda estadual no Ceará não é impositiva e que o arquivo traz só o orçamento, sem empenho, pagamento ou beneficiário. A cobertura é declarada parcial (25, 83, 50 e 37 linhas, todas PCF individuais). O município citado é ligado só pelo nome IBGE exato (176 de 195 linhas) e o deputado só pelo nome exato na lista da Alece (167 de 195); as linhas sem ligação ficam em `reports/ce-estaduais-*.md`. Novo passo: `python pipelines/run.py estaduais`.
+- Menu ganha "Estaduais"; a seção da Alece em `/parlamentares` e `/dados` apontam para a nova página.
+
 ## 0.9.1 — textos de pendências atualizados
 
 - `/dados`: "O que falta conferir" deixa de dizer que o mapa é esquemático e explica o que fica fora da cor das cidades.

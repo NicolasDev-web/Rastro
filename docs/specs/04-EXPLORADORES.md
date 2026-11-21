@@ -71,7 +71,7 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 - [x] T04.02 Normalização de busca e parâmetros de URL (`?municipio=<IBGE>&etapa=<authorized|committed|paid>`).
 - [x] T04.03 Mapa real IBGE / camadas e tabela alternativa — feito em 0.9.0 (21/11/2026), ver "Incremento — nova aba Mapa" (ADR-017).
 - [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); vínculos revisados por humano: 43 de 43 (`pipelines/contracts/autores_vinculo.json`, pelo revisor do projeto em 19/11/2026; relatório `reports/autores-vinculo-*.md` com a coluna de revisor preenchida). Falta o histórico de partido.
-- [x] T04.05 Grafo de evidências documentais — fluxo real por emenda em `/fluxos` e em cada ficha (`lib/fluxo.ts`), com `status`, `evidence_id`, `source_url` e método por aresta. Ver "Incremento — fluxo real por emenda". Contratos e fornecedores seguem como lacuna até o Transferegov.
+- [x] T04.05 Grafo de evidências documentais — fluxo real por emenda em `/fluxos` e em cada ficha (`lib/fluxo.ts`), com `status`, `evidence_id`, `source_url` e método por aresta. Ver "Incremento — fluxo real por emenda" e "Incremento — Transferegov no fluxo do dinheiro" (plano de ação, convênio e execução declarada pelo ente, ligados por identificador; contratos de convênio seguem como lacuna).
 - [ ] T04.06 Exportações com provenance — **parcial**: CSV demo com metadados e regras; proveniência real depende de RAS-012.
 - [ ] T04.07 E2E para busca, filtros e acessibilidade.
 
@@ -109,7 +109,7 @@ Resultado do snapshot: 43 autores (38 eleitos pelo CE, 5 de outros estados com e
 | Autor → Emenda | código SIAFI do autor no arquivo da CGU | — | fonte sem autor |
 | Emenda → Pagamentos | código da emenda nos documentos de pagamento e soma igual ao pago total; ou diferença com causa registrada (`explicado`) | soma diferente do pago total sem causa registrada, ou valores incompletos | nenhum documento de pagamento com o código da emenda |
 | Pagamentos → Quem recebeu | favorecido no próprio documento de pagamento | — | sem documento de pagamento |
-| Quem recebeu → Contrato ou obra | — | — | sempre: contratos e fornecedores não estão nos arquivos usados (Transferegov, incremento 3) |
+| Quem recebeu → Contrato ou obra | — | — | sempre: contratos e fornecedores não estão nos arquivos usados (substituído pelo incremento Transferegov abaixo) |
 | Emenda → Convênio | código da emenda no arquivo de convênios da CGU | — | (ramo omitido quando não há convênio) |
 
 Convênio e pagamento não têm identificador comum nos arquivos: o convênio **não** é ligado a um pagamento ou favorecido, nem por nome nem por valor (AC05). `evidence_id` = código SIAFI, número do primeiro documento de pagamento (mais N) ou número do convênio; `source_url` = página da emenda no Portal (nula no modo demo).
@@ -118,6 +118,30 @@ Convênio e pagamento não têm identificador comum nos arquivos: o convênio **
 
 **Riscos (fluxo).** Nome de pessoa física: só `quem_recebeu`, já mascarado na origem (AC09 da SPEC 01). Página estática: a busca leva à ficha (`/emendas/<código>#fluxo`), não monta fluxo no cliente.
 
+
+## Incremento — Transferegov no fluxo do dinheiro (T04.05, segunda parte, 21/11/2026)
+
+**Por quê.** A etapa "contrato ou obra" era sempre "não identificado" e o ramo de convênio vinha só do arquivo da CGU. O adaptador Transferegov (SPEC 01 → T01.04, ADR-018) traz o instrumento de cada emenda por identificador oficial; o fluxo passa a usá-lo.
+
+**PLAN.** `bundle` inclui `transferegov.json` como parte opcional do pacote; `lib/dataset.ts` anexa o registro à ficha (`Emenda.transferegov`: ausente quando o pacote não tem a parte, `null` quando não há registro ligado). `lib/fluxo.ts` muda só o ramo e a última aresta; `MoneyFlow` nomeia a fonte do link (Portal ou Transferegov). A ficha ganha a seção "No Transferegov" (`#transferegov`). `/fluxos` ganha o exemplo "Execução declarada". Só classes CSS existentes; sem endpoint novo.
+
+| Aresta | Documentado | Não identificado (com o motivo) |
+|---|---|---|
+| Emenda → Plano de ação (ramo) | `numero_emenda_parlamentar_plano_acao` igual ao código da emenda. `evidence_id` = código do plano; `source_url` = registro na API pública | — (ramo omitido sem plano; com convênio, vale a linha abaixo) |
+| Emenda → Convênio (ramo) | código da emenda no arquivo de convênios da CGU; se o número do convênio tiver meta no Transferegov, o nó mostra proposta, situação, valores e metas planejadas, e o `evidence_id` cita a proposta | — (ramo omitido sem convênio) |
+| Quem recebeu → Contrato ou obra | plano de ação ligado com execução declarada pelo ente: documento de liquidação ou valor executado positivo no último relatório de gestão entregue. Nó com recebedores (PF/MEI mascarados), metas e valor executado declarado; `evidence_id` = plano + relatório; `source_url` = relatórios do plano na API | plano sem execução declarada; convênio achado, mas a API pública não publica contratos nem pagamentos do convenente; especial sem plano; convênio sem meta no Transferegov; emenda sem instrumento ligado; pacote sem Transferegov; modo demo |
+
+Em verificação não é usado nesta aresta: ou há registro ligado por identificador, ou há lacuna. O texto do nó diz sempre que relatório de gestão é declaração do ente e não prova entrega. Valores do plano, do convênio e do relatório não se somam com os da CGU nem entre si.
+
+**TASKS.** T04.05f tipos e carga opcional · T04.05g regras do ramo e da última aresta em `fluxo.ts` · T04.05h seção "No Transferegov" na ficha · T04.05i exemplo em `/fluxos` · T04.05j verificação (typecheck, testes do pacote, contagem sobre as 1.910 fichas).
+
+**Aceites.**
+- **AC17** Emenda sem registro ligado por identificador mantém "Contrato ou obra" como não identificado e mostra o motivo.
+- **AC18** Nenhum fornecedor aparece ligado por nome ou valor; o recebedor vem do documento de liquidação do relatório de um plano ligado pelo número da emenda.
+- **AC19** Pessoa física e MEI não aparecem pelo nome em nenhum nó, tabela ou export.
+- **AC20** Pacote sem a parte Transferegov continua carregando; o fluxo diz que o pacote não a inclui.
+
+**Evidências (21/11/2026).** `buildFluxo` aplicado às 1.910 fichas do pacote `dbcbf99a…`: ramo documentado com registro do Transferegov em 603 fichas (259 planos de ação + 344 convênios com proposta; 1 convênio só com a CGU); "Contrato ou obra" documentado em 107 e não identificado em 1.803, todas com motivo (1.306 sem instrumento ligado, 344 convênios sem contratos na API, 152 planos sem execução declarada, 1 convênio sem meta). Nenhuma aresta documentada sem `evidence_id`, `source_url` e `method`. `npm run typecheck` sem erros; `node --test scripts/*.test.mjs` 20 de 20 (inclui pacote sem a parte, parte válida, referência a ficha inexistente e dinheiro fracionado). Build e navegador: não executados neste incremento (o build é feito pelo revisor).
 
 ## Incremento — nova aba Mapa (T04.03, 21/11/2026)
 

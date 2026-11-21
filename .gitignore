@@ -35,3 +35,5 @@ apps/web/public/fotos/
 
 # Export estático local do modo publicado (gerado pelo build)
 apps/web/out/
+# Export das emendas estaduais (SPEC 07), como os exports federais
+data/estaduais/

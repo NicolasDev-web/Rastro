@@ -3,7 +3,8 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 
 const fields = { 'ce-municipios': ['municipalities', 'non_municipal', 'years'], autores: ['authors', 'collective', 'years'], emendas: ['emendas'], municipios: ['municipios'] };
-const monetary = new Set(['pago', 'pago_total', 'empenhado', 'liquidado', 'rap_pagos', 'rap_inscritos', 'rap_cancelados', 'valor', 'documentos_pago']);
+const monetary = new Set(['pago', 'pago_total', 'empenhado', 'liquidado', 'rap_pagos', 'rap_inscritos', 'rap_cancelados', 'valor', 'documentos_pago',
+  'valor_custeio', 'valor_investimento', 'valor_executado', 'valor_pendente', 'valor_global', 'valor_repasse', 'valor_contrapartida']);
 function validateValues(value) {
   if (!value || typeof value !== 'object') return;
   for (const [key, item] of Object.entries(value)) {
@@ -39,6 +40,22 @@ export function loadBundle(directory) {
     for (const list of [city.emendas_localidade, city.emendas_aplicacao]) {
       if (!Array.isArray(list) || list.some(e => e.ficha && !result.emendas.emendas[e.code])) throw new Error('Referência de emenda incompatível');
     }
+  }
+  // Parte opcional (ADR-018): Transferegov ligado às fichas pelo código da emenda. Pacote sem ela continua válido.
+  result.transferegov = null;
+  const tg = manifest.files?.transferegov;
+  if (tg) {
+    if (tg.path !== `bundles/${manifest.id}/transferegov.json`) throw new Error('Caminho inválido: transferegov');
+    const content = fs.readFileSync(path.join(directory, tg.path));
+    if (createHash('sha256').update(content).digest('hex') !== tg.sha256) throw new Error('Hash divergente: transferegov');
+    const raw = JSON.parse(content.toString('utf8'));
+    if (raw.kind !== 'VALIDACAO' || raw.snapshot?.raw_sha256 !== manifest.snapshot) throw new Error('Snapshot incompatível: transferegov');
+    if (!raw.emendas || typeof raw.emendas !== 'object' || Array.isArray(raw.emendas)) throw new Error('Estrutura inválida: transferegov/emendas');
+    validateValues(raw);
+    for (const [code, item] of Object.entries(raw.emendas)) {
+      if (!result.emendas.emendas[code] || !Array.isArray(item.planos_acao) || !Array.isArray(item.convenios)) throw new Error('Referência Transferegov incompatível');
+    }
+    result.transferegov = raw;
   }
   return result;
 }

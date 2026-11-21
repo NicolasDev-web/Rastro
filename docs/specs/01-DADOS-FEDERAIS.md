@@ -107,7 +107,7 @@ Decidido **pelo código IBGE da UF (`2300000`) e do município**, nunca por text
 - [x] T01.01 Catalogar endpoints, arquivos, filtros, dicionários e cobertura por ano — CGU arquivo único e IBGE (`reports/inventario-cgu-*.md`); documentos e Transferegov catalogados em `docs/sources/FONTES-OFICIAIS.md`.
 - [x] T01.02 Criar manifest de snapshots e armazenamento imutável (`pipelines/rastro/snapshot.py`, `data/manifests/snapshots.jsonl`).
 - [x] T01.03 Implementar adaptador CGU usando arquivos oficiais — arquivo único (por emenda, favorecido, convênios). Documentos de despesa: incremento 2.
-- [ ] T01.04 Implementar adaptador Transferegov verificando esquema real.
+- [x] T01.04 Implementar adaptador Transferegov verificando esquema real — `pipelines/rastro/transferegov.py`, ver "Incremento T01.04" (21/11/2026). Contratos e pagamentos de convênios seguem sem fonte aberta.
 - [x] T01.05 Importar IBGE municípios/UF, com geocódigo único — 184 municípios do CE. Malha geográfica: feita em 0.9.0 (SPEC 04, T04.03; `data/malha/`).
 - [x] T01.06 Implementar staging e validações de unicidade/valor/data (`pipelines/rastro/load.py`, `db/staging/001_staging.sql`).
 - [x] T01.07 Definir relacionamentos documentados e conciliação — documentos de despesa 2020–2026 × arquivo por emenda (`pipelines/rastro/documentos.py`, `reports/conciliacao-documentos-*.md`).
@@ -158,3 +158,79 @@ Fonte: `emendas-parlamentares-documentos/{ANO}` (2020–2026, 7 ZIPs, 3.610.312 
 **Empenho:** soma dos documentos de empenho = "Valor Empenhado" em 1.675 de 1.796 emendas (93,3%).
 
 **Ganho de rastreabilidade (achado para o próximo incremento):** 610 emendas registradas como `MÚLTIPLO` (vários municípios) têm R$ 4,65 bi em documentos de pagamento com **município de aplicação no Ceará**. Nenhuma emenda `Nacional` tem pagamento aplicado em município do CE. Próximo passo: medida separada "pago por município de aplicação (documentos)" no explorador — nunca somada à medida por emenda.
+
+## Incremento T01.04 — Transferegov ligado à emenda (21/11/2026)
+
+**Objetivo.** Trazer, com evidência documental, o que o Transferegov.br diz sobre o instrumento de cada emenda com ficha (plano de ação da transferência especial, convênio ou contrato de repasse): objeto, situação, valores, metas e, quando houver, execução declarada e fornecedores pagos pelo ente. Regra de ligação na ADR-018.
+
+### Inventário verificado (21/11/2026)
+
+| Fonte | Endpoint | Situação | Chave para a emenda |
+|---|---|---|---|
+| API pública, módulo **especiais** | `https://api-publica.transferegov.gestao.gov.br/especiais/` (OpenAPI 3.1 em `/especiais/openapi.json`, 24 endpoints; paginação `pagina` e `tamanho_da_pagina` ≤ 200; atualização diária em `/data-atualizacao`) | Em uso | `planos-acao-especiais.numero_emenda_parlamentar_plano_acao` = código de 12 dígitos da CGU (ex.: `202039590014`) |
+| API pública, módulo **discricionárias** | `https://api-publica.transferegov.gestao.gov.br/discricionarias/` (13 endpoints: programas, propostas, proponentes, plano de aplicação detalhado, meta do cronograma físico, justificativas, PAC) | Em uso, por chave | Não tem código da emenda. Chave: nº do convênio do arquivo `EmendasParlamentares_Convenios.csv` da CGU → `meta-crono-fisico.nr_convenio` → `id_proposta` → `propostas` |
+| API pública, módulos `fundoafundo`, `ted`, `parcerias` | OpenAPI respondem (200) | Inventariados, não usados | Fora do escopo deste incremento |
+| API antiga `api.transferegov.gestao.gov.br/transferenciasespeciais/` (PostgREST) | Responde, mas a página oficial de dados abertos diz que os serviços migraram para a API pública | Não usada | Mesmo campo de emenda |
+| Downloads em lote do Siconv (`repositorio.dados.gov.br/seges/detru/siconv_*.csv.zip`) | **404** em 21/11/2026 | Indisponível | — |
+
+Esquema conferido contra respostas reais (não só contra o OpenAPI) e congelado em `pipelines/contracts/transferegov.json`. As chaves das respostas batem com os esquemas de resposta do OpenAPI; os nomes de alguns **parâmetros** de filtro diferem dos campos (ex.: `tx_identificacao_recebedor_mascarado_…` na resposta). O filtro `numero_emenda_parlamentar_plano_acao` da API pública devolve erro 500; por isso planos de ação, beneficiários e relatórios de gestão são copiados inteiros. A paginação não tem ordem estável: na tabela completa de executores, o `id_executor` 1359 apareceu em duas páginas e a cópia foi abortada três vezes pela checagem de paginação. Executores, planos de trabalho, metas e documentos de liquidação vêm, então, por consulta filtrada pelos ids da própria API (`id_plano_acao`, `id_executor`, `id_relatorio_gestao_novo`); resposta com registro de outra chave aborta a cópia.
+
+**Cobertura das transferências especiais:** planos de ação de 2020 em diante (EC 105/2019). Volume nacional em 21/11/2026: 58.990 planos de ação, 58.435 executores, 160.064 metas, 57.480 planos de trabalho, 27.773 relatórios de gestão e 107.511 documentos de liquidação.
+
+**O que a API pública de discricionárias não tem:** convênio como entidade (situação de execução, valores desembolsados), licitações, contratos, fornecedores e pagamentos do convenente. Para convênios e contratos de repasse o RASTRO mostra proposta, valores do plano de trabalho e metas planejadas; a etapa "contrato ou obra" continua sem fonte aberta verificada.
+
+### Regras
+
+- Cópia bruta datada por endpoint em `raw_data/transferegov/<módulo>/`, uma linha por resposta HTTP (`<URL>\t<corpo JSON recebido>`), SHA-256 e data de atualização da fonte no manifesto (`snapshot.acquire`). Paginação inconsistente (total muda, id repetido, contagem diferente) ou filtro desobedecido aborta a cópia. As chaves de cada consulta saem da cópia anterior: fichas → planos de ação → executores e planos de trabalho → metas; relatórios → documentos de liquidação; convênios da CGU → metas do cronograma → propostas.
+- Decimais lidos como `Decimal`; dinheiro em centavos inteiros; ausente = `null`. A API serializa alguns valores com resíduo de ponto flutuante (ex.: `18969.600000000002` num documento de liquidação): só um resíduo menor que um milionésimo de real é arredondado ao centavo; fração de centavo maior bloqueia a carga.
+- Documentos de liquidação contam pelo id da API. Há documentos com descrição, recebedor, valor e data iguais e ids diferentes no mesmo relatório (10 no recorte de 21/11/2026); são mantidos como a fonte publica, porque deduplicar por valor seria inventar uma regra.
+- Valores do plano de ação, do convênio, do relatório de gestão e dos pagamentos a fornecedores são etapas diferentes: não se somam entre si nem com empenhado/pago da CGU. Relatório de gestão: mostra-se o último entregue (situação diferente de "Em elaboração"), sem somar relatórios; documentos de liquidação de relatório em elaboração não contam. Documento de liquidação conta uma vez pelo id da API.
+- Metas são o planejado. Relatório de gestão e documentos de liquidação são declarações do ente; não provam entrega.
+- Privacidade (AC09): conta bancária, e-mail, telefone, endereço, CPF e documento do recebedor ficam só no raw. Recebedor com CPF sai como pessoa física omitida; com CNPJ, o nome só aparece se tiver marca fechada de pessoa jurídica que MEI e empresário individual não usam (`LTDA`, `EIRELI`, `ASSOCIACAO`, `MUNICIPIO`…); o resto entra num grupo mascarado.
+
+### PLAN
+
+`pipelines/rastro/transferegov.py` (biblioteca padrão, no padrão de `cgu.py`/`snapshot.py`) baixa as tabelas e as consultas por chave, valida contra o contrato e grava `data/validacao/transferegov-<tag CGU>.json`, indexado pelo código da emenda das fichas. `bundle` passa a incluir esse arquivo como parte **opcional** do pacote (validado quando presente; pacotes antigos continuam válidos); `publicar` copia todos os arquivos do manifesto; `validation-bundle.mjs` valida o arquivo e as referências a fichas. Sem staging novo, sem endpoint, sem mudança nos quatro exports existentes.
+
+### TASKS
+
+- [x] T01.04a Inventário real dos endpoints, esquema e cobertura (acima).
+- [x] T01.04b Contrato `pipelines/contracts/transferegov.json` e leitura validada.
+- [x] T01.04c Cópia bruta paginada com SHA-256 e reaproveitamento.
+- [x] T01.04d Ligação por código da emenda e por nº de convênio; export determinístico.
+- [x] T01.04e Integração opcional ao pacote (`bundle.py`, `publicar.py`, `validation-bundle.mjs`).
+- [x] T01.04f Testes `pipelines/tests/test_transferegov.py`.
+
+### Aceites
+
+- **AC10** Dado um plano de ação com o mesmo beneficiário e o mesmo valor de uma emenda com ficha, mas outro número de emenda, quando o export é gerado, então ele não aparece na ficha.
+- **AC11** Dado um convênio do arquivo da CGU sem meta no Transferegov, quando o export é gerado, então ele não ganha proposta e conta como lacuna na cobertura.
+- **AC12** Dado um recebedor com CPF ou sem marca de pessoa jurídica, quando qualquer artefato derivado é gerado, então nome e documento não aparecem.
+- **AC13** Dado um valor ausente na fonte, quando é exportado, então fica `null`; nenhum total de fornecedores com parcela ausente é calculado.
+- **AC14** Dado campo novo ou ausente numa resposta, quando o arquivo é lido, então a carga é bloqueada.
+- **AC15** Dada a mesma cópia bruta, quando o export roda duas vezes, então o resultado é idêntico.
+
+### Evidências (21/11/2026)
+
+Execução: `python pipelines/run.py transferegov` (cópias brutas) e `transferegov-local` (export sem rede), sobre as fichas do snapshot CGU `ed93842c`. 11 entradas novas no manifesto: OpenAPI `211f0d32` (especiais) e `269f37a8` (discricionárias); planos de ação `bfac770b` (58.990 registros, 90 MB), beneficiários `81cb582a`, relatórios de gestão `47eff482`, executores `9a8c5470`, planos de trabalho `1b854b3b`, metas `078c6051`, documentos de liquidação `cc05144b`, metas do cronograma por convênio `4b417eca`, propostas `0c8ec2e4`. Export `data/validacao/transferegov-2026-11-19-ed93842c.json` (SHA-256 `fb9fc856…`, igual em duas execuções); pacote ativo `dbcbf99a…`, com os quatro exports anteriores byte a byte iguais aos do pacote `ea6ce34d…`.
+
+| Medida | Resultado |
+|---|---|
+| Fichas de emenda | 1.910 |
+| Fichas de transferência especial / com plano de ação ligado | 258 / 259 (as 258, mais a 202337100002, "finalidade definida" com ação "Múltiplo" na CGU e 8 planos de ação com o seu número) |
+| Planos de ação ligados | 1.481 (373 com relatório de gestão entregue; 53 só com relatório em elaboração; 244 com documento de liquidação) |
+| Fichas com execução declarada pelo ente | 107 |
+| Fichas com convênio na CGU / com proposta achada no Transferegov | 346 / 345 (695 de 696 números de convênio; 1 sem meta) |
+| Modalidade das 695 propostas | 391 termos de fomento, 158 convênios, 141 contratos de repasse, 5 termos de colaboração; situação sempre "Proposta/Plano de Trabalho Aprovados" |
+| Documentos de liquidação ligados | 2.218 (7 com CPF; 201 com recebedor mascarado; 2.017 com nome de pessoa jurídica) |
+| Conferência (não é chave) | valor de repasse da proposta = valor do convênio no arquivo da CGU em 695 de 695 |
+
+| AC | Situação | Evidência |
+|---|---|---|
+| AC01/AC02 | Atende | Cópia somente leitura com SHA-256 no manifesto e reaproveitamento por hash (`test_snapshot_with_sha_and_reuse_ac01`); export idêntico em duas execuções (`test_deterministic_ac02` e hash acima). |
+| AC05/AC14 | Atende | Coluna nova bloqueia (`test_unknown_column_blocks_ac05`); paginação inconsistente e filtro desobedecido abortam (`test_duplicate_id_between_pages_blocks`, `test_total_change_blocks`, `test_short_count_blocks`, `test_keyed_query_checks_filter`). Na execução real a checagem barrou a tabela completa de executores. |
+| AC06/AC13 | Atende | Ausente fica `null`; total de fornecedores com parcela ausente fica `null` (`test_suppliers_masked_and_missing_stays_null`, `test_missing_is_none_not_zero`). |
+| AC09/AC12 | Atende | CPF, padrão de nome de MEI e nome sem marca de pessoa jurídica mascarados; documento, conta, e-mail e CPF citados em texto livre fora do export (`test_recebedor_masking_ac09`, `test_no_personal_identifiers_in_export`, `test_free_text_drops_email_and_cpf`). Varredura do export real: nenhum CPF formatado, e-mail, campo de CNPJ/conta ou padrão de MEI da trava de publicação. |
+| AC10 | Atende | `test_links_only_by_official_code`: plano com mesmo beneficiário e valor, outro número, fica fora. |
+| AC11 | Atende | `test_convenio_chain`; 1 convênio real sem meta conta como lacuna. |
+

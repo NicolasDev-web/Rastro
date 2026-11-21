@@ -13,6 +13,9 @@ Uso (a partir da pasta RASTRO/):
     python pipelines/run.py bundle     # valida e ativa pacote consistente
     python pipelines/run.py publicar   # congela cópia verificada do pacote ativo para o site publicado
     python pipelines/run.py fichas     # dados das fichas de emenda e de município (modo validação)
+    python pipelines/run.py transferegov       # Transferegov (planos de ação, convênios) ligado às fichas por identificador (ADR-018)
+    python pipelines/run.py transferegov-local # o mesmo, a partir das últimas cópias brutas, sem rede
+    python pipelines/run.py estaduais  # emendas ESTADUAIS do CE (Ceará Transparente): raw + export próprio em data/estaduais/ (SPEC 07)
     python pipelines/run.py all
 """
 import sys
@@ -23,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 def main(argv: list[str]) -> int:
     cmd = argv[1] if len(argv) > 1 else 'help'
-    steps = ['snapshot', 'profile', 'load', 'report', 'autores', 'documentos', 'export', 'fichas', 'bundle'] if cmd == 'all' else [cmd]
+    steps = ['snapshot', 'profile', 'load', 'report', 'autores', 'documentos', 'export', 'fichas', 'transferegov', 'bundle'] if cmd == 'all' else [cmd]
     for step in steps:
         if step == 'snapshot':
             from rastro.snapshot import acquire_all
@@ -50,9 +53,16 @@ def main(argv: list[str]) -> int:
         elif step == 'publicar':
             from rastro.publicar import run as publicar
             return publicar()
+        elif step == 'estaduais':
+            from rastro.ce_estaduais import run as estaduais
+            if estaduais() != 0:
+                return 1
         elif step == 'fichas':
             from rastro.fichas import run as fichas
             fichas()
+        elif step in ('transferegov', 'transferegov-local'):
+            from rastro.transferegov import run as transferegov
+            transferegov(download=step == 'transferegov')
         elif step == 'conciliacao':
             from rastro.audit_conciliacao import run as audit
             audit()

@@ -109,8 +109,13 @@ function loadFichas<T>(prefix: 'emendas' | 'municipios', key: 'emendas' | 'munic
   const cached = fichasCache[prefix];
   if (cached?.file === file) return cached.result as FichasResult<T>;
   try {
-    const raw = readValidation()[prefix];
-    const result: FichasResult<T> = { ok: true, data: raw[key] };
+    const bundle = readValidation();
+    const raw = bundle[prefix];
+    let data = raw[key];
+    // ADR-018: anexa o Transferegov às fichas de emenda quando o pacote tem a parte opcional.
+    const tg = prefix === 'emendas' ? bundle.transferegov?.emendas : undefined;
+    if (tg) data = Object.fromEntries(Object.entries(data as Record<string, Emenda>).map(([code, e]) => [code, { ...e, transferegov: tg[code] ?? null }]));
+    const result: FichasResult<T> = { ok: true, data };
     fichasCache[prefix] = { file, result };
     return result;
   } catch (e) {

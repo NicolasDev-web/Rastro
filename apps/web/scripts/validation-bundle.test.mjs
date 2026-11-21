@@ -35,3 +35,16 @@ test('hash alterado e arquivo ausente bloqueiam o conjunto',t=>{
   fs.appendFileSync(file,' '); assert.throws(()=>loadBundle(dir));
   fs.unlinkSync(file); assert.throws(()=>loadBundle(dir));
 });
+// ADR-018: parte opcional do Transferegov, validada quando presente.
+function withTransferegov(t, emendas) {
+  const {dir,manifest}=fixture(t,(prefix,raw)=>{if(prefix==='emendas')raw.emendas={DEMO_1:{code:'DEMO_1',documentos:[],quem_recebeu:[],convenios:[],conciliacao:{status:'confere'}}};});
+  const content=JSON.stringify({kind:'VALIDACAO',snapshot:{raw_sha256:manifest.snapshot},emendas}), file=`bundles/${manifest.id}/transferegov.json`;
+  fs.writeFileSync(path.join(dir,file),content);
+  manifest.files.transferegov={path:file,sha256:createHash('sha256').update(content).digest('hex')};
+  fs.writeFileSync(path.join(dir,'active-bundle.json'),JSON.stringify(manifest));
+  return dir;
+}
+test('pacote sem Transferegov continua válido',t=>assert.equal(loadBundle(fixture(t).dir).transferegov,null));
+test('Transferegov ligado a ficha existente carrega',t=>assert.ok(loadBundle(withTransferegov(t,{DEMO_1:{planos_acao:[{valor_investimento:100}],convenios:[]}})).transferegov.emendas.DEMO_1));
+test('Transferegov sem ficha correspondente bloqueia',t=>assert.throws(()=>loadBundle(withTransferegov(t,{DEMO_2:{planos_acao:[],convenios:[]}}))));
+test('Transferegov com dinheiro fracionado bloqueia',t=>assert.throws(()=>loadBundle(withTransferegov(t,{DEMO_1:{planos_acao:[{valor_investimento:1.5}],convenios:[]}}))));

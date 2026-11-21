@@ -4,7 +4,7 @@ import { DataState } from '../../components/States';
 import { FlowExplorer, type FlowExample } from '../../components/FlowExplorer';
 import { DATA_MODE, getEmendas } from '../../lib/dataset';
 import { getInvestigacao } from '../../lib/investigacao';
-import { buildFluxo, statusPagamento, type EdgeStatus } from '../../lib/fluxo';
+import { buildFluxo, statusExecucao, statusPagamento, type EdgeStatus } from '../../lib/fluxo';
 import type { Emenda } from '../../lib/fichas-types';
 
 const EXEMPLOS: { status: EdgeStatus; label: string; hint: string }[] = [
@@ -29,10 +29,14 @@ export default function Fluxos() {
       const pick = flows.filter(f => statusPagamento(f.flow) === x.status).sort((a, b) => score(a.e, x.status) - score(b.e, x.status))[0];
       return pick ? [{ label: x.label, hint: x.hint, flow: pick.flow }] : [];
     });
+    // Etapa "contrato ou obra" documentada pelo Transferegov (ADR-018): exemplo próprio, de outra emenda.
+    const usados = new Set(examples.map(x => x.flow.code));
+    const exec = flows.filter(f => statusExecucao(f.flow) === 'documentado' && !usados.has(f.e.code)).sort((a, b) => score(a.e, 'documentado') - score(b.e, 'documentado'))[0];
+    if (exec) examples.push({ label: 'Execução declarada', hint: 'O plano de ação do Transferegov traz o número desta emenda e o ente declarou a execução no relatório de gestão. É declaração do ente, não vistoria: não prova a entrega.', flow: exec.flow });
   }
 
   return <div className="container page-space">
-    <PageHero eyebrow="Siga o dinheiro" title="Cada ligação precisa de prova." description="Veja o caminho de uma emenda real: do autor ao pagamento e a quem recebeu. Cada traço mostra se a ligação está provada por documento, se ainda está em verificação ou se não existe nos dados." art={<FluxoArt />} />
+    <PageHero eyebrow="Siga o dinheiro" title="Cada ligação precisa de prova." description="Veja o caminho de uma emenda real: do autor ao pagamento, a quem recebeu e, quando o Transferegov registra, ao plano de ação, ao convênio e à execução declarada pelo ente. Cada traço mostra se a ligação está provada por documento, se ainda está em verificação ou se não existe nos dados." art={<FluxoArt />} />
     {!res.ok ? <DataState kind="error" title="Fluxos indisponíveis">{res.error}</DataState>
       : examples.length ? <FlowExplorer examples={examples} codes={codes} />
       : <DataState kind="empty" title="Nenhuma emenda para mostrar">O pacote de dados ativo não tem fichas de emenda.</DataState>}

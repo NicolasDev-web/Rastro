@@ -691,3 +691,6 @@ main:focus { outline: none; }
 @media (max-width: 420px) {
   .mapa-ce-frame { padding: 8px; box-shadow: 4px 4px 0 var(--ink); }
 }
+
+/* Texto livre copiado da fonte (Transferegov) pode trazer códigos longos sem espaço: quebra em qualquer ponto. */
+.texto-fonte p, .texto-fonte li { overflow-wrap: anywhere; }

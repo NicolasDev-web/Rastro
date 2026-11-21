@@ -47,9 +47,9 @@ export function MoneyFlow({ flow = FLUXO_ILUSTRATIVO }: { flow?: Flow }) {
       {inEdge?.note && <p className="small"><strong>O que a investigação encontrou:</strong> {resumo(inEdge.note)}{inEdge.note.length > 260 && <> <Link href={`/emendas/${flow.code}#investigacao`}>Detalhes na ficha</Link>.</>}</p>}
       <div className="flow-links">
         {node.href && <Link className="text-link" href={node.href}>{node.hrefLabel ?? 'Abrir ficha'} <ArrowRight size={14} aria-hidden="true" /></Link>}
-        {inEdge?.source_url && <a className="text-link" href={inEdge.source_url} target="_blank" rel="noopener noreferrer">Fonte oficial no Portal <ExternalLink size={13} aria-hidden="true" /></a>}
+        {inEdge?.source_url && <a className="text-link" href={inEdge.source_url} target="_blank" rel="noopener noreferrer">{inEdge.source_url.includes('transferegov') ? 'Registro oficial no Transferegov' : 'Fonte oficial no Portal'} <ExternalLink size={13} aria-hidden="true" /></a>}
       </div>
-      <span className="small muted"><Link2 size={15} aria-hidden="true" /> {flow.illustrative ? 'Diagrama explicativo, com nomes genéricos. Os registros reais de cada emenda estão nas fichas.' : 'Montado com os arquivos da CGU. Clique em cada etapa para ver a prova da ligação.'}</span>
+      <span className="small muted"><Link2 size={15} aria-hidden="true" /> {flow.illustrative ? 'Diagrama explicativo, com nomes genéricos. Os registros reais de cada emenda estão nas fichas.' : 'Montado com os arquivos da CGU e, quando há registro ligado por identificador, com o Transferegov. Clique em cada etapa para ver a prova da ligação.'}</span>
     </div></div>
     <InfoNote>No RASTRO, uma conexão só aparece como documentada após conferência de identificador ou registro. Ausência de vínculo não prova irregularidade.</InfoNote>
   </div>;

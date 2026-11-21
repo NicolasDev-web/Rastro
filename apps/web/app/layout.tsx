@@ -15,7 +15,7 @@ const PUBLICADO = DATA_MODE === 'publicado';
 export const metadata: Metadata = PUBLICADO
   ? { title: 'RASTRO | O caminho das emendas parlamentares no Ceará', description: 'Investigação cidadã independente com dados oficiais da CGU: quanto foi indicado, empenhado e pago em emendas federais destinadas ao Ceará, de 2020 a 2026.' }
   : { title: 'RASTRO | Jornalismo de dados — conceito demonstrativo', description: 'Protótipo fictício do RASTRO: explicações e ferramentas para compreender emendas parlamentares destinadas ao Ceará.' };
-const nav: [string, string][] = [['/investigacao', 'Investigação'], ['/mapa', 'Mapa'], ['/parlamentares', 'Autores'], ['/fluxos', 'Fluxos'], ['/reportagens', 'Reportagens'], ['/dados', 'Dados']];
+const nav: [string, string][] = [['/investigacao', 'Investigação'], ['/mapa', 'Mapa'], ['/parlamentares', 'Autores'], ['/estaduais', 'Estaduais'], ['/fluxos', 'Fluxos'], ['/reportagens', 'Reportagens'], ['/dados', 'Dados']];
 
 function Wordmark() {
   return <>RASTRO<span className="wordmark-trail" aria-hidden="true"><i /><i /><i /></span></>;

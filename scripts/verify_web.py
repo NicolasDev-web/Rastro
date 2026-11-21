@@ -32,7 +32,10 @@ def main():
         autor = emendas[emenda]['autor_ficha']
     routes = {'home': '/', 'mapa': '/mapa', 'municipio': '/municipios/2304400', 'emenda': f'/emendas/{emenda}',
               'autor': f'/parlamentares/{autor}', 'autores': '/parlamentares', 'dados': '/dados',
-              'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'glossario': '/glossario', 'fluxos': '/fluxos'}
+              'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'glossario': '/glossario', 'fluxos': '/fluxos', 'estaduais': '/estaduais'}
+    if args.mode == 'publicado':
+        # Ficha com plano de ação e execução declarada no Transferegov (ADR-018): texto livre longo da fonte.
+        routes['emenda-transferegov'] = '/emendas/202537330007'
     state_routes = {}
     for status, label in [('diverge', 'Pagamentos divergem dos documentos'),
                           ('sem_documentos', 'Sem documento de pagamento'),

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { InfoNote, PageHero } from '../../components/Ui';
 import { AutoresArt } from '../../components/Illustrations';
 import { AuthorsBrowser } from '../../components/AuthorsBrowser';
@@ -32,7 +33,7 @@ export default function Autores() {
 
       <section className="block-gap" aria-labelledby="estaduais">
         <h2 id="estaduais" className="block-title">Deputados estaduais (Alece)</h2>
-        <DataState kind="partial_coverage" title="Emendas estaduais: sem fonte estruturada">No Ceará, as emendas dos deputados estaduais não são impositivas: são indicações ao orçamento do Estado, executadas a critério do governo (até 1/46 do valor reservado por deputado). O quadro das emendas aprovadas sai só em PDF na Lei Orçamentária, no Diário Oficial, e o relatório que a Lei estadual nº 19.851 manda a Seplag publicar não estava acessível. Por isso não mostramos valores por deputado estadual. Próximo passo: extrair o quadro da LOA e pedir a execução pela Lei de Acesso à Informação.</DataState>
+        <DataState kind="partial_coverage" title="Emendas estaduais: só o orçamento, cobertura parcial">No Ceará, as emendas dos deputados estaduais não são impositivas: são indicações ao orçamento do Estado, executadas a critério do governo. O Ceará Transparente publica um arquivo por ano (2023 a 2026) com o lado do orçamento, sem empenho, pagamento ou beneficiário, e com poucas linhas por ano. A execução foi pedida à CGE pela Lei de Acesso à Informação. <Link href="/estaduais">Veja o que já está em Emendas estaduais</Link>.</DataState>
         {res.data.stateDeputies.length > 0 && <>
           <p className="small muted">{res.data.stateDeputies.length} deputados em exercício segundo a página oficial da Alece{res.data.stateAsOf ? ` (consulta de ${formatDate(res.data.stateAsOf)})` : ''}, em ordem alfabética. Partido atual.</p>
           <ul className="author-grid state-grid">{[...res.data.stateDeputies].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR')).map(d => <li key={d.slug}>

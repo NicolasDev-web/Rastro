@@ -1,6 +1,6 @@
 """Cópia congelada do pacote ativo para o modo `publicado` (ADR-015).
 
-Copia o manifesto ativo e os quatro arquivos do pacote para `data/publicado/`, mantendo os caminhos
+Copia o manifesto ativo e todos os arquivos do pacote (os quatro obrigatórios e os opcionais presentes) para `data/publicado/`, mantendo os caminhos
 `bundles/<id>/<prefixo>.json` que o site já valida. Cada arquivo vem da pasta do pacote ou, se ela não
 puder ser lida, do export de mesmo nome. Em ambos os casos o SHA-256 tem de bater com o manifesto ativo.
 Nada no staging, nos snapshots ou no pacote de validação é alterado.
@@ -35,9 +35,12 @@ def _read_verified(validation: Path, manifest: dict, prefix: str, tag: str) -> b
 def freeze(validation: Path = VALIDATION_DIR, target: Path = PUBLISHED_DIR) -> str:
     validation, target = Path(validation), Path(target)
     manifest = json.loads((validation / 'active-bundle.json').read_text(encoding='utf-8'))
+    missing = [p for p in PREFIXES if p not in manifest['files']]
+    if missing:
+        raise ValueError(f'Manifesto ativo sem partes obrigatórias: {missing}')
     tag = None
     contents = {}
-    for prefix in PREFIXES:
+    for prefix in manifest['files']:  # PREFIXES e partes opcionais presentes no manifesto (ADR-018)
         if tag is None:  # data e hash do snapshot, como nos nomes dos exports
             for f in validation.glob(f'{prefix}-*-{manifest["snapshot"][:8]}.json'):
                 tag = f.stem[len(prefix) + 1:]

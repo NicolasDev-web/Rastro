@@ -89,3 +89,23 @@ Achados técnicos, como a ausência de documento de pagamento nos arquivos anuai
 **Por quê:** pela localidade da emenda só 38 dos 184 municípios têm registro em 2025 (67 em 2024), porque a maior parte do dinheiro vem como "vários municípios" ou "estado". Um mapa assim sugeriria, errado, que quase nada chegou. Pela aplicação, 183 municípios têm pagamento em 2025.
 
 **Consequências:** a legenda e o resumo nomeiam o critério. Os dois critérios nunca se somam. Município de aplicação não prova o local da entrega. Malha do IBGE (API v3, qualidade mínima) guardada com SHA-256 e convertida em SVG estático no build.
+
+## ADR-018 — Transferegov ligado à emenda só por identificador oficial
+
+**Decisão (21/11/2026):** o Transferegov.br entra pela API pública (`api-publica.transferegov.gestao.gov.br`) com duas regras de ligação, e nenhuma outra:
+1. **Transferência especial:** o plano de ação liga à emenda quando `numero_emenda_parlamentar_plano_acao` é igual, dígito a dígito, ao código de 12 dígitos da CGU. Executores, metas, plano de trabalho, relatórios de gestão e documentos de liquidação ligam ao plano pelos ids da própria API (`id_plano_acao`, `id_executor`, `id_relatorio_gestao_novo`).
+2. **Convênio e contrato de repasse:** o arquivo de convênios da CGU dá o número do convênio de cada emenda; no Transferegov, `meta-crono-fisico.nr_convenio` igual a esse número dá o `id_proposta`, e `propostas.id_proposta` dá objeto, situação e valores. Se o número não tiver meta, ou tiver mais de uma proposta, não há ligação.
+
+Nunca se liga por nome do beneficiário, valor, município ou data, nem se completa código fora do padrão. Planos de ação, beneficiários e relatórios de gestão são copiados inteiros (o filtro por número de emenda da API devolve erro 500); executores, planos de trabalho, metas, documentos de liquidação e as tabelas do módulo de discricionárias vêm por consulta filtrada pelos ids da própria fonte, porque a paginação da tabela completa não tem ordem estável. O arquivo `transferegov-<tag>.json` é parte opcional do pacote ativo (ADR-011): validado quando presente, sem alterar os quatro exports existentes.
+
+**Por quê:** Constituição, regra 10, e ADR-004. Os dois campos são identificadores oficiais publicados pela própria fonte. Valores iguais entre o convênio da CGU e o repasse do Transferegov aparecem com frequência, mas são só coincidência verificável, não chave.
+
+**Consequências:** a aresta "Emenda → Convênio/Plano de ação" do fluxo passa a citar o registro do Transferegov; "Quem recebeu → Contrato ou obra" fica documentada só quando o ente declarou execução no relatório de gestão de um plano ligado (documento de liquidação ou valor executado positivo), sempre descrita como declaração do ente, não como entrega. Para convênios, a API pública não traz contratos, licitações nem pagamentos do convenente: a etapa continua "não identificado", com o motivo. Recebedores pessoa física, MEI ou sem natureza de pessoa jurídica confirmada saem mascarados. A ADR-019 trata das emendas estaduais.
+
+## ADR-019 — Emendas estaduais do Ceará separadas das federais, nunca somadas
+
+**Decisão (21/11/2026):** as emendas dos deputados estaduais do Ceará (Ceará Transparente, CGE-CE, CSV de 2023 a 2026) entram por um adaptador próprio (`pipelines/rastro/ce_estaduais.py`), com contrato próprio (`pipelines/contracts/ce_emendas_estaduais.json`), export próprio (`data/estaduais/ce-estaduais-<data>-<hash>.json` com ponteiro `ativo.json` e SHA-256) e página própria (`/estaduais`). Nenhum total, gráfico, mapa, ficha de município ou ficha de autor soma valores estaduais com federais. O pacote federal (ADR-011) e seu manifesto não mudam.
+
+**Por quê:** são orçamentos diferentes (Constituição, regra 12). A emenda estadual no Ceará não é impositiva, e o arquivo aberto traz só o orçamento ("Valor emenda", "Valor lei", "Valor lei créditos"), sem empenho nem pagamento. Somar com o pago federal juntaria esfera e etapa diferentes. Um export separado também evita mexer no hash e na validação do pacote federal.
+
+**Consequências:** a página declara a cobertura parcial (195 linhas em quatro anos, todas PCF individuais) e que não há execução. Ligação ao município só pelo nome IBGE exato citado no texto da ação, em duas posições documentadas; ao deputado, só pelo nome exato e único na lista da Alece. O resto fica sem ligação e entra no relatório `reports/ce-estaduais-*.md`. A execução (empenho, pago, Nº SACC, beneficiário) depende da resposta da CGE-CE ao pedido de acesso à informação ou do caminho B da SPEC 07, que não foi implementado. A ADR-018 está reservada para outra frente.

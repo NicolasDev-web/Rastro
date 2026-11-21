@@ -1,0 +1,54 @@
+{
+  "source_id_prefix": "ce_estaduais",
+  "contract_version": "2026-11-21",
+  "derived_from": "CSVs de 2023 a 2026 baixados em 21/11/2026 de cearatransparente.ce.gov.br (Last-Modified 02/10/2026); SHA-256 no manifesto data/manifests/snapshots.jsonl",
+  "url_template": "https://cearatransparente.ce.gov.br/files/downloads/integration/expenses/parliamentary_amendments/{ano}/emendas_parlamentares_{ano}.csv",
+  "dictionary_url": "https://cearatransparente.ce.gov.br/files/downloads/transparency/dicionario/dicionario_de_dados_emendas.pdf",
+  "years": [2023, 2024, 2025, 2026],
+  "encoding": "iso-8859-1",
+  "delimiter": ";",
+  "money_formats": [
+    "inteiro em reais, sem separador (observado em todos os arquivos: \"300000\")",
+    "reais com vírgula decimal (\"300000,00\") ou com ponto de milhar e vírgula decimal (\"300.000,00\", formato do exemplo do dicionário)"
+  ],
+  "null_sentinels": ["", "Sem informação", "SEM INFORMAÇÃO", "S/I", "-"],
+  "columns": [
+    "Exercício", "Código da emenda", "Parlamentar", "Executivo", "Caráter", "Tipo", "Órgão", "Unidade orçamentária",
+    "Esfera", "Função", "Subfunção", "Programa", "Ação", "Tipo da ação", "Região", "Despesa", "Grupo de despesa",
+    "Fonte", "Fonte de detalhamento", "ID de uso", "Resultado primário", "Valor emenda", "Valor lei", "Valor lei créditos"
+  ],
+  "fields": {
+    "Exercício": "ano",
+    "Código da emenda": "codigo",
+    "Parlamentar": "parlamentar",
+    "Executivo": "executivo",
+    "Caráter": "carater",
+    "Tipo": "tipo",
+    "Órgão": "orgao",
+    "Unidade orçamentária": "unidade_orcamentaria",
+    "Esfera": "esfera",
+    "Função": "funcao",
+    "Subfunção": "subfuncao",
+    "Programa": "programa",
+    "Ação": "acao",
+    "Tipo da ação": "tipo_acao",
+    "Região": "regiao",
+    "Despesa": "despesa",
+    "Grupo de despesa": "grupo_despesa",
+    "Fonte": "fonte",
+    "Fonte de detalhamento": "fonte_detalhamento",
+    "ID de uso": "id_uso",
+    "Resultado primário": "resultado_primario",
+    "Valor emenda": "valor_emenda",
+    "Valor lei": "valor_lei",
+    "Valor lei créditos": "valor_lei_creditos"
+  },
+  "money_columns": ["Valor emenda", "Valor lei", "Valor lei créditos"],
+  "dictionary_divergences": [
+    "O dicionário (PDF de 1 página) descreve outras colunas: \"Autor Emenda / Emenda Parlamentar\", \"Órgão Orçamento\", \"Programa\", \"Ação\", \"Micro-Região\", \"Dotação Inicial (R$)\", \"Dotação Atualizada (R$)\", \"Despesas Empenhadas (R$)\", \"Despesas Liquidadas (R$)\", \"Despesas Pagas (R$)\". Parece descrever a tabela da página, não o CSV.",
+    "Só \"Programa\" e \"Ação\" têm o mesmo nome no CSV e no dicionário. \"Parlamentar\" corresponde em parte a \"Autor Emenda\", mas o CSV não traz o código do autor (o exemplo do dicionário é \"AGENOR NETO (E0103)\"). \"Região\" corresponde em parte a \"Micro-Região\".",
+    "\"Valor emenda\", \"Valor lei\" e \"Valor lei créditos\" não estão definidos no dicionário. O projeto não sabe se equivalem a \"Dotação Inicial\" e \"Dotação Atualizada\" e não os trata como equivalentes.",
+    "O CSV não traz empenho, liquidação, pagamento, beneficiário, CNPJ, município IBGE nem Nº SACC, embora o dicionário cite empenho, liquidação e pagamento.",
+    "O dicionário mostra valores com ponto de milhar e vírgula (\"200.000,00\"). O CSV traz inteiros em reais (\"300000\")."
+  ]
+}

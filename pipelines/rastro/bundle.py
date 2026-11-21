@@ -8,11 +8,15 @@ from . import VALIDATION_DIR
 from .snapshot import latest
 
 PREFIXES = ('ce-municipios', 'autores', 'emendas', 'municipios')
+# Partes opcionais: entram no pacote quando o export do mesmo snapshot existe, e então são validadas (ADR-018).
+OPTIONAL_PREFIXES = ('transferegov',)
+MONETARY = {'pago', 'pago_total', 'empenhado', 'liquidado', 'rap_pagos', 'rap_inscritos', 'rap_cancelados', 'valor', 'documentos_pago',
+            'valor_custeio', 'valor_investimento', 'valor_executado', 'valor_pendente', 'valor_global', 'valor_repasse', 'valor_contrapartida'}
 
 
 def validate(payloads):
     required = {'ce-municipios': ('municipalities', 'non_municipal', 'years'), 'autores': ('authors', 'collective', 'years'), 'emendas': ('emendas',), 'municipios': ('municipios',)}
-    monetary = {'pago', 'pago_total', 'empenhado', 'liquidado', 'rap_pagos', 'rap_inscritos', 'rap_cancelados', 'valor', 'documentos_pago'}
+    monetary = MONETARY
     def values(obj):
         if isinstance(obj, list):
             for item in obj: values(item)
@@ -36,6 +40,14 @@ def validate(payloads):
             raise ValueError('Ficha municipal inválida')
         if any(e.get('ficha') and e.get('code') not in emendas for k in ('emendas_localidade', 'emendas_aplicacao') for e in city[k]):
             raise ValueError('Referência de emenda incompatível')
+    if 'transferegov' in payloads:  # parte opcional (ADR-018): só referencia fichas existentes
+        tg = payloads['transferegov']
+        if not isinstance(tg.get('emendas'), dict):
+            raise ValueError('Estrutura inválida: transferegov/emendas')
+        values(tg)
+        for code, item in tg['emendas'].items():
+            if code not in emendas or any(not isinstance(item.get(k), list) for k in ('planos_acao', 'convenios')):
+                raise ValueError('Referência Transferegov incompatível')
 
 
 def publish(entry, directory=VALIDATION_DIR):
@@ -54,6 +66,16 @@ def publish(entry, directory=VALIDATION_DIR):
             sources = selected
         payloads[prefix] = content
         hashes[prefix] = hashlib.sha256(content).hexdigest()
+    for prefix in OPTIONAL_PREFIXES:
+        path = directory / f'{prefix}-{tag}.json'
+        if not path.exists():
+            continue
+        content = path.read_bytes()
+        raw = json.loads(content)
+        if raw.get('kind') != 'VALIDACAO' or raw.get('snapshot', {}).get('raw_sha256') != entry['raw_sha256']:
+            raise ValueError(f'Export incompatível: {prefix}')
+        payloads[prefix] = content
+        hashes[prefix] = hashlib.sha256(content).hexdigest()
     validate({prefix: json.loads(content) for prefix, content in payloads.items()})
     ident = hashlib.sha256(json.dumps(hashes, sort_keys=True).encode()).hexdigest()
     target = directory / 'bundles' / ident
@@ -69,7 +91,7 @@ def publish(entry, directory=VALIDATION_DIR):
         if hashlib.sha256((target / f'{prefix}.json').read_bytes()).hexdigest() != digest:
             raise ValueError('Pacote existente foi alterado')
     manifest = {'version': 1, 'id': ident, 'snapshot': entry['raw_sha256'], 'document_sources': sources,
-                'files': {p: {'path': f'bundles/{ident}/{p}.json', 'sha256': hashes[p]} for p in PREFIXES}}
+                'files': {p: {'path': f'bundles/{ident}/{p}.json', 'sha256': hashes[p]} for p in hashes}}
     with tempfile.NamedTemporaryFile(dir=directory, delete=False, suffix='.tmp', mode='w', encoding='utf-8') as handle:
         json.dump(manifest, handle, sort_keys=True)
         temp = handle.name
