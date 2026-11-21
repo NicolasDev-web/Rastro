@@ -69,9 +69,9 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 ## Tasks
 - [ ] T04.01 Endpoint municipal com filtro e cursor/paginação.
 - [x] T04.02 Normalização de busca e parâmetros de URL (`?municipio=<IBGE>&etapa=<authorized|committed|paid>`).
-- [ ] T04.03 Mapa real IBGE / camadas e tabela alternativa — **tabela feita**; malha IBGE pendente.
+- [ ] T04.03 Mapa real IBGE / camadas e tabela alternativa — ver "Incremento — nova aba Mapa" (ADR-017).
 - [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); vínculos revisados por humano: 43 de 43 (`pipelines/contracts/autores_vinculo.json`, pelo revisor do projeto em 19/11/2026; relatório `reports/autores-vinculo-*.md` com a coluna de revisor preenchida). Falta o histórico de partido.
-- [ ] T04.05 Grafo de evidências documentais — **parcial**: arestas com `status`, `evidence_id` e método (demo).
+- [x] T04.05 Grafo de evidências documentais — fluxo real por emenda em `/fluxos` e em cada ficha (`lib/fluxo.ts`), com `status`, `evidence_id`, `source_url` e método por aresta. Ver "Incremento — fluxo real por emenda". Contratos e fornecedores seguem como lacuna até o Transferegov.
 - [ ] T04.06 Exportações com provenance — **parcial**: CSV demo com metadados e regras; proveniência real depende de RAS-012.
 - [ ] T04.07 E2E para busca, filtros e acessibilidade.
 
@@ -98,3 +98,47 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 
 Resultado do snapshot: 43 autores (38 eleitos pelo CE, 5 de outros estados com emendas no CE), 41 retratos oficiais, 6 autorias coletivas. Listagem e fichas sem estouro a 360px.
 
+## Incremento — fluxo real por emenda (T04.05, 21/11/2026)
+
+**PLAN.** O diagrama de `/fluxos` deixa de ser só ilustrativo e passa a ser montado com os dados da ficha de cada emenda, sem fonte nova. Função pura `lib/fluxo.ts` (servidor, build) transforma uma `Emenda` + registro de investigação em nós e arestas; o componente `MoneyFlow` só desenha. `/fluxos` mostra três emendas reais de exemplo (uma por status da ligação emenda → pagamentos) e uma busca por código; cada ficha de emenda ganha a seção "Fluxo do dinheiro" (`#fluxo`). O exemplo genérico continua em `/investigacao` e na galeria, marcado como ilustrativo.
+
+**Cadeia.** Autor formal → Emenda → Pagamentos → Quem recebeu → Contrato ou obra; ramo paralelo Emenda → Convênio.
+
+| Aresta | Documentado | Em verificação | Não identificado |
+|---|---|---|---|
+| Autor → Emenda | código SIAFI do autor no arquivo da CGU | — | fonte sem autor |
+| Emenda → Pagamentos | código da emenda nos documentos de pagamento e soma igual ao pago total; ou diferença com causa registrada (`explicado`) | soma diferente do pago total sem causa registrada, ou valores incompletos | nenhum documento de pagamento com o código da emenda |
+| Pagamentos → Quem recebeu | favorecido no próprio documento de pagamento | — | sem documento de pagamento |
+| Quem recebeu → Contrato ou obra | — | — | sempre: contratos e fornecedores não estão nos arquivos usados (Transferegov, incremento 3) |
+| Emenda → Convênio | código da emenda no arquivo de convênios da CGU | — | (ramo omitido quando não há convênio) |
+
+Convênio e pagamento não têm identificador comum nos arquivos: o convênio **não** é ligado a um pagamento ou favorecido, nem por nome nem por valor (AC05). `evidence_id` = código SIAFI, número do primeiro documento de pagamento (mais N) ou número do convênio; `source_url` = página da emenda no Portal (nula no modo demo).
+
+**TASKS.** T04.05a função `fluxo.ts` com as regras da tabela · T04.05b `MoneyFlow` recebe o fluxo por propriedade (nós com link, ramo, fonte) · T04.05c `/fluxos` com exemplos reais e busca · T04.05d seção na ficha · T04.05e verificação (typecheck, build publicado, checagem das regras sobre as 1.910 fichas, navegador a 360px).
+
+**Riscos (fluxo).** Nome de pessoa física: só `quem_recebeu`, já mascarado na origem (AC09 da SPEC 01). Página estática: a busca leva à ficha (`/emendas/<código>#fluxo`), não monta fluxo no cliente.
+
+
+## Incremento — nova aba Mapa (T04.03, 21/11/2026)
+
+**Por quê.** O explorador mostrava "empenhado / liquidado / pago" sem dizer o que isso significa para quem mora na cidade, a tabela das 184 cidades ocupava a página e o mapa era um aviso. Plano completo em `docs/planos/2026-11-21-mapa-e-estaduais.md`.
+
+**PLAN.** `/mapa` passa a ter, nesta ordem:
+1. Título-pergunta "Quanto dinheiro de emendas chegou à sua cidade?".
+2. Componente `MapaCeara` (cliente): busca de cidade + mapa SVG dos 184 municípios + resumo da cidade em frases + seletor de ano. URL `?municipio=<IBGE>&ano=<ano>`.
+3. Card "O que o mapa não mostra" (estado inteiro e vários municípios, pela localidade da emenda; pagamentos sem município de aplicação).
+4. Tabela completa recolhida em `<details>` ("Ver todos os municípios em tabela"), com o CSV.
+O explorador antigo sai de `/mapa` e continua no capítulo `/investigacao`.
+
+**Camada do mapa = pago por aplicação (ADR-017).** Pela localidade da emenda, só 38 cidades têm registro em 2025; pela aplicação do pagamento, 183. O mapa diz o critério na legenda e no resumo. A localidade da emenda aparece no resumo como segunda frase e na tabela. Os critérios não se somam.
+
+**Malha.** API de malhas do IBGE v3 (`/api/v3/malhas/estados/23?intrarregiao=municipio&qualidade=minima`). `apps/web/scripts/gerar-malha-ce.mjs` baixa, guarda a cópia bruta com SHA-256 em `data/malha/` e grava os caminhos SVG projetados em `apps/web/lib/malha-ce.json`. Sem biblioteca de mapa e sem chamada externa no site.
+
+**Aceites novos.**
+- **AC12** O mapa nunca pinta estado ou "vários municípios" sobre uma cidade.
+- **AC13** "Sem registro" tem hachura própria e nunca a cor de zero.
+- **AC14** Legenda e resumo dizem o critério (onde o pagamento foi aplicado) e o ano.
+- **AC15** Busca por nome sem acento ou código IBGE escolhe a cidade pelo teclado (Enter); a tabela recolhida continua no HTML como alternativa acessível (AC04).
+- **AC16** 360 px sem estouro horizontal.
+
+**TASKS.** T04.03a malha · T04.03b `MapaCeara` · T04.03c página · T04.03d verificação (typecheck, build publicado, trava, navegador desktop/360 px).

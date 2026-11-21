@@ -10,6 +10,8 @@ import { getInvestigacao } from '../../../lib/investigacao';
 import { CONCILIACAO_LABEL } from '../../../lib/fichas-types';
 import { brl, brlOrMissing, formatDate } from '../../../lib/dataset-types';
 import { portalUrl } from '../../../lib/authors-types';
+import { buildFluxo } from '../../../lib/fluxo';
+import { MoneyFlow } from '../../../components/MoneyFlow';
 
 export const dynamicParams = false;
 
@@ -60,6 +62,12 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
           <div key={l as string} className={l === 'Pago total' ? 'value-cell is-total' : 'value-cell'}><small>{l}</small><b>{brlOrMissing(v as number | null)}</b></div>)}
       </div>
       <p className="small muted">Empenhado, liquidado e pago são etapas diferentes e não se somam. Pago total = Pago + Restos a pagar pagos da fonte. Documentos de pagamento: {brlOrMissing(e.conciliacao.documentos_pago)}{e.conciliacao.status === 'diverge' ? ' — diferente do pago total; a diferença entre as fontes está registrada para investigação e não indica, por si, irregularidade' : e.conciliacao.status === 'sem_documentos' && (e.pago_total ?? 0) > 0 ? ' — a fonte informa pagamento, mas os arquivos de documentos da CGU de 2020 a 2026 não trazem a ordem bancária desta emenda; a lacuna está registrada para investigação' : ''}.{demo ? ' Valores fictícios.' : ''}</p>
+    </section>
+
+    <section className="block-gap" aria-labelledby="fluxo">
+      <h2 id="fluxo" className="block-title">Fluxo do dinheiro</h2>
+      <p className="small muted">Do autor a quem recebeu, cada ligação mostra a prova que a sustenta. <Link href="/fluxos">Como ler o fluxo</Link>.</p>
+      <MoneyFlow flow={buildFluxo(e, { demo, caso })} />
     </section>
 
     {caso && <section className="block-gap" aria-labelledby="investigacao">

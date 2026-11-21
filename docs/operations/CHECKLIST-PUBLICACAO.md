@@ -34,6 +34,8 @@
 - [x] Smoke test em produção: `scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado` — 28 telas (1440 e 360 px) sem overflow, busca, CSV, rodapé institucional e 404 aprovados; `/componentes` responde 404.
 - [x] Varredura do build: nenhum aviso de demo/validação nem padrão de CPF em 2.149 páginas.
 - [x] 20/11/2026 — redeploy com o bloco "O que a investigação encontrou" (commit `3730c9a`), via `--archive=tgz`; mesma verificação de 28 telas aprovada em produção.
+- [x] 21/11/2026 — redeploy 0.8.0: fluxo real por emenda em `/fluxos` e nas fichas (SPEC 04, T04.05) e ilustrações sem legenda (ADR-016), a partir da cópia de trabalho ainda sem commit; trava em 2.149 páginas e verificação de 28 telas aprovadas em produção.
+- [x] 21/11/2026 — redeploy 0.9.0: nova aba Mapa (SPEC 04 T04.03, ADR-017) e `/dados` sem "revisão editorial", ainda sem commit. `verify_web.py` atualizado para a nova busca, o valor do card e o CSV da tabela recolhida; 28 telas aprovadas em produção. Lição: não usar `--skip-build` depois de mudar código, porque ele reempacota o `.next-publicado` antigo.
 - [ ] Domínio próprio e verificação de marca (nome RASTRO provisório).
 - [ ] Investigação dos 84 casos da fila (registro em `pipelines/contracts/investigacao_casos.json`), com atualização das fichas e novo deploy.
 

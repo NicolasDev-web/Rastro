@@ -81,3 +81,11 @@ Achados técnicos, como a ausência de documento de pagamento nos arquivos anuai
 - Estratégia de CMS editorial.
 - Forma de autenticação do backoffice.
 - Política de dados pessoais e retenção de evidências privadas.
+
+## ADR-017 — Mapa municipal pelo local de aplicação do pagamento
+
+**Decisão (21/11/2026):** o mapa de `/mapa` colore cada município pelo valor **pago por aplicação** (documentos de pagamento da CGU, inclui restos a pagar pagos), por ano da emenda. A localidade registrada na emenda continua no resumo da cidade e na tabela.
+
+**Por quê:** pela localidade da emenda só 38 dos 184 municípios têm registro em 2025 (67 em 2024), porque a maior parte do dinheiro vem como "vários municípios" ou "estado". Um mapa assim sugeriria, errado, que quase nada chegou. Pela aplicação, 183 municípios têm pagamento em 2025.
+
+**Consequências:** a legenda e o resumo nomeiam o critério. Os dois critérios nunca se somam. Município de aplicação não prova o local da entrega. Malha do IBGE (API v3, qualidade mínima) guardada com SHA-256 e convertida em SVG estático no build.

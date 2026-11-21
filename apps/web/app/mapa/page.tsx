@@ -1,6 +1,6 @@
-import { ExplorerSection } from '../../components/ExplorerSection';
-import { InfoNote, PageHero } from '../../components/Ui';
-import { MapaArt } from '../../components/Illustrations';
+import { InfoNote, SectionHeader } from '../../components/Ui';
+import { CsvButton, MapaCeara } from '../../components/MapaCeara';
+import malha from '../../lib/malha-ce.json';
 import { DataState, CoverageFlag } from '../../components/States';
 import { GlossaryTip } from '../../components/Glossary';
 import { getDataset } from '../../lib/dataset';
@@ -34,18 +34,16 @@ function DataTable({ data }: { data: Dataset }) {
 export default function Mapa() {
   const res = getDataset();
   return <div className="container page-space">
-    <PageHero eyebrow="Explorador / Ceará" title="O mapa do dinheiro." description="Município, aplicação estadual ou vários municípios: cada valor fica onde os documentos permitem colocá-lo — e em nenhum outro lugar." art={<MapaArt />}>
-      <div className="page-hero-flags"><CoverageFlag value={res.ok ? res.data.coverage : 'unverified'} /></div>
-    </PageHero>
+    <SectionHeader level={1} eyebrow="Mapa / Ceará" title="Quanto dinheiro de emendas chegou à sua cidade?" description="Escolha sua cidade no mapa ou pelo nome. Mostramos quanto foi pago, em quantos pagamentos e o que esse número quer dizer." />
+    <div className="page-hero-flags"><CoverageFlag value={res.ok ? res.data.coverage : 'unverified'} /></div>
 
-    <ExplorerSection />
+    {res.ok ? <MapaCeara data={res.data} paths={malha.paths} viewBox={malha.viewBox} /> : <DataState kind="error" title="Dados indisponíveis">{res.error}</DataState>}
 
-    <section className="block-gap" aria-labelledby="mapa-geo">
-      <h2 id="mapa-geo" className="block-title">Mapa municipal</h2>
-      <DataState kind="partial_coverage" title="Mapa geográfico em preparação">O mapa com a malha municipal oficial do IBGE está em preparação. A tabela abaixo é a forma completa e acessível de consultar os valores.</DataState>
-    </section>
-
-    {res.ok && <DataTable data={res.data} />}
+    {res.ok && <details className="block-gap mapa-tabela">
+      <summary>Ver todos os {res.data.municipalities.length} municípios em tabela</summary>
+      <DataTable data={res.data} />
+      <div className="explorer-actions"><CsvButton data={res.data} /></div>
+    </details>}
 
     <div className="block-gap glossary-row"><GlossaryTip id="beneficiario" /><GlossaryTip id="indeterminado" /></div>
     <div className="block-gap"><InfoNote>Valores com localidade estadual ou de vários municípios não são atribuídos a Fortaleza nem a qualquer município sem documento que comprove o vínculo.</InfoNote></div>

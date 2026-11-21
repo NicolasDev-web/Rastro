@@ -32,3 +32,6 @@ data/validacao/
 data/publicado/
 # Retratos oficiais baixados pelo pipeline (crédito Câmara/Senado; snapshot em raw_data/fotos)
 apps/web/public/fotos/
+
+# Export estático local do modo publicado (gerado pelo build)
+apps/web/out/

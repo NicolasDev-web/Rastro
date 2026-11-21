@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.0 — nova aba Mapa
+
+- `/mapa` abre com a pergunta "Quanto dinheiro de emendas chegou à sua cidade?": busca, mapa dos 184 municípios (malha do IBGE, SVG estático em tons de verde-mata) e resumo da cidade em frases, com link para a ficha. URL `?municipio=<IBGE>&ano=<ano>`.
+- O mapa usa o valor pago com aplicação na cidade, segundo os documentos de pagamento (ADR-017). Pela localidade da emenda, só 38 cidades teriam cor em 2025; pela aplicação, 183. "Sem registro" tem hachura e não é zero.
+- Card "O que o mapa não mostra" (estado inteiro e vários municípios) e tabela completa recolhida em "Ver todos os municípios", com o CSV. O explorador antigo sai de `/mapa` e fica no capítulo `/investigacao`.
+- `apps/web/scripts/gerar-malha-ce.mjs` baixa a malha (API de malhas v3) e guarda a cópia bruta com SHA-256 em `data/malha/`.
+
+## 0.8.0 — fluxo real por emenda
+
+- `/fluxos` deixa de ser só um diagrama genérico: mostra três emendas reais, uma para cada tipo de ligação (documentada, em verificação, não identificada), e uma busca por código. Cada ficha de emenda ganha a seção "Fluxo do dinheiro".
+- Cadeia: autor formal → emenda → pagamentos → quem recebeu → contrato ou obra, com o convênio como ramo da emenda. Cada ligação mostra `evidence_id`, método e link para o Portal. Regras na SPEC 04 (T04.05).
+- Sobre as 1.910 fichas: 1.783 ligações emenda → pagamentos documentadas, 34 em verificação (soma diferente sem causa registrada) e 93 não identificadas (sem documento de pagamento). A etapa "contrato ou obra" é sempre lacuna: os contratos e fornecedores dependem do Transferegov.
+- Convênio e pagamento não são ligados entre si, nem por nome nem por valor: os arquivos não têm identificador comum.
+- `/dados`: "revisão editorial" sai de "O que falta conferir" (investigação cidadã sem revisão editorial externa, ADR-015).
+
 ## 0.7.0 — investigação das 84 emendas da fila
 
 - Todos os 84 casos têm registro com achado, fontes e data em `pipelines/contracts/investigacao_casos.json`, e a ficha de cada emenda mostra o bloco "O que a investigação encontrou". Resultado: **49 explicados e 35 sem causa documentada.** Nenhum caso foi explicado por atualização do Portal depois do snapshot de 19/11.

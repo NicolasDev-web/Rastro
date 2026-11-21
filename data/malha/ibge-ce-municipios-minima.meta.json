@@ -1,0 +1,6 @@
+{
+  "fonte": "IBGE — API de malhas v3",
+  "url": "https://servicodados.ibge.gov.br/api/v3/malhas/estados/23?formato=application/vnd.geo+json&intrarregiao=municipio&qualidade=minima",
+  "baixado_em": "2026-11-21T13:21:03.663Z",
+  "sha256": "c7d893b8e7c4daca7f064485c56c3a1ad7a9fa532a0145cd402ea7765bd43ceb"
+}

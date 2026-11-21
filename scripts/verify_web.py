@@ -77,38 +77,43 @@ def main():
                 results.append({'route': route, 'width': width, 'status': response.status, 'overflow': overflow})
         page.set_viewport_size({'width': 1440, 'height': 1000})
         page.goto(args.url + '/mapa', wait_until='networkidle')
-        search = page.get_by_label('Município cearense', exact=True)
+        # Nova aba Mapa (SPEC 04 T04.03, ADR-017): busca por nome sem acento e por código IBGE, pelo teclado.
+        search = page.get_by_label('Sua cidade', exact=True)
         search.fill('crateus')
         search.press('Enter')
-        assert page.locator('.metric-panel h4').inner_text().startswith('Crateús')
+        assert page.locator('.mapa-ce-card h3').inner_text() == 'Crateús'
         search.fill('2304400')
         search.press('Enter')
-        for criterio, label in [('emenda', 'Localidade da emenda'), ('aplicacao', 'Onde o pagamento foi aplicado')]:
-            button = page.get_by_role('button', name=label, exact=True)
-            button.click()
-            assert button.get_attribute('aria-pressed') == 'true'
-            page.wait_for_function('(c) => new URL(location.href).searchParams.get("criterio") === c', arg=criterio)
-            with page.expect_download() as event:
-                page.get_by_role('button', name='Baixar CSV').click()
-            download = event.value
-            csv_path = out / download.suggested_filename
-            download.save_as(str(csv_path))
-            content = csv_path.read_text(encoding='utf-8-sig')
-            assert f'# criterio: {label}' in content
-            rows = list(csv.DictReader(io.StringIO('\n'.join(l for l in content.splitlines() if not l.startswith('#'))), delimiter=';'))
-            row = next(r for r in rows if r['codigo_ibge'] == '2304400')
-            if args.mode != 'demo':
-                city = next(m for m in dataset['municipalities'] if m['ibge_code'] == '2304400')
-                year = page.evaluate('new URL(location.href).searchParams.get("ano")')
-                expected = city['aplicacao'][year]['pago'] if criterio == 'aplicacao' else city['years'][year]['pago']
-                assert int(row['valor_centavos']) == expected
-            if criterio == 'aplicacao':
-                assert all(r['etapa'] == 'pago_aplicacao' for r in rows)
-                assert all(r['tipo_destinacao'] == 'municipio' for r in rows)
-                assert all(r['rap_pagos_centavos'] == '' for r in rows)
-            page.locator('#explorador').evaluate('(el) => window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 95)')
-            page.screenshot(path=str(out / f'criterio-{criterio}.png'))
-        page.get_by_role('link', name='Fortaleza', exact=False).first.click()
+        assert page.locator('.mapa-ce-card h3').inner_text() == 'Fortaleza'
+        page.wait_for_function('() => new URL(location.href).searchParams.get("municipio") === "2304400"')
+        year = page.evaluate('new URL(location.href).searchParams.get("ano")')
+        if args.mode != 'demo':
+            city = next(m for m in dataset['municipalities'] if m['ibge_code'] == '2304400')
+            pago = (city.get('aplicacao') or {}).get(year, {}) or {}
+            big = page.locator('.mapa-ce-big b').inner_text().replace(' ', ' ')
+            if pago.get('pago'):
+                reais, cents = divmod(pago['pago'], 100)
+                assert big == f"R$ {reais:,}".replace(',', '.') + f",{cents:02d}", big
+            else:
+                assert big == 'Sem registro', big
+        page.locator('.mapa-ce').evaluate('(el) => window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 95)')
+        page.screenshot(path=str(out / 'mapa-fortaleza.png'))
+        # Tabela recolhida (alternativa acessível, AC04) e CSV com metadados (AC07).
+        page.get_by_text('Ver todos os', exact=False).click()
+        with page.expect_download() as event:
+            page.get_by_role('button', name='Baixar CSV', exact=False).click()
+        download = event.value
+        csv_path = out / download.suggested_filename
+        download.save_as(str(csv_path))
+        content = csv_path.read_text(encoding='utf-8-sig')
+        assert '# criterio: Localidade da emenda' in content
+        rows = list(csv.DictReader(io.StringIO('\n'.join(l for l in content.splitlines() if not l.startswith('#'))), delimiter=';'))
+        row = next(r for r in rows if r['codigo_ibge'] == '2304400')
+        if args.mode != 'demo':
+            csv_year = row['exercicio']
+            expected = (city['years'].get(csv_year) or {}).get('pago')
+            assert (row['valor_centavos'] or None) == (str(expected) if expected is not None else None)
+        page.get_by_role('link', name='Emendas, autores e quem recebeu').click()
         page.wait_for_url('**/municipios/2304400')
         assert page.locator('main h1').inner_text() == 'Fortaleza'
         response = page.goto(args.url + '/emendas/NAO-EXISTE', wait_until='networkidle')

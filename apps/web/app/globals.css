@@ -20,6 +20,8 @@
   --sol-soft: #F8E6BC;
   --mata: #2F6B4F;
   --rosa: #EE8FA6;
+  /* Mapa (ADR-017): escala de verde-mata, do mais claro ao mais escuro; hachura = sem registro */
+  --mapa-1: #DCE8DF; --mapa-2: #A9C9B4; --mapa-3: #6E9F82; --mapa-4: #2F6B4F; --mapa-5: #173B2A; --mapa-hachura: #C9BEA6;
 
   --display: var(--font-archivo), 'Archivo', 'Arial Narrow', Arial, sans-serif;
   --sans: var(--font-archivo), 'Archivo', 'Segoe UI', system-ui, sans-serif;
@@ -538,6 +540,32 @@ main:focus { outline: none; }
 .edge-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 6px 0 12px; padding: 12px; background: var(--card); border: 1px solid var(--line); }
 .edge-meta dt { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .edge-meta dd { margin: 2px 0 0; font-size: 14px; font-weight: 600; }
+.wrap-anywhere { overflow-wrap: anywhere; }
+.flow-node small { overflow-wrap: anywhere; }
+.flow-branch { display: flex; align-items: center; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+.flow-branch .flow-node { flex: 0 1 260px; min-height: 0; }
+.flow-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 4px 0 12px; }
+.flow-explorer { display: grid; gap: 18px; }
+.flow-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.flow-tab { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 14px 16px; background: var(--card); border: var(--border); color: var(--ink); cursor: pointer; }
+.flow-tab strong { font: 800 15px/1.1 var(--display); text-transform: uppercase; letter-spacing: .04em; }
+.flow-tab small { font: 12px var(--mono); color: var(--muted); }
+.flow-tab:hover { background: var(--sol-soft); }
+.flow-tab.active { background: var(--ink); color: var(--paper); }
+.flow-tab.active small { color: var(--sol); }
+.flow-hint { margin: 0 0 10px; }
+.flow-search { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: end; padding: 20px; background: var(--paper-2); border: var(--border); }
+.flow-search label { grid-column: 1 / -1; font: 700 13px var(--display); text-transform: uppercase; letter-spacing: .06em; }
+.flow-search p { grid-column: 1 / -1; margin: 0; }
+.flow-go { padding: 12px 18px; background: var(--ink); color: var(--paper); border: var(--border); font: 800 14px var(--display); text-transform: uppercase; letter-spacing: .05em; cursor: pointer; }
+.flow-go:hover { background: var(--cobalt); }
+.flow-error { color: var(--barro); font-weight: 600; }
+@media (max-width: 750px) {
+  .flow-branch { flex-direction: column; align-items: stretch; }
+  .flow-branch .flow-node { flex: 1 1 auto; }
+  .flow-branch .flow-edge { transform: rotate(90deg); margin: 6px auto; }
+  .flow-search { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* Reportagem: escada de etapas, destinos, sabemos/não sabemos */
 .stage-ladder { list-style: none; margin: 28px 0 8px; padding: 0; border-left: 4px solid var(--ink); }
@@ -622,3 +650,44 @@ main:focus { outline: none; }
 .chip-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .data-table td.wrap { white-space: normal; min-width: 240px; }
 @media (max-width: 1040px) { .value-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fase-cols { grid-template-columns: minmax(0, 1fr); } }
+
+/* Mapa do Ceará (SPEC 04 T04.03, ADR-017) */
+.mapa-ce { display: grid; gap: 16px; margin-top: 18px; }
+.mapa-ce-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px 24px; }
+.mapa-ce-search { flex: 1 1 320px; max-width: 520px; }
+.mapa-ce-search label { display: block; font: 700 13px var(--display); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.mapa-ce-results { padding-block: 10px 0; }
+.mapa-ce-toolbar .year-selector { margin: 0; }
+.mapa-ce-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.mapa-ce-frame { margin: 0; background: var(--paper-2); border: var(--border); box-shadow: 6px 6px 0 var(--ink); padding: 14px; }
+.mapa-ce-frame svg { display: block; width: 100%; height: auto; }
+.mapa-ce-frame path { stroke: var(--paper); stroke-width: .6; cursor: pointer; transition: fill .12s; }
+.mapa-ce-frame path.is-hover { fill: var(--sol); }
+.mapa-ce-frame path.is-selected { fill: var(--sol); }
+.mapa-ce-frame path.mapa-ce-outline { fill: none; stroke: var(--ink); stroke-width: 2; pointer-events: none; }
+.mapa-ce-legend { display: grid; gap: 8px; margin-top: 12px; }
+.mapa-ce-scale { display: flex; flex-wrap: wrap; gap: 6px 14px; font: 12px var(--mono); }
+.mapa-ce-scale i { display: inline-block; width: 14px; height: 14px; border: 1px solid var(--ink); margin-right: 6px; vertical-align: -2px; }
+.mapa-ce-scale i.sem-registro { background: repeating-linear-gradient(45deg, var(--paper) 0 3px, var(--mapa-hachura) 3px 5px); }
+.mapa-ce-card { background: var(--card); border: var(--border); padding: 22px; position: sticky; top: calc(var(--header-h) + 16px); }
+.mapa-ce-card h3 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 6px 0 10px; overflow-wrap: anywhere; }
+.mapa-ce-card p { margin: 0 0 12px; }
+.mapa-ce-card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.mapa-ce-clear { border: 1.5px solid var(--ink); background: transparent; width: 30px; height: 30px; display: grid; place-items: center; cursor: pointer; border-radius: 99px; }
+.mapa-ce-clear:hover { background: var(--sol-soft); }
+.mapa-ce-big b { font: 800 clamp(1.7rem, 4.5vw, 2.4rem)/1.05 var(--display); font-variation-settings: 'wdth' 75; font-variant-numeric: tabular-nums; color: var(--mata); overflow-wrap: anywhere; }
+.mapa-ce-big.missing b { color: var(--muted); }
+.mapa-ce-fora { background: var(--paper-2); border: var(--border); border-left: 6px solid var(--mata); padding: 18px 20px; }
+.mapa-ce-fora h3 { margin: 0 0 6px; font-size: 22px; }
+.mapa-ce-fora p { margin: 0 0 8px; }
+.mapa-ce-fora ul { margin: 0 0 8px; padding-left: 20px; }
+.mapa-tabela > summary { cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border: var(--border); background: var(--card); font: 800 15px var(--display); text-transform: uppercase; letter-spacing: .04em; }
+.mapa-tabela > summary:hover { background: var(--sol-soft); }
+.mapa-tabela[open] > summary { background: var(--ink); color: var(--paper); }
+@media (max-width: 900px) {
+  .mapa-ce-grid { grid-template-columns: minmax(0, 1fr); }
+  .mapa-ce-card { position: static; }
+}
+@media (max-width: 420px) {
+  .mapa-ce-frame { padding: 8px; box-shadow: 4px 4px 0 var(--ink); }
+}
