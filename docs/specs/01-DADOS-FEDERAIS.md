@@ -108,7 +108,7 @@ Decidido **pelo código IBGE da UF (`2300000`) e do município**, nunca por text
 - [x] T01.02 Criar manifest de snapshots e armazenamento imutável (`pipelines/rastro/snapshot.py`, `data/manifests/snapshots.jsonl`).
 - [x] T01.03 Implementar adaptador CGU usando arquivos oficiais — arquivo único (por emenda, favorecido, convênios). Documentos de despesa: incremento 2.
 - [ ] T01.04 Implementar adaptador Transferegov verificando esquema real.
-- [x] T01.05 Importar IBGE municípios/UF, com geocódigo único — 184 municípios do CE. Malha geográfica: pendente (SPEC 04, T04.03).
+- [x] T01.05 Importar IBGE municípios/UF, com geocódigo único — 184 municípios do CE. Malha geográfica: feita em 0.9.0 (SPEC 04, T04.03; `data/malha/`).
 - [x] T01.06 Implementar staging e validações de unicidade/valor/data (`pipelines/rastro/load.py`, `db/staging/001_staging.sql`).
 - [x] T01.07 Definir relacionamentos documentados e conciliação — documentos de despesa 2020–2026 × arquivo por emenda (`pipelines/rastro/documentos.py`, `reports/conciliacao-documentos-*.md`).
 - [x] T01.08 Produzir cobertura, exceções e export auditável (`reports/cobertura-cgu-*.md`, `data/validacao/*.json`).

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.1 — textos de pendências atualizados
+
+- `/dados`: "O que falta conferir" deixa de dizer que o mapa é esquemático e explica o que fica fora da cor das cidades.
+- Docs: T04.03 e a malha do IBGE marcadas como feitas; checklist registra os 84 casos (0.7.0) e o risco do push na `main` com a Vercel ligada ao GitHub.
+
 ## 0.9.0 — nova aba Mapa
 
 - `/mapa` abre com a pergunta "Quanto dinheiro de emendas chegou à sua cidade?": busca, mapa dos 184 municípios (malha do IBGE, SVG estático em tons de verde-mata) e resumo da cidade em frases, com link para a ficha. URL `?municipio=<IBGE>&ano=<ano>`.

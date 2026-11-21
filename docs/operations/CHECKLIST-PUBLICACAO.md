@@ -36,8 +36,10 @@
 - [x] 20/11/2026 — redeploy com o bloco "O que a investigação encontrou" (commit `3730c9a`), via `--archive=tgz`; mesma verificação de 28 telas aprovada em produção.
 - [x] 21/11/2026 — redeploy 0.8.0: fluxo real por emenda em `/fluxos` e nas fichas (SPEC 04, T04.05) e ilustrações sem legenda (ADR-016), a partir da cópia de trabalho ainda sem commit; trava em 2.149 páginas e verificação de 28 telas aprovadas em produção.
 - [x] 21/11/2026 — redeploy 0.9.0: nova aba Mapa (SPEC 04 T04.03, ADR-017) e `/dados` sem "revisão editorial", ainda sem commit. `verify_web.py` atualizado para a nova busca, o valor do card e o CSV da tabela recolhida; 28 telas aprovadas em produção. Lição: não usar `--skip-build` depois de mudar código, porque ele reempacota o `.next-publicado` antigo.
+- [x] 21/11/2026 — redeploy 0.9.1 (texto de `/dados` sobre o mapa), build completo; trava em 2.149 páginas e verificação de 28 telas aprovadas em produção.
 - [ ] Domínio próprio e verificação de marca (nome RASTRO provisório).
-- [ ] Investigação dos 84 casos da fila (registro em `pipelines/contracts/investigacao_casos.json`), com atualização das fichas e novo deploy.
+- [x] Investigação dos 84 casos da fila (registro em `pipelines/contracts/investigacao_casos.json`), com atualização das fichas e novo deploy — 0.7.0: 49 explicados, 35 sem causa documentada.
+- [ ] Atenção: o projeto Vercel está ligado ao GitHub. Um push na `main` publica o repositório cru (sem build) em produção e o site responde 404, como em 21/11/2026; a correção foi `vercel promote` do último deploy bom. Até desligar a publicação automática, enviar código só ao branch de trabalho.
 
 ## Rollback
 

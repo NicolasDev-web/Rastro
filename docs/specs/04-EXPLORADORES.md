@@ -69,7 +69,7 @@ Ano, modalidade, etapa (indicada/autorizada/empenhada/liquidada/paga/transferida
 ## Tasks
 - [ ] T04.01 Endpoint municipal com filtro e cursor/paginação.
 - [x] T04.02 Normalização de busca e parâmetros de URL (`?municipio=<IBGE>&etapa=<authorized|committed|paid>`).
-- [ ] T04.03 Mapa real IBGE / camadas e tabela alternativa — ver "Incremento — nova aba Mapa" (ADR-017).
+- [x] T04.03 Mapa real IBGE / camadas e tabela alternativa — feito em 0.9.0 (21/11/2026), ver "Incremento — nova aba Mapa" (ADR-017).
 - [ ] T04.04 Fichas de autores individuais e coletivos — **feito em modo validação** (`/parlamentares`, `/parlamentares/[id]`, `pipelines/rastro/autores.py`); vínculos revisados por humano: 43 de 43 (`pipelines/contracts/autores_vinculo.json`, pelo revisor do projeto em 19/11/2026; relatório `reports/autores-vinculo-*.md` com a coluna de revisor preenchida). Falta o histórico de partido.
 - [x] T04.05 Grafo de evidências documentais — fluxo real por emenda em `/fluxos` e em cada ficha (`lib/fluxo.ts`), com `status`, `evidence_id`, `source_url` e método por aresta. Ver "Incremento — fluxo real por emenda". Contratos e fornecedores seguem como lacuna até o Transferegov.
 - [ ] T04.06 Exportações com provenance — **parcial**: CSV demo com metadados e regras; proveniência real depende de RAS-012.
