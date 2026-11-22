@@ -65,6 +65,11 @@ function main() {
     return;
   }
   const web = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+  // O registro de investigação (ADR-014) descreve casos de um snapshot. Com dados novos, ele precisa ser
+  // revisto antes de ir ao ar; senão as fichas mostrariam achados de outra extração (ATUALIZACAO-DADOS.md).
+  const bundleSnap = JSON.parse(readFileSync(resolve(web, '../../data/publicado/active-bundle.json'), 'utf8')).snapshot;
+  const casosSnap = JSON.parse(readFileSync(resolve(web, '../../pipelines/contracts/investigacao_casos.json'), 'utf8')).snapshot;
+  if (bundleSnap !== casosSnap) throw new Error(`Publicação recusada: o pacote é do snapshot ${String(bundleSnap).slice(0, 8)}, mas o registro de investigação é do ${String(casosSnap).slice(0, 8)}. Revise os casos (docs/operations/ATUALIZACAO-DADOS.md, passo 5).`);
   const built = join(web, '.next-publicado');
   const out = resolve(web, '../../dist/rastro');
   if (!process.argv.includes('--skip-build')) {

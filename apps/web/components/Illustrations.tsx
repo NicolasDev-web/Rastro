@@ -640,6 +640,232 @@ export function DadosArt({ id = 'dados' }: { id?: string }) {
   );
 }
 
+/** Sobre: caderno de campo aberto, com a trilha de três pontos, a lista conferida, lápis, moeda e o Ceará. */
+export function SobreArt({ id = 'sobre' }: { id?: string }) {
+  const rings = Array.from({ length: 9 }, (_, i) => 172 + i * 38);
+  const items = [196, 244, 292, 340, 388, 436];
+  return (
+    <Frame id={id} label="Ilustração em colagem: caderno de campo aberto sobre fundo verde. Na página da esquerda, uma trilha pontilhada passa por três pontos coloridos e termina num marcador; na da direita, uma lista com marcas de conferido. Um lápis laranja, uma moeda e o contorno do Ceará em papel amarelo aparecem ao redor.">
+      <rect width={800} height={600} fill={C.mataLight} />
+      <rect width={800} height={600} fill={`url(#${id}-dots)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        <CearaRecorte x={566} y={22} s={0.36} rot={9} id={id} />
+        <g transform="rotate(-4 400 330)">
+          <rect x={128} y={150} width={560} height={360} fill={C.ink} />
+          <rect x={120} y={140} width={280} height={360} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={400} y={140} width={280} height={360} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={400} y={140} width={280} height={360} fill={`url(#${id}-dots)`} opacity={0.06} />
+          <rect x={150} y={172} width={120} height={13} fill={C.ink} />
+          <rect x={150} y={194} width={76} height={7} fill={C.ink} />
+          <path d="M168 440 C200 400 214 336 268 320 C318 306 336 262 350 236" stroke={C.ink} strokeWidth={4} strokeDasharray="1 12" strokeLinecap="round" fill="none" />
+          <circle cx={168} cy={440} r={13} fill={C.cobalt} stroke={C.ink} strokeWidth={3} />
+          <circle cx={268} cy={320} r={13} fill={C.barro} stroke={C.ink} strokeWidth={3} />
+          <circle cx={314} cy={292} r={9} fill={C.sol} stroke={C.ink} strokeWidth={3} />
+          <Pin x={354} y={232} color={C.barro} s={0.62} />
+          <rect x={436} y={items[2] - 13} width={214} height={26} fill={C.sol} />
+          {items.map((y, i) => (
+            <g key={y}>
+              <rect x={436} y={y - 10} width={20} height={20} fill={C.paper} stroke={C.ink} strokeWidth={2.5} />
+              {i < 4 && <path d={`M439 ${y} l6 7 l10 -14`} stroke={C.cobalt} strokeWidth={3.2} fill="none" strokeLinecap="round" strokeLinejoin="round" />}
+              <line x1={470} x2={640 - (i % 3) * 36} y1={y} y2={y} stroke={C.ink} strokeWidth={2.2} />
+            </g>
+          ))}
+          {rings.map(y => <ellipse key={y} cx={400} cy={y} rx={15} ry={6} fill="none" stroke={C.ink} strokeWidth={3} />)}
+        </g>
+        <Caneta x={612} y={556} rot={196} color={C.barro} />
+        <Coin x={118} y={538} r={30} />
+      </g>
+    </Frame>
+  );
+}
+
+/** Contato: envelope aberto com uma carta, selo de três pontos, avião de papel e balão com pergunta. */
+export function ContatoArt({ id = 'contato' }: { id?: string }) {
+  return (
+    <Frame id={id} label="Ilustração em colagem: envelope azul aberto sobre fundo rosa, com uma carta saindo e uma linha marcada em amarelo. No envelope, um selo amarelo com três pontos. Um avião de papel deixa uma trilha pontilhada no alto e um balão de conversa amarelo traz um ponto de interrogação.">
+      <rect width={800} height={600} fill={C.rosa} />
+      <rect width={800} height={600} fill={`url(#${id}-dots-lg)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        <g stroke={C.ink} strokeWidth={3} strokeLinejoin="round">
+          <rect x={248} y={290} width={380} height={240} fill={C.ink} stroke="none" />
+          <rect x={240} y={280} width={380} height={240} fill={C.cobalt} />
+          <polygon points="240,282 430,170 620,282" fill={C.cobalt} />
+        </g>
+        <g transform="rotate(-3 430 280)">
+          <rect x={276} y={150} width={310} height={260} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={304} y={180} width={150} height={15} fill={C.ink} />
+          <rect x={300} y={243} width={250} height={20} fill={C.sol} />
+          {[222, 253, 284, 315].map((y, i) => <line key={y} x1={306} x2={556 - (i === 3 ? 80 : 0)} y1={y} y2={y} stroke={C.ink} strokeWidth={2.4} />)}
+        </g>
+        <g stroke={C.ink} strokeWidth={3} strokeLinejoin="round">
+          <polygon points="240,282 430,410 240,520" fill={C.cobalt} />
+          <polygon points="620,282 430,410 620,520" fill={C.cobalt} />
+          <polygon points="240,520 430,388 620,520" fill={C.cobalt} />
+        </g>
+        <polygon points="240,520 430,388 620,520" fill={`url(#${id}-dots-paper)`} opacity={0.22} />
+        <rect x={522} y={436} width={70} height={60} fill={C.sol} stroke={C.ink} strokeWidth={3} strokeDasharray="6 4" />
+        <circle cx={540} cy={466} r={7} fill={C.cobalt} stroke={C.ink} strokeWidth={2} />
+        <circle cx={557} cy={466} r={7} fill={C.barro} stroke={C.ink} strokeWidth={2} />
+        <circle cx={574} cy={466} r={7} fill={C.ink} />
+        <path d="M24 214 C46 170 82 156 116 140" stroke={C.ink} strokeWidth={4} strokeDasharray="1 11" strokeLinecap="round" fill="none" />
+        <g stroke={C.ink} strokeWidth={3} strokeLinejoin="round">
+          <polygon points="120,138 262,72 190,158" fill={C.paper} />
+          <polygon points="190,158 262,72 182,180" fill={C.paper2} />
+        </g>
+        <path d="M110 520 L92 566 L150 532" fill={C.sol} stroke={C.ink} strokeWidth={3} strokeLinejoin="round" />
+        <circle cx={142} cy={470} r={62} fill={C.sol} stroke={C.ink} strokeWidth={3} />
+      </g>
+      <text x={142} y={492} textAnchor="middle" fontSize={64} fill={C.ink}>?</text>
+    </Frame>
+  );
+}
+
+/** Correções: documento com um valor riscado e o novo escrito por cima, registro anterior guardado atrás, borracha e carimbo. */
+export function CorrecoesArt({ id = 'correcoes' }: { id?: string }) {
+  const rows = [190, 226, 262, 298, 372, 408, 444, 480];
+  return (
+    <Frame id={id} label="Ilustração em colagem: folha com linhas de texto em que um valor, representado por uma barra preta, foi riscado em laranja e reescrito à caneta azul logo acima. Atrás, uma folha tracejada guarda o registro anterior. Ao lado, uma borracha e uma caneta azul; um carimbo laranja diz 'corrigido com fonte e data'.">
+      <rect width={800} height={600} fill={C.paper2} />
+      <rect width={800} height={600} fill={`url(#${id}-dots)`} opacity={0.08} />
+      <g filter={`url(#${id}-rough)`}>
+        <g transform="rotate(-9 260 250)">
+          <rect x={110} y={60} width={300} height={380} fill={C.paper} stroke={C.ink} strokeWidth={3} strokeDasharray="12 8" />
+          {[110, 140, 170].map(y => <line key={y} x1={136} x2={360} y1={y} y2={y} stroke={C.ink} strokeWidth={2} opacity={0.4} />)}
+        </g>
+        <g transform="rotate(3 400 310)">
+          <rect x={198} y={100} width={420} height={440} fill={C.ink} />
+          <rect x={190} y={90} width={420} height={440} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={222} y={124} width={200} height={18} fill={C.ink} />
+          {rows.map((y, i) => <line key={y} x1={222} x2={578 - (i % 3) * 44} y1={y} y2={y} stroke={C.ink} strokeWidth={2.4} />)}
+          <line x1={222} x2={350} y1={336} y2={336} stroke={C.ink} strokeWidth={2.4} />
+          <rect x={382} y={326} width={150} height={20} fill={C.ink} />
+          <line x1={372} y1={352} x2={544} y2={318} stroke={C.barro} strokeWidth={7} strokeLinecap="round" />
+          <path d="M382 302 q18 -11 36 0 t36 0 t36 0 t36 0" stroke={C.cobalt} strokeWidth={7} fill="none" strokeLinecap="round" />
+          <path d="M364 330 l10 -16 l10 16" stroke={C.cobalt} strokeWidth={3.5} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+        <Caneta x={566} y={288} rot={-28} />
+        <g transform="rotate(-18 150 488)" stroke={C.ink} strokeWidth={3}>
+          <rect x={86} y={462} width={130} height={54} fill={C.ink} stroke="none" transform="translate(5 6)" />
+          <rect x={86} y={462} width={90} height={54} fill={C.rosa} />
+          <rect x={176} y={462} width={40} height={54} fill={C.cobalt} />
+        </g>
+        {[[232, 546], [250, 556], [222, 562]].map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r={4} fill={C.rosa} stroke={C.ink} strokeWidth={1.5} />)}
+      </g>
+      <g transform="rotate(-7 600 500)">
+        <rect x={500} y={462} width={200} height={70} fill="none" stroke={C.barro} strokeWidth={5} />
+        <rect x={508} y={470} width={184} height={54} fill="none" stroke={C.barro} strokeWidth={2} />
+        <text x={600} y={500} textAnchor="middle" fontSize={24} fill={C.barro} letterSpacing="0.1em">CORRIGIDO</text>
+        <text x={600} y={516} textAnchor="middle" fontSize={10} fill={C.barro} letterSpacing="0.12em">COM FONTE E DATA</text>
+      </g>
+    </Frame>
+  );
+}
+
+/** Reportagens: máquina de escrever com uma folha de manchete, entre páginas já impressas. */
+export function ReportagensArt({ id = 'reportagens' }: { id?: string }) {
+  const keyRows = [{ y: 424, n: 9, x0: 268 }, { y: 452, n: 8, x0: 284 }, { y: 480, n: 7, x0: 300 }];
+  return (
+    <Frame id={id} label="Ilustração em colagem: máquina de escrever laranja sobre fundo azul, com uma folha saindo do rolo. Na folha, uma manchete em barras pretas, um quadro amarelo e linhas de texto. Duas páginas impressas estão ao lado, uma delas com uma linha marcada em amarelo.">
+      <rect width={800} height={600} fill={C.cobalt} />
+      <rect width={800} height={600} fill={`url(#${id}-dots-paper)`} opacity={0.12} />
+      <g filter={`url(#${id}-rough)`}>
+        <Doc x={120} y={260} w={120} h={156} rot={-9} />
+        <Doc x={684} y={236} w={112} h={146} rot={8} mark />
+        <g>
+          <rect x={288} y={104} width={224} height={260} fill={C.ink} transform="translate(5 6)" />
+          <rect x={288} y={104} width={224} height={260} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={312} y={130} width={176} height={20} fill={C.ink} />
+          <rect x={312} y={158} width={120} height={12} fill={C.ink} />
+          <rect x={312} y={186} width={78} height={64} fill={C.sol} stroke={C.ink} strokeWidth={2.5} />
+          <rect x={312} y={186} width={78} height={64} fill={`url(#${id}-dots)`} opacity={0.3} />
+          {[192, 208, 224, 240].map(y => <line key={y} x1={402} x2={488} y1={y} y2={y} stroke={C.ink} strokeWidth={2} />)}
+          {[272, 288, 304, 320].map((y, i) => <line key={y} x1={312} x2={488 - (i === 3 ? 60 : 0)} y1={y} y2={y} stroke={C.ink} strokeWidth={2} />)}
+        </g>
+        <g stroke={C.ink} strokeWidth={3} strokeLinejoin="round">
+          <polygon points="226,528 262,388 538,388 574,528" fill={C.ink} stroke="none" transform="translate(6 8)" />
+          <polygon points="226,528 262,388 538,388 574,528" fill={C.barro} />
+          <rect x={240} y={340} width={320} height={40} rx={20} fill={C.ink} />
+          <circle cx={232} cy={360} r={22} fill={C.sol} />
+          <circle cx={568} cy={360} r={22} fill={C.sol} />
+          <rect x={250} y={406} width={300} height={108} fill={C.ink} />
+        </g>
+        <polygon points="226,528 262,388 538,388 574,528" fill={`url(#${id}-dots)`} opacity={0.12} />
+        {keyRows.map(r => Array.from({ length: r.n }, (_, i) => <circle key={`${r.y}-${i}`} cx={r.x0 + i * 33} cy={r.y} r={10} fill={C.paper} stroke={C.ink} strokeWidth={2} />))}
+        <rect x={334} y={498} width={132} height={10} rx={5} fill={C.paper} />
+        <rect x={196} y={526} width={408} height={22} fill={C.ink} />
+      </g>
+    </Frame>
+  );
+}
+
+/** Privacidade: ficha com dados pessoais cobertos por tarjas, cadeado e carimbo "LGPD". */
+export function PrivacidadeArt({ id = 'privacidade' }: { id?: string }) {
+  const rows: { y: number; tarja: boolean; len: number }[] = [
+    { y: 196, tarja: false, len: 190 }, { y: 240, tarja: true, len: 170 }, { y: 284, tarja: false, len: 150 },
+    { y: 328, tarja: true, len: 130 }, { y: 372, tarja: false, len: 200 }, { y: 416, tarja: false, len: 120 }, { y: 460, tarja: true, len: 160 },
+  ];
+  return (
+    <Frame id={id} label="Ilustração em colagem: ficha de papel sobre fundo verde, com linhas de texto em que três trechos estão cobertos por tarjas pretas. Ao lado, um cadeado azul fechado e um carimbo circular laranja com a inscrição 'LGPD'.">
+      <rect width={800} height={600} fill={C.mata} />
+      <rect width={800} height={600} fill={`url(#${id}-dots)`} opacity={0.12} />
+      <g filter={`url(#${id}-rough)`}>
+        <g transform="rotate(-4 340 320)">
+          <rect x={168} y={110} width={360} height={420} fill={C.ink} />
+          <rect x={160} y={100} width={360} height={420} fill={C.paper} stroke={C.ink} strokeWidth={3} />
+          <rect x={190} y={132} width={170} height={18} fill={C.ink} />
+          {rows.map(r => (
+            <g key={r.y}>
+              <rect x={190} y={r.y - 5} width={64} height={10} fill={C.ink} opacity={0.75} />
+              {r.tarja
+                ? <rect x={270} y={r.y - 12} width={r.len + 50} height={24} fill={C.ink} />
+                : <line x1={270} x2={270 + r.len} y1={r.y} y2={r.y} stroke={C.ink} strokeWidth={2.4} />}
+            </g>
+          ))}
+        </g>
+        <path d="M584 362 V318 A44 44 0 0 1 672 318 V362" fill="none" stroke={C.ink} strokeWidth={16} strokeLinecap="round" />
+        <rect x={560} y={352} width={136} height={112} fill={C.ink} transform="translate(6 7)" />
+        <rect x={560} y={352} width={136} height={112} fill={C.cobalt} stroke={C.ink} strokeWidth={3} />
+        <rect x={560} y={352} width={136} height={112} fill={`url(#${id}-dots-paper)`} opacity={0.2} />
+        <circle cx={628} cy={396} r={10} fill={C.ink} />
+        <rect x={623} y={398} width={10} height={22} fill={C.ink} />
+      </g>
+      <g transform="rotate(12 640 170)">
+        <circle cx={640} cy={170} r={64} fill="none" stroke={C.barro} strokeWidth={6} />
+        <circle cx={640} cy={170} r={50} fill="none" stroke={C.barro} strokeWidth={2} />
+        <text x={640} y={182} textAnchor="middle" fontSize={32} fill={C.barro} letterSpacing="0.1em">LGPD</text>
+      </g>
+    </Frame>
+  );
+}
+
+/** Página não encontrada: um mapa rasgado; a trilha sai pela borda e termina numa interrogação. */
+export function ForaDoMapaArt({ id = 'fora-do-mapa' }: { id?: string }) {
+  const torn = '520,160 544,204 512,246 540,292 506,338 538,384 510,430 530,480';
+  return (
+    <Frame id={id} label="Ilustração em colagem: pedaço de mapa de papel dobrado, com a borda direita rasgada, sobre fundo amarelo. Uma trilha pontilhada sai de um marcador laranja, atravessa o mapa, passa pela borda rasgada e termina num círculo tracejado com um ponto de interrogação, fora do papel. Uma lupa olha para o vazio.">
+      <rect width={800} height={600} fill={C.sol} />
+      <rect width={800} height={600} fill={`url(#${id}-dots-lg)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        <g fill={C.ink} transform="translate(8 10)">
+          <polygon points="110,160 320,200 320,520 110,480" />
+          <polygon points={`320,200 ${torn} 320,520`} />
+        </g>
+        <g stroke={C.ink} strokeWidth={3} strokeLinejoin="round">
+          <polygon points="110,160 320,200 320,520 110,480" fill={C.paper} />
+          <polygon points={`320,200 ${torn} 320,520`} fill={C.paper2} />
+        </g>
+        <polygon points={`320,200 ${torn} 320,520`} fill={`url(#${id}-dots)`} opacity={0.16} />
+        <path d="M130 300 C190 280 230 330 300 310 C380 290 420 250 500 262" stroke={C.cobalt} strokeWidth={5} fill="none" strokeLinecap="round" />
+        <path d="M170 404 C240 380 300 420 380 360 C440 316 520 300 600 280 C640 270 660 250 668 236" stroke={C.ink} strokeWidth={4} strokeDasharray="1 12" strokeLinecap="round" fill="none" />
+        <Pin x={170} y={404} color={C.barro} />
+        <circle cx={680} cy={200} r={48} fill={C.paper} stroke={C.ink} strokeWidth={3} strokeDasharray="8 7" />
+        <Lupa cx={640} cy={440} r={56} angle={50} len={80} />
+      </g>
+      <text x={680} y={218} textAnchor="middle" fontSize={50} fill={C.ink}>?</text>
+    </Frame>
+  );
+}
+
 /* ---------- Spots (ícones ilustrados para os pilares) ---------- */
 
 function Spot({ id, bg, label, children }: { id: string; bg: string; label: string; children: ReactNode }) {
@@ -716,7 +942,7 @@ export function SpotAcompanhar() {
 
 /* ---------- Registro e moldura ---------- */
 
-export const artworks = { caminho: CaminhoArt, sertao: SertaoArt, congresso: CongressoArt, documentos: DocumentosArt, mapa: MapaArt, fluxo: FluxoArt, autores: AutoresArt, estaduais: EstaduaisArt, dados: DadosArt } as const;
+export const artworks = { caminho: CaminhoArt, sertao: SertaoArt, congresso: CongressoArt, documentos: DocumentosArt, mapa: MapaArt, fluxo: FluxoArt, autores: AutoresArt, estaduais: EstaduaisArt, dados: DadosArt, sobre: SobreArt, contato: ContatoArt, correcoes: CorrecoesArt, reportagens: ReportagensArt, privacidade: PrivacidadeArt, foraDoMapa: ForaDoMapaArt } as const;
 export type ArtKey = keyof typeof artworks;
 
 export function Art({ name, id }: { name: ArtKey; id?: string }) {

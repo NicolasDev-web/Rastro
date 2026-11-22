@@ -718,3 +718,6 @@ main:focus { outline: none; }
 /* Card de deputado estadual com dois links (Autores) */
 .author-card-body strong a { color: inherit; }
 .author-card-body .link-badge + .link-badge { margin-top: 4px; }
+
+/* Página 404 */
+.not-found-links { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }

@@ -5,9 +5,9 @@ Snapshot oficial validado e revisão jurídica/editorial, testes de ponta a pont
 
 ## Frente C/D — contrato de fechamento
 
-`/dados` deve distinguir explicitamente demo e validação, explicar critérios territoriais, etapas, proveniência e limitações. `/sobre`, `/correcoes` e `/contato` reutilizam o design existente e aparecem no rodapé. Sem canal editorial confirmado, Contato informa a indisponibilidade de recebimento; não inventar e-mail, responsáveis ou formulário funcional. Correções apresenta política prevista, sem alegar histórico inexistente. AC06 permanece parcial até canal real e política de privacidade definidos.
+`/dados` deve distinguir explicitamente demo e validação, explicar critérios territoriais, etapas, proveniência e limitações. `/sobre`, `/correcoes` e `/contato` reutilizam o design existente e aparecem no rodapé. Contato traz o e-mail público do projeto (ADR-015); não inventar responsáveis nem formulário funcional. Correções apresenta a política, sem alegar histórico inexistente. `/privacidade` (incremento P1) fecha o AC06.
 
-Git e primeiro commit já concluídos (`6ea3bc8`, `NicolasDev-web/Rastro`). Checklist operacional em `../operations/CHECKLIST-PUBLICACAO.md`. Prévia e build públicos permanecem em demo. PDF do vídeo é material interno de validação e não é autorização de lançamento.
+Git e primeiro commit já concluídos (`6ea3bc8`, `NicolasDev-web/Rastro`). Checklist operacional em `../operations/CHECKLIST-PUBLICACAO.md`. O site publicado usa o modo `publicado` (ADR-015). PDF do vídeo é material interno de validação e não é autorização de lançamento.
 
 ## Critérios de aceite
 - **AC01** Produção não inicia em modo misto `DEMO_DATA=true` com números não identificados como demo.
@@ -28,3 +28,17 @@ Git e primeiro commit já concluídos (`6ea3bc8`, `NicolasDev-web/Rastro`). Chec
 - [ ] T06.06 Política de correções e fluxo de contato.
 - [ ] T06.07 Deploy com feature flags e rollback.
 - [ ] T06.08 Revisão pós-lançamento das métricas e observabilidade.
+
+## Incremento P1 — fechamento (22/11/2026)
+
+Itens que não dependem de novos dados, levantados na análise de lacunas de 22/11/2026.
+
+- [x] T06.09 Push no GitHub não publica: `vercel.json` na raiz com `git.deploymentEnabled: false` (ADR-020).
+- [x] T06.10 Página `/privacidade`: o que o site coleta (nada além dos registros técnicos da hospedagem), dados pessoais de terceiros nos arquivos oficiais (PF e MEI omitidos), mensagens recebidas por e-mail, direitos do titular (LGPD, art. 18) e canal de pedido. Link no rodapé e em Contato.
+- [x] T06.11 Página 404 própria, em português, com arte e caminhos de volta (`app/not-found.tsx`).
+- [x] T06.12 Arte própria em Sobre, Contato, Correções, Reportagens, Privacidade e 404 (regra "toda aba tem arte", ADR-016).
+- [x] T06.13 `/reportagens` com `<h1>`, título da aba e arte de abertura.
+- [x] T06.14 Textos desatualizados: `/dados` (malha do IBGE e Transferegov já integrados), README e `operations/TESTES-E-DEPLOY.md`.
+- [x] T06.15 Rotina de atualização dos dados documentada em `operations/ATUALIZACAO-DADOS.md`: cadência, passos, conferências e o que fazer com o registro de investigação quando o snapshot muda.
+
+**Critérios de aceite do incremento:** um push na `main` não cria deploy; `/privacidade` e a 404 passam no `verify_web.py` em 1440 e 360 px; toda rota do menu e do rodapé tem ilustração com `aria-label`; nenhuma página publicada diz que a malha ou o Transferegov estão pendentes.

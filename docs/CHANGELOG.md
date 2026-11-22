@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.12.0 — fechamento do P1: privacidade, 404, artes e rotina de dados
+
+- Deploy só pela CLI: o `vercel.json` da raiz desliga a publicação automática a cada push no GitHub, que derrubava o site com 404 (ADR-020).
+- Nova página `/privacidade`: o que o site registra (nada além dos registros técnicos da hospedagem; sem cookies próprios, medição de audiência ou serviços de terceiros no navegador), o uso das mensagens enviadas por e-mail, as pessoas nos arquivos oficiais (PF e MEI omitidos, sem CPF) e os direitos da LGPD. Link no rodapé, em Sobre e em Contato.
+- Página 404 própria, em português, com arte e caminhos de volta.
+- Seis ilustrações novas na mesma linha de colagem: Sobre (caderno de campo), Contato (envelope e avião de papel), Correções (valor riscado e reescrito, registro anterior guardado), Reportagens (máquina de escrever), Privacidade (tarjas e cadeado) e 404 (mapa rasgado). Toda aba e página institucional tem arte (ADR-016).
+- `/reportagens` ganha título principal, título da aba e arte de abertura.
+- Glossário conferido com o texto oficial no Planalto em 22/11/2026: cada termo cita o artigo (Lei 4.320/1964, Constituição arts. 166 e 166-A, LDO 2025 para os RP) e sai do selo "Rascunho editorial" (SPEC 03, T03.01–T03.02). O RP 9 passa a ser descrito como modelo que não consta da LDO 2025.
+- `/dados`: a malha do IBGE e o Transferegov deixam de aparecer como pendentes.
+- Rotina de atualização dos dados em `docs/operations/ATUALIZACAO-DADOS.md` (mensal, com passos e conferências). O build publicado recusa gerar o site se o registro de investigação for de outro snapshot.
+- README e `TESTES-E-DEPLOY.md` descrevem o site publicado, não mais só a demonstração. `verify_web.py` cobre `/privacidade` e confere o título da 404.
+
 ## 0.11.0 — deputados estaduais ligados e artes nas abas que faltavam
 
 - Emendas estaduais: cada deputado estadual com emenda ligada à lista da Alece pelo nome exato (41 deputados, 167 das 195 linhas) ganhou a página `/estaduais/[slug]`. Ela traz as emendas por ano, com as três colunas de valor separadas, o aviso de que a emenda estadual não é impositiva e só mostra o orçamento, a cobertura parcial, a fonte com data e SHA-256 e o link para o perfil oficial. Em Autores, o card desses deputados mostra os anos e a contagem de linhas e leva à página; nas tabelas de `/estaduais`, o nome ligado virou link. Sem ranking, sem total por deputado e sem soma com as federais (SPEC 07, incremento 2).

@@ -32,7 +32,7 @@ def main():
         autor = emendas[emenda]['autor_ficha']
     routes = {'home': '/', 'mapa': '/mapa', 'municipio': '/municipios/2304400', 'emenda': f'/emendas/{emenda}',
               'autor': f'/parlamentares/{autor}', 'autores': '/parlamentares', 'dados': '/dados',
-              'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'glossario': '/glossario', 'fluxos': '/fluxos', 'estaduais': '/estaduais'}
+              'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'privacidade': '/privacidade', 'glossario': '/glossario', 'fluxos': '/fluxos', 'estaduais': '/estaduais'}
     if args.mode == 'publicado':
         # Ficha com plano de ação e execução declarada no Transferegov (ADR-018): texto livre longo da fonte.
         routes['emenda-transferegov'] = '/emendas/202537330007'
@@ -69,7 +69,7 @@ def main():
                 assert {'validacao': 'DADOS OFICIAIS EM VALIDAÇÃO', 'publicado': 'Investigação cidadã independente', 'demo': 'todos os valores exibidos são fictícios'}[args.mode] in text
                 if args.mode == 'publicado':
                     assert not any(w in text for w in ('VALIDAÇÃO', 'NÃO PUBLICAR', 'fictíci', 'PROTÓTIPO')), route
-                for link in ('/sobre', '/correcoes', '/contato'):
+                for link in ('/sobre', '/correcoes', '/privacidade', '/contato'):
                     assert page.locator(f'footer a[href="{link}"]').count() == 1
                 page.screenshot(path=str(out / f'{name}-{width}.png'))
                 if width == 1440 and name == 'emenda':
@@ -123,6 +123,7 @@ def main():
         assert page.locator('main h1').inner_text() == 'Fortaleza'
         response = page.goto(args.url + '/emendas/NAO-EXISTE', wait_until='networkidle')
         assert response.status == 404
+        assert page.locator('main h1').inner_text() == 'Esta página saiu do mapa.'
         assert not errors, errors
         browser.close()
     (out / 'resultados.json').write_text(json.dumps({'mode': args.mode, 'bundle_id': manifest['id'] if manifest else None,
