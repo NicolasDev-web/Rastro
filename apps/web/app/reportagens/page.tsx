@@ -8,9 +8,9 @@ export const metadata: Metadata = { title: 'Reportagens | RASTRO' };
 
 export default function Reportagens() {
   return <div className="container page-space">
-    <PageHero eyebrow="Reportagens e pautas" title="Histórias para investigar. Não conclusões antecipadas." description="A primeira peça é um explicador. As demais são próximas frentes da investigação, ainda em andamento." art={<ReportagensArt />} />
+    <PageHero eyebrow="Reportagens e pautas" title="Histórias para investigar. Não conclusões antecipadas." description="Um explicador e duas reportagens feitas com os dados publicados. Cada número tem fonte, e nenhuma conclusão vai além do que os documentos mostram." art={<ReportagensArt />} />
     <section className="block-gap" aria-labelledby="pecas">
-      <h2 id="pecas" className="block-title">Peças e próximas frentes</h2>
+      <h2 id="pecas" className="block-title">Peças publicadas</h2>
       <div className="story-grid">{stories.map(a => <article key={a.number} className="story-card">
         <Link href={a.link} className="story-card-art" aria-hidden="true" tabIndex={-1}>
           <Art name={a.art} id={`card-${a.art}`} />

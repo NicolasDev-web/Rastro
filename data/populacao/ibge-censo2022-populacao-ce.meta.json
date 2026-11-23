@@ -1,0 +1,6 @@
+{
+  "fonte": "IBGE — Censo 2022, população residente (agregado 4709, variável 93)",
+  "url": "https://servicodados.ibge.gov.br/api/v3/agregados/4709/periodos/2022/variaveis/93?localidades=N6[N3[23]]",
+  "baixado_em": "2026-11-23T15:01:51.670Z",
+  "sha256": "410c021fd291d03c1083257a887191b1804e31c4c85d5b8d2d2df0886a9a5bf3"
+}

@@ -721,3 +721,17 @@ main:focus { outline: none; }
 
 /* Página 404 */
 .not-found-links { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }
+
+/* Reportagens 02 e 03: barras de contagem e roteiro */
+.funil-barras { list-style: none; padding: 0; margin: 28px 0; display: grid; gap: 18px; }
+.funil-rotulo { font: 15px/1.45 var(--sans); color: var(--ink-2); margin-bottom: 6px; }
+.funil-rotulo strong { font: 700 20px/1 var(--sans); color: var(--ink); margin-right: 4px; }
+.funil-rotulo small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.funil-trilho { height: 16px; border: var(--border); background: var(--paper); }
+.funil-trilho span { display: block; height: 100%; background: var(--cobalt); min-width: 2px; }
+.funil-trilho.is-vazio { border-style: dashed; }
+.funil-trilho.is-vazio span { display: none; }
+.guia-lista { padding-left: 22px; }
+.article-body .guia-lista li { font: 400 18px/1.7 var(--serif); color: var(--ink-2); margin-bottom: 12px; }
+.article-body .data-method p, .article-body .credits-block p { font: 16px/1.6 var(--sans); }
+.article-body .data-table td, .article-body .data-table th { font-size: 14px; }

@@ -40,6 +40,7 @@
 - [x] 21/11/2026 — redeploy 0.10.0: Transferegov no fluxo (ADR-018) e página `/estaduais` (SPEC 07, ADR-019), pacote `dbcbf99a`; trava em 2.150 páginas e verificação de 32 telas (com `/estaduais` e a ficha `202537330007`) aprovadas em produção.
 - [x] 21/11/2026 — redeploy 0.11.0: páginas `/estaduais/[slug]` (41 deputados) e artes em Estaduais, Mapa e Dados; trava em 2.191 páginas e 34 telas aprovadas em produção.
 - [x] 22/11/2026 — redeploy 0.12.0: `/privacidade`, 404 própria, artes em Sobre, Contato, Correções e Reportagens, glossário conferido; trava em 2.192 páginas e 36 telas aprovadas em produção.
+- [x] 23/11/2026 — redeploy 0.13.0: reportagens 02 e 03; trava em 2.194 páginas.
 - [ ] Domínio próprio e verificação de marca (nome RASTRO provisório).
 - [x] Investigação dos 84 casos da fila (registro em `pipelines/contracts/investigacao_casos.json`), com atualização das fichas e novo deploy — 0.7.0: 49 explicados, 35 sem causa documentada.
 - [x] O projeto Vercel está ligado ao GitHub, e um push na `main` publicava o repositório cru (404 em 21/11/2026). Desde 22/11/2026 o `vercel.json` da raiz desliga os deploys por push (ADR-020); a produção só muda pela CLI.

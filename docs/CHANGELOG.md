@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.0 — reportagens 02 e 03
+
+- **03 — Onde termina o registro público?** (`/reportagens/onde-termina-o-registro`): uma emenda real seguida do autor ao relatório de gestão; o funil das 1.910 fichas (1.817 com documento de pagamento, 603 com plano de ação ou convênio no Transferegov, 107 com execução declarada, nenhuma com prova pública de entrega); onde cada modalidade para (transferência especial, convênio, demais transferências, com os pagamentos fundo a fundo em que o favorecido registrado é o Banco do Brasil); os 35 casos sem causa documentada, com link e próximo passo; e um roteiro para o leitor continuar a trilha (Transferegov, LAI, Fundo Nacional de Saúde, TCE-CE).
+- **02 — A geografia das emendas** (`/reportagens/geografia-das-emendas`): os dois critérios territoriais por ano (em 2025, 38 municípios pela localidade da emenda e 183 pela aplicação do pagamento); a parte do pago total registrada como "vários municípios" (85% em 2025); o valor pago por habitante por faixa de população, em que as cidades pequenas recebem mais em todos os anos completos; a ressalva da capital; e as cidades sem registro.
+- Os números vêm de `lib/reportagens.ts`, calculados no build sobre o pacote ativo e conferidos com cálculo independente em Python. Contagens de emendas cruzam anos; valores nunca. As frases que dependem dos dados mudam se o pacote mudar.
+- População do Censo 2022 (IBGE) com cópia bruta e SHA-256 em `data/populacao/`, gerada por `scripts/gerar-populacao-ce.mjs`.
+- Artes de abertura novas: funil de documentos (03) e dois recortes do Ceará com poucos e muitos pontos (02). Cards de `/reportagens` e da home apontam para as reportagens.
+
 ## 0.12.0 — fechamento do P1: privacidade, 404, artes e rotina de dados
 
 - Deploy só pela CLI: o `vercel.json` da raiz desliga a publicação automática a cada push no GitHub, que derrubava o site com 404 (ADR-020).

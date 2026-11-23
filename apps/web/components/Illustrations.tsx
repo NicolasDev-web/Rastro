@@ -866,6 +866,81 @@ export function ForaDoMapaArt({ id = 'fora-do-mapa' }: { id?: string }) {
   );
 }
 
+/** Reportagem 03: documentos entram num funil de papel; a trilha que sai embaixo vai sumindo até uma interrogação. */
+export function FunilArt({ id = 'funil' }: { id?: string }) {
+  const trilha: [number, number, number][] = [[400, 404, 1], [414, 436, 0.85], [438, 464, 0.7], [470, 486, 0.55], [506, 500, 0.4], [544, 508, 0.28]];
+  return (
+    <Frame id={id} label="Ilustração em colagem: três documentos caem dentro de um funil de papel sobre fundo laranja. Pela boca estreita do funil sai uma trilha de pontos que vai ficando mais fraca até terminar num círculo tracejado com um ponto de interrogação.">
+      <rect width={800} height={600} fill={C.barro} />
+      <rect width={800} height={600} fill={`url(#${id}-dots-lg)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        <Doc x={272} y={96} w={84} h={108} rot={-14} />
+        <Doc x={524} y={92} w={84} h={108} rot={13} mark />
+        <Doc x={398} y={76} w={90} h={116} rot={3} stamp={C.barro} />
+        <polygon points="178,166 630,166 452,344 356,344" fill={C.ink} transform="translate(8 10)" />
+        <polygon points="178,166 630,166 452,344 356,344" fill={C.paper} stroke={C.ink} strokeWidth={3} strokeLinejoin="round" />
+        <polygon points="404,166 630,166 452,344 404,344" fill={`url(#${id}-dots)`} opacity={0.14} />
+        <ellipse cx={404} cy={166} rx={226} ry={22} fill={C.paper2} stroke={C.ink} strokeWidth={3} />
+        <ellipse cx={404} cy={166} rx={190} ry={12} fill={C.ink} opacity={0.85} />
+        <rect x={378} y={344} width={52} height={40} fill={C.paper2} stroke={C.ink} strokeWidth={3} />
+        <line x1={250} x2={560} y1={230} y2={230} stroke={C.ink} strokeWidth={2} opacity={0.35} />
+        <line x1={310} x2={500} y1={290} y2={290} stroke={C.ink} strokeWidth={2} opacity={0.35} />
+        {trilha.map(([x, y, o]) => <circle key={x} cx={x} cy={y} r={9} fill={C.sol} stroke={C.ink} strokeWidth={2.5} opacity={o} />)}
+        <circle cx={622} cy={500} r={50} fill="none" stroke={C.ink} strokeWidth={3} strokeDasharray="8 7" />
+      </g>
+      <text x={622} y={518} textAnchor="middle" fontSize={52} fill={C.ink}>?</text>
+    </Frame>
+  );
+}
+
+/** Ponto dentro do contorno do Ceará (coordenadas locais de CEARA_PTS). */
+const CEARA_POLY = CEARA_PTS.split(' ').map(p => p.split(',').map(Number) as [number, number]);
+function dentroDoCeara(x: number, y: number) {
+  let dentro = false;
+  for (let i = 0, j = CEARA_POLY.length - 1; i < CEARA_POLY.length; j = i++) {
+    const [xi, yi] = CEARA_POLY[i], [xj, yj] = CEARA_POLY[j];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) dentro = !dentro;
+  }
+  return dentro;
+}
+/** Grade com deslocamento fixo (determinístico) de pontos dentro do contorno, afastados da borda. */
+const PONTOS_CEARA = (() => {
+  const pts: [number, number][] = [];
+  for (let gy = 60; gy < 700; gy += 58) for (let gx = 40; gx < 580; gx += 58) {
+    const k = gx * 7 + gy * 13;
+    const x = gx + Math.sin(k) * 14, y = gy + Math.cos(k) * 14;
+    if ([[0, 0], [26, 0], [-26, 0], [0, 26], [0, -26]].every(([dx, dy]) => dentroDoCeara(x + dx, y + dy))) pts.push([x, y]);
+  }
+  return pts;
+})();
+
+/** Reportagem 02: o mesmo estado em dois recortes — poucos pontos pela localidade da emenda, muitos pela aplicação do pagamento. */
+export function DoisMapasArt({ id = 'dois-mapas' }: { id?: string }) {
+  const s = 0.5;
+  const poucos = PONTOS_CEARA.filter((_, i) => i % 9 === 4);
+  return (
+    <Frame id={id} label="Ilustração em colagem: dois recortes de papel do contorno do Ceará lado a lado sobre fundo rosa, separados por um sinal de diferente. O da esquerda, em papel claro, tem poucos pontos laranja; o da direita, em amarelo, está coberto de pontos azuis.">
+      <rect width={800} height={600} fill={C.rosa} />
+      <rect width={800} height={600} fill={`url(#${id}-dots-lg)`} opacity={0.1} />
+      <g filter={`url(#${id}-rough)`}>
+        <CearaRecorte x={58} y={118} s={s} rot={-4} fill={C.paper} id={id} />
+        <CearaRecorte x={438} y={104} s={s} rot={3} fill={C.sol} id={id} />
+        <g transform={`translate(58 118) rotate(-4) scale(${s})`}>
+          {poucos.map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r={15} fill={C.barro} stroke={C.ink} strokeWidth={5} />)}
+        </g>
+        <g transform={`translate(438 104) rotate(3) scale(${s})`}>
+          {PONTOS_CEARA.map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r={15} fill={C.cobalt} stroke={C.ink} strokeWidth={5} />)}
+        </g>
+      </g>
+      <g stroke={C.ink} strokeWidth={9} strokeLinecap="round">
+        <line x1={370} x2={426} y1={290} y2={290} />
+        <line x1={370} x2={426} y1={318} y2={318} />
+        <line x1={384} x2={412} y1={346} y2={262} />
+      </g>
+    </Frame>
+  );
+}
+
 /* ---------- Spots (ícones ilustrados para os pilares) ---------- */
 
 function Spot({ id, bg, label, children }: { id: string; bg: string; label: string; children: ReactNode }) {
@@ -942,7 +1017,7 @@ export function SpotAcompanhar() {
 
 /* ---------- Registro e moldura ---------- */
 
-export const artworks = { caminho: CaminhoArt, sertao: SertaoArt, congresso: CongressoArt, documentos: DocumentosArt, mapa: MapaArt, fluxo: FluxoArt, autores: AutoresArt, estaduais: EstaduaisArt, dados: DadosArt, sobre: SobreArt, contato: ContatoArt, correcoes: CorrecoesArt, reportagens: ReportagensArt, privacidade: PrivacidadeArt, foraDoMapa: ForaDoMapaArt } as const;
+export const artworks = { caminho: CaminhoArt, sertao: SertaoArt, congresso: CongressoArt, documentos: DocumentosArt, mapa: MapaArt, fluxo: FluxoArt, autores: AutoresArt, estaduais: EstaduaisArt, dados: DadosArt, sobre: SobreArt, contato: ContatoArt, correcoes: CorrecoesArt, reportagens: ReportagensArt, privacidade: PrivacidadeArt, foraDoMapa: ForaDoMapaArt, funil: FunilArt, doisMapas: DoisMapasArt } as const;
 export type ArtKey = keyof typeof artworks;
 
 export function Art({ name, id }: { name: ArtKey; id?: string }) {

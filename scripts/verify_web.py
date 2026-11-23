@@ -32,7 +32,8 @@ def main():
         autor = emendas[emenda]['autor_ficha']
     routes = {'home': '/', 'mapa': '/mapa', 'municipio': '/municipios/2304400', 'emenda': f'/emendas/{emenda}',
               'autor': f'/parlamentares/{autor}', 'autores': '/parlamentares', 'dados': '/dados',
-              'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'privacidade': '/privacidade', 'glossario': '/glossario', 'fluxos': '/fluxos', 'estaduais': '/estaduais'}
+              'sobre': '/sobre', 'correcoes': '/correcoes', 'contato': '/contato', 'privacidade': '/privacidade', 'glossario': '/glossario', 'fluxos': '/fluxos', 'estaduais': '/estaduais',
+              'reportagens': '/reportagens', 'reportagem-02': '/reportagens/geografia-das-emendas', 'reportagem-03': '/reportagens/onde-termina-o-registro'}
     if args.mode == 'publicado':
         # Ficha com plano de ação e execução declarada no Transferegov (ADR-018): texto livre longo da fonte.
         routes['emenda-transferegov'] = '/emendas/202537330007'

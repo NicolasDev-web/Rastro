@@ -36,3 +36,21 @@ Como cidadão, quero entender o sistema de emendas antes de olhar um gráfico pa
 | AC04 | Atende | Ilustrações com `aria-label`; escada de etapas em lista HTML; sem animação. |
 | AC05 | Atende (22/11/2026) | Glossário cita artigo, link do Planalto e data de consulta de cada norma. |
 | AC06 | Atende | Capítulo 5: "Pagamento comprova que o dinheiro saiu. Não comprova que a obra chegou." e etapa 07 "Entrega" fora dos registros federais. |
+
+## Incremento 2 — reportagens 02 e 03 (23/11/2026)
+
+Duas reportagens com os dados já publicados, no formato do explicador (`/investigacao`): capítulos com sumário, arte de abertura própria e números calculados no build a partir do pacote ativo, nunca digitados à mão.
+
+- **03 — Onde termina o registro público?** (`/reportagens/onde-termina-o-registro`). Pergunta: até onde um cidadão consegue seguir uma emenda. Conteúdo: uma emenda real seguida etapa por etapa (fluxo da SPEC 04); o funil de rastreabilidade das fichas (autor, documento de pagamento, favorecido, plano de ação ou convênio, execução declarada, prova pública de entrega); os três caminhos por modalidade (transferência especial, convênio, demais transferências) e onde cada um para; os casos sem causa documentada (ADR-014), listados como pergunta aberta, com link para a ficha; guia para continuar a trilha (Transferegov, LAI, Fundo Nacional de Saúde, TCE-CE).
+- **02 — A geografia das emendas** (`/reportagens/geografia-das-emendas`). Pergunta: para onde o dinheiro diz que vai e onde aparece. Conteúdo: os dois critérios territoriais por ano (localidade da emenda × aplicação do pagamento, nunca somados); a parcela do pago total registrada como "vários municípios" e "estado"; valor pago por aplicação por habitante (população do Censo 2022, IBGE, cópia bruta com SHA-256 em `data/populacao/`, gerada por `scripts/gerar-populacao-ce.mjs`), por faixa de população e por ano, com mediana; o caso da capital; municípios sem registro.
+
+**Regras:** nenhuma soma entre anos, etapas, fontes ou critérios; valores por ano e pela mesma etapa (pago total da fonte ou pago por aplicação). Contagens de emendas podem cruzar anos. Sem ranking de autores nem de municípios: comparações por faixa de população, com denominador explícito. Hipóteses aparecem marcadas como hipótese. Nada é apresentado como irregularidade.
+
+- [x] T03.07 População do Censo 2022 com proveniência (`lib/populacao-ce.json`).
+- [x] T03.08 Cálculos das reportagens em `lib/reportagens.ts`, conferidos contra cálculo independente em Python sobre o mesmo pacote.
+- [x] T03.09 Página da reportagem 03.
+- [x] T03.10 Página da reportagem 02.
+- [x] T03.11 Artes de abertura próprias (funil de documentos e dois mapas).
+- [x] T03.12 Cards em `/reportagens` e na home apontam para as reportagens; `verify_web.py` cobre as duas rotas.
+
+**Critérios de aceite do incremento:** AC07 — todo número das duas páginas vem de função sobre o pacote ativo e muda se o pacote mudar; AC08 — em modo demo as páginas não mostram números (estado de demonstração); AC09 — cada capítulo cita a fonte e o critério; AC10 — as duas rotas passam no `verify_web.py` em 1440 e 360 px.
