@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.1 — diagramação da reportagem 03 e filtro dos deputados estaduais
+
+- Reportagem 03, "Três caminhos": os blocos herdavam o estilo de capítulo (texto colado na borda, espaço vazio embaixo, título grande demais). Viraram cartões próprios, com número de emendas em destaque, fatos em lista e a linha "A trilha para…". A frase sobre o Banco do Brasil passou a citar a porcentagem calculada.
+- Autores: os deputados estaduais ganharam filtros no mesmo formato dos federais: busca por nome, emendas no RASTRO, situação (titular ou suplente em exercício) e partido atual, com contador de resultados (SPEC 07, T07.17).
+
 ## 0.13.0 — reportagens 02 e 03
 
 - **03 — Onde termina o registro público?** (`/reportagens/onde-termina-o-registro`): uma emenda real seguida do autor ao relatório de gestão; o funil das 1.910 fichas (1.817 com documento de pagamento, 603 com plano de ação ou convênio no Transferegov, 107 com execução declarada, nenhuma com prova pública de entrega); onde cada modalidade para (transferência especial, convênio, demais transferências, com os pagamentos fundo a fundo em que o favorecido registrado é o Banco do Brasil); os 35 casos sem causa documentada, com link e próximo passo; e um roteiro para o leitor continuar a trilha (Transferegov, LAI, Fundo Nacional de Saúde, TCE-CE).

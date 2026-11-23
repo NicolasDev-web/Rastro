@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { InfoNote, PageHero } from '../../components/Ui';
 import { AutoresArt } from '../../components/Illustrations';
 import { AuthorsBrowser } from '../../components/AuthorsBrowser';
-import { AuthorPortrait } from '../../components/AuthorPortrait';
+import { StateDeputiesBrowser, type StateDeputyCard } from '../../components/StateDeputiesBrowser';
 import { DataState, CoverageFlag } from '../../components/States';
 import { GlossaryTip } from '../../components/Glossary';
 import { getAuthors } from '../../lib/dataset';
@@ -42,29 +42,11 @@ export default function Autores() {
         {res.data.stateDeputies.length > 0 && <>
           <p className="small muted">{res.data.stateDeputies.length} deputados em exercício segundo a página oficial da Alece{res.data.stateAsOf ? ` (consulta de ${formatDate(res.data.stateAsOf)})` : ''}, em ordem alfabética. Partido atual.</p>
           {ligados.size > 0 && <p className="small muted">{res.data.stateDeputies.filter(d => ligados.has(d.slug)).length} deles têm emendas no arquivo do orçamento estadual ligadas pelo nome exato; o card leva às emendas de cada um no RASTRO, por ano, sem soma. Os demais seguem só com o perfil oficial.</p>}
-          <ul className="author-grid state-grid">{[...res.data.stateDeputies].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR')).map(d => { const lig = ligados.get(d.slug); return <li key={d.slug}>
-            {lig ? <div className="author-card">
-              <AuthorPortrait name={d.nome} photo={d.photo} />
-              <div className="author-card-body">
-                <strong><Link href={estadualHref(d.slug)}>{d.nome}</Link></strong>
-                <span className="author-meta">{[d.partido_atual, 'Assembleia Legislativa do Ceará'].filter(Boolean).join(' · ')}</span>
-                {d.situacao === 'suplente_em_exercicio' && <span className="author-meta">Suplente em exercício</span>}
-                <span className="author-value"><small>Emendas estaduais</small> {lig.linhas_por_ano.map(x => `${x.ano}: ${x.linhas}`).join(' · ')}</span>
-                <span className="author-meta">linhas no orçamento, por ano</span>
-                <Link href={estadualHref(d.slug)} className="link-badge link-revisado">Emendas no RASTRO →</Link>
-                <a href={d.url_perfil} target="_blank" rel="noopener noreferrer" className="link-badge">Perfil oficial ↗</a>
-              </div>
-            </div> : <a href={d.url_perfil} target="_blank" rel="noopener noreferrer" className="author-card">
-              <AuthorPortrait name={d.nome} photo={d.photo} />
-              <div className="author-card-body">
-                <strong>{d.nome}</strong>
-                <span className="author-meta">{[d.partido_atual, 'Assembleia Legislativa do Ceará'].filter(Boolean).join(' · ')}</span>
-                {d.situacao === 'suplente_em_exercicio' && <span className="author-meta">Suplente em exercício</span>}
-                <span className="author-value"><small>Emendas</small> sem dado estruturado</span>
-                <span className="link-badge link-revisado">Perfil oficial ↗</span>
-              </div>
-            </a>}
-          </li>; })}</ul>
+          <StateDeputiesBrowser deputies={[...res.data.stateDeputies].sort((x, y) => x.nome.localeCompare(y.nome, 'pt-BR')).map<StateDeputyCard>(d => {
+            const lig = ligados.get(d.slug);
+            return { slug: d.slug, nome: d.nome, partido_atual: d.partido_atual, suplente: d.situacao === 'suplente_em_exercicio', photo: d.photo, url_perfil: d.url_perfil,
+              emendas: lig ? { href: estadualHref(d.slug), linhas_por_ano: lig.linhas_por_ano } : null };
+          })} />
           <p className="small muted">Fotos: Assembleia Legislativa do Ceará.</p>
         </>}
       </section>

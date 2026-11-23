@@ -735,3 +735,23 @@ main:focus { outline: none; }
 .article-body .guia-lista li { font: 400 18px/1.7 var(--serif); color: var(--ink-2); margin-bottom: 12px; }
 .article-body .data-method p, .article-body .credits-block p { font: 16px/1.6 var(--sans); }
 .article-body .data-table td, .article-body .data-table th { font-size: 14px; }
+
+/* Reportagem 03: os três caminhos */
+.caminhos { display: grid; gap: 22px; margin: 28px 0 8px; }
+.caminho { background: var(--card); border: var(--border); border-left-width: 8px; padding: 24px 28px 20px; }
+.caminho-cobalt { border-left-color: var(--cobalt); }
+.caminho-barro { border-left-color: var(--barro); }
+.caminho-sol { border-left-color: var(--sol); }
+.caminho-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.caminho-num { font: 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.article-body .caminho h3 { font-size: 26px; line-height: 1.1; margin: 4px 0 0; }
+.caminho-total { text-align: right; }
+.caminho-total strong { display: block; font: 700 36px/1 var(--display); }
+.caminho-total span { font: 13px var(--sans); color: var(--muted); }
+.article-body .caminho-fatos { list-style: none; padding: 0; margin: 16px 0 4px; display: grid; gap: 6px; }
+.article-body .caminho-fatos li { font: 600 15px/1.45 var(--sans); padding-left: 18px; position: relative; }
+.article-body .caminho-fatos li::before { content: ''; position: absolute; left: 0; top: .5em; width: 8px; height: 8px; background: var(--ink); }
+.article-body .caminho p { font: 16px/1.6 var(--sans); color: var(--ink-2); margin: 12px 0 0; }
+.article-body .caminho .caminho-fim { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; }
+.caminho-fim span { font: 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; background: var(--sol-soft); padding: 2px 6px; margin-right: 4px; }
+@media (max-width: 560px) { .caminho { padding: 20px 18px 18px; } .caminho-total { text-align: left; } }

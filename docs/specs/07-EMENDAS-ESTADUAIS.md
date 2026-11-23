@@ -183,7 +183,8 @@ Como morador do Ceará, ao abrir o card de um deputado estadual em Autores, quer
 - [x] T07.13 Rota `/estaduais/[slug]` com `generateStaticParams`, aviso, cobertura, fonte e data, emendas por ano, link para a Alece.
 - [x] T07.14 Tabelas de `/estaduais`: nome ligado leva a `/estaduais/[slug]`; não ligado fica texto.
 - [x] T07.15 Card de Autores: anos e linhas por ano, link para `/estaduais/[slug]` e link para a Alece; sem ligação, como antes.
-- [ ] T07.16 Smoke test no navegador e `next build` em modo publicado (revisor).
+- [x] T07.16 Smoke test no navegador e `next build` em modo publicado — feito no deploy 0.11.0 (34 telas) e repetido a cada deploy.
+- [x] T07.17 Filtros dos deputados estaduais em Autores, no mesmo formato dos federais (23/11/2026): busca por nome, emendas no RASTRO (com emendas ligadas / só perfil oficial), situação (titular ou licenciado / suplente em exercício) e partido atual. Ordem alfabética, sem ranking; contador de resultados; estado vazio explica que sem ligação não é sem emenda.
 
 ### Gherkin
 

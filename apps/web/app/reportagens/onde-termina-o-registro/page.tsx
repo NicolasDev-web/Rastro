@@ -10,7 +10,7 @@ import { brl, formatDate } from '../../../lib/dataset-types';
 import { execucaoDeclarada, type Emenda } from '../../../lib/fichas-types';
 import { buildFluxo } from '../../../lib/fluxo';
 import { getInvestigacao } from '../../../lib/investigacao';
-import { funil, type Funil } from '../../../lib/reportagens';
+import { funil, pct, type Funil } from '../../../lib/reportagens';
 import { stories } from '../../../lib/editorial';
 
 export const metadata: Metadata = { title: 'Onde termina o registro público? | RASTRO' };
@@ -28,6 +28,18 @@ function Barras({ itens, total }: { itens: { rotulo: string; valor: number; nota
     <div className="funil-rotulo"><strong>{n(i.valor)}</strong> {i.rotulo}{i.nota && <small>{i.nota}</small>}</div>
     <div className={i.valor ? 'funil-trilho' : 'funil-trilho is-vazio'} aria-hidden="true"><span style={{ width: `${(i.valor / total) * 100}%` }} /></div>
   </li>)}</ol>;
+}
+
+function Caminho({ n: num, cor, titulo, emendas, destaque, fatos, fim, children }: { n: number; cor: 'cobalt' | 'barro' | 'sol'; titulo: string; emendas: number; destaque?: string; fatos: string[]; fim: string; children: React.ReactNode }) {
+  return <div className={`caminho caminho-${cor}`}>
+    <div className="caminho-topo">
+      <div><span className="caminho-num">Caminho {num}</span><h3>{titulo}</h3></div>
+      <div className="caminho-total"><strong>{n(emendas)}</strong><span>emendas{destaque ? ` · ${destaque}` : ''}</span></div>
+    </div>
+    <ul className="caminho-fatos">{fatos.map(f => <li key={f}>{f}</li>)}</ul>
+    {children}
+    <p className="caminho-fim"><span>A trilha para</span> {fim}</p>
+  </div>;
 }
 
 function Abertura({ e }: { e: Emenda }) {
@@ -74,18 +86,25 @@ function Corpo({ f, exemplo, asOf, snapshot }: { f: Funil; exemplo: Emenda | nul
         </section>
 
         <section id="caminhos"><span className="section-no">03 / Três caminhos</span><h2>Cada modalidade para num lugar diferente.</h2>
-          <div className="data-info-grid block-gap">
-            <section className="data-method"><h3 className="block-title">Transferência especial</h3>
-              <p><strong>{n(c.especial.emendas)} emendas.</strong> {c.especial.comRegistro === c.especial.emendas ? 'Todas' : n(c.especial.comRegistro)} com plano de ação no Transferegov; {n(c.especial.comExecucao)} com execução declarada.</p>
-              <p>Pela Constituição, o dinheiro “pertencerá ao ente federado no ato da efetiva transferência financeira” (art. 166-A, § 2º). Daí em diante, o rastro é o que o município ou o estado declara no relatório de gestão.</p></section>
-            <section className="data-method alt"><h3 className="block-title">Convênio ou contrato de repasse</h3>
-              <p><strong>{n(c.convenio.emendas)} emendas.</strong> {n(c.convenio.comRegistro)} com proposta e metas no Transferegov.</p>
-              <p>As metas dizem o que foi planejado. Os contratos, as licitações e os pagamentos feitos por quem executa o convênio não estão na API pública do Transferegov. A trilha aberta para no plano.</p></section>
+          <p>O caminho depende da modalidade da emenda. As {n(f.fichas)} fichas se dividem em três grupos, sem sobreposição:</p>
+          <div className="caminhos">
+            <Caminho n={1} cor="cobalt" titulo="Transferência especial" emendas={c.especial.emendas}
+              fatos={[`${c.especial.comRegistro === c.especial.emendas ? 'todas' : n(c.especial.comRegistro)} com plano de ação no Transferegov`, `${n(c.especial.comExecucao)} com execução declarada pelo ente`]}
+              fim="no relatório de gestão, preenchido pelo próprio município ou estado.">
+              <p>Pela Constituição, o dinheiro “pertencerá ao ente federado no ato da efetiva transferência financeira” (art. 166-A, § 2º). Daí em diante, o que se sabe é o que o ente declara.</p>
+            </Caminho>
+            <Caminho n={2} cor="barro" titulo="Convênio ou contrato de repasse" emendas={c.convenio.emendas}
+              fatos={[`${n(c.convenio.comRegistro)} com proposta e metas no Transferegov`]}
+              fim="no plano: contratos, licitações e pagamentos de quem executa não estão na API pública.">
+              <p>As metas dizem o que foi planejado: quantos metros de pavimento, quantos equipamentos. O que foi contratado e pago para cumpri-las fica com quem executa o convênio.</p>
+            </Caminho>
+            <Caminho n={3} cor="sol" titulo="Demais transferências" emendas={c.demais.emendas} destaque="a maior parte"
+              fatos={[`${n(f.fundoAFundo.emendas)} emendas com pagamento fundo a fundo (entre todas as fichas)`, `${n(f.fundoAFundo.documentosFundoBanco)} de ${n(f.fundoAFundo.documentosFundo)} documentos fundo a fundo com o Banco do Brasil como favorecido`]}
+              fim="no documento de pagamento: o uso fica nos sistemas da saúde e na prestação de contas do município.">
+              <p>Sem plano de ação nem convênio, o registro federal termina no próprio pagamento. Boa parte é dinheiro da saúde repassado fundo a fundo.</p>
+              <p>Em {pct(f.fundoAFundo.documentosFundoBanco, f.fundoAFundo.documentosFundo)} desses documentos, o favorecido registrado é o Banco do Brasil, não o fundo ou o órgão que vai gastar. O documento diz em que município o dinheiro foi aplicado, mas não o que virou. Essas fontes o RASTRO ainda não integrou.</p>
+            </Caminho>
           </div>
-          <section className="credits-block"><h3 className="block-title">Demais transferências</h3>
-            <p><strong>{n(c.demais.emendas)} emendas</strong>, a maior parte. Sem plano de ação nem convênio, o registro federal termina no próprio documento de pagamento.</p>
-            <p>Boa parte é dinheiro da saúde repassado fundo a fundo. Entre todas as fichas, {n(f.fundoAFundo.emendas)} emendas têm pagamentos na modalidade “Fundo a Fundo”. Em {n(f.fundoAFundo.documentosFundoBanco)} dos {n(f.fundoAFundo.documentosFundo)} documentos dessa modalidade ({n(f.fundoAFundo.emendasBanco)} emendas), o favorecido registrado é o Banco do Brasil, não o fundo ou o órgão que vai gastar. O documento traz o município de aplicação; o uso do dinheiro fica nos sistemas da saúde e na prestação de contas do município, fontes que o RASTRO ainda não integrou.</p>
-          </section>
         </section>
 
         <section id="perguntas"><span className="section-no">04 / O que ficou sem resposta</span><h2>{n(f.casos.semCausa.length)} diferenças sem explicação.</h2>
