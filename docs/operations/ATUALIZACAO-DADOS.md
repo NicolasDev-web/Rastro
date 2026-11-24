@@ -5,7 +5,7 @@ O site publicado mostra cópias datadas das fontes oficiais. Esta rotina define 
 ## Quando atualizar
 
 - **Uma vez por mês**, na primeira semana, para os arquivos da CGU (emendas e documentos de despesa) e do Transferegov.
-- **Fora do ciclo**, quando a CGU avisar que corrigiu o arquivo, quando um órgão responder sobre um dos 35 casos sem causa documentada ou quando chegar a resposta da CGE-CE sobre as emendas estaduais (SPEC 07).
+- **Fora do ciclo**, quando a CGU avisar que corrigiu o arquivo, quando um órgão responder sobre um dos casos sem causa documentada ou quando chegar a resposta da CGE-CE sobre as emendas estaduais (SPEC 07).
 - **Câmara, Senado e Alece**: junto com a atualização mensal. Mudança de partido ou de mandato entra por aqui.
 - **Emendas estaduais**: quando o Ceará Transparente publicar um novo arquivo anual.
 

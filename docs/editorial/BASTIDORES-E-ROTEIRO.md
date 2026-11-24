@@ -198,7 +198,7 @@ Uma ressalva honesta: nesses casos, a investigação documentou a transferência
 
 ### O que ainda não sabemos
 
-**35 casos continuam sem causa documentada.** Isso não significa que exista problema. Significa que os documentos consultados até agora não explicam a diferença. Cada ficha mostra o que foi verificado e qual é o próximo passo: em geral, consultar o Transferegov ou pedir esclarecimento ao órgão responsável, inclusive pela Lei de Acesso à Informação.
+**28 casos continuam sem causa documentada** (eram 35; a reabertura de 24/11/2026 explicou 7). Isso não significa que exista problema. Significa que os documentos consultados até agora não explicam a diferença. Cada ficha mostra o que foi verificado e qual é o próximo passo: em geral, consultar o Transferegov ou pedir esclarecimento ao órgão responsável, inclusive pela Lei de Acesso à Informação.
 
 O único caso do grupo 1 que segue sem explicação é curioso: o próprio Portal informa R$ 500 mil pagos como restos a pagar, sem documento de pagamento ligado à emenda ou ao empenho, e R$ 1 milhão de restos a pagar inscritos para um empenho de R$ 500 mil. Não há nota de transferência de saldo. O próximo passo é perguntar ao órgão.
 
@@ -242,7 +242,7 @@ A auditoria de segurança e privacidade encontrou:
 
 ### Próximos passos
 
-1. Os **35 casos sem causa**: pedir esclarecimento aos órgãos e, quando necessário, usar a Lei de Acesso à Informação.
+1. Os **28 casos sem causa**: pedir esclarecimento aos órgãos e, quando necessário, usar a Lei de Acesso à Informação.
 2. Conferir, nas unidades novas, as ordens bancárias dos casos explicados por transferência de saldo.
 3. Reportar à CGU os documentos de retenção com valor multiplicado.
 4. Camada de mapa com a malha oficial do IBGE.

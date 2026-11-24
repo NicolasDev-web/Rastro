@@ -25,7 +25,7 @@ Desde 20/11/2026 o endereço público serve o modo `publicado` (ADR-015); a demo
 ## Dados oficiais
 
 - [x] Definir modo publicado e pipeline de produção — modo `publicado`, site estático a partir de `data/publicado/` com SHA-256 conferido (0.6.0, ADR-015, que substitui a proibição da ADR-008).
-- [x] Validar snapshot, cobertura temporal, vínculos e totais; documentar e tratar divergências — conciliação (0.5.2, ADR-012) e investigação dos 84 casos (0.7.0). Os 35 casos sem causa documentada ficam visíveis nas fichas.
+- [x] Validar snapshot, cobertura temporal, vínculos e totais; documentar e tratar divergências — conciliação (0.5.2, ADR-012) e investigação dos 84 casos (0.7.0). Os casos sem causa documentada (28 desde a reabertura de 24/11/2026) ficam visíveis nas fichas.
 - [x] Revisar os universos CE versus todas as emendas dos autores eleitos pelo CE — os dois universos têm contagens próprias e não se comparam (`INTEGRIDADE-P0.md`, `VERIFICACAO-FECHAMENTO.md`, SPEC 01).
 - [x] Registro de revisão humana dos 84 casos investigados — revisão confirmada pelo revisor do projeto e registrada em 23/11/2026 no campo `revisor` de `pipelines/contracts/investigacao_casos.json`.
 - ~~Revisão editorial externa e aprovação da reportagem~~ — dispensada desde 20/11/2026 (investigação cidadã, Gate D retirado, ADR-015). Contraditório continua obrigatório em apuração sobre pessoa (Constituição, regra 7); nenhuma foi publicada até aqui.

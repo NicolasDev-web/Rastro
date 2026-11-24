@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.14.1 — reabertura dos casos sem causa
+
+- Os 35 casos sem causa documentada foram reabertos em 24/11/2026 com duas fontes que a primeira rodada não usou: o registro de convênios da API do Portal (valor liberado e data da última liberação) e o módulo de transferências especiais do Transferegov (empenho, documento hábil e ordem bancária). **7 passaram a explicados; ficam 28 sem causa** (56 explicados no total).
+- O padrão dos 7: o pagamento existe, mas não está ligado à emenda nos arquivos da CGU nem na lista de documentos da API.
+  - 202139360006: quatro ordens bancárias de 18/02/2022 no Transferegov somam o RAP pago, ao centavo.
+  - 202141380019, 202543400005 e 202140280006: os termos de fomento e o convênio têm o valor que faltava liberado no registro de convênios.
+  - 202545430003, 202541470003 e 202544910011: as faturas de hospedagem de dezembro de 2025 foram pagas em 03/03/2026 por ordens bancárias que citam a nota fiscal, sem documentos relacionados na API.
+- 3 casos seguem sem causa, com o que a reabertura conferiu:
+  - 202541380021: os R$ 150.000,00 foram explicados; restam R$ 1.559,46.
+  - 202171070001: os sete convênios fecham com as ordens bancárias.
+  - 202141380007: as ordens bancárias do FNAS de fevereiro de 2022 não incluem as seis programações.
+- O revisor do projeto conferiu e aprovou os 10 registros alterados em 24/11/2026 (campo `revisor`). O site exibe status, achado, causa, fontes e data.
+
 ## 0.14.0 — navegação e acessibilidade no CI, menu em tablet e links externos
 
 - **CI (SPEC 06 T06.01, backlog P1.7):** depois do build de demonstração, o CI sobe o site e roda `verify_web.py` (navegação, teclado, CSV, 404) e o novo `verify_a11y.py` (axe-core, regras WCAG 2.1 A e AA, falha com violação grave). As capturas vão como artefato quando algo falha. O site publicado continua verificado à mão depois do deploy, porque `data/publicado/` não vai para o Git.

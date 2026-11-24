@@ -9,7 +9,7 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 | 1 | RAS-011 | Inventário Transferegov | documentação API | módulos e endpoints verificados | Feito em 0.10.0 (ADR-018). |
 | 1 | RAS-012 | Ingestão raw versionada | inventário | mesmo snapshot = mesmo hash | Feito (manifesto SHA-256, append-only). |
 | 1 | RAS-013 | Parser e normalização | dicionário por fonte | dados preservam origem e valores | Feito. |
-| 1 | RAS-014 | Conciliação e cobertura | parsers | totais e diferenças explicadas | Feito em 0.5.2 e 0.7.0: 84 casos investigados, 49 explicados, 35 sem causa documentada e visíveis. |
+| 1 | RAS-014 | Conciliação e cobertura | parsers | totais e diferenças explicadas | Feito em 0.5.2 e 0.7.0: 84 casos investigados; depois da reabertura de 24/11/2026, 56 explicados e 28 sem causa documentada, todos visíveis. |
 | 2 | RAS-020 | Design tokens e galeria | Constituição | A11y, 360px, estados demo | Parcial: testes visuais 768 px e acessibilidade automatizada em aberto (SPEC 02, T02.07). |
 | 2 | RAS-021 | Navegação + layout editorial | tokens | navegação por teclado | Feito. |
 | 2 | RAS-022 | Busca municipal com fixtures | layout | acentos, filtro e vazio | Feito (busca real no `/mapa` desde 0.9.0). |
@@ -31,7 +31,9 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 - [x] P0.4 Revisão técnica das divergências e interpretação financeira com cobertura/denominadores explícitos (ADR-012).
 - [x] Gate de publicação — investigação documental: as 73 diferenças e as 11 lacunas (84 casos) foram investigadas em 20/11/2026, com achado, fontes e data em `pipelines/contracts/investigacao_casos.json` e exibição na ficha de cada emenda (0.7.0). Resultado: 49 explicados, 35 sem causa documentada.
 - [x] Gate de publicação — registro de revisão humana: o revisor do projeto confirmou a revisão dos 84 casos, registrada em 23/11/2026 no campo `revisor` de cada registro (49 explicados e 35 sem causa).
-- [ ] Os 35 casos sem causa documentada: perguntar aos órgãos ou abrir pedido LAI, seguindo o campo `proxima_verificacao` de cada registro.
+- [x] Reabertura dos 35 casos sem causa com a API do Portal e o Transferegov (24/11/2026): 7 passaram a explicados (pagamentos que existem no registro de convênios do Portal, no Transferegov ou em ordens bancárias sem vínculo com o empenho) e 3 ganharam conferência parcial. Resultado: 56 explicados e 28 sem causa.
+- [x] Revisão humana dos 10 registros alterados em 24/11/2026: o revisor do projeto aprovou os textos no mesmo dia (campo `revisor`).
+- [ ] Os 28 casos sem causa documentada: perguntar aos órgãos ou abrir pedido LAI, seguindo o campo `proxima_verificacao` de cada registro.
 - [x] P1.5 Definir publicação com snapshot aprovado e atualização controlada — modo publicado com cópia congelada e SHA-256 (0.6.0, ADR-015), deploy só pela CLI (ADR-020), rotina em `operations/ATUALIZACAO-DADOS.md` e build que recusa registro de investigação de outro snapshot (0.12.0).
 - [ ] P1.6 Completar fontes, acesso aos documentos e paginação das fichas — fontes e links ao Portal nas fichas desde 0.5.0 e 0.8.0; paginação das fichas não conferida.
 - [x] P1.7 Automatizar navegação/mobile no CI — desde 24/11/2026 o CI roda `verify_web.py` (1440, 768 e 360 px, teclado, CSV, 404) e `verify_a11y.py` (axe) no build de demonstração.
