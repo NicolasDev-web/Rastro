@@ -29,7 +29,7 @@ export default function Autores() {
       <section className="block-gap" aria-labelledby="coletivas">
         <h2 id="coletivas" className="block-title">Autorias coletivas e sem autor identificado</h2>
         <p className="small muted">Emendas de bancada, de comissão, de relator-geral e linhas sem autor na fonte, com localidade no Ceará. Aparecem só como valor e <strong>nunca</strong> são repartidas entre parlamentares.</p>
-        <div className="table-wrap"><table className="data-table">
+        <div tabIndex={0} className="table-wrap"><table className="data-table">
           <caption>Totais de emendas de 2020 a 2026{res.data.mode === 'demo' ? ' (fictícios)' : ''}. Colunas são etapas diferentes e não se somam.</caption>
           <thead><tr><th scope="col">Autoria</th><th scope="col">Tipo</th><th scope="col" className="num">Emendas</th>{STAGES.map(s => <th key={s} scope="col" className="num">{STAGE_LABEL[s]}</th>)}</tr></thead>
           <tbody>{res.data.collective.map(c => <tr key={c.label + c.tipo}><th scope="row">{c.label}</th><td>{c.tipo.replace('Emenda de ', '')}</td><td className="num">{c.total.emendas}</td>{STAGES.map(s => <td key={s} className={c.total[s] === null ? 'num missing' : 'num'}>{brlOrMissing(c.total[s])}</td>)}</tr>)}</tbody>

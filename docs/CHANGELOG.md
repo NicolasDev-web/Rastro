@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.0 — navegação e acessibilidade no CI, menu em tablet e links externos
+
+- **CI (SPEC 06 T06.01, backlog P1.7):** depois do build de demonstração, o CI sobe o site e roda `verify_web.py` (navegação, teclado, CSV, 404) e o novo `verify_a11y.py` (axe-core, regras WCAG 2.1 A e AA, falha com violação grave). As capturas vão como artefato quando algo falha. O site publicado continua verificado à mão depois do deploy, porque `data/publicado/` não vai para o Git.
+- **768 px (SPEC 02 T02.07, SPEC 06 T06.04):** `verify_web.py` passou a medir tablet. Achou um estouro real: desde "Estaduais", o menu de 8 itens não cabia numa linha ao lado da marca entre ~750 e ~900 px. Abaixo de 900 px o menu agora vai para a linha de baixo, como já acontecia no celular.
+- **Acessibilidade:** o axe, rodado contra o site no ar, achou um único problema grave: as 19 tabelas com rolagem horizontal (`.table-wrap`) não recebiam foco pelo teclado, então quem não usa mouse não conseguia rolar as colunas escondidas no celular. Agora recebem foco (`tabIndex={0}`) com o contorno de foco do site. Depois da correção: 0 violações nas 30 telas da demonstração.
+- **Links externos (SPEC 06 T06.03):** novo `scripts/audit_links.py`, que confere os links externos do build publicado por amostra, devagar e sem contornar bloqueio, e grava o relatório em `reports/links-externos-<data>.md`. Não roda no CI. Primeira rodada (24/11/2026): 4.320 links únicos em 15 domínios, 120 conferidos, **nenhum quebrado**. O Portal da Transparência (405) e o Planalto (conexão encerrada) recusam o verificador; a amostra deles foi aberta à mão no navegador e carrega a página certa.
+- `axe-core` entra como dependência de desenvolvimento de `apps/web`.
+
 ## 0.13.2 — checklists conferidos (só documentação)
 
 - Backlog, checklist de publicação e SPECs 03, 06 e 07 conferidos em 23/11/2026 contra o CHANGELOG e o site no ar. O backlog ganhou a coluna "Situação". Marcados como feitos: P1.5, P2.9, P2.10, o modo publicado, a conciliação, os dois universos, o mascaramento de CPF/PF/MEI, T03.04, T06.02, T06.06 e T07.10. A revisão editorial externa aparece como dispensada (ADR-015).

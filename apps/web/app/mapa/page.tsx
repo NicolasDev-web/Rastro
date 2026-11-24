@@ -16,7 +16,7 @@ function DataTable({ data }: { data: Dataset }) {
   return <section className="block-gap" aria-labelledby="mapa-tabela">
     <h2 id="mapa-tabela" className="block-title">Tabela por destinação · emendas de {y}{demo ? ' (fictício)' : ''}</h2>
     {!demo && <p className="small muted">{withRecord} de {data.municipalities.length} municípios com registro em {y}. Outros anos: use o explorador acima ou baixe o CSV.</p>}
-    <div className="table-wrap">
+    <div tabIndex={0} className="table-wrap">
       <table className="data-table">
         <caption>Valores {demo ? 'fictícios' : `${officialLabel(data.mode)} (CGU, extraídos em ${formatDate(data.asOf)})`} por etapa, pela localidade da emenda. As colunas são etapas diferentes e <strong>não devem ser somadas</strong>.{hasAplic ? ' A última coluna usa outro critério — o município onde o pagamento foi aplicado, segundo os documentos de despesa — e também não se soma às demais.' : ''}</caption>
         <thead><tr><th scope="col">Destinação</th><th scope="col">Código IBGE</th>{STAGES.map(s => <th key={s} scope="col" className="num">{STAGE_LABEL[s]}</th>)}{hasAplic && <th scope="col" className="num col-aplic">Pago por aplicação</th>}</tr></thead>

@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: 'Emendas estaduais | RASTRO' };
 function Resumo({ data }: { data: Estaduais }) {
   return <section className="block-gap" aria-labelledby="por-ano">
     <h2 id="por-ano" className="block-title">Por ano do orçamento</h2>
-    <div className="table-wrap"><table className="data-table">
+    <div tabIndex={0} className="table-wrap"><table className="data-table">
       <caption>Valores do orçamento estadual, como estão no arquivo de cada ano. As três colunas de valor são diferentes e <strong>não se somam</strong> entre si. Nenhuma delas se soma às emendas federais.</caption>
       <thead><tr><th scope="col">Ano</th><th scope="col" className="num">Linhas</th><th scope="col" className="num">Deputados</th><th scope="col" className="num">Com município citado</th>{VALOR_KEYS.map(k => <th key={k} scope="col" className="num">{data.colunas_valor[k]}</th>)}</tr></thead>
       <tbody>{data.anos.map(y => { const c = data.cobertura[String(y)]; return <tr key={y}>

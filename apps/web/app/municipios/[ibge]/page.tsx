@@ -46,7 +46,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
 
     {place && <section className="block-gap" aria-labelledby="por-ano">
       <h2 id="por-ano" className="block-title">Por ano da emenda</h2>
-      <div className="table-wrap"><table className="data-table">
+      <div tabIndex={0} className="table-wrap"><table className="data-table">
         <thead><tr><th scope="col">Ano</th><th scope="col" className="num">Empenhado (emenda)</th><th scope="col" className="num">Pago total (emenda)</th><th scope="col" className="num col-aplic">Pago por aplicação (documentos)</th></tr></thead>
         <tbody>{years.map(y => { const emp = value(place, y, 'empenhado'); const pt = pagoTotal(value(place, y, 'pago'), value(place, y, 'rap_pagos')); const ap = aplicValue(place, y); return <tr key={y}>
           <th scope="row">{y}</th><td className={emp === null ? 'num missing' : 'num'}>{brlOrMissing(emp)}</td><td className={pt === null ? 'num missing' : 'num'}>{brlOrMissing(pt)}</td><td className={ap === null ? 'num missing col-aplic' : 'num col-aplic'}>{brlOrMissing(ap)}</td></tr>; })}</tbody>
@@ -61,7 +61,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
 
     <section className="block-gap" aria-labelledby="loc">
       <h2 id="loc" className="block-title">Emendas com o município registrado ({m.emendas_localidade.length})</h2>
-      {m.emendas_localidade.length ? <div className="table-wrap"><table className="data-table">
+      {m.emendas_localidade.length ? <div tabIndex={0} className="table-wrap"><table className="data-table">
         <thead><tr><th scope="col">Emenda</th><th scope="col">Ano</th><th scope="col">Tipo</th><th scope="col">Autor (SIAFI)</th><th scope="col" className="num">Pago total</th></tr></thead>
         <tbody>{m.emendas_localidade.map(e => <tr key={e.code}><th scope="row">{codeCell(e.code, e.ficha)}</th><td>{e.ano}</td><td>{e.tipo.replace('Emenda Individual - ', '')}</td><td>{e.autor ?? '—'}</td><td className="num">{brlOrMissing(e.pago_total)}</td></tr>)}</tbody>
       </table></div> : <DataState kind="empty" title="Nenhuma emenda com este município registrado">Veja abaixo os pagamentos aplicados no município por emendas registradas de outra forma.</DataState>}
@@ -69,7 +69,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
 
     <section className="block-gap" aria-labelledby="apl">
       <h2 id="apl" className="block-title">Emendas com pagamento aplicado aqui ({m.emendas_aplicacao.length})</h2>
-      {m.emendas_aplicacao.length ? <div className="table-wrap"><table className="data-table">
+      {m.emendas_aplicacao.length ? <div tabIndex={0} className="table-wrap"><table className="data-table">
         <caption>Segundo os documentos de pagamento. Inclui emendas registradas como “vários municípios”, bancada e outros autores.</caption>
         <thead><tr><th scope="col">Emenda</th><th scope="col">Ano</th><th scope="col">Tipo</th><th scope="col">Autor (SIAFI)</th><th scope="col" className="num">Documentos</th><th scope="col" className="num">Pago aplicado aqui</th></tr></thead>
         <tbody>{m.emendas_aplicacao.map(e => <tr key={`${e.code}-${e.ano}`}><th scope="row">{codeCell(e.code, e.ficha)}</th><td>{e.ano}</td><td>{(e.tipo ?? '—').replace('Emenda Individual - ', '')}</td><td>{e.autor ?? '—'}</td><td className="num">{e.documentos}</td><td className="num">{brlOrMissing(e.pago)}</td></tr>)}</tbody>
@@ -78,7 +78,7 @@ export default async function MunicipioPage({ params }: { params: Promise<{ ibge
 
     <section className="block-gap" aria-labelledby="fav">
       <h2 id="fav" className="block-title">Quem recebeu no município</h2>
-      {m.favorecidos.length ? <div className="table-wrap"><table className="data-table">
+      {m.favorecidos.length ? <div tabIndex={0} className="table-wrap"><table className="data-table">
         <caption>Favorecidos com sede no município (arquivo “por favorecido” da CGU, lançamentos desde 2020). Pessoas físicas e empresários individuais aparecem como “omitido”. Ordenado por valor recebido.</caption>
         <thead><tr><th scope="col">Favorecido</th><th scope="col">Natureza jurídica</th><th scope="col" className="num">Lançamentos</th><th scope="col" className="num">Valor recebido</th></tr></thead>
         <tbody>{m.favorecidos.map((f, i) => <tr key={i}><th scope="row">{f.favorecido ?? 'Sem informação'}</th><td>{f.natureza ?? '—'}</td><td className="num">{f.lancamentos}</td><td className="num">{brlOrMissing(f.valor)}</td></tr>)}</tbody>

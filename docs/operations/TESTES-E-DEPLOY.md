@@ -13,7 +13,7 @@ cd apps/web && npm install && npm run build
 
 ## Site publicado
 
-Build e deploy pela CLI, nunca por push (ADR-020): `node scripts/build-publicado.mjs` em `apps/web`, depois `vercel deploy ../../dist/rastro --prod --archive=tgz`. O build recusa publicar se encontrar aviso de demo ou validação, dado pessoal, caminho local, chave de API ou source map, ou se o registro de investigação for de outro snapshot. Depois do deploy, `python scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado`. Rollback: `vercel promote <deploy anterior>`. Troca de dados: [`ATUALIZACAO-DADOS.md`](ATUALIZACAO-DADOS.md).
+Build e deploy pela CLI, nunca por push (ADR-020): `node scripts/build-publicado.mjs` em `apps/web`, depois `vercel deploy ../../dist/rastro --prod --archive=tgz`. O build recusa publicar se encontrar aviso de demo ou validação, dado pessoal, caminho local, chave de API ou source map, ou se o registro de investigação for de outro snapshot. Depois do deploy, `python scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado`, `python scripts/verify_a11y.py --url https://rastro-ruby.vercel.app --mode publicado` (axe, WCAG 2.1 A/AA; falha com violação grave) e, quando mudarem fontes ou textos com links, `python scripts/audit_links.py` (relatório em `reports/links-externos-<data>.md`). O CI roda `verify_web.py` e `verify_a11y.py` no build de demonstração a cada push. Rollback: `vercel promote <deploy anterior>`. Troca de dados: [`ATUALIZACAO-DADOS.md`](ATUALIZACAO-DADOS.md).
 
 ## Pré-publicação com dados reais (histórico de 19/11/2026; o modo publicado segue a ADR-015)
 

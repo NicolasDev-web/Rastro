@@ -44,7 +44,7 @@ function Corpo({ data }: { data: Dataset }) {
       <article className="article-body">
         <section id="dois-mapas"><span className="section-no">01 / Dois mapas do mesmo dinheiro</span><h2>Onde a emenda diz que vai, e onde o pagamento aparece.</h2>
           <p>Toda emenda tem uma <strong>localidade</strong>: o lugar que o próprio registro aponta como destino. Todo documento de pagamento tem um <strong>município de aplicação</strong>: onde o dinheiro foi aplicado segundo o SIAFI. São perguntas diferentes, e os dois números nunca se somam.</p>
-          <div className="table-wrap"><table className="data-table">
+          <div tabIndex={0} className="table-wrap"><table className="data-table">
             <caption>Municípios do Ceará com registro em cada critério, por ano da emenda (de {n(total)}). Pela localidade, conta o município com qualquer valor registrado; pela aplicação, o município com pagamento.</caption>
             <thead><tr><th scope="col">Ano</th><th scope="col" className="num">Pela localidade da emenda</th><th scope="col" className="num">Pela aplicação do pagamento</th></tr></thead>
             <tbody>{anos.map(a => <tr key={a.ano}><th scope="row">{a.ano}{a.emExecucao ? ' (em execução)' : ''}</th><td className="num">{n(a.municipiosLocalidade)}</td><td className="num">{n(a.municipiosAplicacao)}</td></tr>)}</tbody>
@@ -55,7 +55,7 @@ function Corpo({ data }: { data: Dataset }) {
 
         <section id="sem-cidade"><span className="section-no">02 / O dinheiro que nasce sem cidade</span><h2>{loc.varios * 2 > loc.total ? 'A maior parte é registrada para “vários municípios”.' : 'Parte do dinheiro é registrada sem cidade.'}</h2>
           <p>Em {ref.ano}, do pago total das emendas com localidade no Ceará ({compactBrl(loc.total)}), {pct(loc.varios, loc.total)} foi registrado como “vários municípios”, {pct(loc.estado, loc.total)} como aplicação no estado inteiro e só {pct(loc.municipal, loc.total)} com um município definido. “Vários municípios” não diz quanto foi para cada um: essa parte só ganha endereço quando o pagamento é feito.</p>
-          <div className="table-wrap"><table className="data-table">
+          <div tabIndex={0} className="table-wrap"><table className="data-table">
             <caption>Divisão do pago total (pago + restos a pagar pagos) pela localidade da emenda, em cada ano. As porcentagens são partes do total do próprio ano; anos não se somam.</caption>
             <thead><tr><th scope="col">Ano</th><th scope="col" className="num">Vários municípios</th><th scope="col" className="num">Estado inteiro</th><th scope="col" className="num">Um município</th><th scope="col" className="num">Pago total no ano</th></tr></thead>
             <tbody>{anos.map(a => <tr key={a.ano}><th scope="row">{a.ano}{a.emExecucao ? ' (em execução)' : ''}</th><td className="num">{pct(a.localidade.varios, a.localidade.total)}</td><td className="num">{pct(a.localidade.estado, a.localidade.total)}</td><td className="num">{pct(a.localidade.municipal, a.localidade.total)}</td><td className="num">{compactBrl(a.localidade.total)}</td></tr>)}</tbody>
@@ -69,7 +69,7 @@ function Corpo({ data }: { data: Dataset }) {
             <div className="funil-trilho" aria-hidden="true"><span style={{ width: `${((f.mediana ?? 0) / Math.max(...phRef.faixas.map(x => x.mediana ?? 0))) * 100}%` }} /></div>
           </li>)}</ol>
           <p>{sempre ? 'O padrão se repete em todos os anos completos:' : 'Ano a ano:'}</p>
-          <div className="table-wrap"><table className="data-table">
+          <div tabIndex={0} className="table-wrap"><table className="data-table">
             <caption>Mediana do valor pago com aplicação no município, por habitante (reais), por faixa de população do Censo {POPULACAO.ano} e ano da emenda. Só entram municípios com pagamento no ano.</caption>
             <thead><tr><th scope="col">Faixa</th>{ph.map(p => <th key={p.ano} scope="col" className="num">{p.ano}</th>)}</tr></thead>
             <tbody>{phRef.faixas.map((f, i) => <tr key={f.rotulo}><th scope="row">{f.rotulo}</th>{ph.map(p => <td key={p.ano} className="num">{reais(p.faixas[i].mediana)}</td>)}</tr>)}</tbody>

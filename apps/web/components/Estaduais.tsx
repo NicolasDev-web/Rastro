@@ -42,7 +42,7 @@ function DeputadoNome({ e }: { e: EmendaEstadual }) {
 
 /** Tabela de emendas de um ano, na ordem do código da fonte, com as três colunas de valor separadas e sem total. */
 export function TabelaEmendasAno({ data, rows, caption, comDeputado = true }: { data: Estaduais; rows: EmendaEstadual[]; caption: string; comDeputado?: boolean }) {
-  return <div className="table-wrap"><table className="data-table">
+  return <div tabIndex={0} className="table-wrap"><table className="data-table">
     <caption>{caption}</caption>
     <thead><tr><th scope="col">Código</th>{comDeputado && <th scope="col">Deputado(a)</th>}<th scope="col">Ação (texto da fonte)</th><th scope="col">Município citado</th><th scope="col">Região</th>{VALOR_KEYS.map(k => <th key={k} scope="col" className="num">{data.colunas_valor[k]}</th>)}</tr></thead>
     <tbody>{rows.map(e => <tr key={e.id}>

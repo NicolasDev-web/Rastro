@@ -93,7 +93,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
 
     <section className="block-gap" aria-labelledby="recebeu">
       <h2 id="recebeu" className="block-title">Quem recebeu os pagamentos</h2>
-      {e.quem_recebeu.length ? <div className="table-wrap"><table className="data-table">
+      {e.quem_recebeu.length ? <div tabIndex={0} className="table-wrap"><table className="data-table">
         <caption>Favorecidos dos documentos de pagamento. Pessoas físicas e empresários individuais aparecem como “omitido”.</caption>
         <thead><tr><th scope="col">Favorecido</th><th scope="col">Município de aplicação</th><th scope="col" className="num">Documentos</th><th scope="col" className="num">Valor pago</th></tr></thead>
         <tbody>{e.quem_recebeu.map((r, i) => <tr key={i}><th scope="row">{r.favorecido}</th><td>{r.municipio ? `${r.municipio}${r.uf ? `-${r.uf}` : ''}` : '—'}</td><td className="num">{r.documentos}</td><td className="num">{brlOrMissing(r.valor)}</td></tr>)}</tbody>
@@ -102,7 +102,7 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
 
     {e.convenios.length > 0 && <section className="block-gap" aria-labelledby="convenios">
       <h2 id="convenios" className="block-title">Convênios</h2>
-      <div className="table-wrap"><table className="data-table">
+      <div tabIndex={0} className="table-wrap"><table className="data-table">
         <thead><tr><th scope="col">Número</th><th scope="col">Publicação</th><th scope="col">Convenente</th><th scope="col">Objeto</th><th scope="col" className="num">Valor</th></tr></thead>
         <tbody>{e.convenios.map((c, i) => <tr key={i}><th scope="row">{c.numero}</th><td>{formatDate(c.data_publicacao ?? undefined)}</td><td>{c.convenente}</td><td className="wrap">{c.objeto}</td><td className="num">{brlOrMissing(c.valor)}</td></tr>)}</tbody>
       </table></div>
@@ -126,14 +126,14 @@ export default async function EmendaPage({ params }: { params: Promise<{ codigo:
           {x.metas.length > 0 && <ul className="small">{x.metas.slice(0, 12).map((m, j) => <li key={j}>{m.nome ?? m.descricao ?? 'Meta'}{m.quantidade ? `: ${m.quantidade}${m.unidade ? ` ${m.unidade}` : ''}` : ''} <span className="muted">(planejado)</span></li>)}</ul>}
           {x.metas.length > 12 && <p className="small muted">+ {x.metas.length - 12} metas não exibidas.</p>}
         </div>)}
-        {p.fornecedores.length > 0 ? <div className="table-wrap"><table className="data-table">
+        {p.fornecedores.length > 0 ? <div tabIndex={0} className="table-wrap"><table className="data-table">
           <caption>Pagamentos do ente a recebedores, declarados nos documentos de liquidação do relatório de gestão ({p.documentos_liquidacao} documento(s)). Pessoa física, MEI e recebedor sem natureza jurídica confirmada aparecem com o nome omitido.</caption>
           <thead><tr><th scope="col">Recebedor</th><th scope="col" className="num">Documentos</th><th scope="col" className="num">Valor declarado</th></tr></thead>
           <tbody>{p.fornecedores.map((f, i) => <tr key={i}><th scope="row">{f.recebedor}</th><td className="num">{f.documentos}</td><td className="num">{f.valor === null ? 'Incompleto na fonte' : brl(f.valor)}</td></tr>)}</tbody>
         </table></div> : <p className="small muted">Nenhum documento de liquidação declarado neste plano até a extração.</p>}
         <p className="small"><a className="text-link" href={p.source_url} target="_blank" rel="noopener noreferrer">Registro do plano na API do Transferegov <ExternalLink size={13} aria-hidden="true" /></a></p>
       </div>)}
-      {e.transferegov.convenios.length > 0 && <div className="table-wrap block-gap"><table className="data-table">
+      {e.transferegov.convenios.length > 0 && <div tabIndex={0} className="table-wrap block-gap"><table className="data-table">
         <caption>Convênios e contratos de repasse: proposta no Transferegov, achada pelo número do convênio. A API pública não traz contratos nem pagamentos do convenente.</caption>
         <thead><tr><th scope="col">Convênio</th><th scope="col">Modalidade e situação</th><th scope="col">Objeto</th><th scope="col" className="num">Valor global</th><th scope="col" className="num">Repasse</th><th scope="col" className="num">Contrapartida</th><th scope="col">Metas planejadas</th></tr></thead>
         <tbody>{e.transferegov.convenios.map(c => <tr key={c.numero}>

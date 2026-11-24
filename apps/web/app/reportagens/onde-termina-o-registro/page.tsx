@@ -111,7 +111,7 @@ function Corpo({ f, exemplo, asOf, snapshot }: { f: Funil; exemplo: Emenda | nul
           <p>Investigamos {n(totalCasos)} emendas em que a soma dos documentos de pagamento não bate com o total da fonte, ou em que a fonte informa pagamento sem documento. {n(f.casos.explicados)} têm causa documentada, como transferência de saldo entre órgãos na reorganização dos ministérios de 2023. As outras {n(f.casos.semCausa.length)} continuam abertas.</p>
           <InfoNote>Diferença sem causa documentada é uma pergunta, não uma acusação. Pode ser atraso da fonte, documento fora do recorte ou erro de registro. Cada caso tem o próximo passo anotado.</InfoNote>
           <details className="mapa-tabela block-gap"><summary>Ver os {n(f.casos.semCausa.length)} casos em aberto</summary>
-            <div className="table-wrap"><table className="data-table texto-fonte">
+            <div tabIndex={0} className="table-wrap"><table className="data-table texto-fonte">
               <caption>Casos sem causa documentada, por ano da emenda. O texto é o achado registrado na investigação; nomes de favorecidos não aparecem.</caption>
               <thead><tr><th scope="col">Emenda</th><th scope="col">O que os dados mostram</th><th scope="col">Próximo passo</th></tr></thead>
               <tbody>{f.casos.semCausa.map(s => <tr key={s.code}><th scope="row"><Link href={`/emendas/${s.code}`}>{s.code}</Link><br /><small>{s.ano}</small></th><td>{s.achado}</td><td>{s.proxima ?? '—'}</td></tr>)}</tbody>

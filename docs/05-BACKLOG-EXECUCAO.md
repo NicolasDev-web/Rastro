@@ -34,7 +34,7 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 - [ ] Os 35 casos sem causa documentada: perguntar aos órgãos ou abrir pedido LAI, seguindo o campo `proxima_verificacao` de cada registro.
 - [x] P1.5 Definir publicação com snapshot aprovado e atualização controlada — modo publicado com cópia congelada e SHA-256 (0.6.0, ADR-015), deploy só pela CLI (ADR-020), rotina em `operations/ATUALIZACAO-DADOS.md` e build que recusa registro de investigação de outro snapshot (0.12.0).
 - [ ] P1.6 Completar fontes, acesso aos documentos e paginação das fichas — fontes e links ao Portal nas fichas desde 0.5.0 e 0.8.0; paginação das fichas não conferida.
-- [ ] P1.7 Automatizar navegação/mobile no CI — o CI roda testes de pacote, typecheck e build, mas não o `verify_web.py` (navegação, 360 px, teclado).
+- [x] P1.7 Automatizar navegação/mobile no CI — desde 24/11/2026 o CI roda `verify_web.py` (1440, 768 e 360 px, teclado, CSV, 404) e `verify_a11y.py` (axe) no build de demonstração.
 - [ ] P1.8 Preparar atendimento, privacidade, monitoramento e recuperação — atendimento (e-mail público, ADR-015) e `/privacidade` (0.12.0) feitos; rollback documentado (`vercel promote`), mas nunca testado; sem monitoramento.
 - [x] P2.9 Malha IBGE, exploração documental e integração Transferegov — malha e mapa em 0.9.0, Transferegov no fluxo em 0.10.0.
 - [x] P2.10 Publicação editorial e fluxo baseados em evidência real — fluxo real por emenda (0.8.0) e reportagens 02 e 03 (0.13.0).

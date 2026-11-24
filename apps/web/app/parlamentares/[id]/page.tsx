@@ -61,7 +61,7 @@ export default async function AutorPage({ params }: { params: Promise<{ id: stri
 
     <section className="block-gap" aria-labelledby="por-ano">
       <h2 id="por-ano" className="block-title">Por ano da emenda</h2>
-      <div className="table-wrap"><table className="data-table">
+      <div tabIndex={0} className="table-wrap"><table className="data-table">
         <caption>Valores {demo ? 'fictícios' : `${officialLabel(res.data.mode)} (CGU, extraídos em ${formatDate(res.data.asOf)})`}. Empenhado, liquidado e pago não se somam. {PAGO_TOTAL_NOTE}</caption>
         <thead><tr><th scope="col">Ano</th><th scope="col" className="num">Emendas</th>{cols.map(c => <th key={c} scope="col" className="num">{colLabel(c)}</th>)}<th scope="col" className="num">Pago total</th></tr></thead>
         <tbody>{res.data.years.map(y => { const v = a.years[String(y)]; return <tr key={y}><th scope="row">{y}</th><td className="num">{v ? v.emendas : '—'}</td>{cols.map(c => <td key={c} className={!v || v[c] === null ? 'num missing' : 'num'}>{v ? brlOrMissing(v[c]) : 'Sem registro'}</td>)}<td className={v ? 'num' : 'num missing'}>{v ? brlOrMissing(pagoTotal(v.pago, v.rap_pagos)) : 'Sem registro'}</td></tr>; })}</tbody>
@@ -72,7 +72,7 @@ export default async function AutorPage({ params }: { params: Promise<{ id: stri
     <section className="block-gap" aria-labelledby="rastreaveis">
       <h2 id="rastreaveis" className="block-title">Destinos rastreáveis</h2>
       <p className="small muted">Emendas com município identificado no arquivo da CGU. A localidade registrada não prova o local da entrega. Pago e restos a pagar pagos são medidas distintas: uma emenda pode ter “pago” zero e ter sido paga via restos a pagar em outro ano.</p>
-      {a.traceable.length ? <div className="table-wrap"><table className="data-table">
+      {a.traceable.length ? <div tabIndex={0} className="table-wrap"><table className="data-table">
         <thead><tr><th scope="col">Município</th><th scope="col">UF</th><th scope="col" className="num">Emendas</th><th scope="col" className="num">Empenhado</th><th scope="col" className="num">Pago</th><th scope="col" className="num">RAP pagos</th></tr></thead>
         <tbody>{a.traceable.map(t => <tr key={t.ibge}><th scope="row">{t.name}</th><td>{t.uf}</td><td className="num">{t.emendas}</td><td className="num">{brlOrMissing(t.empenhado)}</td><td className="num">{brlOrMissing(t.pago)}</td><td className="num">{brlOrMissing(t.rap_pagos)}</td></tr>)}</tbody>
       </table></div> : <DataState kind="empty" title="Nenhuma emenda com município identificado">Os valores deste autor estão em destinos sem rastreio no arquivo (abaixo).</DataState>}
@@ -91,7 +91,7 @@ export default async function AutorPage({ params }: { params: Promise<{ id: stri
 
     <section className="block-gap" aria-labelledby="emendas">
       <h2 id="emendas" className="block-title">Emendas ({a.emendas.length})</h2>
-      <div className="table-wrap"><table className="data-table">
+      <div tabIndex={0} className="table-wrap"><table className="data-table">
         <thead><tr><th scope="col">Código</th><th scope="col">Ano</th><th scope="col">Tipo</th><th scope="col">Localidade</th><th scope="col" className="num">Empenhado</th><th scope="col" className="num">Pago</th><th scope="col" className="num">RAP pagos</th></tr></thead>
         <tbody>{a.emendas.map(e => <tr key={e.technical_id}>
           <th scope="row">{e.code ? (temFicha(e.code) ? <><Link href={`/emendas/${e.code}`}>{e.code}</Link>{!demo && <> <a href={portalUrl(e.code)} target="_blank" rel="noopener noreferrer" aria-label={`Emenda ${e.code} no Portal da Transparência`}>↗</a></>}</> : <a href={portalUrl(e.code)} target="_blank" rel="noopener noreferrer">{e.code}</a>) : <span className="muted" title="Sem código oficial na fonte">{e.technical_id}</span>}</th>

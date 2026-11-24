@@ -28,3 +28,22 @@ jobs:
         working-directory: apps/web
       - run: npm run build
         working-directory: apps/web
+      # Navegação, 1440/768/360 px, teclado, CSV, 404 e acessibilidade (axe) no build de demonstração.
+      # data/publicado/ não está no Git; o site publicado é verificado à mão após cada deploy (SPEC 06).
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install playwright==1.60.0 && python -m playwright install --with-deps chromium
+      - name: Navegação e acessibilidade (demo)
+        working-directory: apps/web
+        run: |
+          npx next start -p 3001 > ../../next-start.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf http://localhost:3001/ > /dev/null && break; sleep 1; done
+          python ../../scripts/verify_web.py --mode demo
+          python ../../scripts/verify_a11y.py --mode demo
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-demo
+          path: |
+            output/qa/demo
+            next-start.log

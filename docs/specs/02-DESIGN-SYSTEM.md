@@ -30,7 +30,7 @@ Todas as versões: loading, vazio, erro, demo, parcial, auditado. Esconder contr
 - [x] T02.04 Fonte, crédito e definição de metodologia — `GlossaryTip` (details/summary, sem hover) (legenda de `Figure` removida pelo ADR-016).
 - [x] T02.05 Estados vazios, loading e erro — `DataState` com os 7 estados + `CoverageFlag` (`components/States.tsx`).
 - [x] T02.06 Galeria de componentes (`/componentes`).
-- [ ] T02.07 Testes visuais 360/768/1440 e acessibilidade — **parcial**, ver evidências.
+- [ ] T02.07 Testes visuais 360/768/1440 e acessibilidade — **parcial**: desde 24/11/2026 o CI mede 360, 768 e 1440 px e roda o axe (WCAG 2.1 A/AA) nas rotas principais. Faltam leitor de tela real e zoom de texto a 200%.
 - [x] T02.08 Biblioteca de ilustrações editoriais (`components/Illustrations.tsx`) substituindo fotos IA.
 
 ## Evidências de verificação (19/11/2026, modo demonstração)

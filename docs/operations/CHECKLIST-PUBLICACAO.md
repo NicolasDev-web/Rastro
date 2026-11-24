@@ -9,7 +9,8 @@
 - Revisar `git diff --cached` e confirmar que não há segredos ou dados pessoais.
 - `python -m unittest discover -s pipelines/tests -v` e `python -m unittest discover -s services/api/tests -v`.
 - Em `apps/web`: `npm run typecheck`; para o site publicado, `node scripts/build-publicado.mjs` (a trava do build precisa passar).
-- Depois do deploy: `python scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado` e registro na seção "Deploy do site publicado".
+- Depois do deploy: `python scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado` (1440, 768 e 360 px) e `python scripts/verify_a11y.py --url https://rastro-ruby.vercel.app --mode publicado`, com registro na seção "Deploy do site publicado".
+- Quando mudarem fontes ou textos com links: `python scripts/audit_links.py`.
 - Só ao mexer na demonstração: `npm run preview:static`, `scripts/verify_web.py --mode demo` e revisão da prévia offline.
 
 ## Demonstração pública — substituída pelo site publicado
