@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.13.2 — checklists conferidos (só documentação)
+
+- Backlog, checklist de publicação e SPECs 03, 06 e 07 conferidos em 23/11/2026 contra o CHANGELOG e o site no ar. O backlog ganhou a coluna "Situação". Marcados como feitos: P1.5, P2.9, P2.10, o modo publicado, a conciliação, os dois universos, o mascaramento de CPF/PF/MEI, T03.04, T06.02, T06.06 e T07.10. A revisão editorial externa aparece como dispensada (ADR-015).
+- Revisão humana dos 84 casos investigados: o revisor do projeto confirmou a revisão, registrada em 23/11/2026 no campo `revisor` de `pipelines/contracts/investigacao_casos.json` (antes vazio). O site não exibe esse campo, por isso não precisa de novo deploy. Os campos `status`, `achado`, `causa` e `data` não mudaram.
+- Seguem abertos os 35 casos sem causa, o CI de navegação, os links externos, performance, monitoramento e o teste de rollback.
+- Registro do 0.13.1 em produção: smoke test com 42 telas aprovado.
+
 ## 0.13.1 — diagramação da reportagem 03 e filtro dos deputados estaduais
 
 - Reportagem 03, "Três caminhos": os blocos herdavam o estilo de capítulo (texto colado na borda, espaço vazio embaixo, título grande demais). Viraram cartões próprios, com número de emendas em destaque, fatos em lista e a linha "A trilha para…". A frase sobre o Banco do Brasil passou a citar a porcentagem calculada.

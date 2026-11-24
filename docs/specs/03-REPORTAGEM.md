@@ -22,8 +22,8 @@ Como cidadão, quero entender o sistema de emendas antes de olhar um gráfico pa
 - [x] T03.01 Validar conceitos com fontes oficiais — 22/11/2026: cada termo do glossário conferido com o texto do Planalto (Lei 4.320/1964, arts. 36, 58, 62, 63 e 64; Constituição, arts. 166 e 166-A; LDO 2025, Lei 15.080/2024, para os RP). Data de consulta registrada em `lib/glossary.ts` e na página.
 - [x] T03.02 Escrever roteiro, revisão factual e glossário — glossário revisado com as normas em 22/11/2026 e publicado sem o selo de rascunho. A revisão independente segue em T03.05.
 - [x] T03.03 Criar capítulos e transições sem scroll-jacking (5 capítulos do storyboard, sumário com âncoras).
-- [ ] T03.04 Incorporar componentes reais depois da auditoria — bloqueado por RAS-014.
-- [ ] T03.05 Revisão editorial independente.
+- [x] T03.04 Incorporar componentes reais depois da auditoria — no modo publicado, o capítulo 4 de `/investigacao` aponta para os valores reais por destino no explorador e na tabela do mapa (0.9.0); o aviso "Distribuição real ainda não publicada" fica só na demonstração.
+- ~~T03.05 Revisão editorial independente~~ — dispensada em 20/11/2026 (investigação cidadã, ADR-015).
 - [ ] T03.06 Publicar explicação e arquivo de referências.
 
 ## Status dos aceites (19/11/2026, modo demonstração)

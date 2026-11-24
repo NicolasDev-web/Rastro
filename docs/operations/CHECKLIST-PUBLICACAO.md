@@ -4,29 +4,33 @@
 
 - [x] Git iniciado e primeiro commit publicado: `6ea3bc8` em `NicolasDev-web/Rastro`, branch main.
 - [x] Excluir .env, dependências, builds, dados brutos, staging, exports de validação, retratos baixados e arquivos temporários.
-- [ ] Antes de cada push, revisar `git diff --cached` e confirmar que não há segredos ou dados pessoais.
-- [ ] Executar `python -m unittest discover -s pipelines/tests -v` e `python -m unittest discover -s services/api/tests -v`.
-- [ ] Em apps/web: `npm run typecheck` e `npm run preview:static` (build em demo).
-- [ ] Executar `scripts/verify_web.py --mode demo` contra servidor demo e inspecionar capturas.
-- [ ] Revisar a prévia offline e seus links locais.
+### Rotina a cada push ou deploy (repetir sempre; não se marca)
 
-## Demonstração pública
+- Revisar `git diff --cached` e confirmar que não há segredos ou dados pessoais.
+- `python -m unittest discover -s pipelines/tests -v` e `python -m unittest discover -s services/api/tests -v`.
+- Em `apps/web`: `npm run typecheck`; para o site publicado, `node scripts/build-publicado.mjs` (a trava do build precisa passar).
+- Depois do deploy: `python scripts/verify_web.py --url https://rastro-ruby.vercel.app --mode publicado` e registro na seção "Deploy do site publicado".
+- Só ao mexer na demonstração: `npm run preview:static`, `scripts/verify_web.py --mode demo` e revisão da prévia offline.
 
-- [ ] Confirmar `DATA_MODE=demo` e aviso persistente em todas as páginas.
-- [ ] Não enviar `data/validacao`, staging, dados brutos ou PDF interno ao deploy.
-- [ ] Configurar indexação e metadados adequados a protótipo.
-- [ ] Conferir links, teclado, contraste, 360px, créditos e páginas institucionais.
-- [ ] Registrar URL, commit, data, responsável e resultado do smoke test do deploy.
+## Demonstração pública — substituída pelo site publicado
 
-## Dados oficiais: lançamento ainda bloqueado
+Desde 20/11/2026 o endereço público serve o modo `publicado` (ADR-015); a demonstração não tem deploy público. As exigências desta seção que continuam valendo estão cobertas pelo site publicado:
 
-- [ ] Definir modo publicado e pipeline/API de produção (ADR-008).
-- [ ] Validar snapshot, cobertura temporal, vínculos e totais; documentar e tratar divergências.
-- [ ] Revisar os universos CE versus todas as emendas dos autores eleitos pelo CE.
-- [ ] Revisão editorial, contraditório quando aplicável e aprovação da reportagem.
+- [x] Não enviar `data/validacao`, staging, dados brutos ou PDF interno ao deploy — o build publicado lê só `data/publicado/` e a trava recusa aviso de validação, caminho local e source map (0.6.0, 0.6.1).
+- [x] Conferir links internos, teclado, 360 px e páginas institucionais — `verify_web.py --mode publicado` a cada deploy. Contraste e links externos seguem em SPEC 02 (T02.07) e SPEC 06 (T06.03).
+- [x] Registrar URL, commit, data, responsável e resultado do smoke test — seção "Deploy do site publicado".
+- ~~Confirmar `DATA_MODE=demo` e aviso persistente~~ e ~~indexação de protótipo~~ — não se aplicam ao site publicado; continuam valendo para qualquer deploy futuro da demonstração.
+
+## Dados oficiais
+
+- [x] Definir modo publicado e pipeline de produção — modo `publicado`, site estático a partir de `data/publicado/` com SHA-256 conferido (0.6.0, ADR-015, que substitui a proibição da ADR-008).
+- [x] Validar snapshot, cobertura temporal, vínculos e totais; documentar e tratar divergências — conciliação (0.5.2, ADR-012) e investigação dos 84 casos (0.7.0). Os 35 casos sem causa documentada ficam visíveis nas fichas.
+- [x] Revisar os universos CE versus todas as emendas dos autores eleitos pelo CE — os dois universos têm contagens próprias e não se comparam (`INTEGRIDADE-P0.md`, `VERIFICACAO-FECHAMENTO.md`, SPEC 01).
+- [x] Registro de revisão humana dos 84 casos investigados — revisão confirmada pelo revisor do projeto e registrada em 23/11/2026 no campo `revisor` de `pipelines/contracts/investigacao_casos.json`.
+- ~~Revisão editorial externa e aprovação da reportagem~~ — dispensada desde 20/11/2026 (investigação cidadã, Gate D retirado, ADR-015). Contraditório continua obrigatório em apuração sobre pessoa (Constituição, regra 7); nenhuma foi publicada até aqui.
 - [x] Configurar canal de contato real, responsáveis e política de privacidade/retenção — e-mail público (ADR-015) e `/privacidade` (22/11/2026).
-- [ ] Validar exclusão de CPF e identificação de PF/empresários individuais em todas as saídas.
-- [ ] Definir monitoramento, backups e plano de recuperação com responsáveis.
+- [x] Validar exclusão de CPF e identificação de PF/empresários individuais em todas as saídas — trava do build varre HTML, RSC, JS, JSON e CSS atrás de CPF e nome de MEI (0.6.1, 9 testes no CI); Transferegov mascara PF e MEI (0.10.0). Pendente como reforço: cruzar a natureza jurídica no mascaramento de MEI.
+- [ ] Definir monitoramento, backups e plano de recuperação com responsáveis — há rollback documentado (`vercel promote`, seção "Rollback"), snapshots append-only e backup do histórico Git, mas nenhum monitoramento e nenhum teste de rollback.
 
 ## Deploy do site publicado (ADR-015)
 
@@ -41,7 +45,8 @@
 - [x] 21/11/2026 — redeploy 0.11.0: páginas `/estaduais/[slug]` (41 deputados) e artes em Estaduais, Mapa e Dados; trava em 2.191 páginas e 34 telas aprovadas em produção.
 - [x] 22/11/2026 — redeploy 0.12.0: `/privacidade`, 404 própria, artes em Sobre, Contato, Correções e Reportagens, glossário conferido; trava em 2.192 páginas e 36 telas aprovadas em produção.
 - [x] 23/11/2026 — redeploy 0.13.0: reportagens 02 e 03; trava em 2.194 páginas.
-- [ ] Domínio próprio e verificação de marca (nome RASTRO provisório).
+- [x] 23/11/2026 — 0.13.1 em produção (cartões da reportagem 03 com "A trilha para…" conferidos no site; filtros dos deputados estaduais); `dist/rastro` local com 2.194 páginas. Smoke test em produção com `verify_web.py --mode publicado`: 42 telas sem overflow; navegação, teclado, CSV e 404 aprovados.
+- [ ] Domínio próprio e verificação de marca (nome RASTRO provisório) — **backlog, fora do fechamento de 30/11/2026**. Pesquisa de 23/11/2026: rastro.com, .org, .com.br, .net.br, .jor.br e .app ocupados. Livres: rastro.ong.br (R$ 40/ano, aceita CPF, mas o titular aparece na consulta pública do Registro.br), rastro.org.br (R$ 40/ano, exige CNPJ de entidade sem fins lucrativos), rastro.page (US$ 11,99/ano pela Vercel) e rastroemendas.com.br. Preços e disponibilidade mudam: refazer a consulta antes de comprar.
 - [x] Investigação dos 84 casos da fila (registro em `pipelines/contracts/investigacao_casos.json`), com atualização das fichas e novo deploy — 0.7.0: 49 explicados, 35 sem causa documentada.
 - [x] O projeto Vercel está ligado ao GitHub, e um push na `main` publicava o repositório cru (404 em 21/11/2026). Desde 22/11/2026 o `vercel.json` da raiz desliga os deploys por push (ADR-020); a produção só muda pela CLI.
 - [x] Rotina de atualização dos dados: `ATUALIZACAO-DADOS.md`.

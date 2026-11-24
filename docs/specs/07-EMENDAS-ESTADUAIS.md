@@ -109,7 +109,7 @@ Fontes:
 - [ ] T07.07 Revisão humana das 19 linhas sem município e dos 8 nomes sem ligação (registro versionado no padrão de `autores_vinculo.json`, com revisor identificado). Nada liga sem esse registro.
 - [ ] T07.08 Execução: caminho A (resposta da CGE-CE) ou, se ela não vier até 25/11/2026, caminho B. Atualizar esta spec antes de codar.
 - [ ] T07.09 Conferir cobertura com outra fonte (quadro de emendas da LOA no Diário Oficial ou resposta da CGE-CE) antes de chamar qualquer total de "total das emendas estaduais".
-- [ ] T07.10 Navegação principal: decidir se `/estaduais` entra no menu (proposta no relatório da tarefa) e atualizar o aviso da seção "Deputados estaduais" em `/parlamentares`, que ainda diz "sem fonte estruturada".
+- [x] T07.10 Navegação principal: decidir se `/estaduais` entra no menu (proposta no relatório da tarefa) e atualizar o aviso da seção "Deputados estaduais" em `/parlamentares`, que ainda diz "sem fonte estruturada". Feito em 0.10.0 e 0.11.0: "Estaduais" está no menu e o aviso em `/parlamentares` passou a "só o orçamento, cobertura parcial" (conferido em 23/11/2026).
 
 ## Caminho B — coleta das fichas com navegador automatizado (planejado, NÃO executar antes de 25/11/2026)
 

@@ -20,14 +20,16 @@ Git e primeiro commit já concluídos (`6ea3bc8`, `NicolasDev-web/Rastro`). Chec
 - **AC08** Links e créditos das fotografias verificadas estão corretos.
 
 ## Tasks
-- [ ] T06.01 CI lint, typecheck, testes unitários, E2E, acessibilidade.
-- [ ] T06.02 Proteção de ambiente + segredos.
-- [ ] T06.03 Auditoria de fontes e links quebrados.
-- [ ] T06.04 Teste de responsividade e performance.
-- [ ] T06.05 Revisão de conteúdo e contraditório.
-- [ ] T06.06 Política de correções e fluxo de contato.
-- [ ] T06.07 Deploy com feature flags e rollback.
-- [ ] T06.08 Revisão pós-lançamento das métricas e observabilidade.
+Situação conferida em 23/11/2026:
+
+- [ ] T06.01 CI lint, typecheck, testes unitários, E2E, acessibilidade — **parcial**: o CI roda testes do pipeline e da API, typecheck, testes Node do pacote e da trava de publicação, e build. Faltam lint (não há script `lint` em `apps/web`), E2E (`verify_web.py` só roda à mão) e acessibilidade automatizada.
+- [x] T06.02 Proteção de ambiente + segredos — chave da API só no `.env` local, `.gitignore` ampliado, CI com `contents: read`, cabeçalhos de segurança e trava contra chave de API no build (0.6.1); produção muda só pela CLI (ADR-020).
+- [ ] T06.03 Auditoria de fontes e links quebrados — o `verify_web.py` cobre rotas internas; links externos (Portal, Transferegov, Planalto, Alece) não são conferidos.
+- [ ] T06.04 Teste de responsividade e performance — **parcial**: 1440 e 360 px a cada deploy; 768 px e performance não medidos.
+- [x] T06.05 Revisão de conteúdo e contraditório — revisão externa dispensada (ADR-015); revisão humana dos 84 casos investigados registrada em 23/11/2026 (campo `revisor`). Contraditório só é exigido em apuração sobre pessoa, e nenhuma foi publicada.
+- [x] T06.06 Política de correções e fluxo de contato — `/correcoes`, `/contato` com e-mail público (0.5.0, 0.6.0, ADR-015).
+- [ ] T06.07 Deploy com feature flags e rollback — **parcial**: rollback documentado (`vercel promote`), nunca testado; sem feature flags.
+- [ ] T06.08 Revisão pós-lançamento das métricas e observabilidade — sem monitoramento; o site não mede audiência por decisão de privacidade (`/privacidade`), então a observabilidade fica nos registros da hospedagem.
 
 ## Incremento P1 — fechamento (22/11/2026)
 

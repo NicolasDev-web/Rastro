@@ -1,25 +1,25 @@
 # Backlog prático — da ideia ao lançamento
 
-A coluna `Etapa` é sequencial; não confundir protótipo com publicação jornalística apurada.
+A coluna `Etapa` é sequencial; não confundir protótipo com publicação jornalística apurada. A coluna `Situação` foi conferida em 23/11/2026 contra o CHANGELOG, as specs e o site publicado.
 
-| Etapa | Issue | Entrega | Bloqueios | Teste de aceite |
-|---|---|---|---|---|
-| 0 | RAS-001 | Repo, Constitution, CI e governança | nenhum | docs e checks ativos |
-| 1 | RAS-010 | Inventário CGU por exercício | fonte disponível | schema e cobertura registrados |
-| 1 | RAS-011 | Inventário Transferegov | documentação API | módulos e endpoints verificados |
-| 1 | RAS-012 | Ingestão raw versionada | inventário | mesmo snapshot = mesmo hash |
-| 1 | RAS-013 | Parser e normalização | dicionário por fonte | dados preservam origem e valores |
-| 1 | RAS-014 | Conciliação e cobertura | parsers | totais e diferenças explicadas |
-| 2 | RAS-020 | Design tokens e galeria | Constituição | A11y, 360px, estados demo |
-| 2 | RAS-021 | Navegação + layout editorial | tokens | navegação por teclado |
-| 2 | RAS-022 | Busca municipal com fixtures | layout | acentos, filtro e vazio |
-| 3 | RAS-030 | Investigação educativa | roteiro validado | fontes de conceitos e revisão |
-| 3 | RAS-031 | Integração de dados auditados | RAS-014 | sem números demo em produção |
-| 4 | RAS-040 | Mapa IBGE real + tabela | municipal + geo | sem atribuição indevida |
-| 4 | RAS-041 | Perfis autor formal/coletivo | autoria revisada | papel de autor correto |
-| 4 | RAS-042 | Fluxo de evidências | chaves/documentos | relações sempre documentadas |
-| 5 | RAS-050 | Dossiê de investigação | fluxo + editorial | contraditório e revisão |
-| 6 | RAS-060 | Lançamento, revisão e rollback | todas | checklist SPEC 06 integral |
+| Etapa | Issue | Entrega | Bloqueios | Teste de aceite | Situação (23/11/2026) |
+|---|---|---|---|---|---|
+| 0 | RAS-001 | Repo, Constitution, CI e governança | nenhum | docs e checks ativos | Feito. CI roda testes do pipeline, da API, typecheck e build. |
+| 1 | RAS-010 | Inventário CGU por exercício | fonte disponível | schema e cobertura registrados | Feito (`reports/inventario-cgu-*`, `cobertura-cgu-*`). |
+| 1 | RAS-011 | Inventário Transferegov | documentação API | módulos e endpoints verificados | Feito em 0.10.0 (ADR-018). |
+| 1 | RAS-012 | Ingestão raw versionada | inventário | mesmo snapshot = mesmo hash | Feito (manifesto SHA-256, append-only). |
+| 1 | RAS-013 | Parser e normalização | dicionário por fonte | dados preservam origem e valores | Feito. |
+| 1 | RAS-014 | Conciliação e cobertura | parsers | totais e diferenças explicadas | Feito em 0.5.2 e 0.7.0: 84 casos investigados, 49 explicados, 35 sem causa documentada e visíveis. |
+| 2 | RAS-020 | Design tokens e galeria | Constituição | A11y, 360px, estados demo | Parcial: testes visuais 768 px e acessibilidade automatizada em aberto (SPEC 02, T02.07). |
+| 2 | RAS-021 | Navegação + layout editorial | tokens | navegação por teclado | Feito. |
+| 2 | RAS-022 | Busca municipal com fixtures | layout | acentos, filtro e vazio | Feito (busca real no `/mapa` desde 0.9.0). |
+| 3 | RAS-030 | Investigação educativa | roteiro validado | fontes de conceitos e revisão | Feito: glossário conferido com as normas em 22/11/2026; revisão externa dispensada (ADR-015). |
+| 3 | RAS-031 | Integração de dados auditados | RAS-014 | sem números demo em produção | Feito: modo publicado (0.6.0, ADR-015) e trava do build. |
+| 4 | RAS-040 | Mapa IBGE real + tabela | municipal + geo | sem atribuição indevida | Feito em 0.9.0 (ADR-017). |
+| 4 | RAS-041 | Perfis autor formal/coletivo | autoria revisada | papel de autor correto | Parcial: 43 de 43 vínculos revisados; falta o histórico de partido (SPEC 04, T04.04). |
+| 4 | RAS-042 | Fluxo de evidências | chaves/documentos | relações sempre documentadas | Feito em 0.8.0 e 0.10.0; contrato ou obra de convênio segue como lacuna da fonte. |
+| 5 | RAS-050 | Dossiê de investigação | fluxo + editorial | contraditório e revisão | Parcial: reportagens 02 e 03 publicadas (0.13.0); ferramentas de apuração da SPEC 05 não começaram. |
+| 6 | RAS-060 | Lançamento, revisão e rollback | todas | checklist SPEC 06 integral | Parcial: site no ar desde 20/11/2026; SPEC 06 com tarefas abertas (CI E2E, links, performance, monitoramento, rollback testado). |
 
 ## Gates obrigatórios
 
@@ -29,14 +29,16 @@ A coluna `Etapa` é sequencial; não confundir protótipo com publicação jorna
 - [x] P0.2 Preservar valores ausentes nas fichas, conciliações e agregados territoriais.
 - [x] P0.3 Validar e servir exports como pacote imutável consistente (ADR-011).
 - [x] P0.4 Revisão técnica das divergências e interpretação financeira com cobertura/denominadores explícitos (ADR-012).
-- [ ] Gate de publicação: concluir a investigação documental das 73 diferenças e das 11 lacunas com total positivo sem pagamento documental (ou excluir explicitamente esses casos de um recorte aprovado), com registro de revisão humana. A auditoria técnica não aprova os casos.
-- [ ] P1.5 Definir publicação com snapshot aprovado e atualização controlada.
-- [ ] P1.6 Completar fontes, acesso aos documentos e paginação das fichas.
-- [ ] P1.7 Automatizar navegação/mobile no CI (testes de pacote já no CI).
-- [ ] P1.8 Preparar atendimento, privacidade, monitoramento e recuperação.
-- [ ] P2.9 Malha IBGE, exploração documental e integração Transferegov.
-- [ ] P2.10 Publicação editorial e fluxo baseados em evidência real.
-- [ ] P3.11 Ferramentas privadas de apuração.
+- [x] Gate de publicação — investigação documental: as 73 diferenças e as 11 lacunas (84 casos) foram investigadas em 20/11/2026, com achado, fontes e data em `pipelines/contracts/investigacao_casos.json` e exibição na ficha de cada emenda (0.7.0). Resultado: 49 explicados, 35 sem causa documentada.
+- [x] Gate de publicação — registro de revisão humana: o revisor do projeto confirmou a revisão dos 84 casos, registrada em 23/11/2026 no campo `revisor` de cada registro (49 explicados e 35 sem causa).
+- [ ] Os 35 casos sem causa documentada: perguntar aos órgãos ou abrir pedido LAI, seguindo o campo `proxima_verificacao` de cada registro.
+- [x] P1.5 Definir publicação com snapshot aprovado e atualização controlada — modo publicado com cópia congelada e SHA-256 (0.6.0, ADR-015), deploy só pela CLI (ADR-020), rotina em `operations/ATUALIZACAO-DADOS.md` e build que recusa registro de investigação de outro snapshot (0.12.0).
+- [ ] P1.6 Completar fontes, acesso aos documentos e paginação das fichas — fontes e links ao Portal nas fichas desde 0.5.0 e 0.8.0; paginação das fichas não conferida.
+- [ ] P1.7 Automatizar navegação/mobile no CI — o CI roda testes de pacote, typecheck e build, mas não o `verify_web.py` (navegação, 360 px, teclado).
+- [ ] P1.8 Preparar atendimento, privacidade, monitoramento e recuperação — atendimento (e-mail público, ADR-015) e `/privacidade` (0.12.0) feitos; rollback documentado (`vercel promote`), mas nunca testado; sem monitoramento.
+- [x] P2.9 Malha IBGE, exploração documental e integração Transferegov — malha e mapa em 0.9.0, Transferegov no fluxo em 0.10.0.
+- [x] P2.10 Publicação editorial e fluxo baseados em evidência real — fluxo real por emenda (0.8.0) e reportagens 02 e 03 (0.13.0).
+- [ ] P3.11 Ferramentas privadas de apuração (SPEC 05, nenhuma tarefa iniciada).
 - [ ] P3.12 Finalizar vídeo e divulgação após validação.
 
 Evidências e migração do primeiro incremento: `operations/INTEGRIDADE-P0.md`.

@@ -22,7 +22,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202039610008": {
@@ -39,7 +39,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202137330004": {
@@ -55,7 +55,7 @@
       ],
       "proxima_verificacao": "Pedir esclarecimento ao órgão (Secretaria de Aquicultura e Pesca) ou via Lei de Acesso à Informação.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202339270022": {
@@ -73,7 +73,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202124420012": {
@@ -90,7 +90,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120830008": {
@@ -109,7 +109,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202240280007": {
@@ -127,7 +127,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202140280003": {
@@ -145,7 +145,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202227000011": {
@@ -162,7 +162,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202241380005": {
@@ -179,7 +179,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120700019": {
@@ -195,7 +195,7 @@
       ],
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800) no Transferegov ou junto ao órgão.",
       "analista": "Claude (análise automatizada dos arquivos brutos)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202337540002": {
@@ -219,7 +219,7 @@
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800, UG 130141) no Transferegov ou junto ao órgão.",
       "valor_explicado_centavos": 111635500,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202327000001": {
@@ -239,7 +239,7 @@
       "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs de contrato de repasse da Caixa emitidas sem vínculo com o empenho.",
       "valor_explicado_centavos": 144306300,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202071070014": {
@@ -259,7 +259,7 @@
       "proxima_verificacao": "Nenhuma para o valor; tratar no pipeline notas de sistema de devolução (valor negativo na fase Pagamento) que o arquivo por documento classifica como liquidação.",
       "valor_explicado_centavos": 10000000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202327000005": {
@@ -279,7 +279,7 @@
       "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs de contrato de repasse da Caixa emitidas sem vínculo com o empenho.",
       "valor_explicado_centavos": 133700000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202227000005": {
@@ -301,7 +301,7 @@
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
       "valor_explicado_centavos": 137000000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202039610011": {
@@ -320,7 +320,7 @@
       "proxima_verificacao": "Localizar a ordem bancária do empenho novo (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
       "valor_explicado_centavos": 76494240,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202040550003": {
@@ -340,7 +340,7 @@
       "proxima_verificacao": "Localizar a ordem bancária do empenho novo (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
       "valor_explicado_centavos": 48110400,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202171070008": {
@@ -359,7 +359,7 @@
       "proxima_verificacao": "Localizar a ordem bancária do empenho novo no Ministério das Cidades (Transferegov ou junto ao órgão) e confirmar o valor original do empenho anulado 2021NE001099.",
       "valor_explicado_centavos": 48787311,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202127000010": {
@@ -378,7 +378,7 @@
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE801, UG 420013) no Transferegov ou junto ao órgão; a API não retornou o detalhe desses empenhos.",
       "valor_explicado_centavos": 94044789,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202541380002": {
@@ -397,7 +397,7 @@
       "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs emitidas sem vínculo com o empenho.",
       "valor_explicado_centavos": 40000000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202541380020": {
@@ -416,7 +416,7 @@
       "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs emitidas sem vínculo com o empenho.",
       "valor_explicado_centavos": 40000000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202520830011": {
@@ -435,7 +435,7 @@
       "proxima_verificacao": "Nenhuma para o valor; o pipeline pode registrar OBs de contrato de repasse da Caixa emitidas sem vínculo com o empenho.",
       "valor_explicado_centavos": 38200000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202341380012": {
@@ -458,7 +458,7 @@
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos (série NE800, UG 130141) no Transferegov ou junto ao órgão.",
       "valor_explicado_centavos": 30000000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141470011": {
@@ -477,7 +477,7 @@
       "proxima_verificacao": "Localizar a ordem bancária do empenho novo (série NE800, Ministério das Cidades) no Transferegov ou junto ao órgão.",
       "valor_explicado_centavos": 28730600,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202024410020": {
@@ -495,7 +495,7 @@
       "proxima_verificacao": "Localizar as ordens bancárias do empenho novo no Ministério das Cidades (Transferegov ou junto ao órgão).",
       "valor_explicado_centavos": 26916949,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202041380007": {
@@ -515,7 +515,7 @@
       "proxima_verificacao": "Localizar a ordem bancária do empenho novo no Ministério das Cidades (Transferegov) e confirmar que o cancelamento de RAP se refere ao empenho 2020NE800440.",
       "valor_explicado_centavos": 23885600,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202227000010": {
@@ -534,7 +534,7 @@
       "proxima_verificacao": "Localizar a ordem bancária do empenho novo (transferência voluntária 930148) no Transferegov ou junto ao Ministério do Meio Ambiente.",
       "valor_explicado_centavos": 23145325,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120830016": {
@@ -552,7 +552,7 @@
       "proxima_verificacao": "Identificar o empenho de R$ 249.584,00 que a fonte atribui à emenda por pedido ao Fundo Nacional de Saúde ou via Lei de Acesso à Informação.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202241380006": {
@@ -571,7 +571,7 @@
       "proxima_verificacao": "Localizar as ordens bancárias dos empenhos novos no Transferegov ou junto ao Ministério do Meio Ambiente.",
       "valor_explicado_centavos": 20000000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141380019": {
@@ -590,7 +590,7 @@
       "proxima_verificacao": "Consultar no Transferegov os termos de fomento 915267/2021 e 917822/2021 (data e valor dos repasses) ou pedir ao Ministério do Meio Ambiente as ordens bancárias correspondentes.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141380007": {
@@ -609,7 +609,7 @@
       "proxima_verificacao": "Varrer as ordens bancárias da UG 330013 no restante de 2022 procurando as seis programações SIGTV, ou pedir ao Fundo Nacional de Assistência Social as ordens bancárias correspondentes.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202543400005": {
@@ -628,7 +628,7 @@
       "proxima_verificacao": "Consultar o termo de fomento 976410 no Transferegov (data e valor do repasse) ou pedir à Secretaria Nacional de Esporte Amador a ordem bancária correspondente.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202139360006": {
@@ -647,7 +647,7 @@
       "proxima_verificacao": "Verificar no Transferegov (módulo Transferências Especiais) as datas e ordens bancárias dos repasses de 2022 aos quatro municípios, ou pedir à Secretaria do Tesouro Nacional; checar se outras emendas de transferência especial de 2021 têm o mesmo padrão de RAP pago sem OB em 2022.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202171070011": {
@@ -664,7 +664,7 @@
       "proxima_verificacao": "Identificar o empenho de R$ 401.824,00 que a fonte atribui à emenda e o seu pagamento de RAP, por pedido ao Fundo Nacional de Saúde ou via Lei de Acesso à Informação.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202227010001": {
@@ -682,7 +682,7 @@
       "proxima_verificacao": "Identificar o empenho de R$ 136.496,00 (possivelmente em outra unidade do Exército que recebeu crédito da emenda) por pedido ao Comando do Exército ou via Lei de Acesso à Informação.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202127010004": {
@@ -701,7 +701,7 @@
       "proxima_verificacao": "Pedir ao Centro de Obtenções do Exército a ordem bancária de pagamento da NF 283475 (contrato 065/2021).",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202140280006": {
@@ -720,7 +720,7 @@
       "proxima_verificacao": "Consultar o convênio 912286/2021 no Transferegov (parcelas liberadas) ou pedir ao Fundo Nacional de Saúde as ordens bancárias.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202541380021": {
@@ -739,7 +739,7 @@
       "proxima_verificacao": "Consultar o termo de fomento 975687/2025 no Transferegov ou pedir à Secretaria do Audiovisual a ordem bancária correspondente. Resto não explicado: R$ 150.000,00.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202171070001": {
@@ -757,7 +757,7 @@
       "proxima_verificacao": "Conferir convênio a convênio (Transferegov) os valores liberados nos empenhos estaduais de 2021 (NE002876, NE003422, NE003444, NE003534, NE003662, NE003681, NE003727) contra o RAP pago da fonte.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202220250006": {
@@ -777,7 +777,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 8930300,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202191620009": {
@@ -797,7 +797,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 3998100,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202191620010": {
@@ -817,7 +817,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 3998100,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202220250004": {
@@ -837,7 +837,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 3998100,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120830007": {
@@ -857,7 +857,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 3872200,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120250002": {
@@ -877,7 +877,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 2199700,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202124420011": {
@@ -897,7 +897,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 1889600,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202220250003": {
@@ -917,7 +917,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 1889600,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141470009": {
@@ -937,7 +937,7 @@
       "proxima_verificacao": "Localizar na UG 560010 (MCidades) o empenho sucessor e a ordem bancária da tarifa da Caixa, para conferência documento a documento.",
       "valor_explicado_centavos": 1579500,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202227000006": {
@@ -963,7 +963,7 @@
       "proxima_verificacao": "Localizar na UG de destino o empenho sucessor e as ordens bancárias da tarifa da Caixa, para conferir o valor pago documento a documento.",
       "valor_explicado_centavos": 8261082,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202191620014": {
@@ -983,7 +983,7 @@
       "proxima_verificacao": "Localizar na UG de destino o empenho sucessor e as ordens bancárias da tarifa da Caixa, para conferir o valor pago documento a documento.",
       "valor_explicado_centavos": 1645163,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202040460010": {
@@ -1002,7 +1002,7 @@
       "proxima_verificacao": "Consultar as OBs do empenho sucessor 560010000012020NE800015 (UG 560010) para conferência documento a documento.",
       "valor_explicado_centavos": 1556116,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120830010": {
@@ -1023,7 +1023,7 @@
       "proxima_verificacao": "Identificar, entre os empenhos sucessores 420044000012021NE800004 a NE800015, o correspondente ao empenho 540023000012021NE000014 e a OB de R$ 2.100,00.",
       "valor_explicado_centavos": 210000,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202543730006": {
@@ -1042,7 +1042,7 @@
       "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
       "valor_explicado_centavos": 77337,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202543730005": {
@@ -1062,7 +1062,7 @@
       "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
       "valor_explicado_centavos": 3614593,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202543730004": {
@@ -1081,7 +1081,7 @@
       "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
       "valor_explicado_centavos": 6257,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202424420007": {
@@ -1100,7 +1100,7 @@
       "proxima_verificacao": "Reportar à CGU a duplicação do valor no arquivo por documento; verificar se o padrão se repete em outros documentos DF/DR do mesmo arquivo anual.",
       "valor_explicado_centavos": 369013,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202591620018": {
@@ -1119,7 +1119,7 @@
       "proxima_verificacao": "Confirmar com a CGU a parcela do DF 170007000012026DF800111 atribuída à emenda (esperado R$ 6.844,37).",
       "valor_explicado_centavos": 684437,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202040460007": {
@@ -1138,7 +1138,7 @@
       "proxima_verificacao": "Consultar as OBs do empenho sucessor 560010000012020NE800014 (UG 560010) para conferência documento a documento.",
       "valor_explicado_centavos": 4964300,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141380014": {
@@ -1157,7 +1157,7 @@
       "proxima_verificacao": "Localizar, em outra UG do Ministério do Turismo, o empenho de R$ 50.731,00 contado na emenda (provável tarifa de serviço da Caixa) e as OBs correspondentes.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202140550003": {
@@ -1176,7 +1176,7 @@
       "proxima_verificacao": "Localizar, em outra UG do Ministério do Turismo, o empenho de R$ 24.477,00 contado na emenda (provável tarifa de serviço da Caixa) e as OBs correspondentes.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141470003": {
@@ -1195,7 +1195,7 @@
       "proxima_verificacao": "Localizar, em outra UG do Ministério do Turismo, o empenho de R$ 9.839,00 contado na emenda (provável tarifa de serviço da Caixa) e as OBs correspondentes.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202120830003": {
@@ -1213,7 +1213,7 @@
       "proxima_verificacao": "Localizar o empenho de R$ 3.739,00 (2021) contado na emenda, provavelmente na UG 783601, e verificar por que não está ligado ao código no arquivo por documento.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202041470012": {
@@ -1232,7 +1232,7 @@
       "proxima_verificacao": "Verificar devoluções/cancelamentos das OBs do empenho 2020NE000212 (registros de arrecadação ou notas de sistema) que somem R$ 3.257,89.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202220830004": {
@@ -1250,7 +1250,7 @@
       "proxima_verificacao": "Verificar devoluções de OBs de diárias/auxílios da UG 158719 em 2022 (registros de arrecadação ou notas de sistema).",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202424410006": {
@@ -1269,7 +1269,7 @@
       "proxima_verificacao": "Confirmar se a OB 373045372012024OB000937 foi devolvida ou cancelada (registro de arrecadação ou nota de sistema na UG 373045).",
       "valor_explicado_centavos": 62699,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202671070006": {
@@ -1287,7 +1287,7 @@
       "proxima_verificacao": "Recalcular a diferença em nova extração (execução de 2026 em curso) e conferir as parcelas atribuídas às OBs compartilhadas de diárias da UG 195006.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202424410010": {
@@ -1305,7 +1305,7 @@
       "proxima_verificacao": "Conferir, para os empenhos de diárias/passagens 2024NE640018, NE640019 e NE640084, a parcela de cada OB compartilhada atribuída à emenda.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202471070014": {
@@ -1323,7 +1323,7 @@
       "proxima_verificacao": "Verificar nos documentos relacionados dos empenhos 2024NE471504 e 2024NE471749 (UG 195006) se há retenções (DF/DR) ou OBs não ligadas ao código da emenda que somem R$ 7.859,64.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202471070009": {
@@ -1341,7 +1341,7 @@
       "proxima_verificacao": "Obter da CGU o pago por empenho da emenda para comparar com os saldos de 2024NE000544, NE000562 e outros sem OB vinculada.",
       "valor_explicado_centavos": 726107,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202471070016": {
@@ -1359,7 +1359,7 @@
       "proxima_verificacao": "Obter da CGU o pago por empenho da emenda; conferir as parcelas atribuídas às OBs compartilhadas (por exemplo, 2025OB002283, 2025OB001390, 2025OB002706).",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202020830007": {
@@ -1378,7 +1378,7 @@
       "proxima_verificacao": "Verificar no FNS a execução do empenho 2020NE820540 (sem OB vinculada) e a repartição das OBs 2021OB815806/2022OB804049 entre NE814011 e NE814012.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202371070006": {
@@ -1396,7 +1396,7 @@
       "proxima_verificacao": "Verificar se os DFs 158133264052023DF802755 e DF803296 (UG 158133) pagam de fato o empenho 158960264052023NE000055 ou outro empenho, e se houve devolução de valores nesse empenho.",
       "valor_explicado_centavos": 98190,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202071070007": {
@@ -1414,7 +1414,7 @@
       "proxima_verificacao": "Obter da CGU o RAP cancelado e o RAP pago por empenho para identificar os R$ 5.707,15.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202571070007": {
@@ -1432,7 +1432,7 @@
       "proxima_verificacao": "Obter da CGU o RAP pago por empenho; conferir as parcelas das OBs compartilhadas (por exemplo, 2026OB000308, 2026OB006194, 2026OB004425).",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202437100002": {
@@ -1453,7 +1453,7 @@
       "proxima_verificacao": "Localizar na UG 160045 as OBs dos empenhos sucessores (série 2024NE8000xx) correspondentes a 2024NE000917 e 2024NE000943.",
       "valor_explicado_centavos": 586800,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202140550002": {
@@ -1473,7 +1473,7 @@
       "proxima_verificacao": "Verificar se houve retenção de ISS ou outro documento de R$ 4,68 no empenho 2021NE000360 (UG 160044) sem vínculo com a emenda.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202644130007": {
@@ -1492,7 +1492,7 @@
       "proxima_verificacao": "Reconsultar após a próxima atualização: localizar as OBs das liquidações de passagens (343026404012026NS005711, NS005712, NS005713, NS006189, NS006223).",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202141380016": {
@@ -1510,7 +1510,7 @@
       "proxima_verificacao": "Verificar a liquidação/pagamento de 2023 do empenho 2021NE001370 (UG 783601) e eventual retenção de R$ 3.541,59 não vinculada.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202545430003": {
@@ -1530,7 +1530,7 @@
       "proxima_verificacao": "Localizar a OB da liquidação 170007000012026NS000054 (empenho 2025NE000318) e confirmar com a CGU o critério de 1% usado para a parcela de custos operacionais.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202541470003": {
@@ -1549,7 +1549,7 @@
       "proxima_verificacao": "Localizar a OB da liquidação 170007000012026NS000085 e confirmar com a CGU o critério de 1% da parcela de custos operacionais.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202544910011": {
@@ -1568,7 +1568,7 @@
       "proxima_verificacao": "Localizar a OB da liquidação 170007000012026NS000085 e confirmar com a CGU o critério de 1% da parcela de custos operacionais.",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202571070005": {
@@ -1586,7 +1586,7 @@
       "proxima_verificacao": "Reportar à CGU a multiplicação de valores de DF no arquivo por documento de 2026 (UG 153045).",
       "valor_explicado_centavos": 3256252,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     },
     "202571070006": {
@@ -1604,7 +1604,7 @@
       "proxima_verificacao": "Obter da CGU o RAP pago por empenho; conferir os empenhos com saldo e os pagamentos cruzados entre UGs (por exemplo, 158133 e 158953).",
       "valor_explicado_centavos": null,
       "analista": "Claude (agentes de análise com a API de dados do Portal)",
-      "revisor": null,
+      "revisor": "revisor do projeto",
       "data": "2026-11-20"
     }
   }
